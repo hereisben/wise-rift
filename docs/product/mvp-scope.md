@@ -13,10 +13,14 @@ The core draft workflow is:
 ```txt
 Choose Role
 → Set Champion Pool
-→ Enter Picks and Bans
-→ Get Ban Recommendation
-→ Get Pick Recommendation
-→ Get Item Build Suggestion
+→ Choose Intended Champion or Leave It Blank
+→ Get Ban Recommendations
+→ Enter Bans
+→ Start Live Pick Phase
+→ Update Team and Enemy Picks as Draft Changes
+→ View Live Pick Recommendations
+→ View Live Team Composition Analysis
+→ View Live Item Build Suggestions
 → Save Match Result
 → Review Draft Performance
 ```
@@ -39,13 +43,14 @@ Create Account
 → Create Champion Pool
 → Start Draft Session
 → Choose Role
-→ Choose Intended Champion
+→ Choose Intended Champion or Leave It Blank
 → Get Ban Recommendations
-→ Enter Team Picks
-→ Enter Enemy Picks
-→ Get Pick Recommendations
-→ View Team Composition Analysis
-→ Get Item Build Suggestions
+→ Enter Bans
+→ Start Live Pick Phase
+→ Update Team and Enemy Picks as Draft Changes
+→ View Live Pick Recommendations
+→ View Live Team Composition Analysis
+→ View Live Item Build Suggestions
 → Save Matchup Notes
 → Save Match Result
 → Review Draft Performance
@@ -60,6 +65,12 @@ The intended champion can be selected or left blank.
 If the user selects an intended champion, ban recommendations should consider champions that counter that pick.
 
 If the user leaves the intended champion blank, ban recommendations should focus on meta threats, user discomfort history, role-based threats, and common difficult matchups.
+
+After the ban phase, both teams pick champions in turns.
+
+Because of this, Wise Rift should not treat team picks and enemy picks as two separate one-time steps.
+
+During the pick phase, the user should update the draft state as picks happen, and Wise Rift should refresh recommendations after each draft update.
 
 ---
 
@@ -112,6 +123,8 @@ The MVP should be small enough to build, but strong enough to demo.
 The MVP should prioritize:
 
 - Mid lane first
+- Early ban recommendation
+- Live pick phase updates
 - Clear workflow over too many features
 - Manual patch data over automatic scraping
 - Rule-based scoring over vague AI answers
@@ -221,31 +234,36 @@ A draft session stores:
 - Draft phase
 - Result after game
 
-Example:
+The draft session starts before the ban phase.
+
+Example setup:
 
 ```txt
 Role: Mid
 Intended Champion: Akali
-
-My Team:
-Lee Sin, Jinx, Lulu
-
-Enemy Team:
-Orianna, Jarvan, Malphite
 ```
+
+The intended champion is optional.
+
+If the user does not know what they want to play yet, they can leave it blank and still get ban recommendations.
 
 ---
 
 ### 5. Get Ban Recommendations
 
-The app recommends bans based on the current draft state.
+The app recommends bans based on the early draft state.
+
+Ban recommendations happen before full team picks are entered.
 
 Ban recommendations should consider:
 
+- User role
+- Intended champion if selected
 - Meta threat
 - User discomfort
 - Counter threat
-- Team weakness
+- Role-based threats
+- Champion pool weaknesses
 - Enemy likely picks
 - Patch-specific champion strength
 
@@ -255,7 +273,7 @@ Example:
 Recommended Ban: Galio
 
 Reason:
-Galio can punish Akali's engage pattern, adds reliable crowd control, and works well with enemy engage champions.
+Galio can punish Akali's engage pattern, adds reliable crowd control, and works well against melee AP assassins.
 ```
 
 The MVP should return a ranked list of recommended bans.
@@ -264,15 +282,60 @@ Example:
 
 ```txt
 1. Galio
-2. Lissandra
-3. Vex
+2. Orianna
+3. Taliyah
 ```
 
 ---
 
-### 6. Get Pick Recommendations
+### 6. Enter Bans
 
-The app recommends picks based on the user's champion pool and the current draft.
+After viewing ban recommendations, the user enters the real bans from the match.
+
+The user can enter:
+
+- My team bans
+- Enemy team bans
+
+The app should use these bans to remove champions from the available champion list.
+
+A champion that is banned should not appear in pick recommendations.
+
+---
+
+### 7. Start Live Pick Phase
+
+After bans are entered, the draft moves into the live pick phase.
+
+In Wild Rift draft, both teams pick champions in turns.
+
+The app should allow the user to update the draft state after each pick.
+
+The live pick phase flow is:
+
+```txt
+Start Pick Phase
+→ Enter or Update My Team Picks
+→ Enter or Update Enemy Team Picks
+→ Recalculate Pick Recommendations
+→ Recalculate Team Composition Analysis
+→ Recalculate Item Build Suggestions
+→ Continue Until Draft Is Complete
+```
+
+This flow is not linear.
+
+The user does not need to enter all team picks first and all enemy picks second.
+
+The user should update picks as they happen.
+
+---
+
+### 8. Get Live Pick Recommendations
+
+The app recommends picks based on the user's champion pool and current draft state.
+
+Pick recommendations should update after each draft state change.
 
 Pick recommendations should consider:
 
@@ -282,6 +345,10 @@ Pick recommendations should consider:
 - Enemy threat safety
 - Meta score
 - Item build fit
+- Available champions
+- Current bans
+- Current team picks
+- Current enemy picks
 
 Example:
 
@@ -296,9 +363,11 @@ The MVP should not recommend champions outside the user's pool unless the user e
 
 ---
 
-### 7. Analyze Team Composition
+### 9. View Live Team Composition Analysis
 
-The app analyzes both teams.
+The app analyzes both teams during the live pick phase.
+
+The analysis should update when team picks or enemy picks change.
 
 The team composition analyzer checks:
 
@@ -337,9 +406,11 @@ The MVP should keep this scoring simple and explainable.
 
 ---
 
-### 8. Get Item Build Suggestions
+### 10. View Live Item Build Suggestions
 
 The app recommends item builds based on the user's champion and enemy team.
+
+Item suggestions should update when enemy picks change.
 
 Item recommendations should consider:
 
@@ -378,7 +449,7 @@ The MVP item engine should start with rule-based recommendations.
 
 ---
 
-### 9. Save Matchup Notes
+### 11. Save Matchup Notes
 
 The user can save notes from real games.
 
@@ -400,7 +471,7 @@ For MVP, matchup notes can be saved and displayed first.
 
 ---
 
-### 10. Save Match Result
+### 12. Save Match Result
 
 After a match, the user can save the result.
 
@@ -428,13 +499,14 @@ Akali was playable, but enemy team had too much crowd control.
 
 ---
 
-### 11. Review Draft Performance
+### 13. Review Draft Performance
 
 The app can generate a post-game draft review.
 
 The review should explain:
 
 - Why the draft was good or bad
+- Whether the ban made sense
 - Whether the pick made sense
 - What the team composition lacked
 - What item choices were important
@@ -651,12 +723,14 @@ The user can:
 
 - Create draft session
 - Select role
-- Select intended champion
-- Enter my team picks
-- Enter enemy team picks
+- Select intended champion or leave it blank
+- Get ban recommendations
 - Enter my team bans
 - Enter enemy team bans
-- Update draft state
+- Start live pick phase
+- Enter or update my team picks
+- Enter or update enemy team picks
+- Update draft state after each pick
 - Analyze draft
 - Save result
 
@@ -666,7 +740,7 @@ The draft session is the main object for recommendations.
 
 ### Ban Recommendation
 
-The app can generate ban recommendations.
+The app can generate ban recommendations before the pick phase.
 
 Ban recommendation uses this formula:
 
@@ -696,9 +770,9 @@ Reason: Galio has strong crowd control and can punish Akali's engage pattern.
 
 ---
 
-### Pick Recommendation
+### Live Pick Recommendation
 
-The app can generate pick recommendations.
+The app can generate pick recommendations during the live pick phase.
 
 Pick recommendation uses this formula:
 
@@ -721,11 +795,13 @@ The MVP should return:
 - Team composition fit
 - Main tradeoff
 
+Pick recommendations should update after each draft state change.
+
 ---
 
-### Team Composition Analyzer
+### Live Team Composition Analyzer
 
-The app can calculate a simple team composition score.
+The app can calculate a simple team composition score during the live pick phase.
 
 Team composition score uses this formula:
 
@@ -749,11 +825,13 @@ The MVP should return:
 - Missing team needs
 - Enemy threat summary
 
+Team composition analysis should update when team picks or enemy picks change.
+
 ---
 
-### Item Build Recommendation
+### Live Item Build Recommendation
 
-The app can recommend item focus and item choices.
+The app can recommend item focus and item choices during the live pick phase.
 
 Item recommendation uses this formula:
 
@@ -773,6 +851,8 @@ The MVP should return:
 - Defensive item suggestions
 - Enchant suggestion
 - Reason for each item
+
+Item build suggestions should update when enemy picks change.
 
 The MVP should support simple rules first:
 
@@ -1016,16 +1096,17 @@ The MVP is successful when the user can complete this full flow:
 3. Create a champion pool
 4. Start a draft session
 5. Select role: Mid
-6. Select intended champion
-7. Enter team picks
-8. Enter enemy picks
-9. Get ban recommendations
-10. Get pick recommendations
-11. View team composition analysis
-12. View item build suggestions
-13. Save matchup note
-14. Save match result
-15. View post-game draft review
+6. Select intended champion or leave it blank
+7. Get ban recommendations
+8. Enter bans
+9. Start live pick phase
+10. Update team and enemy picks as draft changes
+11. View live pick recommendations
+12. View live team composition analysis
+13. View live item build suggestions
+14. Save matchup note
+15. Save match result
+16. View post-game draft review
 ```
 
 Functional success criteria:
@@ -1033,11 +1114,13 @@ Functional success criteria:
 - User can sign up and log in
 - User can manage their champion pool
 - User can start and update a draft session
-- User can enter team and enemy picks
-- User can get ban recommendations
-- User can get pick recommendations
-- User can view team composition score
-- User can view item build suggestions
+- User can select an intended champion or leave it blank
+- User can get ban recommendations before the pick phase
+- User can enter bans
+- User can update team and enemy picks during the live pick phase
+- User can get live pick recommendations
+- User can view live team composition score
+- User can view live item build suggestions
 - User can save matchup notes
 - User can save match results
 - User can view draft history
@@ -1082,15 +1165,16 @@ The MVP demo should follow this sequence:
 5. Start draft session
 6. Choose role: Mid
 7. Choose intended champion: Akali
-8. Enter my team picks
-9. Enter enemy team picks
-10. Get recommended bans
-11. Get recommended picks
-12. View team composition analysis
-13. View item build recommendation
-14. Save matchup note
-15. Save match result
-16. View post-game draft review
+8. Get recommended bans
+9. Enter bans
+10. Start live pick phase
+11. Update team and enemy picks as draft changes
+12. View live pick recommendations
+13. View live team composition analysis
+14. View live item build recommendation
+15. Save matchup note
+16. Save match result
+17. View post-game draft review
 ```
 
 This demo should make the project easy to explain in interviews.
@@ -1121,7 +1205,7 @@ MatchupNote
 Detailed schema will be defined in:
 
 ```txt
-docs/data-model.md
+docs/architecture/data-model.md
 ```
 
 ---
@@ -1145,7 +1229,7 @@ AI Explanations
 Detailed API design will be defined in:
 
 ```txt
-docs/api-design.md
+docs/architecture/api-design.md
 ```
 
 ---
@@ -1245,10 +1329,12 @@ Phase 4 should deliver draft sessions.
 Included:
 
 - Draft session CRUD
-- Team pick input
-- Enemy pick input
-- Ban input
 - Intended champion selection
+- Early ban recommendation
+- Ban input
+- Live pick phase
+- Team pick updates
+- Enemy pick updates
 - Draft state update
 - Draft history page
 
@@ -1265,6 +1351,7 @@ Included:
 - Pick score calculation
 - Team composition score calculation
 - Item recommendation rules
+- Live draft recalculation
 - API integration with scoring service
 - Draft analysis result storage
 
@@ -1316,8 +1403,9 @@ Included:
 - Champion pool view
 - Quick draft screen
 - Ban recommendation screen
-- Pick recommendation screen
-- Item build screen
+- Live pick recommendation screen
+- Live team composition screen
+- Live item build screen
 - Matchup note form
 - Post-game review screen
 
@@ -1337,6 +1425,8 @@ These questions should be answered before or during implementation.
 - Should item recommendations return full builds or item focus first?
 - Should the app support only ranked draft style first?
 - Should the post-game review be required or optional?
+- Should ban recommendations update after each ban is entered?
+- Should live pick recommendations update automatically or with a manual refresh button?
 
 ### Technical Questions
 
@@ -1352,10 +1442,12 @@ These questions should be answered before or during implementation.
 
 - Should Quick Draft be one screen or step-by-step?
 - Should champion selection use search, cards, or dropdowns?
-- Should item recommendations show full item paths or grouped reasons?
+- Should item recommendations show full item paths or grouped reasons first?
 - Should explanations be short by default with an expand option?
 - Should team composition score use numbers, labels, or both?
 - Should matchup notes appear during draft automatically?
+- Should the live pick phase use one combined draft board screen?
+- Should the recommendation panel refresh automatically after every pick update?
 
 ---
 
@@ -1461,5 +1553,5 @@ The MVP is a focused draft decision-support assistant for one Wild Rift player.
 The first version should prove this core idea:
 
 ```txt
-A Wild Rift player can use one structured workflow to make clearer ban, pick, and item build decisions during draft.
+A Wild Rift player can use one structured workflow to get early ban guidance and live pick, team composition, and item build recommendations during draft.
 ```

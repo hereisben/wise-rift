@@ -102,7 +102,36 @@ The user should not need to enter full team picks before seeing ban recommendati
 
 ---
 
-### 2. Rule-based scoring decides
+### 2. Pick phase is live
+
+The pick phase should not be treated as a one-time linear flow.
+
+In Wild Rift draft, both teams pick champions in turns.
+
+Because of this, Wise Rift should allow the user to update the draft state after each pick.
+
+After each draft update, the app should refresh:
+
+- pick recommendations
+- team composition analysis
+- enemy threat summary
+- item build suggestions when enemy picks change
+
+The product should support this live pick phase behavior:
+
+```txt
+Start Pick Phase
+→ Enter or Update My Team Picks
+→ Enter or Update Enemy Team Picks
+→ Recalculate Pick Recommendations
+→ Recalculate Team Composition Analysis
+→ Recalculate Item Build Suggestions
+→ Continue Until Draft Is Complete
+```
+
+---
+
+### 3. Rule-based scoring decides
 
 The recommendation engine decides the result using scoring rules.
 
@@ -120,7 +149,7 @@ User reviews.
 
 ---
 
-### 3. Manual patch data is the source of truth
+### 4. Manual patch data is the source of truth
 
 Champion stats, ability numbers, item stats, matchup rules, and build rules come from manually maintained patch data.
 
@@ -132,7 +161,7 @@ AI should not invent patch changes.
 
 ---
 
-### 4. User comfort matters
+### 5. User comfort matters
 
 Wise Rift should not only recommend the best champion on paper.
 
@@ -142,7 +171,7 @@ A strong meta champion should not always rank high if the user is bad or uncomfo
 
 ---
 
-### 5. MVP should stay small
+### 6. MVP should stay small
 
 The MVP should focus on mid lane first.
 
@@ -170,11 +199,11 @@ Create Account
 → Choose Intended Champion or Leave It Blank
 → Get Ban Recommendations
 → Enter Bans
-→ Enter Team Picks
-→ Enter Enemy Picks
-→ Get Pick Recommendations
-→ View Team Composition Analysis
-→ View Item Build Suggestions
+→ Start Live Pick Phase
+→ Update Team and Enemy Picks as Draft Changes
+→ View Live Pick Recommendations
+→ View Live Team Composition Analysis
+→ View Live Item Build Suggestions
 → Save Matchup Notes
 → Save Match Result
 → Review Draft Performance
@@ -404,6 +433,8 @@ A draft session stores the current draft state.
 
 It is the main object used for ban, pick, team composition, and item recommendations.
 
+The draft session starts before the ban phase and continues through the live pick phase.
+
 ### User Stories
 
 ```txt
@@ -414,8 +445,14 @@ so that I can get recommendations during champion select.
 
 ```txt
 As a user,
-I want to update draft information,
+I want to update draft information after each pick,
 so that recommendations can change as the draft changes.
+```
+
+```txt
+As a user,
+I want to save the final draft state,
+so that I can review the draft after the game.
 ```
 
 ### Requirements
@@ -426,11 +463,14 @@ The user should be able to:
 - select role
 - select intended champion
 - leave intended champion blank
+- get ban recommendations
 - enter my team bans
 - enter enemy team bans
-- enter my team picks
-- enter enemy team picks
-- update draft state
+- start live pick phase
+- enter or update my team picks
+- enter or update enemy team picks
+- update draft state after each pick
+- save final champion
 - save draft session
 - save match result after the game
 
@@ -440,10 +480,12 @@ A draft session should include:
 - patch
 - role
 - intended champion
+- final champion
 - my team picks
 - enemy team picks
 - my team bans
 - enemy team bans
+- available champions
 - phase
 - result
 - created date
@@ -457,10 +499,10 @@ The MVP should support these draft phases:
 Setup
 Ban Recommendation
 Ban Entry
-Pick Entry
-Analysis
+Live Pick Phase
 Post Game
 Completed
+Archived
 ```
 
 ### Acceptance Criteria
@@ -481,6 +523,13 @@ Then the draft session should store Mid as my role
 Given I do not know my intended champion yet
 When I leave intended champion blank
 Then the app should still allow ban recommendations
+```
+
+```txt
+Given the pick phase has started
+When I update my team picks or enemy team picks
+Then the draft session should save the updated draft state
+And the app should refresh live recommendations
 ```
 
 ---
@@ -578,20 +627,72 @@ Then that champion should not appear as a recommended ban
 
 ---
 
-## 6. Pick Recommendation
+## 6. Ban Entry
 
 ### Description
 
-The app recommends picks after draft picks begin.
+After the user views ban recommendations, the user enters the real bans from the match.
 
-Pick recommendation should consider team picks, enemy picks, user comfort, and matchup rules.
+These bans affect the available champion list during the pick phase.
 
 ### User Stories
 
 ```txt
 As a user,
-I want pick recommendations,
-so that I can choose a champion that fits the draft.
+I want to enter my team bans and enemy team bans,
+so that the app knows which champions are no longer available.
+```
+
+### Requirements
+
+The user should be able to:
+
+- enter my team bans
+- enter enemy team bans
+- edit bans before the pick phase starts
+- save bans
+- continue to live pick phase
+
+The app should remove banned champions from available picks.
+
+### Acceptance Criteria
+
+```txt
+Given Galio is banned
+When pick recommendations are generated
+Then Galio should not appear as an available pick
+```
+
+```txt
+Given a champion is already banned
+When I try to ban the same champion again
+Then the app should show a validation error
+```
+
+---
+
+## 7. Live Pick Recommendation
+
+### Description
+
+The app recommends picks during the live pick phase.
+
+Pick recommendation should update as both teams pick champions in turns.
+
+The app should not wait until the full draft is complete before giving useful guidance.
+
+### User Stories
+
+```txt
+As a user,
+I want live pick recommendations,
+so that I can choose a champion that fits the current draft.
+```
+
+```txt
+As a user,
+I want the app to update recommendations after each pick,
+so that I can react to the real draft.
 ```
 
 ```txt
@@ -608,11 +709,14 @@ so that I know why one pick is safer than another.
 
 ### Requirements
 
-The app should generate pick recommendations based on:
+The app should generate live pick recommendations based on:
 
 - user role
 - user champion pool
 - comfort score
+- current my team picks
+- current enemy team picks
+- current bans
 - lane matchup
 - team composition fit
 - enemy threat safety
@@ -632,12 +736,24 @@ Pick recommendation should return:
 
 The MVP should recommend champions from the user's champion pool by default.
 
+### Live Pick Timing
+
+Pick recommendation should happen during this phase:
+
+```txt
+Start Live Pick Phase
+→ Update Team and Enemy Picks as Draft Changes
+→ View Live Pick Recommendations
+```
+
+Pick recommendation should update after each draft state change.
+
 ### Acceptance Criteria
 
 ```txt
 Given my champion pool includes Akali, Viktor, Ahri, and Yasuo
 And the enemy team has Jarvan and Malphite
-When I request pick recommendations
+When live pick recommendations are generated
 Then the app should rank safer picks higher when hard engage is a major threat
 ```
 
@@ -653,28 +769,40 @@ When pick recommendations are generated
 Then that champion should not appear as an available pick
 ```
 
+```txt
+Given the enemy team adds a new pick
+When I update the draft state
+Then pick recommendations should refresh based on the new enemy pick
+```
+
 ---
 
-## 7. Team Composition Analysis
+## 8. Live Team Composition Analysis
 
 ### Description
 
-The app analyzes the user's team composition and enemy team threats.
+The app analyzes the user's team composition and enemy team threats during the live pick phase.
 
-The goal is to help the user understand what the draft has and what it lacks.
+The goal is to help the user understand what the draft has and what it lacks while the draft is still changing.
 
 ### User Stories
 
 ```txt
 As a user,
-I want to see team composition strengths,
+I want to see live team composition strengths,
 so that I know what my team can do well.
 ```
 
 ```txt
 As a user,
-I want to see team composition weaknesses,
+I want to see live team composition weaknesses,
 so that I know what risk my team has.
+```
+
+```txt
+As a user,
+I want team composition analysis to update when picks change,
+so that I can understand the draft in real time.
 ```
 
 ### Requirements
@@ -705,6 +833,12 @@ The analysis should return:
 - missing needs
 - enemy threat summary
 
+The analysis should update when:
+
+- my team picks change
+- enemy team picks change
+- user final champion changes
+
 ### Acceptance Criteria
 
 ```txt
@@ -725,9 +859,15 @@ When team composition is analyzed
 Then the result should warn about engage threat
 ```
 
+```txt
+Given a new champion is added to either team
+When the draft state updates
+Then team composition analysis should refresh
+```
+
 ---
 
-## 8. Item Build Recommendation
+## 9. Live Item Build Recommendation
 
 ### Description
 
@@ -735,12 +875,20 @@ The app recommends item builds based on the user's champion and enemy team.
 
 The MVP should focus on item logic that is easy to explain.
 
+Item suggestions should update during the live pick phase when enemy picks change.
+
 ### User Stories
 
 ```txt
 As a user,
 I want item recommendations against the enemy team,
 so that I do not build the same items every game.
+```
+
+```txt
+As a user,
+I want item suggestions to update when enemy picks change,
+so that I can adapt my build to the real draft.
 ```
 
 ```txt
@@ -804,9 +952,15 @@ When item recommendations are generated
 Then the app should recommend Stasis or another defensive option when relevant
 ```
 
+```txt
+Given a new enemy champion is added
+When the draft state updates
+Then item suggestions should refresh based on the new enemy threat
+```
+
 ---
 
-## 9. Matchup Notes
+## 10. Matchup Notes
 
 ### Description
 
@@ -866,7 +1020,7 @@ Then I should see my saved matchup notes
 
 ---
 
-## 10. Match Result
+## 11. Match Result
 
 ### Description
 
@@ -935,7 +1089,7 @@ Then the review should appear in draft history
 
 ---
 
-## 11. Post-Game Draft Review
+## 12. Post-Game Draft Review
 
 ### Description
 
@@ -980,7 +1134,7 @@ Then it should be saved as draft text
 
 ---
 
-## 12. Draft History
+## 13. Draft History
 
 ### Description
 
@@ -1113,6 +1267,8 @@ pickScore =
 
 The app should explain the top score factors.
 
+Pick score should be recalculated when the draft state changes during the live pick phase.
+
 ---
 
 ## Team Composition Score
@@ -1133,6 +1289,8 @@ teamCompScore =
 
 The app should explain strengths and weaknesses.
 
+Team composition score should be recalculated when team picks or enemy picks change.
+
 ---
 
 ## Item Score
@@ -1150,6 +1308,8 @@ itemScore =
 
 The app should explain why each item is suggested.
 
+Item score should be recalculated when enemy picks change.
+
 ---
 
 ## State Requirements
@@ -1162,8 +1322,7 @@ Draft session status should support:
 Setup
 Ban Recommendation
 Ban Entry
-Pick Entry
-Analysis
+Live Pick Phase
 Post Game
 Completed
 Archived
@@ -1222,6 +1381,9 @@ The app should validate user input.
 - Bans must be valid champion IDs
 - A champion cannot be picked and banned in the same draft
 - A champion should not appear twice in the same draft state
+- A banned champion should not appear in live pick recommendations
+- A picked champion should not appear in live pick recommendations
+- My team picks and enemy team picks should update independently
 
 ### Matchup Note Validation
 
@@ -1271,6 +1433,12 @@ No pick recommendation is available yet.
 Add champions to your champion pool or update the draft state.
 ```
 
+### No Live Pick Data State
+
+```txt
+Start entering team and enemy picks to improve live recommendations.
+```
+
 ### AI Failure State
 
 ```txt
@@ -1290,9 +1458,9 @@ MVP target:
 
 ```txt
 Ban recommendation: under 2 seconds
-Pick recommendation: under 2 seconds
-Team composition analysis: under 2 seconds
-Item recommendation: under 2 seconds
+Live pick recommendation: under 2 seconds after draft update
+Live team composition analysis: under 2 seconds after draft update
+Live item recommendation: under 2 seconds after enemy pick update
 AI explanation: can take longer, but should show loading state
 ```
 
@@ -1325,6 +1493,7 @@ Requirements:
 - handle scoring service failure
 - handle AI explanation failure
 - save draft sessions safely
+- preserve draft state when recommendations fail
 
 ---
 
@@ -1337,11 +1506,13 @@ Requirements:
 - quick champion search
 - fast role selection
 - simple draft input
+- live draft board
 - short explanations by default
 - expandable details for score factors
 - mobile-friendly layout
 - clear loading states
 - clear disabled states
+- easy update controls for both team picks and enemy picks
 
 ---
 
@@ -1360,11 +1531,11 @@ The MVP is accepted when the user can complete this flow:
 8. Choose intended champion or leave it blank
 9. Get ban recommendations
 10. Enter bans
-11. Enter team picks
-12. Enter enemy picks
-13. Get pick recommendations
-14. View team composition analysis
-15. View item build suggestions
+11. Start live pick phase
+12. Update team and enemy picks as draft changes
+13. View live pick recommendations
+14. View live team composition analysis
+15. View live item build suggestions
 16. Save matchup note
 17. Save match result
 18. View post-game draft review
@@ -1404,6 +1575,8 @@ The MVP does not include:
 - Should the intended champion field support multiple possible champions?
 - Should the app recommend bans for the whole team or only for the user's role?
 - Should ban recommendations update after each ban is entered?
+- Should live pick recommendations update automatically after each draft update?
+- Should the user also have a manual refresh button for recommendations?
 - Should item recommendations show a full build or grouped item focus first?
 - Should matchup notes appear automatically during draft?
 - Should post-game review be optional or shown after every saved result?
@@ -1417,15 +1590,18 @@ The MVP does not include:
 - Should Redis and BullMQ be added early or later?
 - Should Prisma live in `apps/api` or `packages/database`?
 - Should shared types live in `packages/shared`?
+- Should live pick recalculation happen automatically through client requests or after a user clicks Analyze?
 
 ### UX Questions
 
 - Should Quick Draft be one screen or step-by-step?
 - Should the ban recommendation screen show top 3 or top 5 bans?
+- Should the live pick phase use one combined draft board screen?
 - Should explanations be collapsed by default?
 - Should score factors show numbers or labels?
 - Should item build suggestions use cards, tables, or grouped sections?
 - Should champion pool use cards or a table?
+- Should live recommendations appear in a side panel next to the draft board?
 
 ---
 
@@ -1444,5 +1620,5 @@ Wise Rift is a focused draft assistant for one player.
 The MVP should prove this core product idea:
 
 ```txt
-A Wild Rift player can choose a role, choose an optional intended champion, get early ban recommendations, enter draft picks, and receive clear pick, team composition, and item build guidance.
+A Wild Rift player can choose a role, choose an optional intended champion, get early ban recommendations, update the draft as both teams pick champions, and receive live pick, team composition, and item build guidance.
 ```

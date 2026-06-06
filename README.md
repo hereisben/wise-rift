@@ -23,6 +23,8 @@ The app is designed around a real Wild Rift draft workflow.
 
 In Wild Rift draft, the ban phase happens before the full pick phase. Because of this, Wise Rift gives ban recommendations right after the user selects a role and optional intended champion.
 
+After the ban phase, both teams pick champions in turns. Because of this, Wise Rift should update pick recommendations, team composition analysis, and item build suggestions as the draft changes.
+
 The core workflow is:
 
 ```txt
@@ -30,11 +32,11 @@ Choose role
 → Choose intended champion or leave it blank
 → Get ban recommendations
 → Enter bans
-→ Enter team picks
-→ Enter enemy picks
-→ Get pick recommendations
-→ View team composition analysis
-→ Get item build suggestions
+→ Start pick phase
+→ Update team and enemy picks as draft changes
+→ View live pick recommendations
+→ View live team composition analysis
+→ View live item build suggestions
 → Save match result
 → Review draft performance
 ```
@@ -99,9 +101,9 @@ The first MVP focuses on:
 - Patch-versioned data
 - Champion pool management
 - Ban recommendation before the pick phase
-- Pick recommendation after draft picks are entered
-- Team composition scoring
-- Item build recommendation
+- Live pick recommendation during the pick phase
+- Live team composition scoring during the pick phase
+- Live item build recommendation when enemy picks change
 - AI-generated explanation
 - Matchup notes
 - Post-game draft review
@@ -251,7 +253,7 @@ The weights can be adjusted later based on real user feedback.
 
 The recommendation updates as the draft changes.
 
-The user can enter:
+The user can enter or update:
 
 - My role
 - My intended champion
@@ -259,6 +261,7 @@ The user can enter:
 - Enemy team bans
 - My team picks
 - Enemy team picks
+- My final champion
 - Available champions
 
 The draft flow should support two main recommendation moments:
@@ -269,24 +272,28 @@ Choose role
 → Choose intended champion or leave it blank
 → Get ban recommendations
 
-After picks begin:
-Enter team picks
-→ Enter enemy picks
-→ Get pick recommendations
-→ View team composition analysis
-→ View item build suggestions
+During pick phase:
+Start pick phase
+→ Update team and enemy picks as draft changes
+→ Recalculate pick recommendations
+→ Recalculate team composition analysis
+→ Recalculate item build suggestions
+→ Continue until draft is complete
 ```
+
+The pick phase is not a one-time linear step.
+
+Both teams pick champions in turns. Because of this, Wise Rift should update recommendations after each draft state change instead of waiting until all picks are entered.
 
 After each update, the app recalculates:
 
-- Best bans
 - Best picks
 - Team composition score
 - Enemy threat score
 - Lane matchup risk
 - Damage balance
 - Crowd control balance
-- Item build suggestions
+- Item build suggestions when enemy picks change
 
 Example draft flow:
 
@@ -314,7 +321,9 @@ Viktor gives safer scaling, strong wave clear, AP damage, and better teamfight s
 
 ## 4. Team Composition Analyzer
 
-Wise Rift analyzes both teams.
+Wise Rift analyzes both teams during the pick phase.
+
+The analysis should update when team picks or enemy picks change.
 
 The app checks:
 
@@ -352,6 +361,10 @@ Weaknesses:
 ---
 
 ## 5. Item Build Recommendation
+
+The app recommends item builds based on the user's champion and the enemy team.
+
+Item suggestions can update during the pick phase as enemy picks change.
 
 The app recommends item builds based on:
 
@@ -633,17 +646,17 @@ Example ban recommendation flow:
 10. Client displays recommended bans
 ```
 
-Example pick recommendation flow:
+Example live pick recommendation flow:
 
 ```txt
-1. User enters team picks and enemy picks
-2. Web or iOS app sends updated draft state to the API
+1. User enters or updates team and enemy picks during the pick phase
+2. Web or iOS app sends the updated draft state to the API
 3. API loads active patch data from PostgreSQL
 4. API sends normalized draft data to Python scoring service
-5. Python service calculates pick scores and team composition score
-6. API saves the draft analysis result
-7. AI service generates a human-readable explanation
-8. Client displays recommended picks, team composition analysis, and item suggestions
+5. Python service recalculates pick scores, team composition score, and item suggestions
+6. API saves the updated draft analysis result
+7. AI service generates or refreshes human-readable explanations when needed
+8. Client displays updated pick recommendations, team composition analysis, and item suggestions
 ```
 
 ---
@@ -1065,13 +1078,6 @@ Example response:
 
 ```json
 {
-  "recommendedBans": [
-    {
-      "champion": "galio",
-      "score": 87,
-      "reason": "Galio adds reliable crowd control and counters Akali's engage pattern."
-    }
-  ],
   "recommendedPicks": [
     {
       "champion": "viktor",
@@ -1091,6 +1097,20 @@ Example response:
       "reason": "Enemy team has high magic resistance and frontline threat."
     }
   ]
+}
+```
+
+## Update Draft During Pick Phase
+
+```http
+PATCH /api/draft-sessions/:id
+Content-Type: application/json
+
+{
+  "myTeamPicks": ["lee_sin", "jinx"],
+  "enemyTeamPicks": ["orianna", "jarvan"],
+  "myTeamBans": ["galio"],
+  "enemyTeamBans": ["yasuo"]
 }
 ```
 
@@ -1139,11 +1159,11 @@ Select role
 Select intended champion or leave it blank
 View recommended bans
 Enter bans
-Enter enemy picks
-Enter team picks
-View recommended picks
-View team composition analysis
-View item build
+Start pick phase
+Update team and enemy picks as draft changes
+View live recommended picks
+View live team composition analysis
+View live item build suggestions
 Save matchup note
 Save game result
 ```
@@ -1187,13 +1207,15 @@ Save game result
 - Create draft session
 - Add intended champion selection
 - Add early ban recommendation
-- Add team pick input
-- Add enemy pick input
 - Add ban input
+- Add live pick phase
+- Add team pick updates
+- Add enemy pick updates
 - Build Python scoring service
 - Return recommended bans
-- Return recommended picks
-- Return team composition score
+- Return live recommended picks
+- Return live team composition score
+- Return live item build suggestions
 
 ## Phase 5: Item Build Engine
 
@@ -1202,6 +1224,7 @@ Save game result
 - Add anti-heal, anti-shield, penetration, and defense rules
 - Recommend item paths
 - Explain why each item is suggested
+- Update item suggestions as enemy picks change
 
 ## Phase 6: AI Explanation Layer
 
@@ -1218,7 +1241,7 @@ Save game result
 - Add login
 - Add champion pool view
 - Add quick draft screen
-- Add recommendation screens
+- Add live recommendation screens
 - Add matchup note form
 
 ## Phase 8: Testing and Polish
@@ -1253,6 +1276,7 @@ Used for:
 - Champion data endpoints
 - Draft session creation
 - Ban recommendation endpoint
+- Draft update endpoint
 - Draft analysis endpoint
 - Matchup note creation
 - User champion pool updates
@@ -1269,10 +1293,11 @@ Choose role
 Choose intended champion
 Get ban recommendations
 Enter bans
-Enter team picks
-Enter enemy picks
-Analyze draft
-View recommendation
+Start pick phase
+Update team and enemy picks as draft changes
+View live pick recommendations
+View live team composition analysis
+View live item build suggestions
 Save matchup note
 Save result
 ```
@@ -1283,6 +1308,7 @@ Used for:
 
 - Draft recommendation quality
 - Ban recommendation timing
+- Live pick phase behavior
 - iOS quick draft flow
 - Item recommendation explanation
 - Patch data updates
@@ -1362,7 +1388,7 @@ Planning phase
 Next step:
 
 ```txt
-Create docs/mvp-scope.md and align project docs with the updated draft flow.
+Align product docs with the live pick phase workflow.
 ```
 
 ---
@@ -1385,11 +1411,28 @@ wise-rift/
 │  └─ config/              # Shared config files
 │
 ├─ docs/
-│  ├─ mvp-scope.md
-│  ├─ architecture.md
-│  ├─ data-model.md
-│  ├─ scoring.md
-│  └─ patch-data.md
+│  ├─ product/
+│  │  ├─ mvp-scope.md
+│  │  ├─ product-requirements.md
+│  │  └─ user-flow.md
+│  │
+│  ├─ architecture/
+│  │  ├─ system-architecture.md
+│  │  ├─ data-model.md
+│  │  └─ api-design.md
+│  │
+│  ├─ modules/
+│  │  ├─ champion-pool.md
+│  │  ├─ draft-session.md
+│  │  ├─ recommendation-engine.md
+│  │  ├─ item-build-engine.md
+│  │  ├─ patch-data.md
+│  │  └─ ai-explanation.md
+│  │
+│  └─ adr/
+│     ├─ 0001-use-manual-patch-data.md
+│     ├─ 0002-separate-scoring-from-ai.md
+│     └─ 0003-use-python-for-recommendation-engine.md
 │
 ├─ README.md
 ├─ PROGRESS.md
@@ -1496,11 +1539,11 @@ A good demo flow for this project:
 4. Choose intended champion: Akali
 5. Get recommended bans
 6. Enter bans
-7. Enter enemy picks
-8. Enter team picks
-9. Get recommended picks
-10. View team composition analysis
-11. View item build recommendation
+7. Start pick phase
+8. Update team and enemy picks as draft changes
+9. View live pick recommendations
+10. View live team composition analysis
+11. View live item build recommendation
 12. Save post-game result
 13. Add matchup note
 ```
