@@ -19,13 +19,21 @@ Wise Rift helps a player answer four key questions during a Wild Rift draft:
 4. Which items should I build against the enemy team?
 ```
 
-The app is designed around a real player workflow:
+The app is designed around a real Wild Rift draft workflow.
+
+In Wild Rift draft, the ban phase happens before the full pick phase. Because of this, Wise Rift gives ban recommendations right after the user selects a role and optional intended champion.
+
+The core workflow is:
 
 ```txt
 Choose role
-→ Set champion pool
-→ Enter draft picks and bans
-→ Get updated ban/pick recommendations
+→ Choose intended champion or leave it blank
+→ Get ban recommendations
+→ Enter bans
+→ Enter team picks
+→ Enter enemy picks
+→ Get pick recommendations
+→ View team composition analysis
 → Get item build suggestions
 → Save match result
 → Review draft performance
@@ -89,11 +97,14 @@ The first MVP focuses on:
 - A small manually maintained champion dataset
 - A small manually maintained item dataset
 - Patch-versioned data
-- Ban recommendation
-- Pick recommendation
+- Champion pool management
+- Ban recommendation before the pick phase
+- Pick recommendation after draft picks are entered
 - Team composition scoring
 - Item build recommendation
 - AI-generated explanation
+- Matchup notes
+- Post-game draft review
 - iOS quick draft view
 
 ### Out of Scope for MVP
@@ -109,6 +120,7 @@ The first MVP does not include:
 - Live match data
 - Guaranteed optimal recommendation
 - Advanced combat simulation
+- Public matchup database
 
 ---
 
@@ -185,13 +197,23 @@ This helps the recommendation engine avoid suggesting champions that are strong 
 
 ## 2. Ban Recommendation
 
+The app recommends bans right after the user selects a role and optional intended champion.
+
+This is important because Wild Rift draft starts with the ban phase before the full pick phase.
+
+The intended champion can be selected or left blank.
+
+If the user selects an intended champion, ban recommendations should consider champions that counter that pick.
+
+If the user leaves the intended champion blank, ban recommendations should focus on meta threats, user discomfort history, role-based threats, and common difficult matchups.
+
 The app recommends bans based on several factors:
 
 - Current meta threat
 - User discomfort history
 - Counter threat against the user's intended pick
-- Enemy team composition
-- Team weakness
+- Enemy team composition if known
+- Team weakness if known
 - Likely enemy picks
 - Patch-specific champion strength
 
@@ -200,13 +222,12 @@ Example:
 ```txt
 User role: Mid
 User intended pick: Akali
-Enemy team has: Jarvan, Lulu, Malphite
 
 Recommended ban:
 Galio
 
 Reason:
-Galio can punish Akali's engage pattern, adds reliable crowd control, and works well with enemy engage champions.
+Galio can punish Akali's engage pattern, adds reliable crowd control, and works well against melee AP assassins.
 ```
 
 ### Ban Score Formula
@@ -228,17 +249,33 @@ The weights can be adjusted later based on real user feedback.
 
 ## 3. Live Draft Recommendation
 
-The recommendation updates after each pick and ban.
+The recommendation updates as the draft changes.
 
 The user can enter:
 
-- My team picks
-- Enemy team picks
+- My role
+- My intended champion
 - My team bans
 - Enemy team bans
-- My intended champion
-- My role
+- My team picks
+- Enemy team picks
 - Available champions
+
+The draft flow should support two main recommendation moments:
+
+```txt
+Before bans:
+Choose role
+→ Choose intended champion or leave it blank
+→ Get ban recommendations
+
+After picks begin:
+Enter team picks
+→ Enter enemy picks
+→ Get pick recommendations
+→ View team composition analysis
+→ View item build suggestions
+```
 
 After each update, the app recalculates:
 
@@ -435,7 +472,8 @@ This creates a feedback loop so the user can improve over time.
 
 AI is used to explain recommendations in plain language.
 
-The scoring engine decides the recommendation.  
+The scoring engine decides the recommendation.
+
 The AI explains the reasoning.
 
 AI is used for:
@@ -450,6 +488,14 @@ AI is used for:
 AI is not the source of truth for champion numbers.
 
 Champion stats, ability numbers, item stats, and rules come from the manually maintained patch dataset.
+
+Important rule:
+
+```txt
+The scoring engine decides.
+AI explains.
+The user reviews.
+```
 
 ---
 
@@ -576,15 +622,28 @@ Example ban recommendation flow:
 
 ```txt
 1. User starts a draft session
-2. User selects role and intended champion
-3. User enters team picks and enemy picks
-4. Web or iOS app sends draft state to the API
-5. API loads patch data from PostgreSQL
+2. User selects role
+3. User selects intended champion or leaves it blank
+4. Web or iOS app sends early draft state to the API
+5. API loads active patch data from PostgreSQL
 6. API sends normalized draft data to Python scoring service
-7. Python service calculates ban and pick scores
-8. API saves the analysis result
+7. Python service calculates ban scores
+8. API saves the ban analysis result
 9. AI service generates a human-readable explanation
-10. Client displays recommendations
+10. Client displays recommended bans
+```
+
+Example pick recommendation flow:
+
+```txt
+1. User enters team picks and enemy picks
+2. Web or iOS app sends updated draft state to the API
+3. API loads active patch data from PostgreSQL
+4. API sends normalized draft data to Python scoring service
+5. Python service calculates pick scores and team composition score
+6. API saves the draft analysis result
+7. AI service generates a human-readable explanation
+8. Client displays recommended picks, team composition analysis, and item suggestions
 ```
 
 ---
@@ -955,10 +1014,37 @@ Content-Type: application/json
   "patchId": "patch_current",
   "role": "mid",
   "intendedChampionId": "akali",
-  "myTeamPicks": ["lee_sin", "jinx", "lulu"],
-  "enemyTeamPicks": ["orianna", "jarvan", "malphite"],
+  "myTeamPicks": [],
+  "enemyTeamPicks": [],
   "myTeamBans": [],
   "enemyTeamBans": []
+}
+```
+
+## Get Ban Recommendations
+
+```http
+POST /api/draft-sessions/:id/recommend-bans
+Content-Type: application/json
+
+{
+  "role": "mid",
+  "intendedChampionId": "akali",
+  "availableChampions": ["akali", "viktor", "ahri", "yasuo", "galio", "orianna"]
+}
+```
+
+Example response:
+
+```json
+{
+  "recommendedBans": [
+    {
+      "champion": "galio",
+      "score": 87,
+      "reason": "Galio adds reliable crowd control and counters Akali's engage pattern."
+    }
+  ]
 }
 ```
 
@@ -1039,6 +1125,7 @@ Champion Pool
 Quick Draft
 Ban Recommendation
 Pick Recommendation
+Team Composition
 Item Build
 Matchup Notes
 Post-Game Review
@@ -1049,11 +1136,13 @@ Settings
 
 ```txt
 Select role
-Select intended champion
+Select intended champion or leave it blank
+View recommended bans
+Enter bans
 Enter enemy picks
 Enter team picks
-View recommended bans
 View recommended picks
+View team composition analysis
 View item build
 Save matchup note
 Save game result
@@ -1096,6 +1185,8 @@ Save game result
 ## Phase 4: Draft Engine MVP
 
 - Create draft session
+- Add intended champion selection
+- Add early ban recommendation
 - Add team pick input
 - Add enemy pick input
 - Add ban input
@@ -1161,6 +1252,7 @@ Used for:
 
 - Champion data endpoints
 - Draft session creation
+- Ban recommendation endpoint
 - Draft analysis endpoint
 - Matchup note creation
 - User champion pool updates
@@ -1173,6 +1265,10 @@ Used for main user flow:
 Login
 Create champion pool
 Start draft session
+Choose role
+Choose intended champion
+Get ban recommendations
+Enter bans
 Enter team picks
 Enter enemy picks
 Analyze draft
@@ -1186,6 +1282,7 @@ Save result
 Used for:
 
 - Draft recommendation quality
+- Ban recommendation timing
 - iOS quick draft flow
 - Item recommendation explanation
 - Patch data updates
@@ -1227,7 +1324,8 @@ It is a decision-support system that combines:
 - AI explanation
 - Post-game learning
 
-The goal is not to guarantee the perfect pick.  
+The goal is not to guarantee the perfect pick.
+
 The goal is to help the player make a better decision with clearer reasoning.
 
 ---
@@ -1264,7 +1362,7 @@ Planning phase
 Next step:
 
 ```txt
-Create monorepo structure and define MVP scope.
+Create docs/mvp-scope.md and align project docs with the updated draft flow.
 ```
 
 ---
@@ -1272,7 +1370,7 @@ Create monorepo structure and define MVP scope.
 ## Planned Monorepo Structure
 
 ```txt
-draftwise-wr/
+wise-rift/
 ├─ apps/
 │  ├─ web/                 # Next.js web app
 │  ├─ mobile/              # Expo React Native app
@@ -1287,12 +1385,14 @@ draftwise-wr/
 │  └─ config/              # Shared config files
 │
 ├─ docs/
+│  ├─ mvp-scope.md
 │  ├─ architecture.md
 │  ├─ data-model.md
 │  ├─ scoring.md
 │  └─ patch-data.md
 │
 ├─ README.md
+├─ PROGRESS.md
 └─ package.json
 ```
 
@@ -1314,8 +1414,8 @@ Install:
 ## Clone Repository
 
 ```bash
-git clone https://github.com/your-username/draftwise-wr.git
-cd draftwise-wr
+git clone https://github.com/your-username/wise-rift.git
+cd wise-rift
 ```
 
 ## Install JavaScript Dependencies
@@ -1340,7 +1440,7 @@ Create `.env` files for the apps that need them.
 Example:
 
 ```env
-DATABASE_URL="postgresql://user:password@localhost:5432/draftwise_wr"
+DATABASE_URL="postgresql://user:password@localhost:5432/wise_rift"
 JWT_SECRET="your_jwt_secret"
 RECOMMENDATION_SERVICE_URL="http://localhost:8000"
 LLM_API_KEY="your_llm_api_key"
@@ -1394,13 +1494,15 @@ A good demo flow for this project:
 2. Set champion pool
 3. Choose role: Mid
 4. Choose intended champion: Akali
-5. Enter enemy picks
-6. Get recommended bans
-7. Get recommended picks
-8. View team composition analysis
-9. View item build recommendation
-10. Save post-game result
-11. Add matchup note
+5. Get recommended bans
+6. Enter bans
+7. Enter enemy picks
+8. Enter team picks
+9. Get recommended picks
+10. View team composition analysis
+11. View item build recommendation
+12. Save post-game result
+13. Add matchup note
 ```
 
 ---
@@ -1429,8 +1531,10 @@ The final portfolio case study should explain:
 
 Wise Rift is a fan-made learning project.
 
-It is not affiliated with Riot Games.  
-All game-related names belong to their respective owners.  
+It is not affiliated with Riot Games.
+
+All game-related names belong to their respective owners.
+
 The recommendation engine provides decision support only and does not guarantee match results.
 
 ---
@@ -1441,4 +1545,4 @@ The recommendation engine provides decision support only and does not guarantee 
 
 - Portfolio: https://hereisben.dev
 - LinkedIn: https://linkedin.com/in/here-is-ben
-- Email: hi.imben.nguyen@gmail.com
+- Email: [hi.imben.nguyen@gmail.com](mailto:hi.imben.nguyen@gmail.com)
