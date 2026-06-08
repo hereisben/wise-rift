@@ -1,0 +1,23 @@
+{
+  "name": "wise-rift",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A single-user SaaS-style draft assistant for Wild Rift players.",
+  "scripts": {
+    "dev": "echo \"No apps have been initialized yet.\"",
+    "build": "echo \"No apps have been initialized yet.\"",
+    "lint": "echo \"No apps have been initialized yet.\"",
+    "test": "echo \"No apps have been initialized yet.\""
+  },
+  "keywords": [
+    "wild-rift",
+    "draft-assistant",
+    "recommendation-system",
+    "typescript",
+    "python",
+    "saas"
+  ],
+  "author": "Ben Nguyen",
+  "license": "MIT",
+  "packageManager": "pnpm@9.15.0"
+}
