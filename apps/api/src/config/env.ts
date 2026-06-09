@@ -9,9 +9,16 @@ if (Number.isNaN(PORT)) {
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
+const DATABASE_URL = process.env.DATABASE_URL;
+
+if (!DATABASE_URL) {
+  throw new Error('DATABASE_URL is required');
+}
+
 const env = {
   PORT,
   NODE_ENV,
+  DATABASE_URL,
 };
 
 export default env;
