@@ -60,7 +60,7 @@ model Champion {
   key                      String                    @unique
   name                     String
   title                    String?
-  roles                    String[]
+  roles                    GameRole[]
   damageType               String
   rangeType                String
   difficulty               String

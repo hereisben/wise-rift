@@ -112,7 +112,7 @@ CREATE TABLE "Champion" (
     "key" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "title" TEXT,
-    "roles" TEXT[],
+    "roles" "GameRole"[],
     "damageType" TEXT NOT NULL,
     "rangeType" TEXT NOT NULL,
     "difficulty" TEXT NOT NULL,

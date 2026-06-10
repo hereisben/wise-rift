@@ -3068,6 +3068,20 @@ export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
+ * Reference to a field of type 'GameRole[]'
+ */
+export type ListEnumGameRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GameRole[]'>
+    
+
+
+/**
+ * Reference to a field of type 'GameRole'
+ */
+export type EnumGameRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GameRole'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3162,20 +3176,6 @@ export type ListEnumSkillEffectFieldRefInput<$PrismaModel> = FieldRefInputType<$
  * Reference to a field of type 'SkillEffect'
  */
 export type EnumSkillEffectFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SkillEffect'>
-    
-
-
-/**
- * Reference to a field of type 'GameRole'
- */
-export type EnumGameRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GameRole'>
-    
-
-
-/**
- * Reference to a field of type 'GameRole[]'
- */
-export type ListEnumGameRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GameRole[]'>
     
 
 

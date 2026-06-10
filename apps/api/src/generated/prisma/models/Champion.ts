@@ -208,7 +208,7 @@ export type ChampionGroupByOutputType = {
   key: string
   name: string
   title: string | null
-  roles: string[]
+  roles: $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -251,7 +251,7 @@ export type ChampionWhereInput = {
   key?: Prisma.StringFilter<"Champion"> | string
   name?: Prisma.StringFilter<"Champion"> | string
   title?: Prisma.StringNullableFilter<"Champion"> | string | null
-  roles?: Prisma.StringNullableListFilter<"Champion">
+  roles?: Prisma.EnumGameRoleNullableListFilter<"Champion">
   damageType?: Prisma.StringFilter<"Champion"> | string
   rangeType?: Prisma.StringFilter<"Champion"> | string
   difficulty?: Prisma.StringFilter<"Champion"> | string
@@ -326,7 +326,7 @@ export type ChampionWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ChampionWhereInput | Prisma.ChampionWhereInput[]
   name?: Prisma.StringFilter<"Champion"> | string
   title?: Prisma.StringNullableFilter<"Champion"> | string | null
-  roles?: Prisma.StringNullableListFilter<"Champion">
+  roles?: Prisma.EnumGameRoleNullableListFilter<"Champion">
   damageType?: Prisma.StringFilter<"Champion"> | string
   rangeType?: Prisma.StringFilter<"Champion"> | string
   difficulty?: Prisma.StringFilter<"Champion"> | string
@@ -390,7 +390,7 @@ export type ChampionScalarWhereWithAggregatesInput = {
   key?: Prisma.StringWithAggregatesFilter<"Champion"> | string
   name?: Prisma.StringWithAggregatesFilter<"Champion"> | string
   title?: Prisma.StringNullableWithAggregatesFilter<"Champion"> | string | null
-  roles?: Prisma.StringNullableListFilter<"Champion">
+  roles?: Prisma.EnumGameRoleNullableListFilter<"Champion">
   damageType?: Prisma.StringWithAggregatesFilter<"Champion"> | string
   rangeType?: Prisma.StringWithAggregatesFilter<"Champion"> | string
   difficulty?: Prisma.StringWithAggregatesFilter<"Champion"> | string
@@ -412,7 +412,7 @@ export type ChampionCreateInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -448,7 +448,7 @@ export type ChampionUncheckedCreateInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -484,7 +484,7 @@ export type ChampionUpdateInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -520,7 +520,7 @@ export type ChampionUncheckedUpdateInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -556,7 +556,7 @@ export type ChampionCreateManyInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -578,7 +578,7 @@ export type ChampionUpdateManyMutationInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -600,7 +600,7 @@ export type ChampionUncheckedUpdateManyInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -615,6 +615,14 @@ export type ChampionUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type EnumGameRoleNullableListFilter<$PrismaModel = never> = {
+  equals?: $Enums.GameRole[] | Prisma.ListEnumGameRoleFieldRefInput<$PrismaModel> | null
+  has?: $Enums.GameRole | Prisma.EnumGameRoleFieldRefInput<$PrismaModel> | null
+  hasEvery?: $Enums.GameRole[] | Prisma.ListEnumGameRoleFieldRefInput<$PrismaModel>
+  hasSome?: $Enums.GameRole[] | Prisma.ListEnumGameRoleFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
 }
 
 export type StringNullableListFilter<$PrismaModel = never> = {
@@ -688,7 +696,7 @@ export type ChampionNullableScalarRelationFilter = {
 }
 
 export type ChampionCreaterolesInput = {
-  set: string[]
+  set: $Enums.GameRole[]
 }
 
 export type ChampionCreateclassTagsInput = {
@@ -716,8 +724,8 @@ export type ChampionCreateweaknessesInput = {
 }
 
 export type ChampionUpdaterolesInput = {
-  set?: string[]
-  push?: string | string[]
+  set?: $Enums.GameRole[]
+  push?: $Enums.GameRole | $Enums.GameRole[]
 }
 
 export type ChampionUpdateclassTagsInput = {
@@ -953,7 +961,7 @@ export type ChampionCreateWithoutPatchStatsInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -988,7 +996,7 @@ export type ChampionUncheckedCreateWithoutPatchStatsInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1039,7 +1047,7 @@ export type ChampionUpdateWithoutPatchStatsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1074,7 +1082,7 @@ export type ChampionUncheckedUpdateWithoutPatchStatsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1109,7 +1117,7 @@ export type ChampionCreateWithoutChampionSkillsInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1144,7 +1152,7 @@ export type ChampionUncheckedCreateWithoutChampionSkillsInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1195,7 +1203,7 @@ export type ChampionUpdateWithoutChampionSkillsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1230,7 +1238,7 @@ export type ChampionUncheckedUpdateWithoutChampionSkillsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1265,7 +1273,7 @@ export type ChampionCreateWithoutChampionPoolEntriesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1300,7 +1308,7 @@ export type ChampionUncheckedCreateWithoutChampionPoolEntriesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1351,7 +1359,7 @@ export type ChampionUpdateWithoutChampionPoolEntriesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1386,7 +1394,7 @@ export type ChampionUncheckedUpdateWithoutChampionPoolEntriesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1421,7 +1429,7 @@ export type ChampionCreateWithoutIntendedDraftSessionsInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1456,7 +1464,7 @@ export type ChampionUncheckedCreateWithoutIntendedDraftSessionsInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1507,7 +1515,7 @@ export type ChampionUpdateWithoutIntendedDraftSessionsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1542,7 +1550,7 @@ export type ChampionUncheckedUpdateWithoutIntendedDraftSessionsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1577,7 +1585,7 @@ export type ChampionCreateWithoutDraftBansInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1612,7 +1620,7 @@ export type ChampionUncheckedCreateWithoutDraftBansInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1663,7 +1671,7 @@ export type ChampionUpdateWithoutDraftBansInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1698,7 +1706,7 @@ export type ChampionUncheckedUpdateWithoutDraftBansInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1733,7 +1741,7 @@ export type ChampionCreateWithoutDraftPicksInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1768,7 +1776,7 @@ export type ChampionUncheckedCreateWithoutDraftPicksInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1819,7 +1827,7 @@ export type ChampionUpdateWithoutDraftPicksInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1854,7 +1862,7 @@ export type ChampionUncheckedUpdateWithoutDraftPicksInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1889,7 +1897,7 @@ export type ChampionCreateWithoutItemBuildRecommendationsInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1924,7 +1932,7 @@ export type ChampionUncheckedCreateWithoutItemBuildRecommendationsInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -1975,7 +1983,7 @@ export type ChampionUpdateWithoutItemBuildRecommendationsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2010,7 +2018,7 @@ export type ChampionUncheckedUpdateWithoutItemBuildRecommendationsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2045,7 +2053,7 @@ export type ChampionCreateWithoutChampionMatchupNotesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2080,7 +2088,7 @@ export type ChampionUncheckedCreateWithoutChampionMatchupNotesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2120,7 +2128,7 @@ export type ChampionCreateWithoutEnemyMatchupNotesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2155,7 +2163,7 @@ export type ChampionUncheckedCreateWithoutEnemyMatchupNotesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2206,7 +2214,7 @@ export type ChampionUpdateWithoutChampionMatchupNotesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2241,7 +2249,7 @@ export type ChampionUncheckedUpdateWithoutChampionMatchupNotesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2287,7 +2295,7 @@ export type ChampionUpdateWithoutEnemyMatchupNotesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2322,7 +2330,7 @@ export type ChampionUncheckedUpdateWithoutEnemyMatchupNotesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2357,7 +2365,7 @@ export type ChampionCreateWithoutMatchOutcomesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2392,7 +2400,7 @@ export type ChampionUncheckedCreateWithoutMatchOutcomesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2443,7 +2451,7 @@ export type ChampionUpdateWithoutMatchOutcomesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2478,7 +2486,7 @@ export type ChampionUncheckedUpdateWithoutMatchOutcomesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2513,7 +2521,7 @@ export type ChampionCreateWithoutRuneBuildRecommendationsInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2548,7 +2556,7 @@ export type ChampionUncheckedCreateWithoutRuneBuildRecommendationsInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2599,7 +2607,7 @@ export type ChampionUpdateWithoutRuneBuildRecommendationsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2634,7 +2642,7 @@ export type ChampionUncheckedUpdateWithoutRuneBuildRecommendationsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2669,7 +2677,7 @@ export type ChampionCreateWithoutChampionBuildProfilesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2704,7 +2712,7 @@ export type ChampionUncheckedCreateWithoutChampionBuildProfilesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2755,7 +2763,7 @@ export type ChampionUpdateWithoutChampionBuildProfilesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2790,7 +2798,7 @@ export type ChampionUncheckedUpdateWithoutChampionBuildProfilesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2825,7 +2833,7 @@ export type ChampionCreateWithoutMatchupProfilesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2860,7 +2868,7 @@ export type ChampionUncheckedCreateWithoutMatchupProfilesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -2911,7 +2919,7 @@ export type ChampionUpdateWithoutMatchupProfilesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2946,7 +2954,7 @@ export type ChampionUncheckedUpdateWithoutMatchupProfilesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2981,7 +2989,7 @@ export type ChampionCreateWithoutSynergyProfilesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -3016,7 +3024,7 @@ export type ChampionUncheckedCreateWithoutSynergyProfilesInput = {
   key: string
   name: string
   title?: string | null
-  roles?: Prisma.ChampionCreaterolesInput | string[]
+  roles?: Prisma.ChampionCreaterolesInput | $Enums.GameRole[]
   damageType: string
   rangeType: string
   difficulty: string
@@ -3067,7 +3075,7 @@ export type ChampionUpdateWithoutSynergyProfilesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3102,7 +3110,7 @@ export type ChampionUncheckedUpdateWithoutSynergyProfilesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  roles?: Prisma.ChampionUpdaterolesInput | string[]
+  roles?: Prisma.ChampionUpdaterolesInput | $Enums.GameRole[]
   damageType?: Prisma.StringFieldUpdateOperationsInput | string
   rangeType?: Prisma.StringFieldUpdateOperationsInput | string
   difficulty?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3427,7 +3435,7 @@ export type $ChampionPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     key: string
     name: string
     title: string | null
-    roles: string[]
+    roles: $Enums.GameRole[]
     damageType: string
     rangeType: string
     difficulty: string
@@ -3883,7 +3891,7 @@ export interface ChampionFieldRefs {
   readonly key: Prisma.FieldRef<"Champion", 'String'>
   readonly name: Prisma.FieldRef<"Champion", 'String'>
   readonly title: Prisma.FieldRef<"Champion", 'String'>
-  readonly roles: Prisma.FieldRef<"Champion", 'String[]'>
+  readonly roles: Prisma.FieldRef<"Champion", 'GameRole[]'>
   readonly damageType: Prisma.FieldRef<"Champion", 'String'>
   readonly rangeType: Prisma.FieldRef<"Champion", 'String'>
   readonly difficulty: Prisma.FieldRef<"Champion", 'String'>
