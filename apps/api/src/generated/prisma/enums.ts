@@ -9,7 +9,341 @@
 * 🟢 You can import this file directly.
 */
 
+export const GameRole = {
+  TOP: 'TOP',
+  MID: 'MID',
+  JUNGLE: 'JUNGLE',
+  ADC: 'ADC',
+  SUPPORT: 'SUPPORT',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type GameRole = (typeof GameRole)[keyof typeof GameRole]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const SkillSlot = {
+  PASSIVE: 'PASSIVE',
+  Q: 'Q',
+  W: 'W',
+  E: 'E',
+  R: 'R'
+} as const
+
+export type SkillSlot = (typeof SkillSlot)[keyof typeof SkillSlot]
+
+
+export const RunePath = {
+  KEYSTONE: 'KEYSTONE',
+  PRECISION: 'PRECISION',
+  DOMINATION: 'DOMINATION',
+  RESOLVE: 'RESOLVE',
+  SORCERY: 'SORCERY'
+} as const
+
+export type RunePath = (typeof RunePath)[keyof typeof RunePath]
+
+
+export const RunePageSlotType = {
+  KEYSTONE: 'KEYSTONE',
+  PRIMARY: 'PRIMARY',
+  SECONDARY: 'SECONDARY'
+} as const
+
+export type RunePageSlotType = (typeof RunePageSlotType)[keyof typeof RunePageSlotType]
+
+
+export const RuneSlot = {
+  KEYSTONE: 'KEYSTONE',
+  SLOT_1: 'SLOT_1',
+  SLOT_2: 'SLOT_2',
+  SLOT_3: 'SLOT_3'
+} as const
+
+export type RuneSlot = (typeof RuneSlot)[keyof typeof RuneSlot]
+
+
+export const RuneEffectType = {
+  DAMAGE: 'DAMAGE',
+  HEAL: 'HEAL',
+  SHIELD: 'SHIELD',
+  MOVEMENT_SPEED: 'MOVEMENT_SPEED',
+  ATTACK_SPEED: 'ATTACK_SPEED',
+  ABILITY_HASTE: 'ABILITY_HASTE',
+  ADAPTIVE_FORCE: 'ADAPTIVE_FORCE',
+  ARMOR: 'ARMOR',
+  MAGIC_RESIST: 'MAGIC_RESIST',
+  HEALTH: 'HEALTH',
+  MANA: 'MANA',
+  GOLD: 'GOLD',
+  COOLDOWN_REDUCTION: 'COOLDOWN_REDUCTION',
+  CROWD_CONTROL: 'CROWD_CONTROL',
+  VISION: 'VISION',
+  STACKING: 'STACKING',
+  SCALING: 'SCALING',
+  UTILITY: 'UTILITY'
+} as const
+
+export type RuneEffectType = (typeof RuneEffectType)[keyof typeof RuneEffectType]
+
+
+export const RuneTriggerType = {
+  ALWAYS_ACTIVE: 'ALWAYS_ACTIVE',
+  ON_HIT: 'ON_HIT',
+  ON_ATTACK: 'ON_ATTACK',
+  ON_ABILITY_HIT: 'ON_ABILITY_HIT',
+  ON_CHAMPION_HIT: 'ON_CHAMPION_HIT',
+  ON_TAKEDOWN: 'ON_TAKEDOWN',
+  ON_KILL: 'ON_KILL',
+  ON_ASSIST: 'ON_ASSIST',
+  ON_LOW_HEALTH: 'ON_LOW_HEALTH',
+  ON_SHIELD: 'ON_SHIELD',
+  ON_HEAL: 'ON_HEAL',
+  ON_MOVEMENT: 'ON_MOVEMENT',
+  ON_COMBAT_START: 'ON_COMBAT_START',
+  AFTER_TIME: 'AFTER_TIME',
+  STACK_BASED: 'STACK_BASED'
+} as const
+
+export type RuneTriggerType = (typeof RuneTriggerType)[keyof typeof RuneTriggerType]
+
+
+export const RuneStatType = {
+  ATTACK_DAMAGE: 'ATTACK_DAMAGE',
+  ABILITY_POWER: 'ABILITY_POWER',
+  ADAPTIVE_FORCE: 'ADAPTIVE_FORCE',
+  ATTACK_SPEED: 'ATTACK_SPEED',
+  ABILITY_HASTE: 'ABILITY_HASTE',
+  CRITICAL_RATE: 'CRITICAL_RATE',
+  ARMOR: 'ARMOR',
+  MAGIC_RESIST: 'MAGIC_RESIST',
+  HEALTH: 'HEALTH',
+  MANA: 'MANA',
+  OMNIVAMP: 'OMNIVAMP',
+  PHYSICAL_VAMP: 'PHYSICAL_VAMP',
+  MAGIC_VAMP: 'MAGIC_VAMP',
+  MOVEMENT_SPEED: 'MOVEMENT_SPEED',
+  GOLD: 'GOLD'
+} as const
+
+export type RuneStatType = (typeof RuneStatType)[keyof typeof RuneStatType]
+
+
+export const DataQualityLevel = {
+  COMPLETE: 'COMPLETE',
+  PARTIAL: 'PARTIAL',
+  MINIMAL: 'MINIMAL',
+  MISSING: 'MISSING'
+} as const
+
+export type DataQualityLevel = (typeof DataQualityLevel)[keyof typeof DataQualityLevel]
+
+
+export const AIExplanationSource = {
+  RECOMMENDATION_SOURCE: 'RECOMMENDATION_SOURCE',
+  ITEM_BUILD_RECOMMENDATION: 'ITEM_BUILD_RECOMMENDATION',
+  DRAFT_REVIEW: 'DRAFT_REVIEW',
+  MANUAL: 'MANUAL'
+} as const
+
+export type AIExplanationSource = (typeof AIExplanationSource)[keyof typeof AIExplanationSource]
+
+
+export const ExplanationStyle = {
+  SHORT: 'SHORT',
+  DETAILED: 'DETAILED',
+  COACHING: 'COACHING',
+  BEGINNER_FRIENDLY: 'BEGINNER_FRIENDLY'
+} as const
+
+export type ExplanationStyle = (typeof ExplanationStyle)[keyof typeof ExplanationStyle]
+
+
+export const MatchResult = {
+  WIN: 'WIN',
+  LOSS: 'LOSS',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type MatchResult = (typeof MatchResult)[keyof typeof MatchResult]
+
+
+export const GamePlan = {
+  STANDARD: 'STANDARD',
+  BURST: 'BURST',
+  SAFE: 'SAFE',
+  ANTI_TANK: 'ANTI_TANK',
+  ANTI_HEAL: 'ANTI_HEAL',
+  ANTI_SHIELD: 'ANTI_SHIELD',
+  SURVIVE_DIVE: 'SURVIVE_DIVE',
+  SCALING: 'SCALING',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type GamePlan = (typeof GamePlan)[keyof typeof GamePlan]
+
+
+export const RecommendationType = {
+  BAN: 'BAN',
+  PICK: 'PICK',
+  TEAM_COMPOSITION: 'TEAM_COMPOSITION'
+} as const
+
+export type RecommendationType = (typeof RecommendationType)[keyof typeof RecommendationType]
+
+
+export const RecommendationStatus = {
+  QUEUED: 'QUEUED',
+  RUNNING: 'RUNNING',
+  SUCCEEDED: 'SUCCEEDED',
+  FAILED: 'FAILED',
+  CANCELED: 'CANCELED'
+} as const
+
+export type RecommendationStatus = (typeof RecommendationStatus)[keyof typeof RecommendationStatus]
+
+
+export const DraftPhase = {
+  SETUP: 'SETUP',
+  BAN_PREP: 'BAN_PREP',
+  BAN_ENTRY: 'BAN_ENTRY',
+  LIVE_PICK: 'LIVE_PICK',
+  COMPLETED: 'COMPLETED',
+  REVIEW: 'REVIEW',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type DraftPhase = (typeof DraftPhase)[keyof typeof DraftPhase]
+
+
+export const DraftStatus = {
+  ACTIVE: 'ACTIVE',
+  COMPLETED: 'COMPLETED',
+  ARCHIVED: 'ARCHIVED',
+  DELETED: 'DELETED'
+} as const
+
+export type DraftStatus = (typeof DraftStatus)[keyof typeof DraftStatus]
+
+
+export const QueueType = {
+  RANKED: 'RANKED',
+  NORMAL: 'NORMAL',
+  CUSTOM: 'CUSTOM',
+  SCRIM: 'SCRIM',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type QueueType = (typeof QueueType)[keyof typeof QueueType]
+
+
+export const TeamSide = {
+  MY_TEAM: 'MY_TEAM',
+  ENEMY: 'ENEMY',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type TeamSide = (typeof TeamSide)[keyof typeof TeamSide]
+
+
+export const DamageType = {
+  PHYSICAL: 'PHYSICAL',
+  MAGIC: 'MAGIC',
+  MIXED: 'MIXED',
+  TRUE_DAMAGE: 'TRUE_DAMAGE',
+  UTILITY: 'UTILITY',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type DamageType = (typeof DamageType)[keyof typeof DamageType]
+
+
+export const TargetType = {
+  SELF: 'SELF',
+  ALLY: 'ALLY',
+  ALLIES: 'ALLIES',
+  ENEMY: 'ENEMY',
+  ENEMIES: 'ENEMIES',
+  CHAMPION: 'CHAMPION',
+  MINION: 'MINION',
+  MONSTER: 'MONSTER',
+  TURRET: 'TURRET',
+  AREA: 'AREA',
+  LOCATION: 'LOCATION'
+} as const
+
+export type TargetType = (typeof TargetType)[keyof typeof TargetType]
+
+
+export const SkillEffect = {
+  DAMAGE: 'DAMAGE',
+  SLOW: 'SLOW',
+  ROOT: 'ROOT',
+  STUN: 'STUN',
+  KNOCK_UP: 'KNOCK_UP',
+  KNOCK_BACK: 'KNOCK_BACK',
+  CHARM: 'CHARM',
+  SILENCE: 'SILENCE',
+  FEAR: 'FEAR',
+  TAUNT: 'TAUNT',
+  DASH: 'DASH',
+  BLINK: 'BLINK',
+  SPEED_UP: 'SPEED_UP',
+  SHIELD: 'SHIELD',
+  HEAL: 'HEAL',
+  STEALTH: 'STEALTH',
+  UNTARGETABLE: 'UNTARGETABLE',
+  INVULNERABLE: 'INVULNERABLE',
+  EXECUTE: 'EXECUTE',
+  EMPOWERED_ATTACK: 'EMPOWERED_ATTACK',
+  TRUE_DAMAGE: 'TRUE_DAMAGE',
+  VISION: 'VISION',
+  ZONE_CONTROL: 'ZONE_CONTROL'
+} as const
+
+export type SkillEffect = (typeof SkillEffect)[keyof typeof SkillEffect]
+
+
+export const RangeType = {
+  MELEE: 'MELEE',
+  RANGED: 'RANGED',
+  HYBRID: 'HYBRID',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type RangeType = (typeof RangeType)[keyof typeof RangeType]
+
+
+export const Difficulty = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  VERY_HIGH: 'VERY_HIGH',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type Difficulty = (typeof Difficulty)[keyof typeof Difficulty]
+
+
+export const ItemCategory = {
+  PHYSICAL: 'PHYSICAL',
+  MAGIC: 'MAGIC',
+  DEFENSE: 'DEFENSE',
+  BOOTS: 'BOOTS',
+  ENCHANT: 'ENCHANT',
+  SUPPORT: 'SUPPORT',
+  JUNGLE: 'JUNGLE',
+  UTILITY: 'UTILITY',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type ItemCategory = (typeof ItemCategory)[keyof typeof ItemCategory]
+
+
+export const ConfidenceLevel = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type ConfidenceLevel = (typeof ConfidenceLevel)[keyof typeof ConfidenceLevel]

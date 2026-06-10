@@ -17,4 +17,138 @@ import * as Prisma from './internal/prismaNamespaceBrowser.js'
 export { Prisma }
 export * as $Enums from './enums.js'
 export * from './enums.js';
-
+/**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
+ * Model Patch
+ * 
+ */
+export type Patch = Prisma.PatchModel
+/**
+ * Model Champion
+ * 
+ */
+export type Champion = Prisma.ChampionModel
+/**
+ * Model ChampionPatchStat
+ * 
+ */
+export type ChampionPatchStat = Prisma.ChampionPatchStatModel
+/**
+ * Model ChampionSkill
+ * 
+ */
+export type ChampionSkill = Prisma.ChampionSkillModel
+/**
+ * Model Item
+ * 
+ */
+export type Item = Prisma.ItemModel
+/**
+ * Model ItemPatchStat
+ * 
+ */
+export type ItemPatchStat = Prisma.ItemPatchStatModel
+/**
+ * Model ChampionPool
+ * 
+ */
+export type ChampionPool = Prisma.ChampionPoolModel
+/**
+ * Model ChampionPoolEntry
+ * 
+ */
+export type ChampionPoolEntry = Prisma.ChampionPoolEntryModel
+/**
+ * Model DraftSession
+ * 
+ */
+export type DraftSession = Prisma.DraftSessionModel
+/**
+ * Model DraftBan
+ * 
+ */
+export type DraftBan = Prisma.DraftBanModel
+/**
+ * Model DraftPick
+ * 
+ */
+export type DraftPick = Prisma.DraftPickModel
+/**
+ * Model RecommendationResult
+ * 
+ */
+export type RecommendationResult = Prisma.RecommendationResultModel
+/**
+ * Model ItemBuildRecommendation
+ * 
+ */
+export type ItemBuildRecommendation = Prisma.ItemBuildRecommendationModel
+/**
+ * Model MatchupNote
+ * 
+ */
+export type MatchupNote = Prisma.MatchupNoteModel
+/**
+ * Model MatchOutcome
+ * 
+ */
+export type MatchOutcome = Prisma.MatchOutcomeModel
+/**
+ * Model DraftReview
+ * 
+ */
+export type DraftReview = Prisma.DraftReviewModel
+/**
+ * Model AIExplanation
+ * 
+ */
+export type AIExplanation = Prisma.AIExplanationModel
+/**
+ * Model Rune
+ * 
+ */
+export type Rune = Prisma.RuneModel
+/**
+ * Model RunePatchStat
+ * 
+ */
+export type RunePatchStat = Prisma.RunePatchStatModel
+/**
+ * Model RuneBuildRecommendation
+ * 
+ */
+export type RuneBuildRecommendation = Prisma.RuneBuildRecommendationModel
+/**
+ * Model RuneBuildRecommendationRune
+ * 
+ */
+export type RuneBuildRecommendationRune = Prisma.RuneBuildRecommendationRuneModel
+/**
+ * Model Spell
+ * 
+ */
+export type Spell = Prisma.SpellModel
+/**
+ * Model SpellPatchStat
+ * 
+ */
+export type SpellPatchStat = Prisma.SpellPatchStatModel
+/**
+ * Model ChampionBuildProfile
+ * 
+ */
+export type ChampionBuildProfile = Prisma.ChampionBuildProfileModel
+/**
+ * Model ChampionMatchupProfile
+ * 
+ */
+export type ChampionMatchupProfile = Prisma.ChampionMatchupProfileModel
+/**
+ * Model ChampionSynergyProfile
+ * 
+ */
+export type ChampionSynergyProfile = Prisma.ChampionSynergyProfileModel

@@ -51,7 +51,33 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-
+  User: 'User',
+  Patch: 'Patch',
+  Champion: 'Champion',
+  ChampionPatchStat: 'ChampionPatchStat',
+  ChampionSkill: 'ChampionSkill',
+  Item: 'Item',
+  ItemPatchStat: 'ItemPatchStat',
+  ChampionPool: 'ChampionPool',
+  ChampionPoolEntry: 'ChampionPoolEntry',
+  DraftSession: 'DraftSession',
+  DraftBan: 'DraftBan',
+  DraftPick: 'DraftPick',
+  RecommendationResult: 'RecommendationResult',
+  ItemBuildRecommendation: 'ItemBuildRecommendation',
+  MatchupNote: 'MatchupNote',
+  MatchOutcome: 'MatchOutcome',
+  DraftReview: 'DraftReview',
+  AIExplanation: 'AIExplanation',
+  Rune: 'Rune',
+  RunePatchStat: 'RunePatchStat',
+  RuneBuildRecommendation: 'RuneBuildRecommendation',
+  RuneBuildRecommendationRune: 'RuneBuildRecommendationRune',
+  Spell: 'Spell',
+  SpellPatchStat: 'SpellPatchStat',
+  ChampionBuildProfile: 'ChampionBuildProfile',
+  ChampionMatchupProfile: 'ChampionMatchupProfile',
+  ChampionSynergyProfile: 'ChampionSynergyProfile'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -68,4 +94,563 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  passwordHash: 'passwordHash',
+  avatarUrl: 'avatarUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const PatchScalarFieldEnum = {
+  id: 'id',
+  version: 'version',
+  name: 'name',
+  notes: 'notes',
+  isActive: 'isActive',
+  releasedAt: 'releasedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  archivedAt: 'archivedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type PatchScalarFieldEnum = (typeof PatchScalarFieldEnum)[keyof typeof PatchScalarFieldEnum]
+
+
+export const ChampionScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  name: 'name',
+  title: 'title',
+  roles: 'roles',
+  damageType: 'damageType',
+  rangeType: 'rangeType',
+  difficulty: 'difficulty',
+  resourceType: 'resourceType',
+  classTags: 'classTags',
+  playstyleTags: 'playstyleTags',
+  utilityTags: 'utilityTags',
+  riskTags: 'riskTags',
+  strengths: 'strengths',
+  weaknesses: 'weaknesses',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  archivedAt: 'archivedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ChampionScalarFieldEnum = (typeof ChampionScalarFieldEnum)[keyof typeof ChampionScalarFieldEnum]
+
+
+export const ChampionPatchStatScalarFieldEnum = {
+  id: 'id',
+  championId: 'championId',
+  patchId: 'patchId',
+  baseHealth: 'baseHealth',
+  baseMana: 'baseMana',
+  baseArmor: 'baseArmor',
+  baseMagicResist: 'baseMagicResist',
+  baseAttackDamage: 'baseAttackDamage',
+  baseAbilityPower: 'baseAbilityPower',
+  attackSpeed: 'attackSpeed',
+  moveSpeed: 'moveSpeed',
+  healthGrowth: 'healthGrowth',
+  manaGrowth: 'manaGrowth',
+  armorGrowth: 'armorGrowth',
+  magicResistGrowth: 'magicResistGrowth',
+  attackDamageGrowth: 'attackDamageGrowth',
+  attackSpeedGrowth: 'attackSpeedGrowth',
+  scalingProfile: 'scalingProfile',
+  laneProfile: 'laneProfile',
+  teamProfile: 'teamProfile',
+  metaScore: 'metaScore',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ChampionPatchStatScalarFieldEnum = (typeof ChampionPatchStatScalarFieldEnum)[keyof typeof ChampionPatchStatScalarFieldEnum]
+
+
+export const ChampionSkillScalarFieldEnum = {
+  id: 'id',
+  slot: 'slot',
+  name: 'name',
+  championId: 'championId',
+  patchId: 'patchId',
+  description: 'description',
+  damageType: 'damageType',
+  targetType: 'targetType',
+  cooldown: 'cooldown',
+  cost: 'cost',
+  range: 'range',
+  scaling: 'scaling',
+  effects: 'effects',
+  tags: 'tags',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ChampionSkillScalarFieldEnum = (typeof ChampionSkillScalarFieldEnum)[keyof typeof ChampionSkillScalarFieldEnum]
+
+
+export const ItemScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  name: 'name',
+  category: 'category',
+  tags: 'tags',
+  goodAgainst: 'goodAgainst',
+  weakAgainst: 'weakAgainst',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  archivedAt: 'archivedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ItemScalarFieldEnum = (typeof ItemScalarFieldEnum)[keyof typeof ItemScalarFieldEnum]
+
+
+export const ItemPatchStatScalarFieldEnum = {
+  id: 'id',
+  itemId: 'itemId',
+  patchId: 'patchId',
+  cost: 'cost',
+  abilityPower: 'abilityPower',
+  attackDamage: 'attackDamage',
+  armor: 'armor',
+  magicResist: 'magicResist',
+  health: 'health',
+  mana: 'mana',
+  abilityHaste: 'abilityHaste',
+  critRate: 'critRate',
+  attackSpeed: 'attackSpeed',
+  armorPenetration: 'armorPenetration',
+  magicPenetration: 'magicPenetration',
+  antiHealValue: 'antiHealValue',
+  shieldPower: 'shieldPower',
+  effectDescription: 'effectDescription',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ItemPatchStatScalarFieldEnum = (typeof ItemPatchStatScalarFieldEnum)[keyof typeof ItemPatchStatScalarFieldEnum]
+
+
+export const ChampionPoolScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ChampionPoolScalarFieldEnum = (typeof ChampionPoolScalarFieldEnum)[keyof typeof ChampionPoolScalarFieldEnum]
+
+
+export const ChampionPoolEntryScalarFieldEnum = {
+  id: 'id',
+  championPoolId: 'championPoolId',
+  championId: 'championId',
+  preferredRole: 'preferredRole',
+  comfortLevel: 'comfortLevel',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ChampionPoolEntryScalarFieldEnum = (typeof ChampionPoolEntryScalarFieldEnum)[keyof typeof ChampionPoolEntryScalarFieldEnum]
+
+
+export const DraftSessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  patchId: 'patchId',
+  role: 'role',
+  intendedChampionId: 'intendedChampionId',
+  phase: 'phase',
+  status: 'status',
+  queueType: 'queueType',
+  notes: 'notes',
+  startedAt: 'startedAt',
+  completedAt: 'completedAt',
+  archivedAt: 'archivedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type DraftSessionScalarFieldEnum = (typeof DraftSessionScalarFieldEnum)[keyof typeof DraftSessionScalarFieldEnum]
+
+
+export const DraftBanScalarFieldEnum = {
+  id: 'id',
+  draftSessionId: 'draftSessionId',
+  userId: 'userId',
+  championId: 'championId',
+  teamSide: 'teamSide',
+  orderIndex: 'orderIndex',
+  reason: 'reason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type DraftBanScalarFieldEnum = (typeof DraftBanScalarFieldEnum)[keyof typeof DraftBanScalarFieldEnum]
+
+
+export const DraftPickScalarFieldEnum = {
+  id: 'id',
+  draftSessionId: 'draftSessionId',
+  userId: 'userId',
+  championId: 'championId',
+  teamSide: 'teamSide',
+  role: 'role',
+  playerSlot: 'playerSlot',
+  orderIndex: 'orderIndex',
+  isUserPick: 'isUserPick',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type DraftPickScalarFieldEnum = (typeof DraftPickScalarFieldEnum)[keyof typeof DraftPickScalarFieldEnum]
+
+
+export const RecommendationResultScalarFieldEnum = {
+  id: 'id',
+  draftSessionId: 'draftSessionId',
+  userId: 'userId',
+  patchId: 'patchId',
+  type: 'type',
+  status: 'status',
+  inputSnapshot: 'inputSnapshot',
+  resultItems: 'resultItems',
+  scoreBreakdown: 'scoreBreakdown',
+  reasonCodes: 'reasonCodes',
+  confidence: 'confidence',
+  aiExplanationId: 'aiExplanationId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type RecommendationResultScalarFieldEnum = (typeof RecommendationResultScalarFieldEnum)[keyof typeof RecommendationResultScalarFieldEnum]
+
+
+export const ItemBuildRecommendationScalarFieldEnum = {
+  id: 'id',
+  draftSessionId: 'draftSessionId',
+  userId: 'userId',
+  patchId: 'patchId',
+  championId: 'championId',
+  gamePlan: 'gamePlan',
+  coreItems: 'coreItems',
+  situationalItems: 'situationalItems',
+  boots: 'boots',
+  enchant: 'enchant',
+  warning: 'warning',
+  scoreBreakdown: 'scoreBreakdown',
+  reasonCodes: 'reasonCodes',
+  aiExplanationId: 'aiExplanationId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ItemBuildRecommendationScalarFieldEnum = (typeof ItemBuildRecommendationScalarFieldEnum)[keyof typeof ItemBuildRecommendationScalarFieldEnum]
+
+
+export const MatchupNoteScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  draftSessionId: 'draftSessionId',
+  myChampionId: 'myChampionId',
+  enemyChampionId: 'enemyChampionId',
+  role: 'role',
+  title: 'title',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type MatchupNoteScalarFieldEnum = (typeof MatchupNoteScalarFieldEnum)[keyof typeof MatchupNoteScalarFieldEnum]
+
+
+export const MatchOutcomeScalarFieldEnum = {
+  id: 'id',
+  draftSessionId: 'draftSessionId',
+  userId: 'userId',
+  result: 'result',
+  myChampionId: 'myChampionId',
+  kills: 'kills',
+  deaths: 'deaths',
+  assists: 'assists',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type MatchOutcomeScalarFieldEnum = (typeof MatchOutcomeScalarFieldEnum)[keyof typeof MatchOutcomeScalarFieldEnum]
+
+
+export const DraftReviewScalarFieldEnum = {
+  id: 'id',
+  draftSessionId: 'draftSessionId',
+  userId: 'userId',
+  summary: 'summary',
+  whatWentWell: 'whatWentWell',
+  whatToImprove: 'whatToImprove',
+  recommendationAccuracy: 'recommendationAccuracy',
+  aiSummary: 'aiSummary',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type DraftReviewScalarFieldEnum = (typeof DraftReviewScalarFieldEnum)[keyof typeof DraftReviewScalarFieldEnum]
+
+
+export const AIExplanationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  draftSessionId: 'draftSessionId',
+  sourceType: 'sourceType',
+  sourceId: 'sourceId',
+  style: 'style',
+  language: 'language',
+  input: 'input',
+  summary: 'summary',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type AIExplanationScalarFieldEnum = (typeof AIExplanationScalarFieldEnum)[keyof typeof AIExplanationScalarFieldEnum]
+
+
+export const RuneScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  name: 'name',
+  description: 'description',
+  iconUrl: 'iconUrl',
+  path: 'path',
+  slot: 'slot',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type RuneScalarFieldEnum = (typeof RuneScalarFieldEnum)[keyof typeof RuneScalarFieldEnum]
+
+
+export const RunePatchStatScalarFieldEnum = {
+  id: 'id',
+  runeId: 'runeId',
+  patchId: 'patchId',
+  shortDescription: 'shortDescription',
+  fullDescription: 'fullDescription',
+  effectTypes: 'effectTypes',
+  triggerTypes: 'triggerTypes',
+  targetTypes: 'targetTypes',
+  baseValue: 'baseValue',
+  scalingValue: 'scalingValue',
+  cooldown: 'cooldown',
+  duration: 'duration',
+  maxStacks: 'maxStacks',
+  statTypes: 'statTypes',
+  statBonuses: 'statBonuses',
+  notes: 'notes',
+  dataQuality: 'dataQuality',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type RunePatchStatScalarFieldEnum = (typeof RunePatchStatScalarFieldEnum)[keyof typeof RunePatchStatScalarFieldEnum]
+
+
+export const RuneBuildRecommendationScalarFieldEnum = {
+  id: 'id',
+  draftSessionId: 'draftSessionId',
+  userId: 'userId',
+  patchId: 'patchId',
+  championId: 'championId',
+  gamePlan: 'gamePlan',
+  reasonCodes: 'reasonCodes',
+  scoreBreakdown: 'scoreBreakdown',
+  warning: 'warning',
+  aiExplanationId: 'aiExplanationId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type RuneBuildRecommendationScalarFieldEnum = (typeof RuneBuildRecommendationScalarFieldEnum)[keyof typeof RuneBuildRecommendationScalarFieldEnum]
+
+
+export const RuneBuildRecommendationRuneScalarFieldEnum = {
+  id: 'id',
+  runeBuildRecommendationId: 'runeBuildRecommendationId',
+  runeId: 'runeId',
+  pageSlotType: 'pageSlotType',
+  orderIndex: 'orderIndex',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RuneBuildRecommendationRuneScalarFieldEnum = (typeof RuneBuildRecommendationRuneScalarFieldEnum)[keyof typeof RuneBuildRecommendationRuneScalarFieldEnum]
+
+
+export const SpellScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  name: 'name',
+  tags: 'tags',
+  goodFor: 'goodFor',
+  badFor: 'badFor',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type SpellScalarFieldEnum = (typeof SpellScalarFieldEnum)[keyof typeof SpellScalarFieldEnum]
+
+
+export const SpellPatchStatScalarFieldEnum = {
+  id: 'id',
+  spellId: 'spellId',
+  patchId: 'patchId',
+  cooldownSeconds: 'cooldownSeconds',
+  duration: 'duration',
+  damageValue: 'damageValue',
+  shieldValue: 'shieldValue',
+  healValue: 'healValue',
+  dataQuality: 'dataQuality',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type SpellPatchStatScalarFieldEnum = (typeof SpellPatchStatScalarFieldEnum)[keyof typeof SpellPatchStatScalarFieldEnum]
+
+
+export const ChampionBuildProfileScalarFieldEnum = {
+  id: 'id',
+  profileKey: 'profileKey',
+  championId: 'championId',
+  patchId: 'patchId',
+  role: 'role',
+  gamePlan: 'gamePlan',
+  coreItemKeys: 'coreItemKeys',
+  situationalItemKeys: 'situationalItemKeys',
+  recommendedRuneKeys: 'recommendedRuneKeys',
+  recommendedSpellKeys: 'recommendedSpellKeys',
+  playStyleTags: 'playStyleTags',
+  buildTags: 'buildTags',
+  notes: 'notes',
+  dataQuality: 'dataQuality',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ChampionBuildProfileScalarFieldEnum = (typeof ChampionBuildProfileScalarFieldEnum)[keyof typeof ChampionBuildProfileScalarFieldEnum]
+
+
+export const ChampionMatchupProfileScalarFieldEnum = {
+  id: 'id',
+  championId: 'championId',
+  patchId: 'patchId',
+  role: 'role',
+  goodIntoTags: 'goodIntoTags',
+  weakIntoTags: 'weakIntoTags',
+  banRiskTags: 'banRiskTags',
+  laneNotes: 'laneNotes',
+  dataQuality: 'dataQuality',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ChampionMatchupProfileScalarFieldEnum = (typeof ChampionMatchupProfileScalarFieldEnum)[keyof typeof ChampionMatchupProfileScalarFieldEnum]
+
+
+export const ChampionSynergyProfileScalarFieldEnum = {
+  id: 'id',
+  championId: 'championId',
+  patchId: 'patchId',
+  role: 'role',
+  goodWithTags: 'goodWithTags',
+  providesTags: 'providesTags',
+  needsTags: 'needsTags',
+  teamRiskTags: 'teamRiskTags',
+  synergyNotes: 'synergyNotes',
+  dataQuality: 'dataQuality',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ChampionSynergyProfileScalarFieldEnum = (typeof ChampionSynergyProfileScalarFieldEnum)[keyof typeof ChampionSynergyProfileScalarFieldEnum]
+
+
+export const SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+} as const
+
+export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
