@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { successResponse } from '../common/types/api-response.helper.js';
-import { PatchesService } from './patch.service.js';
+import { PatchesService } from './patches.service.js';
 
 @Controller(`patches`)
 export class PatchesController {

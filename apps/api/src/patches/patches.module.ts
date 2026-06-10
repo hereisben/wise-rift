@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { PatchesController } from './patch.controller.js';
-import { PatchesService } from './patch.service.js';
+import { PatchesController } from './patches.controller.js';
+import { PatchesService } from './patches.service.js';
 
 @Module({
   providers: [PatchesService],

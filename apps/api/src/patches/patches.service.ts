@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../database/prisma.service.js';
 
 @Injectable()
@@ -28,7 +28,7 @@ export class PatchesService {
     });
 
     if (!patch) {
-      throw new Error('Active patch not found!');
+      throw new NotFoundException('Active patch not found!');
     }
 
     return patch;
