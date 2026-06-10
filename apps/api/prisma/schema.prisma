@@ -7,3 +7,563 @@ generator client {
 datasource db {
     provider = "postgresql"
 }
+
+model User {
+    id String @id @default(cuid())
+    name String?
+    email String @unique
+    passwordHash String
+    avatarUrl String?
+    championPool ChampionPool?
+    draftSessions DraftSession[]
+    draftBans DraftBan[]
+    draftPicks DraftPick[]
+    recommendationResults RecommendationResult[]
+    itemBuildRecommendations ItemBuildRecommendation[]
+    matchupNotes MatchupNote[]
+    matchOutcomes MatchOutcome[]
+    draftReviews DraftReview[]
+    aiExplanations AIExplanation[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+}
+
+model Patch {
+    id String @id @default(cuid())
+    version String @unique
+    name String?
+    notes String?
+    isActive Boolean @default(false)
+    championStats ChampionPatchStat[]
+    championSkills ChampionSkill[]
+    itemPatchStats ItemPatchStat[]
+    draftSessions DraftSession[]
+    recommendationResults RecommendationResult[]
+    itemBuildRecommendations ItemBuildRecommendation[]
+    releasedAt DateTime
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    archivedAt DateTime?
+    deletedAt DateTime?
+}
+
+model Champion {
+    id String @id @default(cuid())
+    key String @unique
+    name String
+    title String?
+    roles String[]
+    damageType String
+    rangeType String
+    difficulty String
+    resourceType String
+    classTags String[]
+    playstyleTags String[]
+    utilityTags String[]
+    riskTags String[]
+    strengths String[]
+    weaknesses String[]
+    patchStats ChampionPatchStat[]
+    championSkills ChampionSkill[]
+    championPoolEntries ChampionPoolEntry[]
+    intendedDraftSessions DraftSession[] @relation("DraftIntendedChampion")
+    draftBans DraftBan[]
+    draftPicks DraftPick[]
+    itemBuildRecommendations ItemBuildRecommendation[]
+    championMatchupNotes MatchupNote[] @relation("MyChampion")
+    enemyMatchupNotes MatchupNote[] @relation("EnemyChampion")
+    matchOutcomes MatchOutcome[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    archivedAt DateTime?
+    deletedAt DateTime?
+}
+
+model ChampionPatchStat {
+    id String @id @default(cuid())
+    championId String
+    champion Champion @relation(fields: [championId], references: [id])
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+    baseHealth Float?
+    baseMana Float?
+    baseArmor Float?
+    baseMagicResist Float?
+    baseAttackDamage Float?
+    baseAbilityPower Float?
+    attackSpeed Float?
+    moveSpeed Float?
+    healthGrowth Float?
+    manaGrowth Float?
+    armorGrowth Float?
+    magicResistGrowth Float?
+    attackDamageGrowth Float?
+    attackSpeedGrowth Float?
+    scalingProfile Json?
+    laneProfile Json?
+    teamProfile Json?
+    metaScore Int?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([championId, patchId])
+    @@index([patchId])
+}
+
+model ChampionSkill {
+    id String @id @default(cuid())
+    slot SkillSlot
+    name String
+    championId String
+    champion Champion @relation(fields: [championId], references: [id])
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+    description String
+    damageType String
+    cooldown Json?
+    cost Json?
+    range Json?
+    scaling Json?
+    effects String[]
+    tags String[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([championId, patchId, slot])
+    @@index([championId])
+    @@index([patchId])
+}
+
+enum SkillSlot {
+    PASSIVE
+    Q
+    W 
+    E 
+    R
+}
+
+model Item {
+    id String @id @default(cuid())
+    key String @unique
+    name String
+    category String[]
+    tags String[]
+    goodAgainst String[]
+    weakAgainst String[]
+    itemPatchStats ItemPatchStat[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    archivedAt DateTime?
+    deletedAt DateTime?
+}
+
+model ItemPatchStat {
+    id String @id @default(cuid())
+    itemId String
+    item Item @relation(fields: [itemId], references: [id])
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+    cost Int?
+    abilityPower Float?
+    attackDamage Float?
+    armor Float?
+    magicResist Float?
+    health Float?
+    mana Float?
+    abilityHaste Float?
+    critRate Float?
+    attackSpeed Float?
+    armorPenetration Float?
+    magicPenetration Float?
+    antiHealValue Float?
+    shieldPower Float?
+    effectDescription String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([patchId, itemId])
+    @@index([itemId])
+}
+
+model ChampionPool {
+    id String @id @default(cuid())
+    userId String
+    user User @relation(fields: [userId], references: [id])
+    name String?
+    championPoolEntries ChampionPoolEntry[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@unique([userId])
+}
+
+model ChampionPoolEntry {
+    id String @id @default(cuid())
+    championPoolId String
+    championPool ChampionPool @relation(fields: [championPoolId], references: [id])
+    championId String
+    champion Champion @relation(fields: [championId], references: [id])
+    preferredRole GameRole @default(UNKNOWN)
+    comfortLevel Int?
+    notes String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([championPoolId, championId, preferredRole])
+}
+
+enum GameRole {
+    TOP 
+    MID
+    JUNGLE
+    ADC
+    SUPPORT
+    UNKNOWN
+}
+
+model DraftSession {
+    id String @id @default(cuid())
+    userId String
+    user User @relation(fields: [userId], references: [id])
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+    role GameRole
+    intendedChampionId String?
+    intendedChampion Champion? @relation("DraftIntendedChampion", fields: [intendedChampionId], references: [id])
+    draftBans DraftBan[]
+    draftPicks DraftPick[]
+    phase DraftPhase @default(SETUP)
+    status DraftStatus @default(ACTIVE)
+    recommendationResults RecommendationResult[]
+    itemBuildRecommendations ItemBuildRecommendation[]
+    matchupNotes MatchupNote[]
+    matchOutcomes MatchOutcome[]
+    draftReviews DraftReview[]
+    aiExplanations AIExplanation[]
+    queueType QueueType?
+    notes String?
+    startedAt DateTime?
+    completedAt DateTime?
+    archivedAt DateTime?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([userId])
+    @@index([patchId])
+    @@index([userId, patchId]) 
+}
+
+model DraftBan {
+    id String @id @default(cuid())
+    draftSessionId String
+    draftSession DraftSession @relation(fields: [draftSessionId], references: [id])
+    userId String
+    user User @relation(fields: [userId], references: [id])
+    championId String
+    champion Champion @relation(fields: [championId], references: [id])
+    teamSide TeamSide
+    orderIndex Int?
+    reason String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([userId])
+    @@index([draftSessionId])
+    @@index([championId])
+    @@index([userId, draftSessionId])
+    @@index([userId, championId])
+    @@unique([draftSessionId, championId])
+}
+
+model DraftPick {
+    id String @id @default(cuid())
+    draftSessionId String
+    draftSession DraftSession @relation(fields: [draftSessionId], references: [id])
+    userId String
+    user User @relation(fields: [userId], references: [id])
+    championId String
+    champion Champion @relation(fields: [championId], references: [id])
+    teamSide TeamSide
+    role GameRole?
+    playerSlot Int?
+    orderIndex Int?
+    isUserPick Boolean?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([draftSessionId])
+    @@index([userId])
+    @@index([championId])
+    @@unique([draftSessionId, championId])
+}
+
+model RecommendationResult {
+    id String @id @default(cuid())
+    draftSessionId String
+    draftSession DraftSession @relation(fields: [draftSessionId], references: [id])
+    userId String
+    user User @relation(fields: [userId], references: [id])
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+    type RecommendationType
+    status RecommendationStatus
+    inputSnapshot Json
+    resultItems Json
+    scoreBreakdown Json?
+    reasonCodes Json?
+    confidence ConfidenceLevel?
+    aiExplanationId String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([draftSessionId])
+    @@index([userId])
+    @@index([patchId])
+    @@index([userId, patchId, draftSessionId])
+}
+
+model ItemBuildRecommendation {
+    id String @id @default(cuid())
+    draftSessionId String
+    draftSession DraftSession @relation(fields: [draftSessionId], references: [id])
+    userId String
+    user User @relation(fields: [userId], references: [id])
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+    championId String
+    champion Champion @relation(fields: [championId], references: [id])
+    gamePlan GamePlan[] @default([STANDARD])
+    coreItems Json
+    situationalItems Json?
+    boots Json?
+    enchant Json?
+    warning Json?
+    scoreBreakdown Json?
+    reasonCodes Json?
+    aiExplanationId String? @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([draftSessionId])
+    @@index([patchId])
+    @@index([championId])
+    @@index([userId])
+    @@index([userId, patchId, championId])
+}
+
+model MatchupNote {
+    id String @id @default(cuid())
+    userId String
+    user User @relation(fields: [userId], references: [id])
+    draftSessionId String
+    draftSession DraftSession @relation(fields: [draftSessionId], references: [id])
+    myChampionId String
+    myChampion Champion @relation("MyChampion",fields: [myChampionId], references: [id])
+    enemyChampionId String
+    enemyChampion Champion @relation("EnemyChampion", fields: [enemyChampionId], references: [id])
+    role GameRole
+    title String
+    notes String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([userId])
+    @@index([myChampionId])
+    @@index([enemyChampionId])
+    @@index([draftSessionId])
+}
+
+model MatchOutcome {
+    id String @id @default(cuid())
+    draftSessionId String
+    draftSession DraftSession @relation(fields: [draftSessionId], references: [id])
+    userId String
+    user User @relation(fields: [userId], references: [id])
+    result MatchResult @default(UNKNOWN)
+    myChampionId String
+    myChampion Champion @relation(fields: [myChampionId], references: [id])
+    kills Int?
+    deaths Int?
+    assists Int?
+    notes String?
+    createdAt DateTime @default(now()) 
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([userId])
+    @@index([draftSessionId])
+    @@index([myChampionId])
+    @@index([userId, myChampionId])
+    @@unique([draftSessionId])
+}
+
+model DraftReview {
+    id String @id @default(cuid())
+    draftSessionId String
+    draftSession DraftSession @relation(fields: [draftSessionId], references: [id])
+    userId String
+    user User @relation(fields: [userId], references: [id])
+    summary Json
+    whatWentWell Json?
+    whatToImprove Json?
+    recommendationAccuracy Json?
+    aiSummary String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([draftSessionId])
+    @@index([userId])
+    @@index([userId, draftSessionId])
+}
+
+model AIExplanation {
+    id String @id @default(cuid())
+    userId String
+    user User @relation(fields: [userId], references: [id])
+    draftSessionId String
+    draftSession DraftSession @relation(fields: [draftSessionId], references: [id])
+    sourceType AIExplanationSource
+    sourceId String
+    style ExplanationStyle?
+    language String?
+    input Json
+    summary String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([userId])
+    @@index([draftSessionId])
+    @@index([sourceId])
+    @@index([userId, draftSessionId, sourceId])
+}
+
+enum AIExplanationSource {
+    RECOMMENDATION_SOURCE
+    ITEM_BUILD_RECOMMENDATION
+    DRAFT_REVIEW
+    MANUAL
+}
+
+enum ExplanationStyle {
+    SHORT
+    DETAILED
+    COACHING
+    BEGINNER_FRIENDLY
+}
+
+enum MatchResult {
+    WIN
+    LOSS
+    UNKNOWN
+}
+
+enum GamePlan {
+    STANDARD
+    BURST
+    SAFE
+    ANTI_TANK
+    ANTI_HEAL
+    ANTI_SHIELD
+    SURVIVE_DIVE
+    SCALING
+    UNKNOWN
+}
+
+enum RecommendationType {
+    BAN
+    PICK
+    TEAM_COMPOSITION
+}
+
+enum RecommendationStatus {
+    QUEUED
+    RUNNING
+    SUCCEEDED
+    FAILED
+    CANCELED
+}
+
+enum DraftPhase {
+    SETUP
+    BAN_PREP
+    BAN_ENTRY
+    LIVE_PICK
+    COMPLETED 
+    REVIEW
+    ARCHIVED
+}
+
+enum DraftStatus {
+    ACTIVE
+    COMPLETED
+    ARCHIVED
+    DELETED
+}
+
+enum QueueType {
+    RANKED
+    NORMAL
+    CUSTOM
+    SCRIM
+    UNKNOWN
+}
+
+enum TeamSide {
+    MY_TEAM
+    ENEMY
+    UNKNOWN
+}
+
+enum DamageType {
+    PHYSICAL
+    MAGIC 
+    MIXED
+    TRUE_DAMAGE
+    UTILITY
+    UNKNOWN
+}
+
+enum RangeType {
+    MELEE 
+    RANGED
+    HYBRID
+    UNKNOWN
+}
+
+enum Difficulty {
+    LOW
+    MEDIUM
+    HIGH
+    VERY_HIGH
+    UNKNOWN
+}
+
+enum ItemCategory {
+    PHYSICAL
+    MAGIC
+    DEFENSE
+    BOOTS
+    ENCHANT
+    SUPPORT
+    JUNGLE
+    UTILITY
+    UNKNOWN
+}
+
+enum ConfidenceLevel {
+    LOW
+    MEDIUM
+    HIGH
+    UNKNOWN
+}
+
