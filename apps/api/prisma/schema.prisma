@@ -24,6 +24,7 @@ model User {
     matchOutcomes MatchOutcome[]
     draftReviews DraftReview[]
     aiExplanations AIExplanation[]
+    runeBuildRecommendations RuneBuildRecommendation[]
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     deletedAt DateTime?
@@ -41,6 +42,12 @@ model Patch {
     draftSessions DraftSession[]
     recommendationResults RecommendationResult[]
     itemBuildRecommendations ItemBuildRecommendation[]
+    runePatchStats RunePatchStat[]
+    runeBuildRecommendations RuneBuildRecommendation[]
+    spellPatchStats SpellPatchStat[]
+    championBuildProfiles ChampionBuildProfile[]
+    championMatchupProfiles ChampionMatchupProfile[]
+    championSynergyProfiles ChampionSynergyProfile[]
     releasedAt DateTime
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -74,6 +81,10 @@ model Champion {
     championMatchupNotes MatchupNote[] @relation("MyChampion")
     enemyMatchupNotes MatchupNote[] @relation("EnemyChampion")
     matchOutcomes MatchOutcome[]
+    runeBuildRecommendations RuneBuildRecommendation[]
+    championBuildProfiles ChampionBuildProfile[]
+    matchupProfiles ChampionMatchupProfile[]
+    synergyProfiles ChampionSynergyProfile[]
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     archivedAt DateTime?
@@ -120,12 +131,13 @@ model ChampionSkill {
     patchId String
     patch Patch @relation(fields: [patchId], references: [id])
     description String
-    damageType String
+    damageType DamageType
+    targetType TargetType
     cooldown Json?
     cost Json?
     range Json?
     scaling Json?
-    effects String[]
+    effects SkillEffect[]
     tags String[]
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -133,14 +145,6 @@ model ChampionSkill {
     @@unique([championId, patchId, slot])
     @@index([championId])
     @@index([patchId])
-}
-
-enum SkillSlot {
-    PASSIVE
-    Q
-    W 
-    E 
-    R
 }
 
 model Item {
@@ -242,6 +246,7 @@ model DraftSession {
     matchOutcomes MatchOutcome[]
     draftReviews DraftReview[]
     aiExplanations AIExplanation[]
+    runeBuildRecommendations RuneBuildRecommendation[]
     queueType QueueType?
     notes String?
     startedAt DateTime?
@@ -346,7 +351,7 @@ model ItemBuildRecommendation {
     warning Json?
     scoreBreakdown Json?
     reasonCodes Json?
-    aiExplanationId String? @default(cuid())
+    aiExplanationId String?
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     deletedAt DateTime?
@@ -357,6 +362,8 @@ model ItemBuildRecommendation {
     @@index([userId])
     @@index([userId, patchId, championId])
 }
+
+
 
 model MatchupNote {
     id String @id @default(cuid())
@@ -447,6 +454,324 @@ model AIExplanation {
     @@index([userId, draftSessionId, sourceId])
 }
 
+model Rune {
+    id String @id @default(cuid())
+    key String @unique
+    name String
+    description String?
+    iconUrl String?
+    path RunePath
+    slot RuneSlot
+    patchStats RunePatchStat[]
+    runeBuildRecommendationRunes RuneBuildRecommendationRune[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([path])
+    @@index([slot])
+    @@index([path, slot])
+}
+
+model RunePatchStat {
+    id String @id @default(cuid())
+    runeId String
+    rune Rune @relation(fields: [runeId], references: [id])
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+    shortDescription String?
+    fullDescription String?
+    effectTypes RuneEffectType[]
+    triggerTypes RuneTriggerType[]
+    targetTypes TargetType[]
+    baseValue Float?
+    scalingValue Float?
+    cooldown Float?
+    duration Float?
+    maxStacks Int?
+    statTypes RuneStatType[]
+    statBonuses Json?
+    notes String?
+    dataQuality DataQualityLevel @default(MINIMAL)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@unique([runeId, patchId])
+    @@index([runeId])
+    @@index([patchId])
+}
+
+model RuneBuildRecommendation {
+    id String @id @default(cuid())
+
+    draftSessionId String
+    draftSession DraftSession @relation(fields: [draftSessionId], references: [id])
+
+    userId String
+    user User @relation(fields: [userId], references: [id])
+
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+
+    championId String
+    champion Champion @relation(fields: [championId], references: [id])
+
+    runes RuneBuildRecommendationRune[]
+
+    gamePlan GamePlan[] @default([STANDARD])
+
+    reasonCodes Json?
+    scoreBreakdown Json?
+    warning Json?
+    aiExplanationId String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([draftSessionId])
+    @@index([userId])
+    @@index([patchId])
+    @@index([championId])
+    @@index([userId, patchId, championId])
+}
+
+model RuneBuildRecommendationRune {
+    id String @id @default(cuid())
+
+    runeBuildRecommendationId String
+    runeBuildRecommendation RuneBuildRecommendation @relation(fields: [runeBuildRecommendationId], references: [id])
+
+    runeId String
+    rune Rune @relation(fields: [runeId], references: [id])
+
+    pageSlotType RunePageSlotType
+    orderIndex Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([runeBuildRecommendationId])
+    @@index([runeId])
+    @@index([pageSlotType])
+    @@unique([runeBuildRecommendationId, runeId])
+    @@unique([runeBuildRecommendationId, pageSlotType, orderIndex])
+}
+
+model Spell {
+    id String @id @default(cuid())
+    key String @unique
+    name String
+    tags String[]
+    goodFor String[]
+    badFor String[]
+    spellPatchStats SpellPatchStat[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+}
+
+model SpellPatchStat {
+    id String @id @default(cuid())
+    spellId String
+    spell Spell @relation(fields: [spellId], references: [id])
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+    cooldownSeconds Int?
+    duration Float?
+    damageValue Float?
+    shieldValue Float?
+    healValue Float?
+    dataQuality DataQualityLevel @default(MINIMAL)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([spellId])
+    @@index([patchId])
+    @@unique([spellId, patchId])
+}
+
+model ChampionBuildProfile {
+    id String @id @default(cuid())
+    profileKey String
+    championId String
+    champion Champion @relation(fields: [championId], references: [id])
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+    role GameRole
+    gamePlan GamePlan[] @default([STANDARD])
+    coreItemKeys String[]
+    situationalItemKeys String[]
+    recommendedRuneKeys String[]
+    recommendedSpellKeys String[]
+    playStyleTags String[]
+    buildTags String[]
+    notes String?
+    dataQuality DataQualityLevel @default(MINIMAL)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+    @@index([role])
+    @@index([championId])
+    @@index([patchId])
+    @@index([championId, patchId, role])
+    @@unique([championId, patchId, role, profileKey])
+}
+
+model ChampionMatchupProfile {
+    id String @id @default(cuid())
+
+    championId String
+    champion Champion @relation(fields: [championId], references: [id])
+
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+
+    role GameRole
+
+    goodIntoTags String[]
+    weakIntoTags String[]
+    banRiskTags String[]
+    laneNotes String?
+
+    dataQuality DataQualityLevel @default(MINIMAL)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([championId])
+    @@index([patchId])
+    @@index([role])
+    @@index([championId, patchId, role])
+    @@unique([championId, patchId, role])
+}
+
+model ChampionSynergyProfile {
+    id String @id @default(cuid())
+
+    championId String
+    champion Champion @relation(fields: [championId], references: [id])
+
+    patchId String
+    patch Patch @relation(fields: [patchId], references: [id])
+
+    role GameRole
+
+    goodWithTags String[]
+    providesTags String[]
+    needsTags String[]
+    teamRiskTags String[]
+    synergyNotes String?
+
+    dataQuality DataQualityLevel @default(MINIMAL)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    deletedAt DateTime?
+
+    @@index([championId])
+    @@index([patchId])
+    @@index([role])
+    @@index([championId, patchId, role])
+    @@unique([championId, patchId, role])
+}
+
+enum SkillSlot {
+    PASSIVE
+    Q
+    W 
+    E 
+    R
+}
+
+enum RunePath {
+    KEYSTONE
+    PRECISION
+    DOMINATION
+    RESOLVE
+    SORCERY
+}
+
+enum RunePageSlotType {
+    KEYSTONE
+    PRIMARY
+    SECONDARY
+}
+
+enum RuneSlot {
+    KEYSTONE
+    SLOT_1
+    SLOT_2
+    SLOT_3
+}
+
+enum RuneEffectType {
+    DAMAGE
+    HEAL
+    SHIELD
+    MOVEMENT_SPEED
+    ATTACK_SPEED
+    ABILITY_HASTE
+    ADAPTIVE_FORCE
+    ARMOR
+    MAGIC_RESIST
+    HEALTH
+    MANA
+    GOLD
+    COOLDOWN_REDUCTION
+    CROWD_CONTROL
+    VISION
+    STACKING
+    SCALING
+    UTILITY
+}
+
+enum RuneTriggerType {
+    ALWAYS_ACTIVE
+    ON_HIT
+    ON_ATTACK
+    ON_ABILITY_HIT
+    ON_CHAMPION_HIT
+    ON_TAKEDOWN
+    ON_KILL
+    ON_ASSIST
+    ON_LOW_HEALTH
+    ON_SHIELD
+    ON_HEAL
+    ON_MOVEMENT
+    ON_COMBAT_START
+    AFTER_TIME
+    STACK_BASED
+}
+
+enum RuneStatType {
+    ATTACK_DAMAGE
+    ABILITY_POWER
+    ADAPTIVE_FORCE
+    ATTACK_SPEED
+    ABILITY_HASTE
+    CRITICAL_RATE
+    ARMOR
+    MAGIC_RESIST
+    HEALTH
+    MANA
+    OMNIVAMP
+    PHYSICAL_VAMP
+    MAGIC_VAMP
+    MOVEMENT_SPEED
+    GOLD
+}
+
+enum DataQualityLevel {
+    COMPLETE
+    PARTIAL
+    MINIMAL
+    MISSING
+}
+
 enum AIExplanationSource {
     RECOMMENDATION_SOURCE
     ITEM_BUILD_RECOMMENDATION
@@ -531,6 +856,46 @@ enum DamageType {
     TRUE_DAMAGE
     UTILITY
     UNKNOWN
+}
+
+enum TargetType {
+  SELF
+  ALLY
+  ALLIES
+  ENEMY
+  ENEMIES
+  CHAMPION
+  MINION
+  MONSTER
+  TURRET
+  AREA
+  LOCATION
+}
+
+enum SkillEffect {
+    DAMAGE
+    SLOW
+    ROOT
+    STUN
+    KNOCK_UP
+    KNOCK_BACK
+    CHARM
+    SILENCE
+    FEAR
+    TAUNT
+    DASH
+    BLINK
+    SPEED_UP
+    SHIELD
+    HEAL
+    STEALTH
+    UNTARGETABLE
+    INVULNERABLE
+    EXECUTE
+    EMPOWERED_ATTACK
+    TRUE_DAMAGE
+    VISION
+    ZONE_CONTROL
 }
 
 enum RangeType {
