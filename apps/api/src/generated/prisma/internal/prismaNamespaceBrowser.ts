@@ -246,6 +246,10 @@ export const ItemPatchStatScalarFieldEnum = {
   magicPenetration: 'magicPenetration',
   antiHealValue: 'antiHealValue',
   shieldPower: 'shieldPower',
+  movementSpeed: 'movementSpeed',
+  magicVamp: 'magicVamp',
+  manaRegen: 'manaRegen',
+  healShieldPower: 'healShieldPower',
   effectDescription: 'effectDescription',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

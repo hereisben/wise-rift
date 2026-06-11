@@ -41,6 +41,10 @@ export type ItemPatchStatAvgAggregateOutputType = {
   magicPenetration: number | null
   antiHealValue: number | null
   shieldPower: number | null
+  movementSpeed: number | null
+  magicVamp: number | null
+  manaRegen: number | null
+  healShieldPower: number | null
 }
 
 export type ItemPatchStatSumAggregateOutputType = {
@@ -58,6 +62,10 @@ export type ItemPatchStatSumAggregateOutputType = {
   magicPenetration: number | null
   antiHealValue: number | null
   shieldPower: number | null
+  movementSpeed: number | null
+  magicVamp: number | null
+  manaRegen: number | null
+  healShieldPower: number | null
 }
 
 export type ItemPatchStatMinAggregateOutputType = {
@@ -78,6 +86,10 @@ export type ItemPatchStatMinAggregateOutputType = {
   magicPenetration: number | null
   antiHealValue: number | null
   shieldPower: number | null
+  movementSpeed: number | null
+  magicVamp: number | null
+  manaRegen: number | null
+  healShieldPower: number | null
   effectDescription: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -101,6 +113,10 @@ export type ItemPatchStatMaxAggregateOutputType = {
   magicPenetration: number | null
   antiHealValue: number | null
   shieldPower: number | null
+  movementSpeed: number | null
+  magicVamp: number | null
+  manaRegen: number | null
+  healShieldPower: number | null
   effectDescription: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -124,6 +140,10 @@ export type ItemPatchStatCountAggregateOutputType = {
   magicPenetration: number
   antiHealValue: number
   shieldPower: number
+  movementSpeed: number
+  magicVamp: number
+  manaRegen: number
+  healShieldPower: number
   effectDescription: number
   createdAt: number
   updatedAt: number
@@ -146,6 +166,10 @@ export type ItemPatchStatAvgAggregateInputType = {
   magicPenetration?: true
   antiHealValue?: true
   shieldPower?: true
+  movementSpeed?: true
+  magicVamp?: true
+  manaRegen?: true
+  healShieldPower?: true
 }
 
 export type ItemPatchStatSumAggregateInputType = {
@@ -163,6 +187,10 @@ export type ItemPatchStatSumAggregateInputType = {
   magicPenetration?: true
   antiHealValue?: true
   shieldPower?: true
+  movementSpeed?: true
+  magicVamp?: true
+  manaRegen?: true
+  healShieldPower?: true
 }
 
 export type ItemPatchStatMinAggregateInputType = {
@@ -183,6 +211,10 @@ export type ItemPatchStatMinAggregateInputType = {
   magicPenetration?: true
   antiHealValue?: true
   shieldPower?: true
+  movementSpeed?: true
+  magicVamp?: true
+  manaRegen?: true
+  healShieldPower?: true
   effectDescription?: true
   createdAt?: true
   updatedAt?: true
@@ -206,6 +238,10 @@ export type ItemPatchStatMaxAggregateInputType = {
   magicPenetration?: true
   antiHealValue?: true
   shieldPower?: true
+  movementSpeed?: true
+  magicVamp?: true
+  manaRegen?: true
+  healShieldPower?: true
   effectDescription?: true
   createdAt?: true
   updatedAt?: true
@@ -229,6 +265,10 @@ export type ItemPatchStatCountAggregateInputType = {
   magicPenetration?: true
   antiHealValue?: true
   shieldPower?: true
+  movementSpeed?: true
+  magicVamp?: true
+  manaRegen?: true
+  healShieldPower?: true
   effectDescription?: true
   createdAt?: true
   updatedAt?: true
@@ -339,6 +379,10 @@ export type ItemPatchStatGroupByOutputType = {
   magicPenetration: number | null
   antiHealValue: number | null
   shieldPower: number | null
+  movementSpeed: number | null
+  magicVamp: number | null
+  manaRegen: number | null
+  healShieldPower: number | null
   effectDescription: string | null
   createdAt: Date
   updatedAt: Date
@@ -385,6 +429,10 @@ export type ItemPatchStatWhereInput = {
   magicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   antiHealValue?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   shieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  movementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  magicVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  manaRegen?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  healShieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   effectDescription?: Prisma.StringNullableFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
@@ -410,6 +458,10 @@ export type ItemPatchStatOrderByWithRelationInput = {
   magicPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
   antiHealValue?: Prisma.SortOrderInput | Prisma.SortOrder
   shieldPower?: Prisma.SortOrderInput | Prisma.SortOrder
+  movementSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
+  magicVamp?: Prisma.SortOrderInput | Prisma.SortOrder
+  manaRegen?: Prisma.SortOrderInput | Prisma.SortOrder
+  healShieldPower?: Prisma.SortOrderInput | Prisma.SortOrder
   effectDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -439,6 +491,10 @@ export type ItemPatchStatWhereUniqueInput = Prisma.AtLeast<{
   magicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   antiHealValue?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   shieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  movementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  magicVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  manaRegen?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  healShieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   effectDescription?: Prisma.StringNullableFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
@@ -464,6 +520,10 @@ export type ItemPatchStatOrderByWithAggregationInput = {
   magicPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
   antiHealValue?: Prisma.SortOrderInput | Prisma.SortOrder
   shieldPower?: Prisma.SortOrderInput | Prisma.SortOrder
+  movementSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
+  magicVamp?: Prisma.SortOrderInput | Prisma.SortOrder
+  manaRegen?: Prisma.SortOrderInput | Prisma.SortOrder
+  healShieldPower?: Prisma.SortOrderInput | Prisma.SortOrder
   effectDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -495,6 +555,10 @@ export type ItemPatchStatScalarWhereWithAggregatesInput = {
   magicPenetration?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   antiHealValue?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   shieldPower?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  movementSpeed?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  magicVamp?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  manaRegen?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  healShieldPower?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   effectDescription?: Prisma.StringNullableWithAggregatesFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ItemPatchStat"> | Date | string
@@ -516,6 +580,10 @@ export type ItemPatchStatCreateInput = {
   magicPenetration?: number | null
   antiHealValue?: number | null
   shieldPower?: number | null
+  movementSpeed?: number | null
+  magicVamp?: number | null
+  manaRegen?: number | null
+  healShieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -541,6 +609,10 @@ export type ItemPatchStatUncheckedCreateInput = {
   magicPenetration?: number | null
   antiHealValue?: number | null
   shieldPower?: number | null
+  movementSpeed?: number | null
+  magicVamp?: number | null
+  manaRegen?: number | null
+  healShieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -562,6 +634,10 @@ export type ItemPatchStatUpdateInput = {
   magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -587,6 +663,10 @@ export type ItemPatchStatUncheckedUpdateInput = {
   magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -610,6 +690,10 @@ export type ItemPatchStatCreateManyInput = {
   magicPenetration?: number | null
   antiHealValue?: number | null
   shieldPower?: number | null
+  movementSpeed?: number | null
+  magicVamp?: number | null
+  manaRegen?: number | null
+  healShieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -631,6 +715,10 @@ export type ItemPatchStatUpdateManyMutationInput = {
   magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -654,6 +742,10 @@ export type ItemPatchStatUncheckedUpdateManyInput = {
   magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -692,6 +784,10 @@ export type ItemPatchStatCountOrderByAggregateInput = {
   magicPenetration?: Prisma.SortOrder
   antiHealValue?: Prisma.SortOrder
   shieldPower?: Prisma.SortOrder
+  movementSpeed?: Prisma.SortOrder
+  magicVamp?: Prisma.SortOrder
+  manaRegen?: Prisma.SortOrder
+  healShieldPower?: Prisma.SortOrder
   effectDescription?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -712,6 +808,10 @@ export type ItemPatchStatAvgOrderByAggregateInput = {
   magicPenetration?: Prisma.SortOrder
   antiHealValue?: Prisma.SortOrder
   shieldPower?: Prisma.SortOrder
+  movementSpeed?: Prisma.SortOrder
+  magicVamp?: Prisma.SortOrder
+  manaRegen?: Prisma.SortOrder
+  healShieldPower?: Prisma.SortOrder
 }
 
 export type ItemPatchStatMaxOrderByAggregateInput = {
@@ -732,6 +832,10 @@ export type ItemPatchStatMaxOrderByAggregateInput = {
   magicPenetration?: Prisma.SortOrder
   antiHealValue?: Prisma.SortOrder
   shieldPower?: Prisma.SortOrder
+  movementSpeed?: Prisma.SortOrder
+  magicVamp?: Prisma.SortOrder
+  manaRegen?: Prisma.SortOrder
+  healShieldPower?: Prisma.SortOrder
   effectDescription?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -755,6 +859,10 @@ export type ItemPatchStatMinOrderByAggregateInput = {
   magicPenetration?: Prisma.SortOrder
   antiHealValue?: Prisma.SortOrder
   shieldPower?: Prisma.SortOrder
+  movementSpeed?: Prisma.SortOrder
+  magicVamp?: Prisma.SortOrder
+  manaRegen?: Prisma.SortOrder
+  healShieldPower?: Prisma.SortOrder
   effectDescription?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -775,6 +883,10 @@ export type ItemPatchStatSumOrderByAggregateInput = {
   magicPenetration?: Prisma.SortOrder
   antiHealValue?: Prisma.SortOrder
   shieldPower?: Prisma.SortOrder
+  movementSpeed?: Prisma.SortOrder
+  magicVamp?: Prisma.SortOrder
+  manaRegen?: Prisma.SortOrder
+  healShieldPower?: Prisma.SortOrder
 }
 
 export type ItemPatchStatCreateNestedManyWithoutPatchInput = {
@@ -877,6 +989,10 @@ export type ItemPatchStatCreateWithoutPatchInput = {
   magicPenetration?: number | null
   antiHealValue?: number | null
   shieldPower?: number | null
+  movementSpeed?: number | null
+  magicVamp?: number | null
+  manaRegen?: number | null
+  healShieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -900,6 +1016,10 @@ export type ItemPatchStatUncheckedCreateWithoutPatchInput = {
   magicPenetration?: number | null
   antiHealValue?: number | null
   shieldPower?: number | null
+  movementSpeed?: number | null
+  magicVamp?: number | null
+  manaRegen?: number | null
+  healShieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -952,6 +1072,10 @@ export type ItemPatchStatScalarWhereInput = {
   magicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   antiHealValue?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   shieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  movementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  magicVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  manaRegen?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  healShieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   effectDescription?: Prisma.StringNullableFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
@@ -973,6 +1097,10 @@ export type ItemPatchStatCreateWithoutItemInput = {
   magicPenetration?: number | null
   antiHealValue?: number | null
   shieldPower?: number | null
+  movementSpeed?: number | null
+  magicVamp?: number | null
+  manaRegen?: number | null
+  healShieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -996,6 +1124,10 @@ export type ItemPatchStatUncheckedCreateWithoutItemInput = {
   magicPenetration?: number | null
   antiHealValue?: number | null
   shieldPower?: number | null
+  movementSpeed?: number | null
+  magicVamp?: number | null
+  manaRegen?: number | null
+  healShieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1044,6 +1176,10 @@ export type ItemPatchStatCreateManyPatchInput = {
   magicPenetration?: number | null
   antiHealValue?: number | null
   shieldPower?: number | null
+  movementSpeed?: number | null
+  magicVamp?: number | null
+  manaRegen?: number | null
+  healShieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1065,6 +1201,10 @@ export type ItemPatchStatUpdateWithoutPatchInput = {
   magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1088,6 +1228,10 @@ export type ItemPatchStatUncheckedUpdateWithoutPatchInput = {
   magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1110,6 +1254,10 @@ export type ItemPatchStatUncheckedUpdateManyWithoutPatchInput = {
   magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1132,6 +1280,10 @@ export type ItemPatchStatCreateManyItemInput = {
   magicPenetration?: number | null
   antiHealValue?: number | null
   shieldPower?: number | null
+  movementSpeed?: number | null
+  magicVamp?: number | null
+  manaRegen?: number | null
+  healShieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1153,6 +1305,10 @@ export type ItemPatchStatUpdateWithoutItemInput = {
   magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1176,6 +1332,10 @@ export type ItemPatchStatUncheckedUpdateWithoutItemInput = {
   magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1198,6 +1358,10 @@ export type ItemPatchStatUncheckedUpdateManyWithoutItemInput = {
   magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1223,6 +1387,10 @@ export type ItemPatchStatSelect<ExtArgs extends runtime.Types.Extensions.Interna
   magicPenetration?: boolean
   antiHealValue?: boolean
   shieldPower?: boolean
+  movementSpeed?: boolean
+  magicVamp?: boolean
+  manaRegen?: boolean
+  healShieldPower?: boolean
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1248,6 +1416,10 @@ export type ItemPatchStatSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   magicPenetration?: boolean
   antiHealValue?: boolean
   shieldPower?: boolean
+  movementSpeed?: boolean
+  magicVamp?: boolean
+  manaRegen?: boolean
+  healShieldPower?: boolean
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1273,6 +1445,10 @@ export type ItemPatchStatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   magicPenetration?: boolean
   antiHealValue?: boolean
   shieldPower?: boolean
+  movementSpeed?: boolean
+  magicVamp?: boolean
+  manaRegen?: boolean
+  healShieldPower?: boolean
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1298,12 +1474,16 @@ export type ItemPatchStatSelectScalar = {
   magicPenetration?: boolean
   antiHealValue?: boolean
   shieldPower?: boolean
+  movementSpeed?: boolean
+  magicVamp?: boolean
+  manaRegen?: boolean
+  healShieldPower?: boolean
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ItemPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "itemId" | "patchId" | "cost" | "abilityPower" | "attackDamage" | "armor" | "magicResist" | "health" | "mana" | "abilityHaste" | "critRate" | "attackSpeed" | "armorPenetration" | "magicPenetration" | "antiHealValue" | "shieldPower" | "effectDescription" | "createdAt" | "updatedAt", ExtArgs["result"]["itemPatchStat"]>
+export type ItemPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "itemId" | "patchId" | "cost" | "abilityPower" | "attackDamage" | "armor" | "magicResist" | "health" | "mana" | "abilityHaste" | "critRate" | "attackSpeed" | "armorPenetration" | "magicPenetration" | "antiHealValue" | "shieldPower" | "movementSpeed" | "magicVamp" | "manaRegen" | "healShieldPower" | "effectDescription" | "createdAt" | "updatedAt", ExtArgs["result"]["itemPatchStat"]>
 export type ItemPatchStatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   item?: boolean | Prisma.ItemDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -1341,6 +1521,10 @@ export type $ItemPatchStatPayload<ExtArgs extends runtime.Types.Extensions.Inter
     magicPenetration: number | null
     antiHealValue: number | null
     shieldPower: number | null
+    movementSpeed: number | null
+    magicVamp: number | null
+    manaRegen: number | null
+    healShieldPower: number | null
     effectDescription: string | null
     createdAt: Date
     updatedAt: Date
@@ -1786,6 +1970,10 @@ export interface ItemPatchStatFieldRefs {
   readonly magicPenetration: Prisma.FieldRef<"ItemPatchStat", 'Float'>
   readonly antiHealValue: Prisma.FieldRef<"ItemPatchStat", 'Float'>
   readonly shieldPower: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly movementSpeed: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly magicVamp: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly manaRegen: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly healShieldPower: Prisma.FieldRef<"ItemPatchStat", 'Float'>
   readonly effectDescription: Prisma.FieldRef<"ItemPatchStat", 'String'>
   readonly createdAt: Prisma.FieldRef<"ItemPatchStat", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ItemPatchStat", 'DateTime'>
