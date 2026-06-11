@@ -1,6 +1,6 @@
 import { GameRole, PrismaClient } from '../../src/generated/prisma/client.js';
 
-export async function seedChampion(prisma: PrismaClient) {
+export async function seedChampions(prisma: PrismaClient) {
   const champions = [
     {
       key: `ahri`,
