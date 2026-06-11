@@ -217,6 +217,8 @@ export const ItemScalarFieldEnum = {
   tags: 'tags',
   goodAgainst: 'goodAgainst',
   weakAgainst: 'weakAgainst',
+  componentItemKeys: 'componentItemKeys',
+  buildsIntoItemKeys: 'buildsIntoItemKeys',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   archivedAt: 'archivedAt',
