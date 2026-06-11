@@ -16,8 +16,8 @@ export async function seedChampions(prisma: PrismaClient) {
       playstyleTags: [`BURST`, `PICK`, `MOBILITY`],
       utilityTags: [`CHARM`, `DASH`],
       riskTags: [`SKILLSHOT_RELIANT`, `SQUISHY`],
-      strengths: [`pick_potential`, `mobility`, `burst_damage`],
-      weaknesses: [`weak_when_behind`, `skillshot_dependent`],
+      strengths: ['PICK_POTENTIAL', 'MOBILITY', 'BURST_DAMAGE'],
+      weaknesses: ['WEAK_WHEN_BEHIND', 'SKILLSHOT_DEPENDENT'],
     },
     {
       key: 'yasuo',
@@ -33,8 +33,8 @@ export async function seedChampions(prisma: PrismaClient) {
       playstyleTags: ['DPS', 'MOBILITY', 'SCALING'],
       utilityTags: ['KNOCK_UP', 'WIND_WALL'],
       riskTags: ['MELEE_MID', 'HIGH_EXECUTION', 'CC_VULNERABLE'],
-      strengths: ['scaling_damage', 'mobility', 'teamfight_followup'],
-      weaknesses: ['hard_to_play', 'weak_into_point_click_cc'],
+      strengths: ['SCALING_DAMAGE', 'MOBILITY', 'TEAMFIGHT_FOLLOWUP'],
+      weaknesses: ['HARD_TO_PLAY', 'WEAK_INTO_POINT_CLICK_CC'],
     },
     {
       key: 'viktor',
@@ -50,8 +50,8 @@ export async function seedChampions(prisma: PrismaClient) {
       playstyleTags: ['SCALING', 'POKE', 'ZONE_CONTROL'],
       utilityTags: ['SLOW', 'ZONE_CONTROL'],
       riskTags: ['LOW_MOBILITY', 'SQUISHY'],
-      strengths: ['wave_clear', 'scaling_damage', 'zone_control'],
-      weaknesses: ['low_mobility', 'vulnerable_to_dive'],
+      strengths: ['WAVE_CLEAR', 'SCALING_DAMAGE', 'ZONE_CONTROL'],
+      weaknesses: ['LOW_MOBILITY', 'VULNERABLE_TO_DIVE'],
     },
   ];
 

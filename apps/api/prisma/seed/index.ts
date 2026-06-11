@@ -2,6 +2,7 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import env from '../../src/config/env.js';
 import { PrismaClient } from '../../src/generated/prisma/client.js';
 import { seedChampions } from './champion.seed.js';
+import { seedGameTags } from './game-tag.seed.js';
 import { seedItems } from './item.seed.js';
 import { seedPatch } from './patch.seed.js';
 
@@ -15,6 +16,7 @@ async function main() {
   console.log(`Start seeding Wise Rift data...`);
 
   const patch = await seedPatch(prisma);
+  await seedGameTags(prisma);
   await seedChampions(prisma);
   await seedItems(prisma, patch.id);
 }
