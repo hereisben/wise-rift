@@ -61,6 +61,8 @@ export type ItemCountAggregateOutputType = {
   tags: number
   goodAgainst: number
   weakAgainst: number
+  componentItemKeys: number
+  buildsIntoItemKeys: number
   createdAt: number
   updatedAt: number
   archivedAt: number
@@ -106,6 +108,8 @@ export type ItemCountAggregateInputType = {
   tags?: true
   goodAgainst?: true
   weakAgainst?: true
+  componentItemKeys?: true
+  buildsIntoItemKeys?: true
   createdAt?: true
   updatedAt?: true
   archivedAt?: true
@@ -196,6 +200,8 @@ export type ItemGroupByOutputType = {
   tags: string[]
   goodAgainst: string[]
   weakAgainst: string[]
+  componentItemKeys: string[]
+  buildsIntoItemKeys: string[]
   createdAt: Date
   updatedAt: Date
   archivedAt: Date | null
@@ -234,6 +240,8 @@ export type ItemWhereInput = {
   tags?: Prisma.StringNullableListFilter<"Item">
   goodAgainst?: Prisma.StringNullableListFilter<"Item">
   weakAgainst?: Prisma.StringNullableListFilter<"Item">
+  componentItemKeys?: Prisma.StringNullableListFilter<"Item">
+  buildsIntoItemKeys?: Prisma.StringNullableListFilter<"Item">
   createdAt?: Prisma.DateTimeFilter<"Item"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Item"> | Date | string
   archivedAt?: Prisma.DateTimeNullableFilter<"Item"> | Date | string | null
@@ -252,6 +260,8 @@ export type ItemOrderByWithRelationInput = {
   tags?: Prisma.SortOrder
   goodAgainst?: Prisma.SortOrder
   weakAgainst?: Prisma.SortOrder
+  componentItemKeys?: Prisma.SortOrder
+  buildsIntoItemKeys?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   archivedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -273,6 +283,8 @@ export type ItemWhereUniqueInput = Prisma.AtLeast<{
   tags?: Prisma.StringNullableListFilter<"Item">
   goodAgainst?: Prisma.StringNullableListFilter<"Item">
   weakAgainst?: Prisma.StringNullableListFilter<"Item">
+  componentItemKeys?: Prisma.StringNullableListFilter<"Item">
+  buildsIntoItemKeys?: Prisma.StringNullableListFilter<"Item">
   createdAt?: Prisma.DateTimeFilter<"Item"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Item"> | Date | string
   archivedAt?: Prisma.DateTimeNullableFilter<"Item"> | Date | string | null
@@ -291,6 +303,8 @@ export type ItemOrderByWithAggregationInput = {
   tags?: Prisma.SortOrder
   goodAgainst?: Prisma.SortOrder
   weakAgainst?: Prisma.SortOrder
+  componentItemKeys?: Prisma.SortOrder
+  buildsIntoItemKeys?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   archivedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -314,6 +328,8 @@ export type ItemScalarWhereWithAggregatesInput = {
   tags?: Prisma.StringNullableListFilter<"Item">
   goodAgainst?: Prisma.StringNullableListFilter<"Item">
   weakAgainst?: Prisma.StringNullableListFilter<"Item">
+  componentItemKeys?: Prisma.StringNullableListFilter<"Item">
+  buildsIntoItemKeys?: Prisma.StringNullableListFilter<"Item">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Item"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Item"> | Date | string
   archivedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Item"> | Date | string | null
@@ -331,6 +347,8 @@ export type ItemCreateInput = {
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemCreateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemCreatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemCreatebuildsIntoItemKeysInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   archivedAt?: Date | string | null
@@ -349,6 +367,8 @@ export type ItemUncheckedCreateInput = {
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemCreateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemCreatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemCreatebuildsIntoItemKeysInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   archivedAt?: Date | string | null
@@ -367,6 +387,8 @@ export type ItemUpdateInput = {
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemUpdatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemUpdatebuildsIntoItemKeysInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -385,6 +407,8 @@ export type ItemUncheckedUpdateInput = {
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemUpdatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemUpdatebuildsIntoItemKeysInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -403,6 +427,8 @@ export type ItemCreateManyInput = {
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemCreateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemCreatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemCreatebuildsIntoItemKeysInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   archivedAt?: Date | string | null
@@ -420,6 +446,8 @@ export type ItemUpdateManyMutationInput = {
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemUpdatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemUpdatebuildsIntoItemKeysInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -437,6 +465,8 @@ export type ItemUncheckedUpdateManyInput = {
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemUpdatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemUpdatebuildsIntoItemKeysInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -454,6 +484,8 @@ export type ItemCountOrderByAggregateInput = {
   tags?: Prisma.SortOrder
   goodAgainst?: Prisma.SortOrder
   weakAgainst?: Prisma.SortOrder
+  componentItemKeys?: Prisma.SortOrder
+  buildsIntoItemKeys?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   archivedAt?: Prisma.SortOrder
@@ -507,6 +539,14 @@ export type ItemCreateweakAgainstInput = {
   set: string[]
 }
 
+export type ItemCreatecomponentItemKeysInput = {
+  set: string[]
+}
+
+export type ItemCreatebuildsIntoItemKeysInput = {
+  set: string[]
+}
+
 export type ItemUpdatecategoryInput = {
   set?: string[]
   push?: string | string[]
@@ -523,6 +563,16 @@ export type ItemUpdategoodAgainstInput = {
 }
 
 export type ItemUpdateweakAgainstInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type ItemUpdatecomponentItemKeysInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type ItemUpdatebuildsIntoItemKeysInput = {
   set?: string[]
   push?: string | string[]
 }
@@ -552,6 +602,8 @@ export type ItemCreateWithoutItemPatchStatsInput = {
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemCreateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemCreatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemCreatebuildsIntoItemKeysInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   archivedAt?: Date | string | null
@@ -569,6 +621,8 @@ export type ItemUncheckedCreateWithoutItemPatchStatsInput = {
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemCreateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemCreatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemCreatebuildsIntoItemKeysInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
   archivedAt?: Date | string | null
@@ -602,6 +656,8 @@ export type ItemUpdateWithoutItemPatchStatsInput = {
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemUpdatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemUpdatebuildsIntoItemKeysInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -619,6 +675,8 @@ export type ItemUncheckedUpdateWithoutItemPatchStatsInput = {
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
+  componentItemKeys?: Prisma.ItemUpdatecomponentItemKeysInput | string[]
+  buildsIntoItemKeys?: Prisma.ItemUpdatebuildsIntoItemKeysInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -667,6 +725,8 @@ export type ItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   tags?: boolean
   goodAgainst?: boolean
   weakAgainst?: boolean
+  componentItemKeys?: boolean
+  buildsIntoItemKeys?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   archivedAt?: boolean
@@ -686,6 +746,8 @@ export type ItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   tags?: boolean
   goodAgainst?: boolean
   weakAgainst?: boolean
+  componentItemKeys?: boolean
+  buildsIntoItemKeys?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   archivedAt?: boolean
@@ -703,6 +765,8 @@ export type ItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   tags?: boolean
   goodAgainst?: boolean
   weakAgainst?: boolean
+  componentItemKeys?: boolean
+  buildsIntoItemKeys?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   archivedAt?: boolean
@@ -720,13 +784,15 @@ export type ItemSelectScalar = {
   tags?: boolean
   goodAgainst?: boolean
   weakAgainst?: boolean
+  componentItemKeys?: boolean
+  buildsIntoItemKeys?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   archivedAt?: boolean
   deletedAt?: boolean
 }
 
-export type ItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "name" | "nameVi" | "description" | "descriptionVi" | "category" | "tags" | "goodAgainst" | "weakAgainst" | "createdAt" | "updatedAt" | "archivedAt" | "deletedAt", ExtArgs["result"]["item"]>
+export type ItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "name" | "nameVi" | "description" | "descriptionVi" | "category" | "tags" | "goodAgainst" | "weakAgainst" | "componentItemKeys" | "buildsIntoItemKeys" | "createdAt" | "updatedAt" | "archivedAt" | "deletedAt", ExtArgs["result"]["item"]>
 export type ItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   itemPatchStats?: boolean | Prisma.Item$itemPatchStatsArgs<ExtArgs>
   _count?: boolean | Prisma.ItemCountOutputTypeDefaultArgs<ExtArgs>
@@ -750,6 +816,8 @@ export type $ItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     tags: string[]
     goodAgainst: string[]
     weakAgainst: string[]
+    componentItemKeys: string[]
+    buildsIntoItemKeys: string[]
     createdAt: Date
     updatedAt: Date
     archivedAt: Date | null
@@ -1188,6 +1256,8 @@ export interface ItemFieldRefs {
   readonly tags: Prisma.FieldRef<"Item", 'String[]'>
   readonly goodAgainst: Prisma.FieldRef<"Item", 'String[]'>
   readonly weakAgainst: Prisma.FieldRef<"Item", 'String[]'>
+  readonly componentItemKeys: Prisma.FieldRef<"Item", 'String[]'>
+  readonly buildsIntoItemKeys: Prisma.FieldRef<"Item", 'String[]'>
   readonly createdAt: Prisma.FieldRef<"Item", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Item", 'DateTime'>
   readonly archivedAt: Prisma.FieldRef<"Item", 'DateTime'>

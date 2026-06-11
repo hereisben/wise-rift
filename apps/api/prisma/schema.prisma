@@ -151,21 +151,23 @@ model ChampionSkill {
 }
 
 model Item {
-  id             String          @id @default(cuid())
-  key            String          @unique
-  name           String
-  nameVi         String
-  description    String
-  descriptionVi  String
-  category       String[]
-  tags           String[]
-  goodAgainst    String[]
-  weakAgainst    String[]
-  itemPatchStats ItemPatchStat[]
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  archivedAt     DateTime?
-  deletedAt      DateTime?
+  id                 String          @id @default(cuid())
+  key                String          @unique
+  name               String
+  nameVi             String
+  description        String
+  descriptionVi      String
+  category           String[]
+  tags               String[]
+  goodAgainst        String[]
+  weakAgainst        String[]
+  componentItemKeys  String[]        @default([])
+  buildsIntoItemKeys String[]        @default([])
+  itemPatchStats     ItemPatchStat[]
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+  archivedAt         DateTime?
+  deletedAt          DateTime?
 }
 
 model ItemPatchStat {
@@ -188,12 +190,17 @@ model ItemPatchStat {
   magicPenetration  Float?
   antiHealValue     Float?
   shieldPower       Float?
+  movementSpeed     Float?
+  magicVamp         Float?
+  manaRegen         Float?
+  healShieldPower   Float?
   effectDescription String?
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 
   @@unique([patchId, itemId])
   @@index([itemId])
+  @@index([patchId])
 }
 
 model ChampionPool {

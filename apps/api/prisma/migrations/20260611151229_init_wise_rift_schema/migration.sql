@@ -200,6 +200,8 @@ CREATE TABLE "Item" (
     "tags" TEXT[],
     "goodAgainst" TEXT[],
     "weakAgainst" TEXT[],
+    "componentItemKeys" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "buildsIntoItemKeys" TEXT[] DEFAULT ARRAY[]::TEXT[],
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "archivedAt" TIMESTAMP(3),
@@ -227,6 +229,10 @@ CREATE TABLE "ItemPatchStat" (
     "magicPenetration" DOUBLE PRECISION,
     "antiHealValue" DOUBLE PRECISION,
     "shieldPower" DOUBLE PRECISION,
+    "movementSpeed" DOUBLE PRECISION,
+    "magicVamp" DOUBLE PRECISION,
+    "manaRegen" DOUBLE PRECISION,
+    "healShieldPower" DOUBLE PRECISION,
     "effectDescription" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -646,6 +652,9 @@ CREATE UNIQUE INDEX "Item_key_key" ON "Item"("key");
 
 -- CreateIndex
 CREATE INDEX "ItemPatchStat_itemId_idx" ON "ItemPatchStat"("itemId");
+
+-- CreateIndex
+CREATE INDEX "ItemPatchStat_patchId_idx" ON "ItemPatchStat"("patchId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ItemPatchStat_patchId_itemId_key" ON "ItemPatchStat"("patchId", "itemId");
