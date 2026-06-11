@@ -152,3 +152,8 @@ export type ChampionMatchupProfile = Prisma.ChampionMatchupProfileModel
  * 
  */
 export type ChampionSynergyProfile = Prisma.ChampionSynergyProfileModel
+/**
+ * Model GameTag
+ * 
+ */
+export type GameTag = Prisma.GameTagModel

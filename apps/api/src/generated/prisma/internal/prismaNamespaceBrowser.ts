@@ -77,7 +77,8 @@ export const ModelName = {
   SpellPatchStat: 'SpellPatchStat',
   ChampionBuildProfile: 'ChampionBuildProfile',
   ChampionMatchupProfile: 'ChampionMatchupProfile',
-  ChampionSynergyProfile: 'ChampionSynergyProfile'
+  ChampionSynergyProfile: 'ChampionSynergyProfile',
+  GameTag: 'GameTag'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -131,6 +132,7 @@ export const ChampionScalarFieldEnum = {
   key: 'key',
   name: 'name',
   title: 'title',
+  titleVi: 'titleVi',
   roles: 'roles',
   damageType: 'damageType',
   rangeType: 'rangeType',
@@ -184,9 +186,11 @@ export const ChampionSkillScalarFieldEnum = {
   id: 'id',
   slot: 'slot',
   name: 'name',
+  nameVi: 'nameVi',
   championId: 'championId',
   patchId: 'patchId',
   description: 'description',
+  descriptionVi: 'descriptionVi',
   damageType: 'damageType',
   targetType: 'targetType',
   cooldown: 'cooldown',
@@ -206,6 +210,9 @@ export const ItemScalarFieldEnum = {
   id: 'id',
   key: 'key',
   name: 'name',
+  nameVi: 'nameVi',
+  description: 'description',
+  descriptionVi: 'descriptionVi',
   category: 'category',
   tags: 'tags',
   goodAgainst: 'goodAgainst',
@@ -444,7 +451,9 @@ export const RuneScalarFieldEnum = {
   id: 'id',
   key: 'key',
   name: 'name',
+  nameVi: 'nameVi',
   description: 'description',
+  descriptionVi: 'descriptionVi',
   iconUrl: 'iconUrl',
   path: 'path',
   slot: 'slot',
@@ -518,6 +527,9 @@ export const SpellScalarFieldEnum = {
   id: 'id',
   key: 'key',
   name: 'name',
+  nameVi: 'nameVi',
+  description: 'description',
+  descriptionVi: 'descriptionVi',
   tags: 'tags',
   goodFor: 'goodFor',
   badFor: 'badFor',
@@ -605,6 +617,22 @@ export const ChampionSynergyProfileScalarFieldEnum = {
 } as const
 
 export type ChampionSynergyProfileScalarFieldEnum = (typeof ChampionSynergyProfileScalarFieldEnum)[keyof typeof ChampionSynergyProfileScalarFieldEnum]
+
+
+export const GameTagScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  name: 'name',
+  nameVi: 'nameVi',
+  description: 'description',
+  descriptionVi: 'descriptionVi',
+  category: 'category',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type GameTagScalarFieldEnum = (typeof GameTagScalarFieldEnum)[keyof typeof GameTagScalarFieldEnum]
 
 
 export const SortOrder = {

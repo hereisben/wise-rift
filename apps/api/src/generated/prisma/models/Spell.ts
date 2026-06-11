@@ -28,6 +28,9 @@ export type SpellMinAggregateOutputType = {
   id: string | null
   key: string | null
   name: string | null
+  nameVi: string | null
+  description: string | null
+  descriptionVi: string | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -37,6 +40,9 @@ export type SpellMaxAggregateOutputType = {
   id: string | null
   key: string | null
   name: string | null
+  nameVi: string | null
+  description: string | null
+  descriptionVi: string | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -46,6 +52,9 @@ export type SpellCountAggregateOutputType = {
   id: number
   key: number
   name: number
+  nameVi: number
+  description: number
+  descriptionVi: number
   tags: number
   goodFor: number
   badFor: number
@@ -60,6 +69,9 @@ export type SpellMinAggregateInputType = {
   id?: true
   key?: true
   name?: true
+  nameVi?: true
+  description?: true
+  descriptionVi?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -69,6 +81,9 @@ export type SpellMaxAggregateInputType = {
   id?: true
   key?: true
   name?: true
+  nameVi?: true
+  description?: true
+  descriptionVi?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -78,6 +93,9 @@ export type SpellCountAggregateInputType = {
   id?: true
   key?: true
   name?: true
+  nameVi?: true
+  description?: true
+  descriptionVi?: true
   tags?: true
   goodFor?: true
   badFor?: true
@@ -163,6 +181,9 @@ export type SpellGroupByOutputType = {
   id: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   tags: string[]
   goodFor: string[]
   badFor: string[]
@@ -196,6 +217,9 @@ export type SpellWhereInput = {
   id?: Prisma.StringFilter<"Spell"> | string
   key?: Prisma.StringFilter<"Spell"> | string
   name?: Prisma.StringFilter<"Spell"> | string
+  nameVi?: Prisma.StringFilter<"Spell"> | string
+  description?: Prisma.StringFilter<"Spell"> | string
+  descriptionVi?: Prisma.StringFilter<"Spell"> | string
   tags?: Prisma.StringNullableListFilter<"Spell">
   goodFor?: Prisma.StringNullableListFilter<"Spell">
   badFor?: Prisma.StringNullableListFilter<"Spell">
@@ -209,6 +233,9 @@ export type SpellOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   goodFor?: Prisma.SortOrder
   badFor?: Prisma.SortOrder
@@ -225,6 +252,9 @@ export type SpellWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.SpellWhereInput[]
   NOT?: Prisma.SpellWhereInput | Prisma.SpellWhereInput[]
   name?: Prisma.StringFilter<"Spell"> | string
+  nameVi?: Prisma.StringFilter<"Spell"> | string
+  description?: Prisma.StringFilter<"Spell"> | string
+  descriptionVi?: Prisma.StringFilter<"Spell"> | string
   tags?: Prisma.StringNullableListFilter<"Spell">
   goodFor?: Prisma.StringNullableListFilter<"Spell">
   badFor?: Prisma.StringNullableListFilter<"Spell">
@@ -238,6 +268,9 @@ export type SpellOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   goodFor?: Prisma.SortOrder
   badFor?: Prisma.SortOrder
@@ -256,6 +289,9 @@ export type SpellScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Spell"> | string
   key?: Prisma.StringWithAggregatesFilter<"Spell"> | string
   name?: Prisma.StringWithAggregatesFilter<"Spell"> | string
+  nameVi?: Prisma.StringWithAggregatesFilter<"Spell"> | string
+  description?: Prisma.StringWithAggregatesFilter<"Spell"> | string
+  descriptionVi?: Prisma.StringWithAggregatesFilter<"Spell"> | string
   tags?: Prisma.StringNullableListFilter<"Spell">
   goodFor?: Prisma.StringNullableListFilter<"Spell">
   badFor?: Prisma.StringNullableListFilter<"Spell">
@@ -268,6 +304,9 @@ export type SpellCreateInput = {
   id?: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   tags?: Prisma.SpellCreatetagsInput | string[]
   goodFor?: Prisma.SpellCreategoodForInput | string[]
   badFor?: Prisma.SpellCreatebadForInput | string[]
@@ -281,6 +320,9 @@ export type SpellUncheckedCreateInput = {
   id?: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   tags?: Prisma.SpellCreatetagsInput | string[]
   goodFor?: Prisma.SpellCreategoodForInput | string[]
   badFor?: Prisma.SpellCreatebadForInput | string[]
@@ -294,6 +336,9 @@ export type SpellUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   tags?: Prisma.SpellUpdatetagsInput | string[]
   goodFor?: Prisma.SpellUpdategoodForInput | string[]
   badFor?: Prisma.SpellUpdatebadForInput | string[]
@@ -307,6 +352,9 @@ export type SpellUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   tags?: Prisma.SpellUpdatetagsInput | string[]
   goodFor?: Prisma.SpellUpdategoodForInput | string[]
   badFor?: Prisma.SpellUpdatebadForInput | string[]
@@ -320,6 +368,9 @@ export type SpellCreateManyInput = {
   id?: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   tags?: Prisma.SpellCreatetagsInput | string[]
   goodFor?: Prisma.SpellCreategoodForInput | string[]
   badFor?: Prisma.SpellCreatebadForInput | string[]
@@ -332,6 +383,9 @@ export type SpellUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   tags?: Prisma.SpellUpdatetagsInput | string[]
   goodFor?: Prisma.SpellUpdategoodForInput | string[]
   badFor?: Prisma.SpellUpdatebadForInput | string[]
@@ -344,6 +398,9 @@ export type SpellUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   tags?: Prisma.SpellUpdatetagsInput | string[]
   goodFor?: Prisma.SpellUpdategoodForInput | string[]
   badFor?: Prisma.SpellUpdatebadForInput | string[]
@@ -356,6 +413,9 @@ export type SpellCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   goodFor?: Prisma.SortOrder
   badFor?: Prisma.SortOrder
@@ -368,6 +428,9 @@ export type SpellMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -377,6 +440,9 @@ export type SpellMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -432,6 +498,9 @@ export type SpellCreateWithoutSpellPatchStatsInput = {
   id?: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   tags?: Prisma.SpellCreatetagsInput | string[]
   goodFor?: Prisma.SpellCreategoodForInput | string[]
   badFor?: Prisma.SpellCreatebadForInput | string[]
@@ -444,6 +513,9 @@ export type SpellUncheckedCreateWithoutSpellPatchStatsInput = {
   id?: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   tags?: Prisma.SpellCreatetagsInput | string[]
   goodFor?: Prisma.SpellCreategoodForInput | string[]
   badFor?: Prisma.SpellCreatebadForInput | string[]
@@ -472,6 +544,9 @@ export type SpellUpdateWithoutSpellPatchStatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   tags?: Prisma.SpellUpdatetagsInput | string[]
   goodFor?: Prisma.SpellUpdategoodForInput | string[]
   badFor?: Prisma.SpellUpdatebadForInput | string[]
@@ -484,6 +559,9 @@ export type SpellUncheckedUpdateWithoutSpellPatchStatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   tags?: Prisma.SpellUpdatetagsInput | string[]
   goodFor?: Prisma.SpellUpdategoodForInput | string[]
   badFor?: Prisma.SpellUpdatebadForInput | string[]
@@ -527,6 +605,9 @@ export type SpellSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   key?: boolean
   name?: boolean
+  nameVi?: boolean
+  description?: boolean
+  descriptionVi?: boolean
   tags?: boolean
   goodFor?: boolean
   badFor?: boolean
@@ -541,6 +622,9 @@ export type SpellSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   key?: boolean
   name?: boolean
+  nameVi?: boolean
+  description?: boolean
+  descriptionVi?: boolean
   tags?: boolean
   goodFor?: boolean
   badFor?: boolean
@@ -553,6 +637,9 @@ export type SpellSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   key?: boolean
   name?: boolean
+  nameVi?: boolean
+  description?: boolean
+  descriptionVi?: boolean
   tags?: boolean
   goodFor?: boolean
   badFor?: boolean
@@ -565,6 +652,9 @@ export type SpellSelectScalar = {
   id?: boolean
   key?: boolean
   name?: boolean
+  nameVi?: boolean
+  description?: boolean
+  descriptionVi?: boolean
   tags?: boolean
   goodFor?: boolean
   badFor?: boolean
@@ -573,7 +663,7 @@ export type SpellSelectScalar = {
   deletedAt?: boolean
 }
 
-export type SpellOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "name" | "tags" | "goodFor" | "badFor" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["spell"]>
+export type SpellOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "name" | "nameVi" | "description" | "descriptionVi" | "tags" | "goodFor" | "badFor" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["spell"]>
 export type SpellInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   spellPatchStats?: boolean | Prisma.Spell$spellPatchStatsArgs<ExtArgs>
   _count?: boolean | Prisma.SpellCountOutputTypeDefaultArgs<ExtArgs>
@@ -590,6 +680,9 @@ export type $SpellPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: string
     key: string
     name: string
+    nameVi: string
+    description: string
+    descriptionVi: string
     tags: string[]
     goodFor: string[]
     badFor: string[]
@@ -1023,6 +1116,9 @@ export interface SpellFieldRefs {
   readonly id: Prisma.FieldRef<"Spell", 'String'>
   readonly key: Prisma.FieldRef<"Spell", 'String'>
   readonly name: Prisma.FieldRef<"Spell", 'String'>
+  readonly nameVi: Prisma.FieldRef<"Spell", 'String'>
+  readonly description: Prisma.FieldRef<"Spell", 'String'>
+  readonly descriptionVi: Prisma.FieldRef<"Spell", 'String'>
   readonly tags: Prisma.FieldRef<"Spell", 'String[]'>
   readonly goodFor: Prisma.FieldRef<"Spell", 'String[]'>
   readonly badFor: Prisma.FieldRef<"Spell", 'String[]'>

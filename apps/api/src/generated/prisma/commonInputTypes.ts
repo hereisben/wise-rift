@@ -667,6 +667,23 @@ export type IntWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedIntFilter<$PrismaModel>
 }
 
+export type EnumGameTagCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.GameTagCategory | Prisma.EnumGameTagCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.GameTagCategory[] | Prisma.ListEnumGameTagCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.GameTagCategory[] | Prisma.ListEnumGameTagCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumGameTagCategoryFilter<$PrismaModel> | $Enums.GameTagCategory
+}
+
+export type EnumGameTagCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.GameTagCategory | Prisma.EnumGameTagCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.GameTagCategory[] | Prisma.ListEnumGameTagCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.GameTagCategory[] | Prisma.ListEnumGameTagCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumGameTagCategoryWithAggregatesFilter<$PrismaModel> | $Enums.GameTagCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumGameTagCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumGameTagCategoryFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -1266,6 +1283,23 @@ export type NestedFloatFilter<$PrismaModel = never> = {
   gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
   gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
   not?: Prisma.NestedFloatFilter<$PrismaModel> | number
+}
+
+export type NestedEnumGameTagCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.GameTagCategory | Prisma.EnumGameTagCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.GameTagCategory[] | Prisma.ListEnumGameTagCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.GameTagCategory[] | Prisma.ListEnumGameTagCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumGameTagCategoryFilter<$PrismaModel> | $Enums.GameTagCategory
+}
+
+export type NestedEnumGameTagCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.GameTagCategory | Prisma.EnumGameTagCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.GameTagCategory[] | Prisma.ListEnumGameTagCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.GameTagCategory[] | Prisma.ListEnumGameTagCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumGameTagCategoryWithAggregatesFilter<$PrismaModel> | $Enums.GameTagCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumGameTagCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumGameTagCategoryFilter<$PrismaModel>
 }
 
 

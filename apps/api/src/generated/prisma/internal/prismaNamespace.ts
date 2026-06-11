@@ -410,7 +410,8 @@ export const ModelName = {
   SpellPatchStat: 'SpellPatchStat',
   ChampionBuildProfile: 'ChampionBuildProfile',
   ChampionMatchupProfile: 'ChampionMatchupProfile',
-  ChampionSynergyProfile: 'ChampionSynergyProfile'
+  ChampionSynergyProfile: 'ChampionSynergyProfile',
+  GameTag: 'GameTag'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -426,7 +427,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "patch" | "champion" | "championPatchStat" | "championSkill" | "item" | "itemPatchStat" | "championPool" | "championPoolEntry" | "draftSession" | "draftBan" | "draftPick" | "recommendationResult" | "itemBuildRecommendation" | "matchupNote" | "matchOutcome" | "draftReview" | "aIExplanation" | "rune" | "runePatchStat" | "runeBuildRecommendation" | "runeBuildRecommendationRune" | "spell" | "spellPatchStat" | "championBuildProfile" | "championMatchupProfile" | "championSynergyProfile"
+    modelProps: "user" | "patch" | "champion" | "championPatchStat" | "championSkill" | "item" | "itemPatchStat" | "championPool" | "championPoolEntry" | "draftSession" | "draftBan" | "draftPick" | "recommendationResult" | "itemBuildRecommendation" | "matchupNote" | "matchOutcome" | "draftReview" | "aIExplanation" | "rune" | "runePatchStat" | "runeBuildRecommendation" | "runeBuildRecommendationRune" | "spell" | "spellPatchStat" | "championBuildProfile" | "championMatchupProfile" | "championSynergyProfile" | "gameTag"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2428,6 +2429,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    GameTag: {
+      payload: Prisma.$GameTagPayload<ExtArgs>
+      fields: Prisma.GameTagFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GameTagFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GameTagFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload>
+        }
+        findFirst: {
+          args: Prisma.GameTagFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GameTagFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload>
+        }
+        findMany: {
+          args: Prisma.GameTagFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload>[]
+        }
+        create: {
+          args: Prisma.GameTagCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload>
+        }
+        createMany: {
+          args: Prisma.GameTagCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GameTagCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload>[]
+        }
+        delete: {
+          args: Prisma.GameTagDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload>
+        }
+        update: {
+          args: Prisma.GameTagUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload>
+        }
+        deleteMany: {
+          args: Prisma.GameTagDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GameTagUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GameTagUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload>[]
+        }
+        upsert: {
+          args: Prisma.GameTagUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GameTagPayload>
+        }
+        aggregate: {
+          args: Prisma.GameTagAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGameTag>
+        }
+        groupBy: {
+          args: Prisma.GameTagGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GameTagGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GameTagCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GameTagCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2502,6 +2577,7 @@ export const ChampionScalarFieldEnum = {
   key: 'key',
   name: 'name',
   title: 'title',
+  titleVi: 'titleVi',
   roles: 'roles',
   damageType: 'damageType',
   rangeType: 'rangeType',
@@ -2555,9 +2631,11 @@ export const ChampionSkillScalarFieldEnum = {
   id: 'id',
   slot: 'slot',
   name: 'name',
+  nameVi: 'nameVi',
   championId: 'championId',
   patchId: 'patchId',
   description: 'description',
+  descriptionVi: 'descriptionVi',
   damageType: 'damageType',
   targetType: 'targetType',
   cooldown: 'cooldown',
@@ -2577,6 +2655,9 @@ export const ItemScalarFieldEnum = {
   id: 'id',
   key: 'key',
   name: 'name',
+  nameVi: 'nameVi',
+  description: 'description',
+  descriptionVi: 'descriptionVi',
   category: 'category',
   tags: 'tags',
   goodAgainst: 'goodAgainst',
@@ -2815,7 +2896,9 @@ export const RuneScalarFieldEnum = {
   id: 'id',
   key: 'key',
   name: 'name',
+  nameVi: 'nameVi',
   description: 'description',
+  descriptionVi: 'descriptionVi',
   iconUrl: 'iconUrl',
   path: 'path',
   slot: 'slot',
@@ -2889,6 +2972,9 @@ export const SpellScalarFieldEnum = {
   id: 'id',
   key: 'key',
   name: 'name',
+  nameVi: 'nameVi',
+  description: 'description',
+  descriptionVi: 'descriptionVi',
   tags: 'tags',
   goodFor: 'goodFor',
   badFor: 'badFor',
@@ -2976,6 +3062,22 @@ export const ChampionSynergyProfileScalarFieldEnum = {
 } as const
 
 export type ChampionSynergyProfileScalarFieldEnum = (typeof ChampionSynergyProfileScalarFieldEnum)[keyof typeof ChampionSynergyProfileScalarFieldEnum]
+
+
+export const GameTagScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  name: 'name',
+  nameVi: 'nameVi',
+  description: 'description',
+  descriptionVi: 'descriptionVi',
+  category: 'category',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type GameTagScalarFieldEnum = (typeof GameTagScalarFieldEnum)[keyof typeof GameTagScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -3430,6 +3532,20 @@ export type EnumRunePageSlotTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
 export type ListEnumRunePageSlotTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RunePageSlotType[]'>
     
 
+
+/**
+ * Reference to a field of type 'GameTagCategory'
+ */
+export type EnumGameTagCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GameTagCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'GameTagCategory[]'
+ */
+export type ListEnumGameTagCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GameTagCategory[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -3567,6 +3683,7 @@ export type GlobalOmitConfig = {
   championBuildProfile?: Prisma.ChampionBuildProfileOmit
   championMatchupProfile?: Prisma.ChampionMatchupProfileOmit
   championSynergyProfile?: Prisma.ChampionSynergyProfileOmit
+  gameTag?: Prisma.GameTagOmit
 }
 
 /* Types for Logging */

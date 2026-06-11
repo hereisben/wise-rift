@@ -21,6 +21,24 @@ export const GameRole = {
 export type GameRole = (typeof GameRole)[keyof typeof GameRole]
 
 
+export const GameTagCategory = {
+  CHAMPION: 'CHAMPION',
+  SKILL: 'SKILL',
+  ITEM: 'ITEM',
+  RUNE: 'RUNE',
+  SPELL: 'SPELL',
+  SCORING: 'SCORING',
+  PLAYSTYLE: 'PLAYSTYLE',
+  TEAM_COMP: 'TEAM_COMP',
+  MATCHUP: 'MATCHUP',
+  BUILD: 'BUILD',
+  COUNTER: 'COUNTER',
+  GENERAL: 'GENERAL'
+} as const
+
+export type GameTagCategory = (typeof GameTagCategory)[keyof typeof GameTagCategory]
+
+
 export const SkillSlot = {
   PASSIVE: 'PASSIVE',
   Q: 'Q',

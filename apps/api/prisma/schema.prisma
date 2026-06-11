@@ -60,6 +60,7 @@ model Champion {
   key                      String                    @unique
   name                     String
   title                    String?
+  titleVi                  String?
   roles                    GameRole[]
   damageType               String
   rangeType                String
@@ -123,24 +124,26 @@ model ChampionPatchStat {
 }
 
 model ChampionSkill {
-  id          String        @id @default(cuid())
-  slot        SkillSlot
-  name        String
-  championId  String
-  champion    Champion      @relation(fields: [championId], references: [id])
-  patchId     String
-  patch       Patch         @relation(fields: [patchId], references: [id])
-  description String
-  damageType  DamageType
-  targetType  TargetType
-  cooldown    Json?
-  cost        Json?
-  range       Json?
-  scaling     Json?
-  effects     SkillEffect[]
-  tags        String[]
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  id            String        @id @default(cuid())
+  slot          SkillSlot
+  name          String
+  nameVi        String
+  championId    String
+  champion      Champion      @relation(fields: [championId], references: [id])
+  patchId       String
+  patch         Patch         @relation(fields: [patchId], references: [id])
+  description   String
+  descriptionVi String
+  damageType    DamageType
+  targetType    TargetType
+  cooldown      Json?
+  cost          Json?
+  range         Json?
+  scaling       Json?
+  effects       SkillEffect[]
+  tags          String[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
 
   @@unique([championId, patchId, slot])
   @@index([championId])
@@ -151,6 +154,9 @@ model Item {
   id             String          @id @default(cuid())
   key            String          @unique
   name           String
+  nameVi         String
+  description    String
+  descriptionVi  String
   category       String[]
   tags           String[]
   goodAgainst    String[]
@@ -458,7 +464,9 @@ model Rune {
   id                           String                        @id @default(cuid())
   key                          String                        @unique
   name                         String
+  nameVi                       String
   description                  String?
+  descriptionVi                String
   iconUrl                      String?
   path                         RunePath
   slot                         RuneSlot
@@ -563,6 +571,9 @@ model Spell {
   id              String           @id @default(cuid())
   key             String           @unique
   name            String
+  nameVi          String
+  description     String
+  descriptionVi   String
   tags            String[]
   goodFor         String[]
   badFor          String[]
@@ -678,6 +689,36 @@ model ChampionSynergyProfile {
   @@index([patchId])
   @@index([role])
   @@index([championId, patchId, role])
+}
+
+model GameTag {
+  id            String          @id @default(cuid())
+  key           String          @unique
+  name          String
+  nameVi        String
+  description   String
+  descriptionVi String
+  category      GameTagCategory
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  deletedAt     DateTime?
+
+  @@index([category])
+}
+
+enum GameTagCategory {
+  CHAMPION
+  SKILL
+  ITEM
+  RUNE
+  SPELL
+  SCORING
+  PLAYSTYLE
+  TEAM_COMP
+  MATCHUP
+  BUILD
+  COUNTER
+  GENERAL
 }
 
 enum SkillSlot {

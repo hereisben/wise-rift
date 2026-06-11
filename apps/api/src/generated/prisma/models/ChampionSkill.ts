@@ -28,9 +28,11 @@ export type ChampionSkillMinAggregateOutputType = {
   id: string | null
   slot: $Enums.SkillSlot | null
   name: string | null
+  nameVi: string | null
   championId: string | null
   patchId: string | null
   description: string | null
+  descriptionVi: string | null
   damageType: $Enums.DamageType | null
   targetType: $Enums.TargetType | null
   createdAt: Date | null
@@ -41,9 +43,11 @@ export type ChampionSkillMaxAggregateOutputType = {
   id: string | null
   slot: $Enums.SkillSlot | null
   name: string | null
+  nameVi: string | null
   championId: string | null
   patchId: string | null
   description: string | null
+  descriptionVi: string | null
   damageType: $Enums.DamageType | null
   targetType: $Enums.TargetType | null
   createdAt: Date | null
@@ -54,9 +58,11 @@ export type ChampionSkillCountAggregateOutputType = {
   id: number
   slot: number
   name: number
+  nameVi: number
   championId: number
   patchId: number
   description: number
+  descriptionVi: number
   damageType: number
   targetType: number
   cooldown: number
@@ -75,9 +81,11 @@ export type ChampionSkillMinAggregateInputType = {
   id?: true
   slot?: true
   name?: true
+  nameVi?: true
   championId?: true
   patchId?: true
   description?: true
+  descriptionVi?: true
   damageType?: true
   targetType?: true
   createdAt?: true
@@ -88,9 +96,11 @@ export type ChampionSkillMaxAggregateInputType = {
   id?: true
   slot?: true
   name?: true
+  nameVi?: true
   championId?: true
   patchId?: true
   description?: true
+  descriptionVi?: true
   damageType?: true
   targetType?: true
   createdAt?: true
@@ -101,9 +111,11 @@ export type ChampionSkillCountAggregateInputType = {
   id?: true
   slot?: true
   name?: true
+  nameVi?: true
   championId?: true
   patchId?: true
   description?: true
+  descriptionVi?: true
   damageType?: true
   targetType?: true
   cooldown?: true
@@ -193,9 +205,11 @@ export type ChampionSkillGroupByOutputType = {
   id: string
   slot: $Enums.SkillSlot
   name: string
+  nameVi: string
   championId: string
   patchId: string
   description: string
+  descriptionVi: string
   damageType: $Enums.DamageType
   targetType: $Enums.TargetType
   cooldown: runtime.JsonValue | null
@@ -233,9 +247,11 @@ export type ChampionSkillWhereInput = {
   id?: Prisma.StringFilter<"ChampionSkill"> | string
   slot?: Prisma.EnumSkillSlotFilter<"ChampionSkill"> | $Enums.SkillSlot
   name?: Prisma.StringFilter<"ChampionSkill"> | string
+  nameVi?: Prisma.StringFilter<"ChampionSkill"> | string
   championId?: Prisma.StringFilter<"ChampionSkill"> | string
   patchId?: Prisma.StringFilter<"ChampionSkill"> | string
   description?: Prisma.StringFilter<"ChampionSkill"> | string
+  descriptionVi?: Prisma.StringFilter<"ChampionSkill"> | string
   damageType?: Prisma.EnumDamageTypeFilter<"ChampionSkill"> | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFilter<"ChampionSkill"> | $Enums.TargetType
   cooldown?: Prisma.JsonNullableFilter<"ChampionSkill">
@@ -254,9 +270,11 @@ export type ChampionSkillOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   slot?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
   championId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   damageType?: Prisma.SortOrder
   targetType?: Prisma.SortOrder
   cooldown?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -279,9 +297,11 @@ export type ChampionSkillWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ChampionSkillWhereInput | Prisma.ChampionSkillWhereInput[]
   slot?: Prisma.EnumSkillSlotFilter<"ChampionSkill"> | $Enums.SkillSlot
   name?: Prisma.StringFilter<"ChampionSkill"> | string
+  nameVi?: Prisma.StringFilter<"ChampionSkill"> | string
   championId?: Prisma.StringFilter<"ChampionSkill"> | string
   patchId?: Prisma.StringFilter<"ChampionSkill"> | string
   description?: Prisma.StringFilter<"ChampionSkill"> | string
+  descriptionVi?: Prisma.StringFilter<"ChampionSkill"> | string
   damageType?: Prisma.EnumDamageTypeFilter<"ChampionSkill"> | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFilter<"ChampionSkill"> | $Enums.TargetType
   cooldown?: Prisma.JsonNullableFilter<"ChampionSkill">
@@ -300,9 +320,11 @@ export type ChampionSkillOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   slot?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
   championId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   damageType?: Prisma.SortOrder
   targetType?: Prisma.SortOrder
   cooldown?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -325,9 +347,11 @@ export type ChampionSkillScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"ChampionSkill"> | string
   slot?: Prisma.EnumSkillSlotWithAggregatesFilter<"ChampionSkill"> | $Enums.SkillSlot
   name?: Prisma.StringWithAggregatesFilter<"ChampionSkill"> | string
+  nameVi?: Prisma.StringWithAggregatesFilter<"ChampionSkill"> | string
   championId?: Prisma.StringWithAggregatesFilter<"ChampionSkill"> | string
   patchId?: Prisma.StringWithAggregatesFilter<"ChampionSkill"> | string
   description?: Prisma.StringWithAggregatesFilter<"ChampionSkill"> | string
+  descriptionVi?: Prisma.StringWithAggregatesFilter<"ChampionSkill"> | string
   damageType?: Prisma.EnumDamageTypeWithAggregatesFilter<"ChampionSkill"> | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeWithAggregatesFilter<"ChampionSkill"> | $Enums.TargetType
   cooldown?: Prisma.JsonNullableWithAggregatesFilter<"ChampionSkill">
@@ -344,7 +368,9 @@ export type ChampionSkillCreateInput = {
   id?: string
   slot: $Enums.SkillSlot
   name: string
+  nameVi: string
   description: string
+  descriptionVi: string
   damageType: $Enums.DamageType
   targetType: $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -363,9 +389,11 @@ export type ChampionSkillUncheckedCreateInput = {
   id?: string
   slot: $Enums.SkillSlot
   name: string
+  nameVi: string
   championId: string
   patchId: string
   description: string
+  descriptionVi: string
   damageType: $Enums.DamageType
   targetType: $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -382,7 +410,9 @@ export type ChampionSkillUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slot?: Prisma.EnumSkillSlotFieldUpdateOperationsInput | $Enums.SkillSlot
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   damageType?: Prisma.EnumDamageTypeFieldUpdateOperationsInput | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -401,9 +431,11 @@ export type ChampionSkillUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slot?: Prisma.EnumSkillSlotFieldUpdateOperationsInput | $Enums.SkillSlot
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   championId?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   damageType?: Prisma.EnumDamageTypeFieldUpdateOperationsInput | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -420,9 +452,11 @@ export type ChampionSkillCreateManyInput = {
   id?: string
   slot: $Enums.SkillSlot
   name: string
+  nameVi: string
   championId: string
   patchId: string
   description: string
+  descriptionVi: string
   damageType: $Enums.DamageType
   targetType: $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -439,7 +473,9 @@ export type ChampionSkillUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slot?: Prisma.EnumSkillSlotFieldUpdateOperationsInput | $Enums.SkillSlot
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   damageType?: Prisma.EnumDamageTypeFieldUpdateOperationsInput | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -456,9 +492,11 @@ export type ChampionSkillUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slot?: Prisma.EnumSkillSlotFieldUpdateOperationsInput | $Enums.SkillSlot
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   championId?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   damageType?: Prisma.EnumDamageTypeFieldUpdateOperationsInput | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -499,9 +537,11 @@ export type ChampionSkillCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   slot?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
   championId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   damageType?: Prisma.SortOrder
   targetType?: Prisma.SortOrder
   cooldown?: Prisma.SortOrder
@@ -518,9 +558,11 @@ export type ChampionSkillMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   slot?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
   championId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   damageType?: Prisma.SortOrder
   targetType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -531,9 +573,11 @@ export type ChampionSkillMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   slot?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
   championId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   damageType?: Prisma.SortOrder
   targetType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -658,7 +702,9 @@ export type ChampionSkillCreateWithoutPatchInput = {
   id?: string
   slot: $Enums.SkillSlot
   name: string
+  nameVi: string
   description: string
+  descriptionVi: string
   damageType: $Enums.DamageType
   targetType: $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -676,8 +722,10 @@ export type ChampionSkillUncheckedCreateWithoutPatchInput = {
   id?: string
   slot: $Enums.SkillSlot
   name: string
+  nameVi: string
   championId: string
   description: string
+  descriptionVi: string
   damageType: $Enums.DamageType
   targetType: $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -723,9 +771,11 @@ export type ChampionSkillScalarWhereInput = {
   id?: Prisma.StringFilter<"ChampionSkill"> | string
   slot?: Prisma.EnumSkillSlotFilter<"ChampionSkill"> | $Enums.SkillSlot
   name?: Prisma.StringFilter<"ChampionSkill"> | string
+  nameVi?: Prisma.StringFilter<"ChampionSkill"> | string
   championId?: Prisma.StringFilter<"ChampionSkill"> | string
   patchId?: Prisma.StringFilter<"ChampionSkill"> | string
   description?: Prisma.StringFilter<"ChampionSkill"> | string
+  descriptionVi?: Prisma.StringFilter<"ChampionSkill"> | string
   damageType?: Prisma.EnumDamageTypeFilter<"ChampionSkill"> | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFilter<"ChampionSkill"> | $Enums.TargetType
   cooldown?: Prisma.JsonNullableFilter<"ChampionSkill">
@@ -742,7 +792,9 @@ export type ChampionSkillCreateWithoutChampionInput = {
   id?: string
   slot: $Enums.SkillSlot
   name: string
+  nameVi: string
   description: string
+  descriptionVi: string
   damageType: $Enums.DamageType
   targetType: $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -760,8 +812,10 @@ export type ChampionSkillUncheckedCreateWithoutChampionInput = {
   id?: string
   slot: $Enums.SkillSlot
   name: string
+  nameVi: string
   patchId: string
   description: string
+  descriptionVi: string
   damageType: $Enums.DamageType
   targetType: $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -804,8 +858,10 @@ export type ChampionSkillCreateManyPatchInput = {
   id?: string
   slot: $Enums.SkillSlot
   name: string
+  nameVi: string
   championId: string
   description: string
+  descriptionVi: string
   damageType: $Enums.DamageType
   targetType: $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -822,7 +878,9 @@ export type ChampionSkillUpdateWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slot?: Prisma.EnumSkillSlotFieldUpdateOperationsInput | $Enums.SkillSlot
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   damageType?: Prisma.EnumDamageTypeFieldUpdateOperationsInput | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -840,8 +898,10 @@ export type ChampionSkillUncheckedUpdateWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slot?: Prisma.EnumSkillSlotFieldUpdateOperationsInput | $Enums.SkillSlot
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   championId?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   damageType?: Prisma.EnumDamageTypeFieldUpdateOperationsInput | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -858,8 +918,10 @@ export type ChampionSkillUncheckedUpdateManyWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slot?: Prisma.EnumSkillSlotFieldUpdateOperationsInput | $Enums.SkillSlot
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   championId?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   damageType?: Prisma.EnumDamageTypeFieldUpdateOperationsInput | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -876,8 +938,10 @@ export type ChampionSkillCreateManyChampionInput = {
   id?: string
   slot: $Enums.SkillSlot
   name: string
+  nameVi: string
   patchId: string
   description: string
+  descriptionVi: string
   damageType: $Enums.DamageType
   targetType: $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -894,7 +958,9 @@ export type ChampionSkillUpdateWithoutChampionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slot?: Prisma.EnumSkillSlotFieldUpdateOperationsInput | $Enums.SkillSlot
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   damageType?: Prisma.EnumDamageTypeFieldUpdateOperationsInput | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -912,8 +978,10 @@ export type ChampionSkillUncheckedUpdateWithoutChampionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slot?: Prisma.EnumSkillSlotFieldUpdateOperationsInput | $Enums.SkillSlot
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   damageType?: Prisma.EnumDamageTypeFieldUpdateOperationsInput | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -930,8 +998,10 @@ export type ChampionSkillUncheckedUpdateManyWithoutChampionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   slot?: Prisma.EnumSkillSlotFieldUpdateOperationsInput | $Enums.SkillSlot
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   damageType?: Prisma.EnumDamageTypeFieldUpdateOperationsInput | $Enums.DamageType
   targetType?: Prisma.EnumTargetTypeFieldUpdateOperationsInput | $Enums.TargetType
   cooldown?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -950,9 +1020,11 @@ export type ChampionSkillSelect<ExtArgs extends runtime.Types.Extensions.Interna
   id?: boolean
   slot?: boolean
   name?: boolean
+  nameVi?: boolean
   championId?: boolean
   patchId?: boolean
   description?: boolean
+  descriptionVi?: boolean
   damageType?: boolean
   targetType?: boolean
   cooldown?: boolean
@@ -971,9 +1043,11 @@ export type ChampionSkillSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   id?: boolean
   slot?: boolean
   name?: boolean
+  nameVi?: boolean
   championId?: boolean
   patchId?: boolean
   description?: boolean
+  descriptionVi?: boolean
   damageType?: boolean
   targetType?: boolean
   cooldown?: boolean
@@ -992,9 +1066,11 @@ export type ChampionSkillSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   id?: boolean
   slot?: boolean
   name?: boolean
+  nameVi?: boolean
   championId?: boolean
   patchId?: boolean
   description?: boolean
+  descriptionVi?: boolean
   damageType?: boolean
   targetType?: boolean
   cooldown?: boolean
@@ -1013,9 +1089,11 @@ export type ChampionSkillSelectScalar = {
   id?: boolean
   slot?: boolean
   name?: boolean
+  nameVi?: boolean
   championId?: boolean
   patchId?: boolean
   description?: boolean
+  descriptionVi?: boolean
   damageType?: boolean
   targetType?: boolean
   cooldown?: boolean
@@ -1028,7 +1106,7 @@ export type ChampionSkillSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ChampionSkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slot" | "name" | "championId" | "patchId" | "description" | "damageType" | "targetType" | "cooldown" | "cost" | "range" | "scaling" | "effects" | "tags" | "createdAt" | "updatedAt", ExtArgs["result"]["championSkill"]>
+export type ChampionSkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slot" | "name" | "nameVi" | "championId" | "patchId" | "description" | "descriptionVi" | "damageType" | "targetType" | "cooldown" | "cost" | "range" | "scaling" | "effects" | "tags" | "createdAt" | "updatedAt", ExtArgs["result"]["championSkill"]>
 export type ChampionSkillInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -1052,9 +1130,11 @@ export type $ChampionSkillPayload<ExtArgs extends runtime.Types.Extensions.Inter
     id: string
     slot: $Enums.SkillSlot
     name: string
+    nameVi: string
     championId: string
     patchId: string
     description: string
+    descriptionVi: string
     damageType: $Enums.DamageType
     targetType: $Enums.TargetType
     cooldown: runtime.JsonValue | null
@@ -1493,9 +1573,11 @@ export interface ChampionSkillFieldRefs {
   readonly id: Prisma.FieldRef<"ChampionSkill", 'String'>
   readonly slot: Prisma.FieldRef<"ChampionSkill", 'SkillSlot'>
   readonly name: Prisma.FieldRef<"ChampionSkill", 'String'>
+  readonly nameVi: Prisma.FieldRef<"ChampionSkill", 'String'>
   readonly championId: Prisma.FieldRef<"ChampionSkill", 'String'>
   readonly patchId: Prisma.FieldRef<"ChampionSkill", 'String'>
   readonly description: Prisma.FieldRef<"ChampionSkill", 'String'>
+  readonly descriptionVi: Prisma.FieldRef<"ChampionSkill", 'String'>
   readonly damageType: Prisma.FieldRef<"ChampionSkill", 'DamageType'>
   readonly targetType: Prisma.FieldRef<"ChampionSkill", 'TargetType'>
   readonly cooldown: Prisma.FieldRef<"ChampionSkill", 'Json'>

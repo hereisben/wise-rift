@@ -28,6 +28,9 @@ export type ItemMinAggregateOutputType = {
   id: string | null
   key: string | null
   name: string | null
+  nameVi: string | null
+  description: string | null
+  descriptionVi: string | null
   createdAt: Date | null
   updatedAt: Date | null
   archivedAt: Date | null
@@ -38,6 +41,9 @@ export type ItemMaxAggregateOutputType = {
   id: string | null
   key: string | null
   name: string | null
+  nameVi: string | null
+  description: string | null
+  descriptionVi: string | null
   createdAt: Date | null
   updatedAt: Date | null
   archivedAt: Date | null
@@ -48,6 +54,9 @@ export type ItemCountAggregateOutputType = {
   id: number
   key: number
   name: number
+  nameVi: number
+  description: number
+  descriptionVi: number
   category: number
   tags: number
   goodAgainst: number
@@ -64,6 +73,9 @@ export type ItemMinAggregateInputType = {
   id?: true
   key?: true
   name?: true
+  nameVi?: true
+  description?: true
+  descriptionVi?: true
   createdAt?: true
   updatedAt?: true
   archivedAt?: true
@@ -74,6 +86,9 @@ export type ItemMaxAggregateInputType = {
   id?: true
   key?: true
   name?: true
+  nameVi?: true
+  description?: true
+  descriptionVi?: true
   createdAt?: true
   updatedAt?: true
   archivedAt?: true
@@ -84,6 +99,9 @@ export type ItemCountAggregateInputType = {
   id?: true
   key?: true
   name?: true
+  nameVi?: true
+  description?: true
+  descriptionVi?: true
   category?: true
   tags?: true
   goodAgainst?: true
@@ -171,6 +189,9 @@ export type ItemGroupByOutputType = {
   id: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   category: string[]
   tags: string[]
   goodAgainst: string[]
@@ -206,6 +227,9 @@ export type ItemWhereInput = {
   id?: Prisma.StringFilter<"Item"> | string
   key?: Prisma.StringFilter<"Item"> | string
   name?: Prisma.StringFilter<"Item"> | string
+  nameVi?: Prisma.StringFilter<"Item"> | string
+  description?: Prisma.StringFilter<"Item"> | string
+  descriptionVi?: Prisma.StringFilter<"Item"> | string
   category?: Prisma.StringNullableListFilter<"Item">
   tags?: Prisma.StringNullableListFilter<"Item">
   goodAgainst?: Prisma.StringNullableListFilter<"Item">
@@ -221,6 +245,9 @@ export type ItemOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   category?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   goodAgainst?: Prisma.SortOrder
@@ -239,6 +266,9 @@ export type ItemWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ItemWhereInput[]
   NOT?: Prisma.ItemWhereInput | Prisma.ItemWhereInput[]
   name?: Prisma.StringFilter<"Item"> | string
+  nameVi?: Prisma.StringFilter<"Item"> | string
+  description?: Prisma.StringFilter<"Item"> | string
+  descriptionVi?: Prisma.StringFilter<"Item"> | string
   category?: Prisma.StringNullableListFilter<"Item">
   tags?: Prisma.StringNullableListFilter<"Item">
   goodAgainst?: Prisma.StringNullableListFilter<"Item">
@@ -254,6 +284,9 @@ export type ItemOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   category?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   goodAgainst?: Prisma.SortOrder
@@ -274,6 +307,9 @@ export type ItemScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Item"> | string
   key?: Prisma.StringWithAggregatesFilter<"Item"> | string
   name?: Prisma.StringWithAggregatesFilter<"Item"> | string
+  nameVi?: Prisma.StringWithAggregatesFilter<"Item"> | string
+  description?: Prisma.StringWithAggregatesFilter<"Item"> | string
+  descriptionVi?: Prisma.StringWithAggregatesFilter<"Item"> | string
   category?: Prisma.StringNullableListFilter<"Item">
   tags?: Prisma.StringNullableListFilter<"Item">
   goodAgainst?: Prisma.StringNullableListFilter<"Item">
@@ -288,6 +324,9 @@ export type ItemCreateInput = {
   id?: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   category?: Prisma.ItemCreatecategoryInput | string[]
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
@@ -303,6 +342,9 @@ export type ItemUncheckedCreateInput = {
   id?: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   category?: Prisma.ItemCreatecategoryInput | string[]
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
@@ -318,6 +360,9 @@ export type ItemUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.ItemUpdatecategoryInput | string[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
@@ -333,6 +378,9 @@ export type ItemUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.ItemUpdatecategoryInput | string[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
@@ -348,6 +396,9 @@ export type ItemCreateManyInput = {
   id?: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   category?: Prisma.ItemCreatecategoryInput | string[]
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
@@ -362,6 +413,9 @@ export type ItemUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.ItemUpdatecategoryInput | string[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
@@ -376,6 +430,9 @@ export type ItemUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.ItemUpdatecategoryInput | string[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
@@ -390,6 +447,9 @@ export type ItemCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   category?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   goodAgainst?: Prisma.SortOrder
@@ -404,6 +464,9 @@ export type ItemMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   archivedAt?: Prisma.SortOrder
@@ -414,6 +477,9 @@ export type ItemMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameVi?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  descriptionVi?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   archivedAt?: Prisma.SortOrder
@@ -479,6 +545,9 @@ export type ItemCreateWithoutItemPatchStatsInput = {
   id?: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   category?: Prisma.ItemCreatecategoryInput | string[]
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
@@ -493,6 +562,9 @@ export type ItemUncheckedCreateWithoutItemPatchStatsInput = {
   id?: string
   key: string
   name: string
+  nameVi: string
+  description: string
+  descriptionVi: string
   category?: Prisma.ItemCreatecategoryInput | string[]
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
@@ -523,6 +595,9 @@ export type ItemUpdateWithoutItemPatchStatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.ItemUpdatecategoryInput | string[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
@@ -537,6 +612,9 @@ export type ItemUncheckedUpdateWithoutItemPatchStatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameVi?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.ItemUpdatecategoryInput | string[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
@@ -582,6 +660,9 @@ export type ItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   id?: boolean
   key?: boolean
   name?: boolean
+  nameVi?: boolean
+  description?: boolean
+  descriptionVi?: boolean
   category?: boolean
   tags?: boolean
   goodAgainst?: boolean
@@ -598,6 +679,9 @@ export type ItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   key?: boolean
   name?: boolean
+  nameVi?: boolean
+  description?: boolean
+  descriptionVi?: boolean
   category?: boolean
   tags?: boolean
   goodAgainst?: boolean
@@ -612,6 +696,9 @@ export type ItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   key?: boolean
   name?: boolean
+  nameVi?: boolean
+  description?: boolean
+  descriptionVi?: boolean
   category?: boolean
   tags?: boolean
   goodAgainst?: boolean
@@ -626,6 +713,9 @@ export type ItemSelectScalar = {
   id?: boolean
   key?: boolean
   name?: boolean
+  nameVi?: boolean
+  description?: boolean
+  descriptionVi?: boolean
   category?: boolean
   tags?: boolean
   goodAgainst?: boolean
@@ -636,7 +726,7 @@ export type ItemSelectScalar = {
   deletedAt?: boolean
 }
 
-export type ItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "name" | "category" | "tags" | "goodAgainst" | "weakAgainst" | "createdAt" | "updatedAt" | "archivedAt" | "deletedAt", ExtArgs["result"]["item"]>
+export type ItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "name" | "nameVi" | "description" | "descriptionVi" | "category" | "tags" | "goodAgainst" | "weakAgainst" | "createdAt" | "updatedAt" | "archivedAt" | "deletedAt", ExtArgs["result"]["item"]>
 export type ItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   itemPatchStats?: boolean | Prisma.Item$itemPatchStatsArgs<ExtArgs>
   _count?: boolean | Prisma.ItemCountOutputTypeDefaultArgs<ExtArgs>
@@ -653,6 +743,9 @@ export type $ItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     id: string
     key: string
     name: string
+    nameVi: string
+    description: string
+    descriptionVi: string
     category: string[]
     tags: string[]
     goodAgainst: string[]
@@ -1088,6 +1181,9 @@ export interface ItemFieldRefs {
   readonly id: Prisma.FieldRef<"Item", 'String'>
   readonly key: Prisma.FieldRef<"Item", 'String'>
   readonly name: Prisma.FieldRef<"Item", 'String'>
+  readonly nameVi: Prisma.FieldRef<"Item", 'String'>
+  readonly description: Prisma.FieldRef<"Item", 'String'>
+  readonly descriptionVi: Prisma.FieldRef<"Item", 'String'>
   readonly category: Prisma.FieldRef<"Item", 'String[]'>
   readonly tags: Prisma.FieldRef<"Item", 'String[]'>
   readonly goodAgainst: Prisma.FieldRef<"Item", 'String[]'>
