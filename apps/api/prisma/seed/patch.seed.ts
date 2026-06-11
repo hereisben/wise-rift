@@ -1,20 +1,39 @@
 import { PrismaClient } from '../../src/generated/prisma/client.js';
 
 export async function seedPatch(prisma: PrismaClient) {
+  await prisma.patch.deleteMany({
+    where: {
+      version: {
+        not: '7.1',
+      },
+    },
+  });
+
   const patch = await prisma.patch.upsert({
     where: {
-      version: `6.1`,
+      version: `7.1`,
     },
     update: {
-      name: `MVP Test Patch`,
+      name: `Patch 7.1`,
       isActive: true,
-      releasedAt: new Date('2026-06-10T00:00:00.000Z'),
+      releasedAt: new Date('2026-06-11T00:00:00.000Z'),
     },
     create: {
-      version: `6.1`,
-      name: 'MVP Test Patch',
+      version: `7.1`,
+      name: 'Patch 7.1',
       isActive: true,
-      releasedAt: new Date('2026-06-10T00:00:00.000Z'),
+      releasedAt: new Date('2026-06-11T00:00:00.000Z'),
+    },
+  });
+
+  await prisma.patch.updateMany({
+    where: {
+      version: {
+        not: '7.1',
+      },
+    },
+    data: {
+      isActive: false,
     },
   });
 
