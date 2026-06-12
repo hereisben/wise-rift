@@ -682,7 +682,7 @@ const itemSeeds: ItemSeed[] = [
       'Vũ Khí Chết Chóc: Gây sát thương bằng kỹ năng lên tướng địch làm giảm lượng lá chắn chúng nhận được trong 3 giây. Khi gây sát thương lên kẻ địch chưa bị tác động, lá chắn hiện có của chúng cũng bị giảm.',
     category: ['HIGH_TIER', 'MAGIC'],
     tags: ['ABILITY_POWER', 'HEALTH', 'MAGIC_PENETRATION', 'ANTI_SHIELD'],
-    goodAgainst: ['SHIELDING', 'ENCHANTER', 'BARRIER'],
+    goodAgainst: ['SHIELDING', 'ENCHANTER'],
     weakAgainst: ['NO_SHIELD_TEAM'],
     componentItemKeys: ['blasting-wand', 'haunting-guise'],
   },

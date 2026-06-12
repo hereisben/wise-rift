@@ -21,7 +21,7 @@ function createTag(
     name,
     nameVi,
     description: `Tag used for ${name.toLowerCase()} classification`,
-    descriptionVi: `Tag dùng để phân loại ${name.toLowerCase()}`,
+    descriptionVi: `Tag dùng để phân loại ${nameVi.toLowerCase()}`,
     category,
   };
 }
@@ -271,7 +271,6 @@ const gameTagSeeds: GameTagSeed[] = [
   ),
   createTag('HEALING', 'Healing', 'Hồi máu', GameTagCategory.MATCHUP),
   createTag('ENCHANTER', 'Enchanter', 'Hỗ trợ buff', GameTagCategory.MATCHUP),
-  createTag('BARRIER', 'Barrier', 'Lá chắn', GameTagCategory.MATCHUP),
   createTag('SHIELDING', 'Shielding', 'Tạo lá chắn', GameTagCategory.MATCHUP),
   createTag(
     'NO_HEALING_TEAM',
@@ -442,6 +441,140 @@ const gameTagSeeds: GameTagSeed[] = [
     GameTagCategory.TEAM_COMP,
   ),
 
+  // SPELL / SUMMONER SPELL TAGS
+  createTag('CHASE', 'Chase', 'Truy đuổi', GameTagCategory.SPELL),
+  createTag('ESCAPE', 'Escape', 'Thoát thân', GameTagCategory.SPELL),
+  createTag('UTILITY', 'Utility', 'Đa dụng', GameTagCategory.SPELL),
+  createTag('SHIELD', 'Shield', 'Lá chắn', GameTagCategory.SPELL),
+  createTag('DEFENSE', 'Defense', 'Phòng thủ', GameTagCategory.SPELL),
+  createTag('CLEANSE', 'Cleanse', 'Thanh tẩy', GameTagCategory.SPELL),
+  createTag('JUNGLE', 'Jungle', 'Đi rừng', GameTagCategory.SPELL),
+  createTag('PLAYMAKING', 'Playmaking', 'Tạo đột biến', GameTagCategory.SPELL),
+
+  createTag('ROAMING', 'Roaming', 'Đảo đường', GameTagCategory.TEAM_COMP),
+  createTag('DUO_LANE', 'Duo Lane', 'Đường đôi', GameTagCategory.TEAM_COMP),
+  createTag(
+    'SURVIVABILITY',
+    'Survivability',
+    'Khả năng sống sót',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag(
+    'TEAM_SUPPORT',
+    'Team Support',
+    'Hỗ trợ đồng đội',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag(
+    'LANE_SURVIVAL',
+    'Lane Survival',
+    'Sống sót khi đi đường',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag('PEEL', 'Peel', 'Bảo kê', GameTagCategory.TEAM_COMP),
+  createTag(
+    'KILL_PRESSURE',
+    'Kill Pressure',
+    'Áp lực hạ gục',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag(
+    'LANE_KILL_PRESSURE',
+    'Lane Kill Pressure',
+    'Áp lực hạ gục khi đi đường',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag(
+    'OBJECTIVE_CONTROL',
+    'Objective Control',
+    'Kiểm soát mục tiêu',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag(
+    'JUNGLE_CLEAR',
+    'Jungle Clear',
+    'Dọn rừng',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag(
+    'NON_JUNGLE_ROLE',
+    'Non Jungle Role',
+    'Không phải vai trò đi rừng',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag(
+    'MAP_PRESSURE',
+    'Map Pressure',
+    'Áp lực bản đồ',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag('MACRO', 'Macro', 'Tư duy bản đồ', GameTagCategory.TEAM_COMP),
+  createTag('SPLIT_PUSH', 'Split Push', 'Đẩy lẻ', GameTagCategory.TEAM_COMP),
+  createTag('SIDE_LANE', 'Side Lane', 'Đường cánh', GameTagCategory.TEAM_COMP),
+  createTag(
+    'EARLY_COMBAT',
+    'Early Combat',
+    'Giao tranh sớm',
+    GameTagCategory.TEAM_COMP,
+  ),
+
+  createTag(
+    'BURST_PROTECTION',
+    'Burst Protection',
+    'Chống dồn sát thương',
+    GameTagCategory.COUNTER,
+  ),
+  createTag(
+    'DAMAGE_REDUCTION',
+    'Damage Reduction',
+    'Giảm sát thương',
+    GameTagCategory.COUNTER,
+  ),
+  createTag(
+    'ANTI_ASSASSIN',
+    'Anti Assassin',
+    'Khắc chế sát thủ',
+    GameTagCategory.COUNTER,
+  ),
+  createTag(
+    'ANTI_CC',
+    'Anti Crowd Control',
+    'Chống khống chế',
+    GameTagCategory.COUNTER,
+  ),
+
+  createTag(
+    'LONG_RANGE_POKE',
+    'Long Range Poke',
+    'Cấu rỉa tầm xa',
+    GameTagCategory.MATCHUP,
+  ),
+  createTag(
+    'CROWD_CONTROL',
+    'Crowd Control',
+    'Khống chế',
+    GameTagCategory.MATCHUP,
+  ),
+  createTag(
+    'LONG_RANGE_SAFE_PLAY',
+    'Long Range Safe Play',
+    'Chơi an toàn tầm xa',
+    GameTagCategory.MATCHUP,
+  ),
+  createTag(
+    'EPIC_MONSTER',
+    'Epic Monster',
+    'Quái khủng',
+    GameTagCategory.MATCHUP,
+  ),
+
+  createTag(
+    'RAW_DAMAGE',
+    'Raw Damage',
+    'Sát thương thuần',
+    GameTagCategory.SCORING,
+  ),
+
   // CHAMPION CLASS TAGS
   createTag('MAGE', 'Mage', 'Pháp sư', GameTagCategory.CHAMPION),
   createTag('FIGHTER', 'Fighter', 'Đấu sĩ', GameTagCategory.CHAMPION),
@@ -586,12 +719,6 @@ const gameTagSeeds: GameTagSeed[] = [
     'WEAK_WHEN_BEHIND',
     'Weak When Behind',
     'Yếu khi bị thọt',
-    GameTagCategory.CHAMPION,
-  ),
-  createTag(
-    'SKILLSHOT_DEPENDENT',
-    'Skillshot Dependent',
-    'Phụ thuộc kỹ năng định hướng',
     GameTagCategory.CHAMPION,
   ),
   createTag(

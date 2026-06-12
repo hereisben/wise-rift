@@ -68,8 +68,8 @@ const spellSeeds: SpellSeed[] = [
     description: `Remove crowd control effects and summoner spell debuffs affecting your champion, then gain brief crowd control immunity.`,
     descriptionVi: `Loại bỏ các hiệu ứng khống chế, bao gồm cả bùa hại phép bổ trợ, đang ảnh hưởng lên tướng của bạn và cho miễn nhiễm khống chế trong 0.25 giây.`,
     tags: [`CLEANSE`, `ANTI_CC`, `DEFENSE`],
-    goodFor: [`CROWD_CONTROL`, `PICK_COMP`, `LANE_SURVIVAL`],
-    badFor: [`LOW_CC_ENEMY`, `RAW_DAMAGE`],
+    goodFor: [`CROWD_CONTROL`, `PICK_COMPOSITION`, `LANE_SURVIVAL`],
+    badFor: [`LOW_CC`, `RAW_DAMAGE`],
   },
   {
     key: `flash`,

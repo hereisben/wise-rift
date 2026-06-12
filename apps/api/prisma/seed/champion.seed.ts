@@ -17,7 +17,7 @@ export async function seedChampions(prisma: PrismaClient) {
       utilityTags: [`CHARM`, `DASH`],
       riskTags: [`SKILLSHOT_RELIANT`, `SQUISHY`],
       strengths: ['PICK_POTENTIAL', 'MOBILITY', 'BURST_DAMAGE'],
-      weaknesses: ['WEAK_WHEN_BEHIND', 'SKILLSHOT_DEPENDENT'],
+      weaknesses: ['WEAK_WHEN_BEHIND', 'SKILLSHOT_RELIANT'],
     },
     {
       key: 'yasuo',
