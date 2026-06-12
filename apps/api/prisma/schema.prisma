@@ -472,7 +472,7 @@ model Rune {
   key                          String                        @unique
   name                         String
   nameVi                       String
-  description                  String?
+  description                  String
   descriptionVi                String
   iconUrl                      String?
   path                         RunePath

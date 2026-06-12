@@ -441,7 +441,7 @@ CREATE TABLE "Rune" (
     "key" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "nameVi" TEXT NOT NULL,
-    "description" TEXT,
+    "description" TEXT NOT NULL,
     "descriptionVi" TEXT NOT NULL,
     "iconUrl" TEXT,
     "path" "RunePath" NOT NULL,

@@ -1,5 +1,5 @@
 import { PrismaClient } from '../../src/generated/prisma/client.js';
-import { ItemCategory } from './../../dist/src/generated/prisma/enums.js';
+import { ItemCategory } from './../../src/generated/prisma/enums';
 
 type ItemSeed = {
   key: string;

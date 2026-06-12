@@ -194,7 +194,7 @@ export type RuneGroupByOutputType = {
   key: string
   name: string
   nameVi: string
-  description: string | null
+  description: string
   descriptionVi: string
   iconUrl: string | null
   path: $Enums.RunePath
@@ -230,7 +230,7 @@ export type RuneWhereInput = {
   key?: Prisma.StringFilter<"Rune"> | string
   name?: Prisma.StringFilter<"Rune"> | string
   nameVi?: Prisma.StringFilter<"Rune"> | string
-  description?: Prisma.StringNullableFilter<"Rune"> | string | null
+  description?: Prisma.StringFilter<"Rune"> | string
   descriptionVi?: Prisma.StringFilter<"Rune"> | string
   iconUrl?: Prisma.StringNullableFilter<"Rune"> | string | null
   path?: Prisma.EnumRunePathFilter<"Rune"> | $Enums.RunePath
@@ -247,7 +247,7 @@ export type RuneOrderByWithRelationInput = {
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
   nameVi?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrder
   descriptionVi?: Prisma.SortOrder
   iconUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   path?: Prisma.SortOrder
@@ -267,7 +267,7 @@ export type RuneWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.RuneWhereInput | Prisma.RuneWhereInput[]
   name?: Prisma.StringFilter<"Rune"> | string
   nameVi?: Prisma.StringFilter<"Rune"> | string
-  description?: Prisma.StringNullableFilter<"Rune"> | string | null
+  description?: Prisma.StringFilter<"Rune"> | string
   descriptionVi?: Prisma.StringFilter<"Rune"> | string
   iconUrl?: Prisma.StringNullableFilter<"Rune"> | string | null
   path?: Prisma.EnumRunePathFilter<"Rune"> | $Enums.RunePath
@@ -284,7 +284,7 @@ export type RuneOrderByWithAggregationInput = {
   key?: Prisma.SortOrder
   name?: Prisma.SortOrder
   nameVi?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrder
   descriptionVi?: Prisma.SortOrder
   iconUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   path?: Prisma.SortOrder
@@ -305,7 +305,7 @@ export type RuneScalarWhereWithAggregatesInput = {
   key?: Prisma.StringWithAggregatesFilter<"Rune"> | string
   name?: Prisma.StringWithAggregatesFilter<"Rune"> | string
   nameVi?: Prisma.StringWithAggregatesFilter<"Rune"> | string
-  description?: Prisma.StringNullableWithAggregatesFilter<"Rune"> | string | null
+  description?: Prisma.StringWithAggregatesFilter<"Rune"> | string
   descriptionVi?: Prisma.StringWithAggregatesFilter<"Rune"> | string
   iconUrl?: Prisma.StringNullableWithAggregatesFilter<"Rune"> | string | null
   path?: Prisma.EnumRunePathWithAggregatesFilter<"Rune"> | $Enums.RunePath
@@ -320,7 +320,7 @@ export type RuneCreateInput = {
   key: string
   name: string
   nameVi: string
-  description?: string | null
+  description: string
   descriptionVi: string
   iconUrl?: string | null
   path: $Enums.RunePath
@@ -337,7 +337,7 @@ export type RuneUncheckedCreateInput = {
   key: string
   name: string
   nameVi: string
-  description?: string | null
+  description: string
   descriptionVi: string
   iconUrl?: string | null
   path: $Enums.RunePath
@@ -354,7 +354,7 @@ export type RuneUpdateInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   iconUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   path?: Prisma.EnumRunePathFieldUpdateOperationsInput | $Enums.RunePath
@@ -371,7 +371,7 @@ export type RuneUncheckedUpdateInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   iconUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   path?: Prisma.EnumRunePathFieldUpdateOperationsInput | $Enums.RunePath
@@ -388,7 +388,7 @@ export type RuneCreateManyInput = {
   key: string
   name: string
   nameVi: string
-  description?: string | null
+  description: string
   descriptionVi: string
   iconUrl?: string | null
   path: $Enums.RunePath
@@ -403,7 +403,7 @@ export type RuneUpdateManyMutationInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   iconUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   path?: Prisma.EnumRunePathFieldUpdateOperationsInput | $Enums.RunePath
@@ -418,7 +418,7 @@ export type RuneUncheckedUpdateManyInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   iconUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   path?: Prisma.EnumRunePathFieldUpdateOperationsInput | $Enums.RunePath
@@ -519,7 +519,7 @@ export type RuneCreateWithoutPatchStatsInput = {
   key: string
   name: string
   nameVi: string
-  description?: string | null
+  description: string
   descriptionVi: string
   iconUrl?: string | null
   path: $Enums.RunePath
@@ -535,7 +535,7 @@ export type RuneUncheckedCreateWithoutPatchStatsInput = {
   key: string
   name: string
   nameVi: string
-  description?: string | null
+  description: string
   descriptionVi: string
   iconUrl?: string | null
   path: $Enums.RunePath
@@ -567,7 +567,7 @@ export type RuneUpdateWithoutPatchStatsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   iconUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   path?: Prisma.EnumRunePathFieldUpdateOperationsInput | $Enums.RunePath
@@ -583,7 +583,7 @@ export type RuneUncheckedUpdateWithoutPatchStatsInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   iconUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   path?: Prisma.EnumRunePathFieldUpdateOperationsInput | $Enums.RunePath
@@ -599,7 +599,7 @@ export type RuneCreateWithoutRuneBuildRecommendationRunesInput = {
   key: string
   name: string
   nameVi: string
-  description?: string | null
+  description: string
   descriptionVi: string
   iconUrl?: string | null
   path: $Enums.RunePath
@@ -615,7 +615,7 @@ export type RuneUncheckedCreateWithoutRuneBuildRecommendationRunesInput = {
   key: string
   name: string
   nameVi: string
-  description?: string | null
+  description: string
   descriptionVi: string
   iconUrl?: string | null
   path: $Enums.RunePath
@@ -647,7 +647,7 @@ export type RuneUpdateWithoutRuneBuildRecommendationRunesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   iconUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   path?: Prisma.EnumRunePathFieldUpdateOperationsInput | $Enums.RunePath
@@ -663,7 +663,7 @@ export type RuneUncheckedUpdateWithoutRuneBuildRecommendationRunesInput = {
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
   iconUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   path?: Prisma.EnumRunePathFieldUpdateOperationsInput | $Enums.RunePath
@@ -797,7 +797,7 @@ export type $RunePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     key: string
     name: string
     nameVi: string
-    description: string | null
+    description: string
     descriptionVi: string
     iconUrl: string | null
     path: $Enums.RunePath

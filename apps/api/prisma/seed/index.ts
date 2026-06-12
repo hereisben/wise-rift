@@ -5,6 +5,7 @@ import { seedChampions } from './champion.seed.js';
 import { seedGameTags } from './game-tag.seed.js';
 import { seedItems } from './item.seed.js';
 import { seedPatch } from './patch.seed.js';
+import { seedRunes } from './rune.seed.js';
 import { seedSpells } from './spell.seed.js';
 
 const adapter = new PrismaPg({
@@ -21,6 +22,7 @@ async function main() {
   await seedChampions(prisma);
   await seedItems(prisma, patch.id);
   await seedSpells(prisma, patch.id);
+  await seedRunes(prisma, patch.id);
 }
 
 main()
