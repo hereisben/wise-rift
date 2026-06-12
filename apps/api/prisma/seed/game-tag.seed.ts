@@ -739,6 +739,30 @@ const gameTagSeeds: GameTagSeed[] = [
     'Dễ bị lao vào',
     GameTagCategory.CHAMPION,
   ),
+  createTag(
+    'SKILL_SHOT',
+    'Skill Shot',
+    'Kỹ năng định hướng',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'MELEE_TRADING',
+    'Melee Trading',
+    'Trao đổi chiêu cận chiến',
+    GameTagCategory.MATCHUP,
+  ),
+  createTag(
+    'LOW_COOLDOWN_HARASS',
+    'Low Cooldown Harass',
+    'Cấu rỉa hồi chiêu thấp',
+    GameTagCategory.MATCHUP,
+  ),
+  createTag(
+    'LOW_ULTIMATE_VALUE',
+    'Low Ultimate Value',
+    'Giá trị chiêu cuối thấp',
+    GameTagCategory.MATCHUP,
+  ),
 ];
 
 export async function seedGameTags(prisma: PrismaClient) {

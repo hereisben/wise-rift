@@ -485,8 +485,8 @@ const itemSeeds: ItemSeed[] = [
       'Băng Giá: Kỹ năng kích hoạt gây sát thương và đòn tấn công được cường hóa làm chậm kẻ địch 30% trong 0.75 giây.',
     category: ['HIGH_TIER', 'MAGIC'],
     tags: ['ABILITY_POWER', 'HEALTH', 'MAGIC_PENETRATION', 'SLOW', 'UTILITY'],
-    goodAgainst: ['MOBILITY', 'MELEE_CHAMPION', 'KITE_TARGET'],
-    weakAgainst: ['POKE_RANGE'],
+    goodAgainst: ['MOBILITY', 'MELEE_CHAMPION', 'LOW_RANGE_CHAMPION'],
+    weakAgainst: ['LONG_RANGE_POKE'],
     componentItemKeys: ['blasting-wand', 'giants-belt'],
   },
   {
@@ -506,7 +506,7 @@ const itemSeeds: ItemSeed[] = [
       'BURN_DAMAGE',
     ],
     goodAgainst: ['TANK', 'HIGH_HEALTH', 'FRONTLINE'],
-    weakAgainst: ['SQUISHY_BURST_TARGET'],
+    weakAgainst: ['SQUISHY_CHAMPION', 'BURST_DAMAGE'],
     componentItemKeys: ['blasting-wand', 'haunting-guise', 'ruby-crystal'],
   },
   {
@@ -548,7 +548,7 @@ const itemSeeds: ItemSeed[] = [
       'BURST_DAMAGE',
     ],
     goodAgainst: ['SQUISHY_CHAMPION', 'MELEE_TRADING'],
-    weakAgainst: ['DISENGAGE', 'HIGH_ARMOR_MAGIC_RESIST'],
+    weakAgainst: ['DISENGAGE', 'HIGH_MAGIC_RESIST', 'FRONTLINE'],
     componentItemKeys: ['aether-wisp', 'sheen', 'amplifying-tome'],
   },
   {
@@ -704,7 +704,7 @@ const itemSeeds: ItemSeed[] = [
       'DAMAGE_AMP',
     ],
     goodAgainst: ['POKE_COMPOSITION', 'LONG_RANGE_CHAMPION', 'FOG_OF_WAR'],
-    weakAgainst: ['MELEE_DIVE', 'LOW_RANGE_CHAMPION'],
+    weakAgainst: ['DIVE', 'MELEE_CHAMPION', 'LOW_RANGE_CHAMPION'],
     componentItemKeys: [
       'fiendish-codex',
       'blasting-wand',
