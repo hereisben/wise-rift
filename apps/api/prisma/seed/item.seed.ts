@@ -1,4 +1,5 @@
 import { PrismaClient } from '../../src/generated/prisma/client.js';
+import { ItemCategory } from './../../dist/src/generated/prisma/enums.js';
 
 type ItemSeed = {
   key: string;
@@ -6,7 +7,7 @@ type ItemSeed = {
   nameVi: string;
   description: string;
   descriptionVi: string;
-  category: string[];
+  category: ItemCategory[];
   tags: string[];
   goodAgainst: string[];
   weakAgainst: string[];
@@ -45,7 +46,7 @@ const itemSeeds: ItemSeed[] = [
       'Basic mana component. Grants mana and ability haste, and stacks bonus mana when spending mana.',
     descriptionVi:
       'Trang bị thành phần cung cấp Năng Lượng và Điểm Hồi Kỹ Năng. Nạp Năng Lượng tăng Năng Lượng tối đa khi sử dụng Năng Lượng.',
-    category: ['LOW_TIER', 'COMPONENT'],
+    category: [ItemCategory.LOW_TIER, ItemCategory.COMPONENT],
     tags: ['MANA', 'ABILITY_HASTE', 'SCALING_MANA'],
     goodAgainst: [],
     weakAgainst: [],
@@ -57,7 +58,7 @@ const itemSeeds: ItemSeed[] = [
     nameVi: 'Hồng Ngọc',
     description: 'Basic health component.',
     descriptionVi: 'Trang bị thành phần cung cấp Máu Tối Đa.',
-    category: ['LOW_TIER', 'COMPONENT'],
+    category: [ItemCategory.LOW_TIER, ItemCategory.COMPONENT],
     tags: ['HEALTH'],
     goodAgainst: ['BURST_DAMAGE'],
     weakAgainst: [],
@@ -74,7 +75,7 @@ const itemSeeds: ItemSeed[] = [
     nameVi: 'Sách Cũ',
     description: 'Basic ability power component.',
     descriptionVi: 'Trang bị thành phần cung cấp Sức Mạnh Phép Thuật.',
-    category: ['LOW_TIER', 'COMPONENT'],
+    category: [ItemCategory.LOW_TIER, ItemCategory.COMPONENT],
     tags: ['ABILITY_POWER', 'MAGIC_DAMAGE'],
     goodAgainst: [],
     weakAgainst: [],
@@ -98,7 +99,7 @@ const itemSeeds: ItemSeed[] = [
     nameVi: 'Nhẫn Thiên Khải',
     description: 'Basic ability haste component.',
     descriptionVi: 'Trang bị thành phần cung cấp Điểm Hồi Kỹ Năng.',
-    category: ['LOW_TIER', 'COMPONENT'],
+    category: [ItemCategory.LOW_TIER, ItemCategory.COMPONENT],
     tags: ['ABILITY_HASTE'],
     goodAgainst: [],
     weakAgainst: [],
@@ -119,7 +120,7 @@ const itemSeeds: ItemSeed[] = [
     nameVi: 'Dao Găm',
     description: 'Basic attack damage component.',
     descriptionVi: 'Trang bị thành phần cung cấp Sức Mạnh Công Kích.',
-    category: ['LOW_TIER', 'COMPONENT'],
+    category: [ItemCategory.LOW_TIER, ItemCategory.COMPONENT],
     tags: ['ATTACK_DAMAGE'],
     goodAgainst: [],
     weakAgainst: [],
@@ -135,7 +136,7 @@ const itemSeeds: ItemSeed[] = [
       'Snowball magic item that gains Glory stacks from champion takedowns and loses stacks on death.',
     descriptionVi:
       'Vinh Quang: Nhận tối đa 30 cộng dồn khi tham gia hạ gục tướng. Bị mất 10 cộng dồn khi hy sinh. Hoảng Sợ: Nhận Sức Mạnh Phép Thuật theo cộng dồn và nhận thêm Tốc Độ Di Chuyển khi đạt ít nhất 10 cộng dồn.',
-    category: ['MIDDLE_TIER', 'MAGIC'],
+    category: [ItemCategory.MIDDLE_TIER, ItemCategory.MAGIC],
     tags: ['ABILITY_POWER', 'MAGIC_PENETRATION', 'SNOWBALL', 'MOVEMENT_SPEED'],
     goodAgainst: ['LOW_CC', 'LOW_BURST', 'SNOWBALL_GAME'],
     weakAgainst: ['ASSASSIN', 'BURST_DAMAGE', 'PICK_COMPOSITION'],
@@ -149,7 +150,11 @@ const itemSeeds: ItemSeed[] = [
       'Mana scaling component that increases maximum mana when spending mana.',
     descriptionVi:
       'Kinh Ngạc: Hồi lại một phần Năng Lượng đã sử dụng. Nạp Năng Lượng: Tăng Năng Lượng tối đa khi sử dụng Năng Lượng, tối đa 700.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['MANA', 'ABILITY_HASTE', 'SCALING_MANA'],
     goodAgainst: ['LONG_FIGHT', 'MANA_HUNGRY_CHAMPION'],
     weakAgainst: ['EARLY_BURST'],
@@ -162,7 +167,11 @@ const itemSeeds: ItemSeed[] = [
     nameVi: 'Linh Hồn Lạc Lõng',
     description: 'Magic component that grants movement speed.',
     descriptionVi: 'Linh Hồn: Nhận thêm Tốc Độ Di Chuyển.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['MOVEMENT_SPEED', 'ABILITY_POWER'],
     goodAgainst: ['SKILL_SHOT', 'POKE'],
     weakAgainst: [],
@@ -176,7 +185,11 @@ const itemSeeds: ItemSeed[] = [
     description: 'Mana and ability power component.',
     descriptionVi:
       'Trang bị thành phần cung cấp Sức Mạnh Phép Thuật và Năng Lượng Tối Đa.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['ABILITY_POWER', 'MANA'],
     goodAgainst: ['MANA_HUNGRY_CHAMPION'],
     weakAgainst: [],
@@ -196,7 +209,11 @@ const itemSeeds: ItemSeed[] = [
     description: 'Ability power and ability haste component.',
     descriptionVi:
       'Trang bị thành phần cung cấp Sức Mạnh Phép Thuật và Điểm Hồi Kỹ Năng.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['ABILITY_POWER', 'ABILITY_HASTE'],
     goodAgainst: ['ABILITY_RELIANT_CHAMPION'],
     weakAgainst: [],
@@ -217,7 +234,11 @@ const itemSeeds: ItemSeed[] = [
     nameVi: 'Gậy Bùng Nổ',
     description: 'Ability power component.',
     descriptionVi: 'Trang bị thành phần cung cấp Sức Mạnh Phép Thuật.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['ABILITY_POWER', 'MAGIC_DAMAGE'],
     goodAgainst: [],
     weakAgainst: [],
@@ -240,7 +261,11 @@ const itemSeeds: ItemSeed[] = [
     description: 'Large ability power component.',
     descriptionVi:
       'Trang bị thành phần cung cấp lượng lớn Sức Mạnh Phép Thuật.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['ABILITY_POWER', 'MAGIC_DAMAGE'],
     goodAgainst: [],
     weakAgainst: [],
@@ -254,7 +279,11 @@ const itemSeeds: ItemSeed[] = [
     description: 'Health and ability power component.',
     descriptionVi:
       'Trang bị thành phần cung cấp Máu Tối Đa và Sức Mạnh Phép Thuật.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['ABILITY_POWER', 'HEALTH'],
     goodAgainst: ['BURST_DAMAGE'],
     weakAgainst: [],
@@ -273,7 +302,11 @@ const itemSeeds: ItemSeed[] = [
       'Health and mana component that restores mana from damage taken and health from mana spent.',
     descriptionVi:
       'Vĩnh Hằng: Hồi lại Năng Lượng dựa trên sát thương nhận vào từ tướng địch. Hồi Máu dựa trên Năng Lượng sử dụng.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['HEALTH', 'MANA', 'SUSTAIN'],
     goodAgainst: ['POKE', 'LONG_FIGHT'],
     weakAgainst: ['BURST_DAMAGE'],
@@ -288,7 +321,7 @@ const itemSeeds: ItemSeed[] = [
       'Ability haste component with Spellblade effect after using an ability.',
     descriptionVi:
       'Kiếm Phép: Sau khi sử dụng kỹ năng, đòn đánh thường kế tiếp gây thêm sát thương vật lý dựa trên Sức Mạnh Công Kích cơ bản.',
-    category: ['MIDDLE_TIER', 'COMPONENT'],
+    category: [ItemCategory.MIDDLE_TIER, ItemCategory.COMPONENT],
     tags: ['ABILITY_HASTE', 'SPELLBLADE', 'ON_HIT'],
     goodAgainst: ['MELEE_TRADING', 'SPELLBLADE_CHAMPION'],
     weakAgainst: ['DISENGAGE'],
@@ -303,7 +336,11 @@ const itemSeeds: ItemSeed[] = [
       'Magic component that applies Grievous Wounds when dealing magic damage to enemy champions.',
     descriptionVi:
       'Vết Thương Sâu: Gây sát thương phép lên tướng địch khiến chúng nhận 40% Vết Thương Sâu trong 3 giây.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['ABILITY_POWER', 'ANTI_HEAL', 'MAGIC_DAMAGE'],
     goodAgainst: ['HEALING', 'SUSTAIN'],
     weakAgainst: ['NO_HEALING_TEAM'],
@@ -316,7 +353,11 @@ const itemSeeds: ItemSeed[] = [
     nameVi: 'Dây Chuyền Tiên Tri',
     description: 'Magic component that grants flat magic penetration.',
     descriptionVi: 'Điềm Gở: Nhận thêm Xuyên Kháng Phép.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['ABILITY_POWER', 'MAGIC_PENETRATION'],
     goodAgainst: ['LOW_MAGIC_RESIST'],
     weakAgainst: ['HIGH_MAGIC_RESIST'],
@@ -331,7 +372,11 @@ const itemSeeds: ItemSeed[] = [
       'Health and ability power component that adds bonus magic damage after damaging enemy champions.',
     descriptionVi:
       'Khởi Động: Kỹ năng gây sát thương và đòn đánh cường hóa lên tướng gây thêm sát thương phép.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['ABILITY_POWER', 'HEALTH', 'BURST_DAMAGE'],
     goodAgainst: ['SQUISHY_CHAMPION'],
     weakAgainst: ['HIGH_MAGIC_RESIST'],
@@ -346,7 +391,11 @@ const itemSeeds: ItemSeed[] = [
       'Utility component that grants health, mana regeneration, ability haste, and heal/shield power.',
     descriptionVi:
       'Trang bị hỗ trợ cung cấp Máu, Hồi Phục Năng Lượng, Điểm Hồi Kỹ Năng và Sức mạnh Hồi Máu/Lá Chắn.',
-    category: ['MIDDLE_TIER', 'SUPPORT', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.SUPPORT,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['HEALTH', 'MANA_REGEN', 'ABILITY_HASTE', 'HEAL_SHIELD_POWER'],
     goodAgainst: ['POKE', 'SUSTAIN_TEAM'],
     weakAgainst: ['BURST_DAMAGE'],
@@ -359,7 +408,11 @@ const itemSeeds: ItemSeed[] = [
     description: 'Adaptive damage component.',
     descriptionVi:
       'Mũi Kim Ma Thuật: Nhận Sức Mạnh Công Kích hoặc Sức Mạnh Phép Thuật thích ứng.',
-    category: ['MIDDLE_TIER', 'MAGIC', 'COMPONENT'],
+    category: [
+      ItemCategory.MIDDLE_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.COMPONENT,
+    ],
     tags: ['ADAPTIVE_DAMAGE', 'ON_HIT'],
     goodAgainst: ['ON_HIT_CHAMPION'],
     weakAgainst: [],
@@ -372,7 +425,7 @@ const itemSeeds: ItemSeed[] = [
     description: 'Attack speed and ability haste component.',
     descriptionVi:
       'Trang bị thành phần cung cấp Tốc Độ Đánh và Điểm Hồi Kỹ Năng.',
-    category: ['MIDDLE_TIER', 'COMPONENT'],
+    category: [ItemCategory.MIDDLE_TIER, ItemCategory.COMPONENT],
     tags: ['ATTACK_SPEED', 'ABILITY_HASTE'],
     goodAgainst: ['ON_HIT_CHAMPION'],
     weakAgainst: [],
@@ -385,7 +438,7 @@ const itemSeeds: ItemSeed[] = [
     description: 'Health and ability haste component.',
     descriptionVi:
       'Trang bị thành phần cung cấp Máu Tối Đa và Điểm Hồi Kỹ Năng.',
-    category: ['MIDDLE_TIER', 'COMPONENT'],
+    category: [ItemCategory.MIDDLE_TIER, ItemCategory.COMPONENT],
     tags: ['HEALTH', 'ABILITY_HASTE'],
     goodAgainst: ['BURST_DAMAGE'],
     weakAgainst: [],
@@ -399,7 +452,7 @@ const itemSeeds: ItemSeed[] = [
     description: 'Attack component that adds bonus on-hit physical damage.',
     descriptionVi:
       'Cường Lực: Các đòn đánh cơ bản gây thêm sát thương vật lý trên đòn đánh.',
-    category: ['MIDDLE_TIER', 'COMPONENT'],
+    category: [ItemCategory.MIDDLE_TIER, ItemCategory.COMPONENT],
     tags: ['ON_HIT', 'ATTACK_SPEED'],
     goodAgainst: ['AUTO_ATTACK_CHAMPION', 'ON_HIT_CHAMPION'],
     weakAgainst: ['ANTI_ATTACK_SPEED'],
@@ -412,7 +465,7 @@ const itemSeeds: ItemSeed[] = [
     nameVi: 'Đai Khổng Lồ',
     description: 'Large health component.',
     descriptionVi: 'Trang bị thành phần cung cấp lượng lớn Máu Tối Đa.',
-    category: ['MIDDLE_TIER', 'COMPONENT'],
+    category: [ItemCategory.MIDDLE_TIER, ItemCategory.COMPONENT],
     tags: ['HEALTH'],
     goodAgainst: ['BURST_DAMAGE'],
     weakAgainst: [],
@@ -428,7 +481,7 @@ const itemSeeds: ItemSeed[] = [
     description:
       'High ability power item that greatly increases total ability power based on level.',
     descriptionVi: 'Quá Đà: Tăng Sức Mạnh Phép Thuật thêm 20-45% tùy theo cấp.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: ['ABILITY_POWER', 'MAGIC_PENETRATION', 'SCALING', 'BURST_DAMAGE'],
     goodAgainst: ['SQUISHY_CHAMPION', 'LOW_MAGIC_RESIST'],
     weakAgainst: ['HIGH_MAGIC_RESIST', 'EARLY_GAME_PRESSURE'],
@@ -442,7 +495,7 @@ const itemSeeds: ItemSeed[] = [
       'Burst and poke magic item that charges Discord through movement and ability use.',
     descriptionVi:
       'Vọng Âm Bất Hòa: Di chuyển và sử dụng kỹ năng tăng điểm Bất Hòa. Khi đạt đủ 100 điểm, kỹ năng gây sát thương tiếp theo hoặc đòn tấn công được cường hóa gây thêm sát thương phép lên mục tiêu và tối đa 3 kẻ địch xung quanh.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'MANA',
@@ -463,7 +516,7 @@ const itemSeeds: ItemSeed[] = [
       'Anti-heal magic item that applies Grievous Wounds when dealing magic damage.',
     descriptionVi:
       'Tai Họa: Gây sát thương phép lên tướng địch và tạo hiệu ứng 50% Vết Thương Sâu trong 3 giây.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'HEALTH',
@@ -483,7 +536,7 @@ const itemSeeds: ItemSeed[] = [
       'Magic health item that slows enemies with damaging abilities and empowered attacks.',
     descriptionVi:
       'Băng Giá: Kỹ năng kích hoạt gây sát thương và đòn tấn công được cường hóa làm chậm kẻ địch 30% trong 0.75 giây.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: ['ABILITY_POWER', 'HEALTH', 'MAGIC_PENETRATION', 'SLOW', 'UTILITY'],
     goodAgainst: ['MOBILITY', 'MELEE_CHAMPION', 'LOW_RANGE_CHAMPION'],
     weakAgainst: ['LONG_RANGE_POKE'],
@@ -497,7 +550,7 @@ const itemSeeds: ItemSeed[] = [
       'Anti-tank burn item that deals magic damage based on the target maximum health.',
     descriptionVi:
       'Thống Khổ: Kỹ năng gây sát thương và đòn đánh được cường hóa gây sát thương phép theo Máu Tối Đa của mục tiêu mỗi giây trong 3 giây.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'HEALTH',
@@ -517,7 +570,7 @@ const itemSeeds: ItemSeed[] = [
       'Scaling magic item that grants health, mana, and ability power over time.',
     descriptionVi:
       'Vĩnh Hằng: Hồi Năng Lượng từ sát thương nhận vào và hồi Máu từ Năng Lượng sử dụng. Cựu Binh: Tăng Máu, Năng Lượng và Sức Mạnh Phép Thuật theo cộng dồn, tối đa 10 cộng dồn.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'HEALTH',
@@ -538,7 +591,7 @@ const itemSeeds: ItemSeed[] = [
       'Spellblade magic item that empowers the next basic attack after using an ability.',
     descriptionVi:
       'Tai Ương: Nhận thêm Tốc Độ Di Chuyển. Kiếm Phép: Sau khi sử dụng kỹ năng, đòn đánh thường kế tiếp gây thêm sát thương phép dựa trên Sức Mạnh Công Kích cơ bản và Sức Mạnh Phép Thuật.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'MAGIC_PENETRATION',
@@ -559,7 +612,7 @@ const itemSeeds: ItemSeed[] = [
       "Mana scaling magic item that converts maximum mana into ability power and upgrades into Seraph's Embrace.",
     descriptionVi:
       'Kinh Ngạc: Tăng Sức Mạnh Phép Thuật theo Năng Lượng tối đa và hồi lại một phần tổng Năng Lượng tiêu hao. Nạp Năng Lượng: Tăng Năng Lượng tối đa khi sử dụng Năng Lượng và biến đổi thành Quyền Trượng Đại Thiên Sứ.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'MANA',
@@ -583,7 +636,7 @@ const itemSeeds: ItemSeed[] = [
       'Attack speed on-hit item that grants adaptive damage and on-hit adaptive damage.',
     descriptionVi:
       'Nanh Ma Thuật: Nhận Sức Mạnh Công Kích hoặc Sức Mạnh Phép Thuật thích ứng. Gặm Nhấm: Đòn đánh gây sát thương thích ứng trên đòn đánh.',
-    category: ['HIGH_TIER', 'MAGIC', 'ON_HIT'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC, ItemCategory.ON_HIT],
     tags: ['ATTACK_SPEED', 'ABILITY_HASTE', 'ON_HIT', 'ADAPTIVE_DAMAGE'],
     goodAgainst: ['ON_HIT_CHAMPION', 'EXTENDED_FIGHT'],
     weakAgainst: ['ANTI_ATTACK_SPEED', 'BURST_DAMAGE'],
@@ -597,7 +650,7 @@ const itemSeeds: ItemSeed[] = [
       'Burst magic item that executes low-health enemies and triggers Thunderfall after takedowns.',
     descriptionVi:
       'Định Mệnh: Nhận thêm Tốc Độ Di Chuyển. Cân Bằng: Nhận thêm Xuyên Kháng Phép. Tử Thần Cận Kề: Kỹ năng và đòn tấn công được cường hóa gây thêm Chí Mạng lên kẻ địch dưới 35% Máu. Tia Sét Trời Giáng: Khi tướng địch bị hạ gục sau khi bị áp dụng Tử Thần Cận Kề, gây sát thương phép quanh vị trí mục tiêu.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'MAGIC_PENETRATION',
@@ -617,7 +670,11 @@ const itemSeeds: ItemSeed[] = [
       'Defensive magic item that blocks the next harmful ability and reduces incoming damage briefly.',
     descriptionVi:
       'Hộ Thể: Tạo khiên phép chặn kỹ năng gây hại tiếp theo. Sau khi khiên vỡ, giảm sát thương nhận phải trong 1 giây. Điềm Tĩnh: Tăng Sức Mạnh Phép Thuật khi có Hộ Thể.',
-    category: ['HIGH_TIER', 'MAGIC', 'DEFENSIVE'],
+    category: [
+      ItemCategory.HIGH_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.DEFENSIVE,
+    ],
     tags: [
       'ABILITY_POWER',
       'MANA',
@@ -638,7 +695,7 @@ const itemSeeds: ItemSeed[] = [
       'Ability haste and movement speed magic item that grants movement speed after damaging enemy champions.',
     descriptionVi:
       'Siêu Động Cơ: Nhận thêm Tốc Độ Di Chuyển. Pháp Vũ Đồng Hành: Kỹ năng kích hoạt và đòn đánh được cường hóa tăng Tốc Độ Di Chuyển sau khi gây sát thương lên tướng địch.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'ABILITY_HASTE',
@@ -658,7 +715,7 @@ const itemSeeds: ItemSeed[] = [
       'Sustained magic damage item with magic vamp and stacking damage amplification.',
     descriptionVi:
       'Đồng Hóa: Nhận Hút Máu Phép. Tha Hóa Hư Không: Khi giao tranh với tướng địch, nhận cộng dồn tăng sát thương phép. Ở cộng dồn tối đa, sát thương phép tăng thêm trở thành sát thương chuẩn.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'HEALTH',
@@ -680,7 +737,7 @@ const itemSeeds: ItemSeed[] = [
       'Anti-shield magic item that reduces shields after damaging enemy champions with abilities.',
     descriptionVi:
       'Vũ Khí Chết Chóc: Gây sát thương bằng kỹ năng lên tướng địch làm giảm lượng lá chắn chúng nhận được trong 3 giây. Khi gây sát thương lên kẻ địch chưa bị tác động, lá chắn hiện có của chúng cũng bị giảm.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: ['ABILITY_POWER', 'HEALTH', 'MAGIC_PENETRATION', 'ANTI_SHIELD'],
     goodAgainst: ['SHIELDING', 'ENCHANTER'],
     weakAgainst: ['NO_SHIELD_TEAM'],
@@ -694,7 +751,7 @@ const itemSeeds: ItemSeed[] = [
       'Long-range burst item that reveals enemies and increases damage dealt to them.',
     descriptionVi:
       'Bộc Phát: Gây sát thương lên tướng địch bằng kỹ năng từ tầm xa làm lộ diện chúng và tăng sát thương gây lên chúng. Tập Trung: Khi Bộc Phát kích hoạt, làm lộ diện các tướng địch quanh mục tiêu.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'ABILITY_HASTE',
@@ -719,7 +776,11 @@ const itemSeeds: ItemSeed[] = [
       'Health-scaling magic item that converts bonus health into ability power and defensive stats.',
     descriptionVi:
       'Chuyển Hóa: Nhận Sức Mạnh Phép Thuật theo Máu cộng thêm. Ảo Ảnh: Khi có đủ Máu cộng thêm, nhận một phần Sức Mạnh Phép Thuật dưới dạng Giáp và Kháng Phép.',
-    category: ['HIGH_TIER', 'MAGIC', 'DEFENSIVE'],
+    category: [
+      ItemCategory.HIGH_TIER,
+      ItemCategory.MAGIC,
+      ItemCategory.DEFENSIVE,
+    ],
     tags: [
       'ABILITY_POWER',
       'HEALTH',
@@ -740,7 +801,7 @@ const itemSeeds: ItemSeed[] = [
       'Snowball magic item that rewards takedowns with cooldown reduction and stolen movement speed/ability haste.',
     descriptionVi:
       'Săn Hồn: Nhận thêm Xuyên Kháng Phép. Linh Hồn Lang Thang: Khi tham gia hạ gục tướng địch sau khi gây sát thương, giảm thời gian hồi chiêu, đánh cắp Tốc Độ Di Chuyển cơ bản và Điểm Hồi Kỹ Năng của chúng cho đến khi chúng hồi sinh.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'HEALTH',
@@ -765,7 +826,7 @@ const itemSeeds: ItemSeed[] = [
       'Ultimate-focused magic item that burns the ground and reduces enemy magic resist after damaging champions with ultimate.',
     descriptionVi:
       'Ai Oán: Chiêu Cuối nhận Điểm Hồi Kỹ Năng. Màn Sương Căm Hận: Gây sát thương lên tướng bằng Chiêu Cuối thiêu đốt mặt đất dưới chân chúng và giảm Kháng Phép.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'MANA',
@@ -787,7 +848,7 @@ const itemSeeds: ItemSeed[] = [
       'Trap-based magic item that creates damaging traps under enemies hit by active abilities.',
     descriptionVi:
       'Bẫy Lửa: Gây sát thương lên tướng địch bằng kỹ năng kích hoạt tạo bẫy dưới chân chúng. Sau thời gian ngắn, bẫy gây sát thương phép lên kẻ địch dính bẫy.',
-    category: ['HIGH_TIER', 'MAGIC'],
+    category: [ItemCategory.HIGH_TIER, ItemCategory.MAGIC],
     tags: [
       'ABILITY_POWER',
       'MANA',
@@ -808,7 +869,11 @@ const itemSeeds: ItemSeed[] = [
       'Hybrid on-hit attack speed item that grants adaptive damage and empowers on-hit effects.',
     descriptionVi:
       'Xung Điện: Nhận thêm Tốc Độ Di Chuyển. Hỗn Loạn: Nhận Sức Mạnh Công Kích hoặc Sức Mạnh Phép Thuật thích ứng. Thịnh Nộ: Đòn đánh gây thêm sát thương phép nhưng không thể Chí Mạng. Nhát Chém Cuồng Nộ: Đòn đánh thường tăng Tốc Độ Đánh và ở cộng dồn tối đa kích hoạt thêm hiệu ứng trên đòn đánh.',
-    category: ['HIGH_TIER', 'HYBRID', 'ON_HIT'],
+    category: [
+      ItemCategory.HIGH_TIER,
+      ItemCategory.HYBRID,
+      ItemCategory.ON_HIT,
+    ],
     tags: [
       'ATTACK_SPEED',
       'ON_HIT',

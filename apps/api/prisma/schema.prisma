@@ -157,7 +157,7 @@ model Item {
   nameVi             String
   description        String
   descriptionVi      String
-  category           String[]
+  category           ItemCategory[]
   tags               String[]
   goodAgainst        String[]
   weakAgainst        String[]
@@ -963,14 +963,23 @@ enum Difficulty {
 }
 
 enum ItemCategory {
+  LOW_TIER
+  MIDDLE_TIER
+  HIGH_TIER
+  COMPONENT
+
   PHYSICAL
   MAGIC
-  DEFENSE
+  DEFENSIVE
   BOOTS
   ENCHANT
   SUPPORT
   JUNGLE
   UTILITY
+
+  HYBRID
+  ON_HIT
+
   UNKNOWN
 }
 

@@ -196,7 +196,7 @@ export type ItemGroupByOutputType = {
   nameVi: string
   description: string
   descriptionVi: string
-  category: string[]
+  category: $Enums.ItemCategory[]
   tags: string[]
   goodAgainst: string[]
   weakAgainst: string[]
@@ -236,7 +236,7 @@ export type ItemWhereInput = {
   nameVi?: Prisma.StringFilter<"Item"> | string
   description?: Prisma.StringFilter<"Item"> | string
   descriptionVi?: Prisma.StringFilter<"Item"> | string
-  category?: Prisma.StringNullableListFilter<"Item">
+  category?: Prisma.EnumItemCategoryNullableListFilter<"Item">
   tags?: Prisma.StringNullableListFilter<"Item">
   goodAgainst?: Prisma.StringNullableListFilter<"Item">
   weakAgainst?: Prisma.StringNullableListFilter<"Item">
@@ -279,7 +279,7 @@ export type ItemWhereUniqueInput = Prisma.AtLeast<{
   nameVi?: Prisma.StringFilter<"Item"> | string
   description?: Prisma.StringFilter<"Item"> | string
   descriptionVi?: Prisma.StringFilter<"Item"> | string
-  category?: Prisma.StringNullableListFilter<"Item">
+  category?: Prisma.EnumItemCategoryNullableListFilter<"Item">
   tags?: Prisma.StringNullableListFilter<"Item">
   goodAgainst?: Prisma.StringNullableListFilter<"Item">
   weakAgainst?: Prisma.StringNullableListFilter<"Item">
@@ -324,7 +324,7 @@ export type ItemScalarWhereWithAggregatesInput = {
   nameVi?: Prisma.StringWithAggregatesFilter<"Item"> | string
   description?: Prisma.StringWithAggregatesFilter<"Item"> | string
   descriptionVi?: Prisma.StringWithAggregatesFilter<"Item"> | string
-  category?: Prisma.StringNullableListFilter<"Item">
+  category?: Prisma.EnumItemCategoryNullableListFilter<"Item">
   tags?: Prisma.StringNullableListFilter<"Item">
   goodAgainst?: Prisma.StringNullableListFilter<"Item">
   weakAgainst?: Prisma.StringNullableListFilter<"Item">
@@ -343,7 +343,7 @@ export type ItemCreateInput = {
   nameVi: string
   description: string
   descriptionVi: string
-  category?: Prisma.ItemCreatecategoryInput | string[]
+  category?: Prisma.ItemCreatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemCreateweakAgainstInput | string[]
@@ -363,7 +363,7 @@ export type ItemUncheckedCreateInput = {
   nameVi: string
   description: string
   descriptionVi: string
-  category?: Prisma.ItemCreatecategoryInput | string[]
+  category?: Prisma.ItemCreatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemCreateweakAgainstInput | string[]
@@ -383,7 +383,7 @@ export type ItemUpdateInput = {
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.ItemUpdatecategoryInput | string[]
+  category?: Prisma.ItemUpdatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
@@ -403,7 +403,7 @@ export type ItemUncheckedUpdateInput = {
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.ItemUpdatecategoryInput | string[]
+  category?: Prisma.ItemUpdatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
@@ -423,7 +423,7 @@ export type ItemCreateManyInput = {
   nameVi: string
   description: string
   descriptionVi: string
-  category?: Prisma.ItemCreatecategoryInput | string[]
+  category?: Prisma.ItemCreatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemCreateweakAgainstInput | string[]
@@ -442,7 +442,7 @@ export type ItemUpdateManyMutationInput = {
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.ItemUpdatecategoryInput | string[]
+  category?: Prisma.ItemUpdatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
@@ -461,7 +461,7 @@ export type ItemUncheckedUpdateManyInput = {
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.ItemUpdatecategoryInput | string[]
+  category?: Prisma.ItemUpdatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
@@ -471,6 +471,14 @@ export type ItemUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type EnumItemCategoryNullableListFilter<$PrismaModel = never> = {
+  equals?: $Enums.ItemCategory[] | Prisma.ListEnumItemCategoryFieldRefInput<$PrismaModel> | null
+  has?: $Enums.ItemCategory | Prisma.EnumItemCategoryFieldRefInput<$PrismaModel> | null
+  hasEvery?: $Enums.ItemCategory[] | Prisma.ListEnumItemCategoryFieldRefInput<$PrismaModel>
+  hasSome?: $Enums.ItemCategory[] | Prisma.ListEnumItemCategoryFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
 }
 
 export type ItemCountOrderByAggregateInput = {
@@ -524,7 +532,7 @@ export type ItemScalarRelationFilter = {
 }
 
 export type ItemCreatecategoryInput = {
-  set: string[]
+  set: $Enums.ItemCategory[]
 }
 
 export type ItemCreatetagsInput = {
@@ -548,8 +556,8 @@ export type ItemCreatebuildsIntoItemKeysInput = {
 }
 
 export type ItemUpdatecategoryInput = {
-  set?: string[]
-  push?: string | string[]
+  set?: $Enums.ItemCategory[]
+  push?: $Enums.ItemCategory | $Enums.ItemCategory[]
 }
 
 export type ItemUpdatetagsInput = {
@@ -598,7 +606,7 @@ export type ItemCreateWithoutItemPatchStatsInput = {
   nameVi: string
   description: string
   descriptionVi: string
-  category?: Prisma.ItemCreatecategoryInput | string[]
+  category?: Prisma.ItemCreatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemCreateweakAgainstInput | string[]
@@ -617,7 +625,7 @@ export type ItemUncheckedCreateWithoutItemPatchStatsInput = {
   nameVi: string
   description: string
   descriptionVi: string
-  category?: Prisma.ItemCreatecategoryInput | string[]
+  category?: Prisma.ItemCreatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemCreatetagsInput | string[]
   goodAgainst?: Prisma.ItemCreategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemCreateweakAgainstInput | string[]
@@ -652,7 +660,7 @@ export type ItemUpdateWithoutItemPatchStatsInput = {
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.ItemUpdatecategoryInput | string[]
+  category?: Prisma.ItemUpdatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
@@ -671,7 +679,7 @@ export type ItemUncheckedUpdateWithoutItemPatchStatsInput = {
   nameVi?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   descriptionVi?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.ItemUpdatecategoryInput | string[]
+  category?: Prisma.ItemUpdatecategoryInput | $Enums.ItemCategory[]
   tags?: Prisma.ItemUpdatetagsInput | string[]
   goodAgainst?: Prisma.ItemUpdategoodAgainstInput | string[]
   weakAgainst?: Prisma.ItemUpdateweakAgainstInput | string[]
@@ -812,7 +820,7 @@ export type $ItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     nameVi: string
     description: string
     descriptionVi: string
-    category: string[]
+    category: $Enums.ItemCategory[]
     tags: string[]
     goodAgainst: string[]
     weakAgainst: string[]
@@ -1252,7 +1260,7 @@ export interface ItemFieldRefs {
   readonly nameVi: Prisma.FieldRef<"Item", 'String'>
   readonly description: Prisma.FieldRef<"Item", 'String'>
   readonly descriptionVi: Prisma.FieldRef<"Item", 'String'>
-  readonly category: Prisma.FieldRef<"Item", 'String[]'>
+  readonly category: Prisma.FieldRef<"Item", 'ItemCategory[]'>
   readonly tags: Prisma.FieldRef<"Item", 'String[]'>
   readonly goodAgainst: Prisma.FieldRef<"Item", 'String[]'>
   readonly weakAgainst: Prisma.FieldRef<"Item", 'String[]'>

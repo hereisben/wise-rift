@@ -3288,6 +3288,20 @@ export type EnumSkillEffectFieldRefInput<$PrismaModel> = FieldRefInputType<$Pris
 
 
 /**
+ * Reference to a field of type 'ItemCategory[]'
+ */
+export type ListEnumItemCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ItemCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ItemCategory'
+ */
+export type EnumItemCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ItemCategory'>
+    
+
+
+/**
  * Reference to a field of type 'DraftPhase'
  */
 export type EnumDraftPhaseFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DraftPhase'>

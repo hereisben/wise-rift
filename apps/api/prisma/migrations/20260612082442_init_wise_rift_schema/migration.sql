@@ -74,7 +74,7 @@ CREATE TYPE "RangeType" AS ENUM ('MELEE', 'RANGED', 'HYBRID', 'UNKNOWN');
 CREATE TYPE "Difficulty" AS ENUM ('LOW', 'MEDIUM', 'HIGH', 'VERY_HIGH', 'UNKNOWN');
 
 -- CreateEnum
-CREATE TYPE "ItemCategory" AS ENUM ('PHYSICAL', 'MAGIC', 'DEFENSE', 'BOOTS', 'ENCHANT', 'SUPPORT', 'JUNGLE', 'UTILITY', 'UNKNOWN');
+CREATE TYPE "ItemCategory" AS ENUM ('LOW_TIER', 'MIDDLE_TIER', 'HIGH_TIER', 'COMPONENT', 'PHYSICAL', 'MAGIC', 'DEFENSIVE', 'BOOTS', 'ENCHANT', 'SUPPORT', 'JUNGLE', 'UTILITY', 'HYBRID', 'ON_HIT', 'UNKNOWN');
 
 -- CreateEnum
 CREATE TYPE "ConfidenceLevel" AS ENUM ('LOW', 'MEDIUM', 'HIGH', 'UNKNOWN');
@@ -196,7 +196,7 @@ CREATE TABLE "Item" (
     "nameVi" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "descriptionVi" TEXT NOT NULL,
-    "category" TEXT[],
+    "category" "ItemCategory"[],
     "tags" TEXT[],
     "goodAgainst" TEXT[],
     "weakAgainst" TEXT[],

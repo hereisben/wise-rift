@@ -343,14 +343,20 @@ export type Difficulty = (typeof Difficulty)[keyof typeof Difficulty]
 
 
 export const ItemCategory = {
+  LOW_TIER: 'LOW_TIER',
+  MIDDLE_TIER: 'MIDDLE_TIER',
+  HIGH_TIER: 'HIGH_TIER',
+  COMPONENT: 'COMPONENT',
   PHYSICAL: 'PHYSICAL',
   MAGIC: 'MAGIC',
-  DEFENSE: 'DEFENSE',
+  DEFENSIVE: 'DEFENSIVE',
   BOOTS: 'BOOTS',
   ENCHANT: 'ENCHANT',
   SUPPORT: 'SUPPORT',
   JUNGLE: 'JUNGLE',
   UTILITY: 'UTILITY',
+  HYBRID: 'HYBRID',
+  ON_HIT: 'ON_HIT',
   UNKNOWN: 'UNKNOWN'
 } as const
 
