@@ -7,6 +7,7 @@ import { GameTagsModule } from './game-tags/game-tags.module.js';
 import { HealthController } from './health/health.controller.js';
 import { ItemsModule } from './items/items.module.js';
 import { PatchesModule } from './patches/patches.module.js';
+import { RunesModule } from './runes/runes.module.js';
 import { SpellsModule } from './spells/spells.module.js';
 
 @Module({
@@ -17,6 +18,7 @@ import { SpellsModule } from './spells/spells.module.js';
     ItemsModule,
     GameTagsModule,
     SpellsModule,
+    RunesModule,
   ],
   controllers: [AppController, HealthController],
   providers: [AppService],
