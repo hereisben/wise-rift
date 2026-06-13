@@ -3,9 +3,12 @@ import env from '../../src/config/env.js';
 import { PrismaClient } from '../../src/generated/prisma/client.js';
 import { seedChampions } from './champion.seed.js';
 import { seedGameTags } from './game-tag.seed.js';
+import { seedItemPatchStats } from './item-patch-stat.seed.js';
 import { seedItems } from './item.seed.js';
 import { seedPatch } from './patch.seed.js';
+import { seedRunesPatchStats } from './rune-patch-stat.seed.js';
 import { seedRunes } from './rune.seed.js';
+import { seedSpellsPatchStats } from './spell-patch-stat.seed.js';
 import { seedSpells } from './spell.seed.js';
 
 const adapter = new PrismaPg({
@@ -20,9 +23,12 @@ async function main() {
   const patch = await seedPatch(prisma);
   await seedGameTags(prisma);
   await seedChampions(prisma);
-  await seedItems(prisma, patch.id);
-  await seedSpells(prisma, patch.id);
-  await seedRunes(prisma, patch.id);
+  await seedItems(prisma);
+  await seedItemPatchStats(prisma, patch.id);
+  await seedSpells(prisma);
+  await seedSpellsPatchStats(prisma, patch.id);
+  await seedRunes(prisma);
+  await seedRunesPatchStats(prisma, patch.id);
 }
 
 main()

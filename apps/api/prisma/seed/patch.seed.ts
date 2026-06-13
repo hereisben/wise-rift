@@ -11,7 +11,7 @@ export async function seedPatch(prisma: PrismaClient) {
       version: ACTIVE_PATCH_VERSION,
     },
     update: {
-      name: ACTIVE_PATCH_VERSION,
+      name: ACTIVE_PATCH_NAME,
       isActive: true,
       releasedAt: ACTIVE_PATCH_RELEASED_AT,
       notes: ACTIVE_PATCH_NOTES,

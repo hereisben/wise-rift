@@ -11,15 +11,6 @@ type SpellSeed = {
   badFor: string[];
 };
 
-type SpellPatchStatSeed = {
-  key: string;
-  cooldownSeconds?: number;
-  duration?: number;
-  damageValue?: number;
-  shieldValue?: number;
-  healValue?: number;
-};
-
 const spellSeeds: SpellSeed[] = [
   {
     key: `ghost`,
@@ -113,58 +104,8 @@ const spellSeeds: SpellSeed[] = [
   },
 ];
 
-const spellPatchStatSeeds: SpellPatchStatSeed[] = [
-  {
-    key: `ghost`,
-    cooldownSeconds: 90,
-    duration: 8,
-  },
-  {
-    key: `heal`,
-    cooldownSeconds: 100,
-    duration: 2,
-    healValue: 110,
-  },
-  {
-    key: `barrier`,
-    cooldownSeconds: 100,
-    duration: 2.5,
-    shieldValue: 120,
-  },
-  {
-    key: `exhaust`,
-    cooldownSeconds: 100,
-    duration: 2.5,
-  },
-  {
-    key: `cleanse`,
-    cooldownSeconds: 110,
-    duration: 0.25,
-  },
-  {
-    key: `flash`,
-    cooldownSeconds: 150,
-  },
-  {
-    key: `ignite`,
-    cooldownSeconds: 100,
-    duration: 5,
-    damageValue: 72,
-  },
-  {
-    key: `smite`,
-    cooldownSeconds: 10,
-    damageValue: 600,
-    healValue: 127,
-  },
-  {
-    key: `teleport`,
-    cooldownSeconds: 150,
-    duration: 3.5,
-  },
-];
-
-export async function seedSpells(prisma: PrismaClient, patchId: string) {
+export async function seedSpells(prisma: PrismaClient) {
+  console.log(`SEEDING SPELLS...`);
   for (const spellSeed of spellSeeds) {
     await prisma.spell.upsert({
       where: {
@@ -195,47 +136,5 @@ export async function seedSpells(prisma: PrismaClient, patchId: string) {
     console.log(`Seeded spell ${spellSeed.name}`);
   }
 
-  for (const spellPatchStatSeed of spellPatchStatSeeds) {
-    const spell = await prisma.spell.findUnique({
-      where: {
-        key: spellPatchStatSeed.key,
-      },
-    });
-
-    if (!spell) {
-      throw new Error(
-        `Cannot seed spell patch stat. Missing spell: ${spellPatchStatSeed.key}`,
-      );
-    }
-
-    await prisma.spellPatchStat.upsert({
-      where: {
-        spellId_patchId: {
-          patchId,
-          spellId: spell.id,
-        },
-      },
-      update: {
-        cooldownSeconds: spellPatchStatSeed.cooldownSeconds,
-        duration: spellPatchStatSeed.duration,
-        damageValue: spellPatchStatSeed.damageValue,
-        shieldValue: spellPatchStatSeed.shieldValue,
-        healValue: spellPatchStatSeed.healValue,
-        deletedAt: null,
-      },
-      create: {
-        patchId,
-        spellId: spell.id,
-        cooldownSeconds: spellPatchStatSeed.cooldownSeconds,
-        duration: spellPatchStatSeed.duration,
-        damageValue: spellPatchStatSeed.damageValue,
-        shieldValue: spellPatchStatSeed.shieldValue,
-        healValue: spellPatchStatSeed.healValue,
-      },
-    });
-
-    console.log(`Seeded spell patch stat: ${spellPatchStatSeed.key}`);
-  }
-
-  console.log(`Seeded spells`);
+  console.log(`SEEDED SPELLS`);
 }
