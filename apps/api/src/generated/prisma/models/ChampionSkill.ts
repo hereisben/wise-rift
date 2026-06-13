@@ -37,6 +37,7 @@ export type ChampionSkillMinAggregateOutputType = {
   targetType: $Enums.TargetType | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ChampionSkillMaxAggregateOutputType = {
@@ -52,6 +53,7 @@ export type ChampionSkillMaxAggregateOutputType = {
   targetType: $Enums.TargetType | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ChampionSkillCountAggregateOutputType = {
@@ -73,6 +75,7 @@ export type ChampionSkillCountAggregateOutputType = {
   tags: number
   createdAt: number
   updatedAt: number
+  deletedAt: number
   _all: number
 }
 
@@ -90,6 +93,7 @@ export type ChampionSkillMinAggregateInputType = {
   targetType?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ChampionSkillMaxAggregateInputType = {
@@ -105,6 +109,7 @@ export type ChampionSkillMaxAggregateInputType = {
   targetType?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ChampionSkillCountAggregateInputType = {
@@ -126,6 +131,7 @@ export type ChampionSkillCountAggregateInputType = {
   tags?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -220,6 +226,7 @@ export type ChampionSkillGroupByOutputType = {
   tags: string[]
   createdAt: Date
   updatedAt: Date
+  deletedAt: Date | null
   _count: ChampionSkillCountAggregateOutputType | null
   _min: ChampionSkillMinAggregateOutputType | null
   _max: ChampionSkillMaxAggregateOutputType | null
@@ -262,6 +269,7 @@ export type ChampionSkillWhereInput = {
   tags?: Prisma.StringNullableListFilter<"ChampionSkill">
   createdAt?: Prisma.DateTimeFilter<"ChampionSkill"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ChampionSkill"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ChampionSkill"> | Date | string | null
   champion?: Prisma.XOR<Prisma.ChampionScalarRelationFilter, Prisma.ChampionWhereInput>
   patch?: Prisma.XOR<Prisma.PatchScalarRelationFilter, Prisma.PatchWhereInput>
 }
@@ -285,6 +293,7 @@ export type ChampionSkillOrderByWithRelationInput = {
   tags?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   champion?: Prisma.ChampionOrderByWithRelationInput
   patch?: Prisma.PatchOrderByWithRelationInput
 }
@@ -312,6 +321,7 @@ export type ChampionSkillWhereUniqueInput = Prisma.AtLeast<{
   tags?: Prisma.StringNullableListFilter<"ChampionSkill">
   createdAt?: Prisma.DateTimeFilter<"ChampionSkill"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ChampionSkill"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ChampionSkill"> | Date | string | null
   champion?: Prisma.XOR<Prisma.ChampionScalarRelationFilter, Prisma.ChampionWhereInput>
   patch?: Prisma.XOR<Prisma.PatchScalarRelationFilter, Prisma.PatchWhereInput>
 }, "id" | "championId_patchId_slot">
@@ -335,6 +345,7 @@ export type ChampionSkillOrderByWithAggregationInput = {
   tags?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ChampionSkillCountOrderByAggregateInput
   _max?: Prisma.ChampionSkillMaxOrderByAggregateInput
   _min?: Prisma.ChampionSkillMinOrderByAggregateInput
@@ -362,6 +373,7 @@ export type ChampionSkillScalarWhereWithAggregatesInput = {
   tags?: Prisma.StringNullableListFilter<"ChampionSkill">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ChampionSkill"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ChampionSkill"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ChampionSkill"> | Date | string | null
 }
 
 export type ChampionSkillCreateInput = {
@@ -381,6 +393,7 @@ export type ChampionSkillCreateInput = {
   tags?: Prisma.ChampionSkillCreatetagsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   champion: Prisma.ChampionCreateNestedOneWithoutChampionSkillsInput
   patch: Prisma.PatchCreateNestedOneWithoutChampionSkillsInput
 }
@@ -404,6 +417,7 @@ export type ChampionSkillUncheckedCreateInput = {
   tags?: Prisma.ChampionSkillCreatetagsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionSkillUpdateInput = {
@@ -423,6 +437,7 @@ export type ChampionSkillUpdateInput = {
   tags?: Prisma.ChampionSkillUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   champion?: Prisma.ChampionUpdateOneRequiredWithoutChampionSkillsNestedInput
   patch?: Prisma.PatchUpdateOneRequiredWithoutChampionSkillsNestedInput
 }
@@ -446,6 +461,7 @@ export type ChampionSkillUncheckedUpdateInput = {
   tags?: Prisma.ChampionSkillUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionSkillCreateManyInput = {
@@ -467,6 +483,7 @@ export type ChampionSkillCreateManyInput = {
   tags?: Prisma.ChampionSkillCreatetagsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionSkillUpdateManyMutationInput = {
@@ -486,6 +503,7 @@ export type ChampionSkillUpdateManyMutationInput = {
   tags?: Prisma.ChampionSkillUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionSkillUncheckedUpdateManyInput = {
@@ -507,6 +525,7 @@ export type ChampionSkillUncheckedUpdateManyInput = {
   tags?: Prisma.ChampionSkillUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionSkillListRelationFilter = {
@@ -552,6 +571,7 @@ export type ChampionSkillCountOrderByAggregateInput = {
   tags?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ChampionSkillMaxOrderByAggregateInput = {
@@ -567,6 +587,7 @@ export type ChampionSkillMaxOrderByAggregateInput = {
   targetType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ChampionSkillMinOrderByAggregateInput = {
@@ -582,6 +603,7 @@ export type ChampionSkillMinOrderByAggregateInput = {
   targetType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ChampionSkillCreateNestedManyWithoutPatchInput = {
@@ -715,6 +737,7 @@ export type ChampionSkillCreateWithoutPatchInput = {
   tags?: Prisma.ChampionSkillCreatetagsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   champion: Prisma.ChampionCreateNestedOneWithoutChampionSkillsInput
 }
 
@@ -736,6 +759,7 @@ export type ChampionSkillUncheckedCreateWithoutPatchInput = {
   tags?: Prisma.ChampionSkillCreatetagsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionSkillCreateOrConnectWithoutPatchInput = {
@@ -786,6 +810,7 @@ export type ChampionSkillScalarWhereInput = {
   tags?: Prisma.StringNullableListFilter<"ChampionSkill">
   createdAt?: Prisma.DateTimeFilter<"ChampionSkill"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ChampionSkill"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ChampionSkill"> | Date | string | null
 }
 
 export type ChampionSkillCreateWithoutChampionInput = {
@@ -805,6 +830,7 @@ export type ChampionSkillCreateWithoutChampionInput = {
   tags?: Prisma.ChampionSkillCreatetagsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   patch: Prisma.PatchCreateNestedOneWithoutChampionSkillsInput
 }
 
@@ -826,6 +852,7 @@ export type ChampionSkillUncheckedCreateWithoutChampionInput = {
   tags?: Prisma.ChampionSkillCreatetagsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionSkillCreateOrConnectWithoutChampionInput = {
@@ -872,6 +899,7 @@ export type ChampionSkillCreateManyPatchInput = {
   tags?: Prisma.ChampionSkillCreatetagsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionSkillUpdateWithoutPatchInput = {
@@ -891,6 +919,7 @@ export type ChampionSkillUpdateWithoutPatchInput = {
   tags?: Prisma.ChampionSkillUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   champion?: Prisma.ChampionUpdateOneRequiredWithoutChampionSkillsNestedInput
 }
 
@@ -912,6 +941,7 @@ export type ChampionSkillUncheckedUpdateWithoutPatchInput = {
   tags?: Prisma.ChampionSkillUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionSkillUncheckedUpdateManyWithoutPatchInput = {
@@ -932,6 +962,7 @@ export type ChampionSkillUncheckedUpdateManyWithoutPatchInput = {
   tags?: Prisma.ChampionSkillUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionSkillCreateManyChampionInput = {
@@ -952,6 +983,7 @@ export type ChampionSkillCreateManyChampionInput = {
   tags?: Prisma.ChampionSkillCreatetagsInput | string[]
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionSkillUpdateWithoutChampionInput = {
@@ -971,6 +1003,7 @@ export type ChampionSkillUpdateWithoutChampionInput = {
   tags?: Prisma.ChampionSkillUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   patch?: Prisma.PatchUpdateOneRequiredWithoutChampionSkillsNestedInput
 }
 
@@ -992,6 +1025,7 @@ export type ChampionSkillUncheckedUpdateWithoutChampionInput = {
   tags?: Prisma.ChampionSkillUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionSkillUncheckedUpdateManyWithoutChampionInput = {
@@ -1012,6 +1046,7 @@ export type ChampionSkillUncheckedUpdateManyWithoutChampionInput = {
   tags?: Prisma.ChampionSkillUpdatetagsInput | string[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -1035,6 +1070,7 @@ export type ChampionSkillSelect<ExtArgs extends runtime.Types.Extensions.Interna
   tags?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["championSkill"]>
@@ -1058,6 +1094,7 @@ export type ChampionSkillSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   tags?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["championSkill"]>
@@ -1081,6 +1118,7 @@ export type ChampionSkillSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   tags?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["championSkill"]>
@@ -1104,9 +1142,10 @@ export type ChampionSkillSelectScalar = {
   tags?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type ChampionSkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slot" | "name" | "nameVi" | "championId" | "patchId" | "description" | "descriptionVi" | "damageType" | "targetType" | "cooldown" | "cost" | "range" | "scaling" | "effects" | "tags" | "createdAt" | "updatedAt", ExtArgs["result"]["championSkill"]>
+export type ChampionSkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slot" | "name" | "nameVi" | "championId" | "patchId" | "description" | "descriptionVi" | "damageType" | "targetType" | "cooldown" | "cost" | "range" | "scaling" | "effects" | "tags" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["championSkill"]>
 export type ChampionSkillInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -1145,6 +1184,7 @@ export type $ChampionSkillPayload<ExtArgs extends runtime.Types.Extensions.Inter
     tags: string[]
     createdAt: Date
     updatedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["championSkill"]>
   composites: {}
 }
@@ -1588,6 +1628,7 @@ export interface ChampionSkillFieldRefs {
   readonly tags: Prisma.FieldRef<"ChampionSkill", 'String[]'>
   readonly createdAt: Prisma.FieldRef<"ChampionSkill", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ChampionSkill", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"ChampionSkill", 'DateTime'>
 }
     
 

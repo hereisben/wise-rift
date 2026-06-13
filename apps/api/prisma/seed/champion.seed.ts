@@ -20,6 +20,23 @@ type ChampionSeed = {
 
 const championSeeds: ChampionSeed[] = [
   {
+    key: `aatrox`,
+    name: `Aatrox`,
+    title: `The Darkin Blade`,
+    titleVi: `Quỷ Kiếm Darkin`,
+    roles: [GameRole.TOP],
+    damageType: `PHYSICAL`,
+    rangeType: `MELEE`,
+    difficulty: `MEDIUM`,
+    resourceType: `NONE`,
+    classTags: [`FIGHTER`, `BRUISER`],
+    playstyleTags: [`SUSTAIN`, `DRAIN_TANK`, `TEAMFIGHT`],
+    utilityTags: [`KNOCK_UP`, `SLOW`, `DASH`, `FEAR`],
+    riskTags: [`SKILLSHOT_RELIANT`, `HEALING_RELIANT`, `KITEABLE`],
+    strengths: [`SUSTAIN`, `EXTENDED_FIGHT`, `TEAMFIGHT`, `AREA_DAMAGE`],
+    weaknesses: [`ANTI_HEAL`, `HIGH_MOBILITY`, `KITE`, `POINT_AND_CLICK_CC`],
+  },
+  {
     key: `ahri`,
     name: `Ahri`,
     title: `The Nine-Tailed Fox`,

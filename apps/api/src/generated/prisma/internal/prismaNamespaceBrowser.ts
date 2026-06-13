@@ -201,7 +201,8 @@ export const ChampionSkillScalarFieldEnum = {
   effects: 'effects',
   tags: 'tags',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type ChampionSkillScalarFieldEnum = (typeof ChampionSkillScalarFieldEnum)[keyof typeof ChampionSkillScalarFieldEnum]
