@@ -12,9 +12,22 @@ export class ChampionsController {
     return successResponse(`Get champions successfully`, champions);
   }
 
+  @Get(`active`)
+  async findAllWithActivePatchData() {
+    const champions = await this.championsService.findAllWithActivePatchData();
+    return successResponse(`Get active champions successfully`, champions);
+  }
+
   @Get(`:key`)
   async findOneByKey(@Param(`key`) key: string) {
     const champion = await this.championsService.findOneByKey(key);
     return successResponse(`Get champion successfully`, champion);
+  }
+
+  @Get(`:key/active`)
+  async findOneByKeyWithActivePatchData(@Param(`key`) key: string) {
+    const champion =
+      await this.championsService.findOneByKeyWithActivePatchData(key);
+    return successResponse(`Get active patch champion successfully`, champion);
   }
 }

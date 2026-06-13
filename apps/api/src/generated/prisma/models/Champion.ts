@@ -274,7 +274,7 @@ export type ChampionWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Champion"> | Date | string
   archivedAt?: Prisma.DateTimeNullableFilter<"Champion"> | Date | string | null
   deletedAt?: Prisma.DateTimeNullableFilter<"Champion"> | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatListRelationFilter
+  championPatchStats?: Prisma.ChampionPatchStatListRelationFilter
   championSkills?: Prisma.ChampionSkillListRelationFilter
   championPoolEntries?: Prisma.ChampionPoolEntryListRelationFilter
   intendedDraftSessions?: Prisma.DraftSessionListRelationFilter
@@ -311,7 +311,7 @@ export type ChampionOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   archivedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  patchStats?: Prisma.ChampionPatchStatOrderByRelationAggregateInput
+  championPatchStats?: Prisma.ChampionPatchStatOrderByRelationAggregateInput
   championSkills?: Prisma.ChampionSkillOrderByRelationAggregateInput
   championPoolEntries?: Prisma.ChampionPoolEntryOrderByRelationAggregateInput
   intendedDraftSessions?: Prisma.DraftSessionOrderByRelationAggregateInput
@@ -351,7 +351,7 @@ export type ChampionWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Champion"> | Date | string
   archivedAt?: Prisma.DateTimeNullableFilter<"Champion"> | Date | string | null
   deletedAt?: Prisma.DateTimeNullableFilter<"Champion"> | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatListRelationFilter
+  championPatchStats?: Prisma.ChampionPatchStatListRelationFilter
   championSkills?: Prisma.ChampionSkillListRelationFilter
   championPoolEntries?: Prisma.ChampionPoolEntryListRelationFilter
   intendedDraftSessions?: Prisma.DraftSessionListRelationFilter
@@ -440,7 +440,7 @@ export type ChampionCreateInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -477,7 +477,7 @@ export type ChampionUncheckedCreateInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -514,7 +514,7 @@ export type ChampionUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -551,7 +551,7 @@ export type ChampionUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -780,18 +780,18 @@ export type ChampionUpdateweaknessesInput = {
   push?: string | string[]
 }
 
-export type ChampionCreateNestedOneWithoutPatchStatsInput = {
-  create?: Prisma.XOR<Prisma.ChampionCreateWithoutPatchStatsInput, Prisma.ChampionUncheckedCreateWithoutPatchStatsInput>
-  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutPatchStatsInput
+export type ChampionCreateNestedOneWithoutChampionPatchStatsInput = {
+  create?: Prisma.XOR<Prisma.ChampionCreateWithoutChampionPatchStatsInput, Prisma.ChampionUncheckedCreateWithoutChampionPatchStatsInput>
+  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutChampionPatchStatsInput
   connect?: Prisma.ChampionWhereUniqueInput
 }
 
-export type ChampionUpdateOneRequiredWithoutPatchStatsNestedInput = {
-  create?: Prisma.XOR<Prisma.ChampionCreateWithoutPatchStatsInput, Prisma.ChampionUncheckedCreateWithoutPatchStatsInput>
-  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutPatchStatsInput
-  upsert?: Prisma.ChampionUpsertWithoutPatchStatsInput
+export type ChampionUpdateOneRequiredWithoutChampionPatchStatsNestedInput = {
+  create?: Prisma.XOR<Prisma.ChampionCreateWithoutChampionPatchStatsInput, Prisma.ChampionUncheckedCreateWithoutChampionPatchStatsInput>
+  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutChampionPatchStatsInput
+  upsert?: Prisma.ChampionUpsertWithoutChampionPatchStatsInput
   connect?: Prisma.ChampionWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChampionUpdateToOneWithWhereWithoutPatchStatsInput, Prisma.ChampionUpdateWithoutPatchStatsInput>, Prisma.ChampionUncheckedUpdateWithoutPatchStatsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChampionUpdateToOneWithWhereWithoutChampionPatchStatsInput, Prisma.ChampionUpdateWithoutChampionPatchStatsInput>, Prisma.ChampionUncheckedUpdateWithoutChampionPatchStatsInput>
 }
 
 export type ChampionCreateNestedOneWithoutChampionSkillsInput = {
@@ -978,7 +978,7 @@ export type ChampionUpdateOneRequiredWithoutSynergyProfilesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ChampionUpdateToOneWithWhereWithoutSynergyProfilesInput, Prisma.ChampionUpdateWithoutSynergyProfilesInput>, Prisma.ChampionUncheckedUpdateWithoutSynergyProfilesInput>
 }
 
-export type ChampionCreateWithoutPatchStatsInput = {
+export type ChampionCreateWithoutChampionPatchStatsInput = {
   id?: string
   key: string
   name: string
@@ -1014,7 +1014,7 @@ export type ChampionCreateWithoutPatchStatsInput = {
   synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
-export type ChampionUncheckedCreateWithoutPatchStatsInput = {
+export type ChampionUncheckedCreateWithoutChampionPatchStatsInput = {
   id?: string
   key: string
   name: string
@@ -1050,23 +1050,23 @@ export type ChampionUncheckedCreateWithoutPatchStatsInput = {
   synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
-export type ChampionCreateOrConnectWithoutPatchStatsInput = {
+export type ChampionCreateOrConnectWithoutChampionPatchStatsInput = {
   where: Prisma.ChampionWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChampionCreateWithoutPatchStatsInput, Prisma.ChampionUncheckedCreateWithoutPatchStatsInput>
+  create: Prisma.XOR<Prisma.ChampionCreateWithoutChampionPatchStatsInput, Prisma.ChampionUncheckedCreateWithoutChampionPatchStatsInput>
 }
 
-export type ChampionUpsertWithoutPatchStatsInput = {
-  update: Prisma.XOR<Prisma.ChampionUpdateWithoutPatchStatsInput, Prisma.ChampionUncheckedUpdateWithoutPatchStatsInput>
-  create: Prisma.XOR<Prisma.ChampionCreateWithoutPatchStatsInput, Prisma.ChampionUncheckedCreateWithoutPatchStatsInput>
+export type ChampionUpsertWithoutChampionPatchStatsInput = {
+  update: Prisma.XOR<Prisma.ChampionUpdateWithoutChampionPatchStatsInput, Prisma.ChampionUncheckedUpdateWithoutChampionPatchStatsInput>
+  create: Prisma.XOR<Prisma.ChampionCreateWithoutChampionPatchStatsInput, Prisma.ChampionUncheckedCreateWithoutChampionPatchStatsInput>
   where?: Prisma.ChampionWhereInput
 }
 
-export type ChampionUpdateToOneWithWhereWithoutPatchStatsInput = {
+export type ChampionUpdateToOneWithWhereWithoutChampionPatchStatsInput = {
   where?: Prisma.ChampionWhereInput
-  data: Prisma.XOR<Prisma.ChampionUpdateWithoutPatchStatsInput, Prisma.ChampionUncheckedUpdateWithoutPatchStatsInput>
+  data: Prisma.XOR<Prisma.ChampionUpdateWithoutChampionPatchStatsInput, Prisma.ChampionUncheckedUpdateWithoutChampionPatchStatsInput>
 }
 
-export type ChampionUpdateWithoutPatchStatsInput = {
+export type ChampionUpdateWithoutChampionPatchStatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1102,7 +1102,7 @@ export type ChampionUpdateWithoutPatchStatsInput = {
   synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
-export type ChampionUncheckedUpdateWithoutPatchStatsInput = {
+export type ChampionUncheckedUpdateWithoutChampionPatchStatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1159,7 +1159,7 @@ export type ChampionCreateWithoutChampionSkillsInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
   draftBans?: Prisma.DraftBanCreateNestedManyWithoutChampionInput
@@ -1195,7 +1195,7 @@ export type ChampionUncheckedCreateWithoutChampionSkillsInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
   draftBans?: Prisma.DraftBanUncheckedCreateNestedManyWithoutChampionInput
@@ -1247,7 +1247,7 @@ export type ChampionUpdateWithoutChampionSkillsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
   draftBans?: Prisma.DraftBanUpdateManyWithoutChampionNestedInput
@@ -1283,7 +1283,7 @@ export type ChampionUncheckedUpdateWithoutChampionSkillsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
   draftBans?: Prisma.DraftBanUncheckedUpdateManyWithoutChampionNestedInput
@@ -1319,7 +1319,7 @@ export type ChampionCreateWithoutChampionPoolEntriesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
   draftBans?: Prisma.DraftBanCreateNestedManyWithoutChampionInput
@@ -1355,7 +1355,7 @@ export type ChampionUncheckedCreateWithoutChampionPoolEntriesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
   draftBans?: Prisma.DraftBanUncheckedCreateNestedManyWithoutChampionInput
@@ -1407,7 +1407,7 @@ export type ChampionUpdateWithoutChampionPoolEntriesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
   draftBans?: Prisma.DraftBanUpdateManyWithoutChampionNestedInput
@@ -1443,7 +1443,7 @@ export type ChampionUncheckedUpdateWithoutChampionPoolEntriesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
   draftBans?: Prisma.DraftBanUncheckedUpdateManyWithoutChampionNestedInput
@@ -1479,7 +1479,7 @@ export type ChampionCreateWithoutIntendedDraftSessionsInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   draftBans?: Prisma.DraftBanCreateNestedManyWithoutChampionInput
@@ -1515,7 +1515,7 @@ export type ChampionUncheckedCreateWithoutIntendedDraftSessionsInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   draftBans?: Prisma.DraftBanUncheckedCreateNestedManyWithoutChampionInput
@@ -1567,7 +1567,7 @@ export type ChampionUpdateWithoutIntendedDraftSessionsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   draftBans?: Prisma.DraftBanUpdateManyWithoutChampionNestedInput
@@ -1603,7 +1603,7 @@ export type ChampionUncheckedUpdateWithoutIntendedDraftSessionsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   draftBans?: Prisma.DraftBanUncheckedUpdateManyWithoutChampionNestedInput
@@ -1639,7 +1639,7 @@ export type ChampionCreateWithoutDraftBansInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -1675,7 +1675,7 @@ export type ChampionUncheckedCreateWithoutDraftBansInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -1727,7 +1727,7 @@ export type ChampionUpdateWithoutDraftBansInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -1763,7 +1763,7 @@ export type ChampionUncheckedUpdateWithoutDraftBansInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -1799,7 +1799,7 @@ export type ChampionCreateWithoutDraftPicksInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -1835,7 +1835,7 @@ export type ChampionUncheckedCreateWithoutDraftPicksInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -1887,7 +1887,7 @@ export type ChampionUpdateWithoutDraftPicksInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -1923,7 +1923,7 @@ export type ChampionUncheckedUpdateWithoutDraftPicksInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -1959,7 +1959,7 @@ export type ChampionCreateWithoutItemBuildRecommendationsInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -1995,7 +1995,7 @@ export type ChampionUncheckedCreateWithoutItemBuildRecommendationsInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -2047,7 +2047,7 @@ export type ChampionUpdateWithoutItemBuildRecommendationsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -2083,7 +2083,7 @@ export type ChampionUncheckedUpdateWithoutItemBuildRecommendationsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -2119,7 +2119,7 @@ export type ChampionCreateWithoutChampionMatchupNotesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -2155,7 +2155,7 @@ export type ChampionUncheckedCreateWithoutChampionMatchupNotesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -2196,7 +2196,7 @@ export type ChampionCreateWithoutEnemyMatchupNotesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -2232,7 +2232,7 @@ export type ChampionUncheckedCreateWithoutEnemyMatchupNotesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -2284,7 +2284,7 @@ export type ChampionUpdateWithoutChampionMatchupNotesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -2320,7 +2320,7 @@ export type ChampionUncheckedUpdateWithoutChampionMatchupNotesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -2367,7 +2367,7 @@ export type ChampionUpdateWithoutEnemyMatchupNotesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -2403,7 +2403,7 @@ export type ChampionUncheckedUpdateWithoutEnemyMatchupNotesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -2439,7 +2439,7 @@ export type ChampionCreateWithoutMatchOutcomesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -2475,7 +2475,7 @@ export type ChampionUncheckedCreateWithoutMatchOutcomesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -2527,7 +2527,7 @@ export type ChampionUpdateWithoutMatchOutcomesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -2563,7 +2563,7 @@ export type ChampionUncheckedUpdateWithoutMatchOutcomesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -2599,7 +2599,7 @@ export type ChampionCreateWithoutRuneBuildRecommendationsInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -2635,7 +2635,7 @@ export type ChampionUncheckedCreateWithoutRuneBuildRecommendationsInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -2687,7 +2687,7 @@ export type ChampionUpdateWithoutRuneBuildRecommendationsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -2723,7 +2723,7 @@ export type ChampionUncheckedUpdateWithoutRuneBuildRecommendationsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -2759,7 +2759,7 @@ export type ChampionCreateWithoutChampionBuildProfilesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -2795,7 +2795,7 @@ export type ChampionUncheckedCreateWithoutChampionBuildProfilesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -2847,7 +2847,7 @@ export type ChampionUpdateWithoutChampionBuildProfilesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -2883,7 +2883,7 @@ export type ChampionUncheckedUpdateWithoutChampionBuildProfilesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -2919,7 +2919,7 @@ export type ChampionCreateWithoutMatchupProfilesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -2955,7 +2955,7 @@ export type ChampionUncheckedCreateWithoutMatchupProfilesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -3007,7 +3007,7 @@ export type ChampionUpdateWithoutMatchupProfilesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -3043,7 +3043,7 @@ export type ChampionUncheckedUpdateWithoutMatchupProfilesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -3079,7 +3079,7 @@ export type ChampionCreateWithoutSynergyProfilesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionCreateNestedManyWithoutIntendedChampionInput
@@ -3115,7 +3115,7 @@ export type ChampionUncheckedCreateWithoutSynergyProfilesInput = {
   updatedAt?: Date | string
   archivedAt?: Date | string | null
   deletedAt?: Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedCreateNestedManyWithoutChampionInput
   championSkills?: Prisma.ChampionSkillUncheckedCreateNestedManyWithoutChampionInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedCreateNestedManyWithoutChampionInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedCreateNestedManyWithoutIntendedChampionInput
@@ -3167,7 +3167,7 @@ export type ChampionUpdateWithoutSynergyProfilesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUpdateManyWithoutIntendedChampionNestedInput
@@ -3203,7 +3203,7 @@ export type ChampionUncheckedUpdateWithoutSynergyProfilesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
+  championPatchStats?: Prisma.ChampionPatchStatUncheckedUpdateManyWithoutChampionNestedInput
   championSkills?: Prisma.ChampionSkillUncheckedUpdateManyWithoutChampionNestedInput
   championPoolEntries?: Prisma.ChampionPoolEntryUncheckedUpdateManyWithoutChampionNestedInput
   intendedDraftSessions?: Prisma.DraftSessionUncheckedUpdateManyWithoutIntendedChampionNestedInput
@@ -3224,7 +3224,7 @@ export type ChampionUncheckedUpdateWithoutSynergyProfilesInput = {
  */
 
 export type ChampionCountOutputType = {
-  patchStats: number
+  championPatchStats: number
   championSkills: number
   championPoolEntries: number
   intendedDraftSessions: number
@@ -3241,7 +3241,7 @@ export type ChampionCountOutputType = {
 }
 
 export type ChampionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  patchStats?: boolean | ChampionCountOutputTypeCountPatchStatsArgs
+  championPatchStats?: boolean | ChampionCountOutputTypeCountChampionPatchStatsArgs
   championSkills?: boolean | ChampionCountOutputTypeCountChampionSkillsArgs
   championPoolEntries?: boolean | ChampionCountOutputTypeCountChampionPoolEntriesArgs
   intendedDraftSessions?: boolean | ChampionCountOutputTypeCountIntendedDraftSessionsArgs
@@ -3270,7 +3270,7 @@ export type ChampionCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
 /**
  * ChampionCountOutputType without action
  */
-export type ChampionCountOutputTypeCountPatchStatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ChampionCountOutputTypeCountChampionPatchStatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ChampionPatchStatWhereInput
 }
 
@@ -3387,7 +3387,7 @@ export type ChampionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   updatedAt?: boolean
   archivedAt?: boolean
   deletedAt?: boolean
-  patchStats?: boolean | Prisma.Champion$patchStatsArgs<ExtArgs>
+  championPatchStats?: boolean | Prisma.Champion$championPatchStatsArgs<ExtArgs>
   championSkills?: boolean | Prisma.Champion$championSkillsArgs<ExtArgs>
   championPoolEntries?: boolean | Prisma.Champion$championPoolEntriesArgs<ExtArgs>
   intendedDraftSessions?: boolean | Prisma.Champion$intendedDraftSessionsArgs<ExtArgs>
@@ -3475,7 +3475,7 @@ export type ChampionSelectScalar = {
 
 export type ChampionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "name" | "title" | "titleVi" | "roles" | "damageType" | "rangeType" | "difficulty" | "resourceType" | "classTags" | "playstyleTags" | "utilityTags" | "riskTags" | "strengths" | "weaknesses" | "createdAt" | "updatedAt" | "archivedAt" | "deletedAt", ExtArgs["result"]["champion"]>
 export type ChampionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  patchStats?: boolean | Prisma.Champion$patchStatsArgs<ExtArgs>
+  championPatchStats?: boolean | Prisma.Champion$championPatchStatsArgs<ExtArgs>
   championSkills?: boolean | Prisma.Champion$championSkillsArgs<ExtArgs>
   championPoolEntries?: boolean | Prisma.Champion$championPoolEntriesArgs<ExtArgs>
   intendedDraftSessions?: boolean | Prisma.Champion$intendedDraftSessionsArgs<ExtArgs>
@@ -3497,7 +3497,7 @@ export type ChampionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $ChampionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Champion"
   objects: {
-    patchStats: Prisma.$ChampionPatchStatPayload<ExtArgs>[]
+    championPatchStats: Prisma.$ChampionPatchStatPayload<ExtArgs>[]
     championSkills: Prisma.$ChampionSkillPayload<ExtArgs>[]
     championPoolEntries: Prisma.$ChampionPoolEntryPayload<ExtArgs>[]
     intendedDraftSessions: Prisma.$DraftSessionPayload<ExtArgs>[]
@@ -3927,7 +3927,7 @@ readonly fields: ChampionFieldRefs;
  */
 export interface Prisma__ChampionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  patchStats<T extends Prisma.Champion$patchStatsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$patchStatsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChampionPatchStatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  championPatchStats<T extends Prisma.Champion$championPatchStatsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$championPatchStatsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChampionPatchStatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   championSkills<T extends Prisma.Champion$championSkillsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$championSkillsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChampionSkillPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   championPoolEntries<T extends Prisma.Champion$championPoolEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$championPoolEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChampionPoolEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   intendedDraftSessions<T extends Prisma.Champion$intendedDraftSessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$intendedDraftSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DraftSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -4383,9 +4383,9 @@ export type ChampionDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Champion.patchStats
+ * Champion.championPatchStats
  */
-export type Champion$patchStatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Champion$championPatchStatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the ChampionPatchStat
    */

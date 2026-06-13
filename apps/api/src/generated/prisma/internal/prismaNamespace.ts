@@ -2621,7 +2621,8 @@ export const ChampionPatchStatScalarFieldEnum = {
   teamProfile: 'teamProfile',
   metaScore: 'metaScore',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type ChampionPatchStatScalarFieldEnum = (typeof ChampionPatchStatScalarFieldEnum)[keyof typeof ChampionPatchStatScalarFieldEnum]

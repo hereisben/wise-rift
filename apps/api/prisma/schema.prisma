@@ -72,7 +72,7 @@ model Champion {
   riskTags                 String[]
   strengths                String[]
   weaknesses               String[]
-  patchStats               ChampionPatchStat[]
+  championPatchStats       ChampionPatchStat[]
   championSkills           ChampionSkill[]
   championPoolEntries      ChampionPoolEntry[]
   intendedDraftSessions    DraftSession[]            @relation("DraftIntendedChampion")
@@ -93,11 +93,11 @@ model Champion {
 }
 
 model ChampionPatchStat {
-  id                 String   @id @default(cuid())
+  id                 String    @id @default(cuid())
   championId         String
-  champion           Champion @relation(fields: [championId], references: [id])
+  champion           Champion  @relation(fields: [championId], references: [id])
   patchId            String
-  patch              Patch    @relation(fields: [patchId], references: [id])
+  patch              Patch     @relation(fields: [patchId], references: [id])
   baseHealth         Float?
   baseMana           Float?
   baseArmor          Float?
@@ -116,8 +116,9 @@ model ChampionPatchStat {
   laneProfile        Json?
   teamProfile        Json?
   metaScore          Int?
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  deletedAt          DateTime?
 
   @@unique([championId, patchId])
   @@index([patchId])

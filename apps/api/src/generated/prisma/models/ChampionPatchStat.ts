@@ -83,6 +83,7 @@ export type ChampionPatchStatMinAggregateOutputType = {
   metaScore: number | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ChampionPatchStatMaxAggregateOutputType = {
@@ -106,6 +107,7 @@ export type ChampionPatchStatMaxAggregateOutputType = {
   metaScore: number | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ChampionPatchStatCountAggregateOutputType = {
@@ -132,6 +134,7 @@ export type ChampionPatchStatCountAggregateOutputType = {
   metaScore: number
   createdAt: number
   updatedAt: number
+  deletedAt: number
   _all: number
 }
 
@@ -193,6 +196,7 @@ export type ChampionPatchStatMinAggregateInputType = {
   metaScore?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ChampionPatchStatMaxAggregateInputType = {
@@ -216,6 +220,7 @@ export type ChampionPatchStatMaxAggregateInputType = {
   metaScore?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ChampionPatchStatCountAggregateInputType = {
@@ -242,6 +247,7 @@ export type ChampionPatchStatCountAggregateInputType = {
   metaScore?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -355,6 +361,7 @@ export type ChampionPatchStatGroupByOutputType = {
   metaScore: number | null
   createdAt: Date
   updatedAt: Date
+  deletedAt: Date | null
   _count: ChampionPatchStatCountAggregateOutputType | null
   _avg: ChampionPatchStatAvgAggregateOutputType | null
   _sum: ChampionPatchStatSumAggregateOutputType | null
@@ -404,6 +411,7 @@ export type ChampionPatchStatWhereInput = {
   metaScore?: Prisma.IntNullableFilter<"ChampionPatchStat"> | number | null
   createdAt?: Prisma.DateTimeFilter<"ChampionPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ChampionPatchStat"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ChampionPatchStat"> | Date | string | null
   champion?: Prisma.XOR<Prisma.ChampionScalarRelationFilter, Prisma.ChampionWhereInput>
   patch?: Prisma.XOR<Prisma.PatchScalarRelationFilter, Prisma.PatchWhereInput>
 }
@@ -432,6 +440,7 @@ export type ChampionPatchStatOrderByWithRelationInput = {
   metaScore?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   champion?: Prisma.ChampionOrderByWithRelationInput
   patch?: Prisma.PatchOrderByWithRelationInput
 }
@@ -464,6 +473,7 @@ export type ChampionPatchStatWhereUniqueInput = Prisma.AtLeast<{
   metaScore?: Prisma.IntNullableFilter<"ChampionPatchStat"> | number | null
   createdAt?: Prisma.DateTimeFilter<"ChampionPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ChampionPatchStat"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ChampionPatchStat"> | Date | string | null
   champion?: Prisma.XOR<Prisma.ChampionScalarRelationFilter, Prisma.ChampionWhereInput>
   patch?: Prisma.XOR<Prisma.PatchScalarRelationFilter, Prisma.PatchWhereInput>
 }, "id" | "championId_patchId">
@@ -492,6 +502,7 @@ export type ChampionPatchStatOrderByWithAggregationInput = {
   metaScore?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ChampionPatchStatCountOrderByAggregateInput
   _avg?: Prisma.ChampionPatchStatAvgOrderByAggregateInput
   _max?: Prisma.ChampionPatchStatMaxOrderByAggregateInput
@@ -526,6 +537,7 @@ export type ChampionPatchStatScalarWhereWithAggregatesInput = {
   metaScore?: Prisma.IntNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ChampionPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ChampionPatchStat"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ChampionPatchStat"> | Date | string | null
 }
 
 export type ChampionPatchStatCreateInput = {
@@ -550,7 +562,8 @@ export type ChampionPatchStatCreateInput = {
   metaScore?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  champion: Prisma.ChampionCreateNestedOneWithoutPatchStatsInput
+  deletedAt?: Date | string | null
+  champion: Prisma.ChampionCreateNestedOneWithoutChampionPatchStatsInput
   patch: Prisma.PatchCreateNestedOneWithoutChampionStatsInput
 }
 
@@ -578,6 +591,7 @@ export type ChampionPatchStatUncheckedCreateInput = {
   metaScore?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionPatchStatUpdateInput = {
@@ -602,7 +616,8 @@ export type ChampionPatchStatUpdateInput = {
   metaScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  champion?: Prisma.ChampionUpdateOneRequiredWithoutPatchStatsNestedInput
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  champion?: Prisma.ChampionUpdateOneRequiredWithoutChampionPatchStatsNestedInput
   patch?: Prisma.PatchUpdateOneRequiredWithoutChampionStatsNestedInput
 }
 
@@ -630,6 +645,7 @@ export type ChampionPatchStatUncheckedUpdateInput = {
   metaScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionPatchStatCreateManyInput = {
@@ -656,6 +672,7 @@ export type ChampionPatchStatCreateManyInput = {
   metaScore?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionPatchStatUpdateManyMutationInput = {
@@ -680,6 +697,7 @@ export type ChampionPatchStatUpdateManyMutationInput = {
   metaScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionPatchStatUncheckedUpdateManyInput = {
@@ -706,6 +724,7 @@ export type ChampionPatchStatUncheckedUpdateManyInput = {
   metaScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionPatchStatListRelationFilter = {
@@ -747,6 +766,7 @@ export type ChampionPatchStatCountOrderByAggregateInput = {
   metaScore?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ChampionPatchStatAvgOrderByAggregateInput = {
@@ -788,6 +808,7 @@ export type ChampionPatchStatMaxOrderByAggregateInput = {
   metaScore?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ChampionPatchStatMinOrderByAggregateInput = {
@@ -811,6 +832,7 @@ export type ChampionPatchStatMinOrderByAggregateInput = {
   metaScore?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ChampionPatchStatSumOrderByAggregateInput = {
@@ -953,7 +975,8 @@ export type ChampionPatchStatCreateWithoutPatchInput = {
   metaScore?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  champion: Prisma.ChampionCreateNestedOneWithoutPatchStatsInput
+  deletedAt?: Date | string | null
+  champion: Prisma.ChampionCreateNestedOneWithoutChampionPatchStatsInput
 }
 
 export type ChampionPatchStatUncheckedCreateWithoutPatchInput = {
@@ -979,6 +1002,7 @@ export type ChampionPatchStatUncheckedCreateWithoutPatchInput = {
   metaScore?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionPatchStatCreateOrConnectWithoutPatchInput = {
@@ -1034,6 +1058,7 @@ export type ChampionPatchStatScalarWhereInput = {
   metaScore?: Prisma.IntNullableFilter<"ChampionPatchStat"> | number | null
   createdAt?: Prisma.DateTimeFilter<"ChampionPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ChampionPatchStat"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ChampionPatchStat"> | Date | string | null
 }
 
 export type ChampionPatchStatCreateWithoutChampionInput = {
@@ -1058,6 +1083,7 @@ export type ChampionPatchStatCreateWithoutChampionInput = {
   metaScore?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   patch: Prisma.PatchCreateNestedOneWithoutChampionStatsInput
 }
 
@@ -1084,6 +1110,7 @@ export type ChampionPatchStatUncheckedCreateWithoutChampionInput = {
   metaScore?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionPatchStatCreateOrConnectWithoutChampionInput = {
@@ -1135,6 +1162,7 @@ export type ChampionPatchStatCreateManyPatchInput = {
   metaScore?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionPatchStatUpdateWithoutPatchInput = {
@@ -1159,7 +1187,8 @@ export type ChampionPatchStatUpdateWithoutPatchInput = {
   metaScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  champion?: Prisma.ChampionUpdateOneRequiredWithoutPatchStatsNestedInput
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  champion?: Prisma.ChampionUpdateOneRequiredWithoutChampionPatchStatsNestedInput
 }
 
 export type ChampionPatchStatUncheckedUpdateWithoutPatchInput = {
@@ -1185,6 +1214,7 @@ export type ChampionPatchStatUncheckedUpdateWithoutPatchInput = {
   metaScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionPatchStatUncheckedUpdateManyWithoutPatchInput = {
@@ -1210,6 +1240,7 @@ export type ChampionPatchStatUncheckedUpdateManyWithoutPatchInput = {
   metaScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionPatchStatCreateManyChampionInput = {
@@ -1235,6 +1266,7 @@ export type ChampionPatchStatCreateManyChampionInput = {
   metaScore?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ChampionPatchStatUpdateWithoutChampionInput = {
@@ -1259,6 +1291,7 @@ export type ChampionPatchStatUpdateWithoutChampionInput = {
   metaScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   patch?: Prisma.PatchUpdateOneRequiredWithoutChampionStatsNestedInput
 }
 
@@ -1285,6 +1318,7 @@ export type ChampionPatchStatUncheckedUpdateWithoutChampionInput = {
   metaScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ChampionPatchStatUncheckedUpdateManyWithoutChampionInput = {
@@ -1310,6 +1344,7 @@ export type ChampionPatchStatUncheckedUpdateManyWithoutChampionInput = {
   metaScore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -1338,6 +1373,7 @@ export type ChampionPatchStatSelect<ExtArgs extends runtime.Types.Extensions.Int
   metaScore?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["championPatchStat"]>
@@ -1366,6 +1402,7 @@ export type ChampionPatchStatSelectCreateManyAndReturn<ExtArgs extends runtime.T
   metaScore?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["championPatchStat"]>
@@ -1394,6 +1431,7 @@ export type ChampionPatchStatSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   metaScore?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["championPatchStat"]>
@@ -1422,9 +1460,10 @@ export type ChampionPatchStatSelectScalar = {
   metaScore?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type ChampionPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "championId" | "patchId" | "baseHealth" | "baseMana" | "baseArmor" | "baseMagicResist" | "baseAttackDamage" | "baseAbilityPower" | "attackSpeed" | "moveSpeed" | "healthGrowth" | "manaGrowth" | "armorGrowth" | "magicResistGrowth" | "attackDamageGrowth" | "attackSpeedGrowth" | "scalingProfile" | "laneProfile" | "teamProfile" | "metaScore" | "createdAt" | "updatedAt", ExtArgs["result"]["championPatchStat"]>
+export type ChampionPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "championId" | "patchId" | "baseHealth" | "baseMana" | "baseArmor" | "baseMagicResist" | "baseAttackDamage" | "baseAbilityPower" | "attackSpeed" | "moveSpeed" | "healthGrowth" | "manaGrowth" | "armorGrowth" | "magicResistGrowth" | "attackDamageGrowth" | "attackSpeedGrowth" | "scalingProfile" | "laneProfile" | "teamProfile" | "metaScore" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["championPatchStat"]>
 export type ChampionPatchStatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -1468,6 +1507,7 @@ export type $ChampionPatchStatPayload<ExtArgs extends runtime.Types.Extensions.I
     metaScore: number | null
     createdAt: Date
     updatedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["championPatchStat"]>
   composites: {}
 }
@@ -1916,6 +1956,7 @@ export interface ChampionPatchStatFieldRefs {
   readonly metaScore: Prisma.FieldRef<"ChampionPatchStat", 'Int'>
   readonly createdAt: Prisma.FieldRef<"ChampionPatchStat", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ChampionPatchStat", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"ChampionPatchStat", 'DateTime'>
 }
     
 
