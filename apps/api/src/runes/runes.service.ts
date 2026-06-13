@@ -11,7 +11,10 @@ export class RunesService {
         deletedAt: null,
       },
       include: {
-        patchStats: {
+        runePatchStats: {
+          where: {
+            deletedAt: null,
+          },
           include: {
             patch: true,
           },
@@ -32,7 +35,10 @@ export class RunesService {
         deletedAt: null,
       },
       include: {
-        patchStats: {
+        runePatchStats: {
+          where: {
+            deletedAt: null,
+          },
           include: {
             patch: true,
           },

@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { successResponse } from '../common/types/api-response.helper.js';
 import { PatchesService } from './patches.service.js';
 
@@ -16,5 +16,11 @@ export class PatchesController {
   async findActive() {
     const patch = await this.patchesService.findActive();
     return successResponse(`Get active patch successfully`, patch);
+  }
+
+  @Get(`:version`)
+  async findVersion(@Param(`version`) version: string) {
+    const patch = await this.patchesService.findOneVersion(version);
+    return successResponse(`Get version ${version} successfully`, patch);
   }
 }

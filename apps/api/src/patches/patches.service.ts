@@ -33,4 +33,19 @@ export class PatchesService {
 
     return patch;
   }
+
+  async findOneVersion(version: string) {
+    const patch = await this.prisma.patch.findFirst({
+      where: {
+        version,
+        deletedAt: null,
+      },
+    });
+
+    if (!patch) {
+      throw new NotFoundException(`Patch version ${version} not found`);
+    }
+
+    return patch;
+  }
 }

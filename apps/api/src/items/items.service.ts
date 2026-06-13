@@ -9,6 +9,16 @@ export class ItemsService {
       where: {
         deletedAt: null,
       },
+      include: {
+        itemPatchStats: {
+          where: {
+            deletedAt: null,
+          },
+          include: {
+            patch: true,
+          },
+        },
+      },
       orderBy: {
         name: `asc`,
       },
@@ -20,6 +30,16 @@ export class ItemsService {
       where: {
         key,
         deletedAt: null,
+      },
+      include: {
+        itemPatchStats: {
+          where: {
+            deletedAt: null,
+          },
+          include: {
+            patch: true,
+          },
+        },
       },
     });
 

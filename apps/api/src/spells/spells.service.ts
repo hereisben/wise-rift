@@ -10,6 +10,16 @@ export class SpellsService {
       where: {
         deletedAt: null,
       },
+      include: {
+        spellPatchStats: {
+          where: {
+            deletedAt: null,
+          },
+          include: {
+            patch: true,
+          },
+        },
+      },
       orderBy: {
         name: `asc`,
       },

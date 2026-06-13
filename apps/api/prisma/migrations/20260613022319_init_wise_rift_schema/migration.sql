@@ -236,6 +236,7 @@ CREATE TABLE "ItemPatchStat" (
     "effectDescription" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "deletedAt" TIMESTAMP(3),
 
     CONSTRAINT "ItemPatchStat_pkey" PRIMARY KEY ("id")
 );

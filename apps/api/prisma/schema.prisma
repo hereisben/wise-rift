@@ -171,11 +171,11 @@ model Item {
 }
 
 model ItemPatchStat {
-  id                String   @id @default(cuid())
+  id                String    @id @default(cuid())
   itemId            String
-  item              Item     @relation(fields: [itemId], references: [id])
+  item              Item      @relation(fields: [itemId], references: [id])
   patchId           String
-  patch             Patch    @relation(fields: [patchId], references: [id])
+  patch             Patch     @relation(fields: [patchId], references: [id])
   cost              Int?
   abilityPower      Float?
   attackDamage      Float?
@@ -195,8 +195,9 @@ model ItemPatchStat {
   manaRegen         Float?
   healShieldPower   Float?
   effectDescription String?
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  deletedAt         DateTime?
 
   @@unique([patchId, itemId])
   @@index([itemId])
@@ -477,7 +478,7 @@ model Rune {
   iconUrl                      String?
   path                         RunePath
   slot                         RuneSlot
-  patchStats                   RunePatchStat[]
+  runePatchStats               RunePatchStat[]
   runeBuildRecommendationRunes RuneBuildRecommendationRune[]
   createdAt                    DateTime                      @default(now())
   updatedAt                    DateTime                      @updatedAt

@@ -93,6 +93,7 @@ export type ItemPatchStatMinAggregateOutputType = {
   effectDescription: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ItemPatchStatMaxAggregateOutputType = {
@@ -120,6 +121,7 @@ export type ItemPatchStatMaxAggregateOutputType = {
   effectDescription: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type ItemPatchStatCountAggregateOutputType = {
@@ -147,6 +149,7 @@ export type ItemPatchStatCountAggregateOutputType = {
   effectDescription: number
   createdAt: number
   updatedAt: number
+  deletedAt: number
   _all: number
 }
 
@@ -218,6 +221,7 @@ export type ItemPatchStatMinAggregateInputType = {
   effectDescription?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ItemPatchStatMaxAggregateInputType = {
@@ -245,6 +249,7 @@ export type ItemPatchStatMaxAggregateInputType = {
   effectDescription?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type ItemPatchStatCountAggregateInputType = {
@@ -272,6 +277,7 @@ export type ItemPatchStatCountAggregateInputType = {
   effectDescription?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -386,6 +392,7 @@ export type ItemPatchStatGroupByOutputType = {
   effectDescription: string | null
   createdAt: Date
   updatedAt: Date
+  deletedAt: Date | null
   _count: ItemPatchStatCountAggregateOutputType | null
   _avg: ItemPatchStatAvgAggregateOutputType | null
   _sum: ItemPatchStatSumAggregateOutputType | null
@@ -436,6 +443,7 @@ export type ItemPatchStatWhereInput = {
   effectDescription?: Prisma.StringNullableFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ItemPatchStat"> | Date | string | null
   item?: Prisma.XOR<Prisma.ItemScalarRelationFilter, Prisma.ItemWhereInput>
   patch?: Prisma.XOR<Prisma.PatchScalarRelationFilter, Prisma.PatchWhereInput>
 }
@@ -465,6 +473,7 @@ export type ItemPatchStatOrderByWithRelationInput = {
   effectDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   item?: Prisma.ItemOrderByWithRelationInput
   patch?: Prisma.PatchOrderByWithRelationInput
 }
@@ -498,6 +507,7 @@ export type ItemPatchStatWhereUniqueInput = Prisma.AtLeast<{
   effectDescription?: Prisma.StringNullableFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ItemPatchStat"> | Date | string | null
   item?: Prisma.XOR<Prisma.ItemScalarRelationFilter, Prisma.ItemWhereInput>
   patch?: Prisma.XOR<Prisma.PatchScalarRelationFilter, Prisma.PatchWhereInput>
 }, "id" | "patchId_itemId">
@@ -527,6 +537,7 @@ export type ItemPatchStatOrderByWithAggregationInput = {
   effectDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ItemPatchStatCountOrderByAggregateInput
   _avg?: Prisma.ItemPatchStatAvgOrderByAggregateInput
   _max?: Prisma.ItemPatchStatMaxOrderByAggregateInput
@@ -562,6 +573,7 @@ export type ItemPatchStatScalarWhereWithAggregatesInput = {
   effectDescription?: Prisma.StringNullableWithAggregatesFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ItemPatchStat"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ItemPatchStat"> | Date | string | null
 }
 
 export type ItemPatchStatCreateInput = {
@@ -587,6 +599,7 @@ export type ItemPatchStatCreateInput = {
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   item: Prisma.ItemCreateNestedOneWithoutItemPatchStatsInput
   patch: Prisma.PatchCreateNestedOneWithoutItemPatchStatsInput
 }
@@ -616,6 +629,7 @@ export type ItemPatchStatUncheckedCreateInput = {
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ItemPatchStatUpdateInput = {
@@ -641,6 +655,7 @@ export type ItemPatchStatUpdateInput = {
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   item?: Prisma.ItemUpdateOneRequiredWithoutItemPatchStatsNestedInput
   patch?: Prisma.PatchUpdateOneRequiredWithoutItemPatchStatsNestedInput
 }
@@ -670,6 +685,7 @@ export type ItemPatchStatUncheckedUpdateInput = {
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ItemPatchStatCreateManyInput = {
@@ -697,6 +713,7 @@ export type ItemPatchStatCreateManyInput = {
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ItemPatchStatUpdateManyMutationInput = {
@@ -722,6 +739,7 @@ export type ItemPatchStatUpdateManyMutationInput = {
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ItemPatchStatUncheckedUpdateManyInput = {
@@ -749,6 +767,7 @@ export type ItemPatchStatUncheckedUpdateManyInput = {
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ItemPatchStatListRelationFilter = {
@@ -791,6 +810,7 @@ export type ItemPatchStatCountOrderByAggregateInput = {
   effectDescription?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ItemPatchStatAvgOrderByAggregateInput = {
@@ -839,6 +859,7 @@ export type ItemPatchStatMaxOrderByAggregateInput = {
   effectDescription?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ItemPatchStatMinOrderByAggregateInput = {
@@ -866,6 +887,7 @@ export type ItemPatchStatMinOrderByAggregateInput = {
   effectDescription?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type ItemPatchStatSumOrderByAggregateInput = {
@@ -996,6 +1018,7 @@ export type ItemPatchStatCreateWithoutPatchInput = {
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   item: Prisma.ItemCreateNestedOneWithoutItemPatchStatsInput
 }
 
@@ -1023,6 +1046,7 @@ export type ItemPatchStatUncheckedCreateWithoutPatchInput = {
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ItemPatchStatCreateOrConnectWithoutPatchInput = {
@@ -1079,6 +1103,7 @@ export type ItemPatchStatScalarWhereInput = {
   effectDescription?: Prisma.StringNullableFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"ItemPatchStat"> | Date | string | null
 }
 
 export type ItemPatchStatCreateWithoutItemInput = {
@@ -1104,6 +1129,7 @@ export type ItemPatchStatCreateWithoutItemInput = {
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   patch: Prisma.PatchCreateNestedOneWithoutItemPatchStatsInput
 }
 
@@ -1131,6 +1157,7 @@ export type ItemPatchStatUncheckedCreateWithoutItemInput = {
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ItemPatchStatCreateOrConnectWithoutItemInput = {
@@ -1183,6 +1210,7 @@ export type ItemPatchStatCreateManyPatchInput = {
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ItemPatchStatUpdateWithoutPatchInput = {
@@ -1208,6 +1236,7 @@ export type ItemPatchStatUpdateWithoutPatchInput = {
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   item?: Prisma.ItemUpdateOneRequiredWithoutItemPatchStatsNestedInput
 }
 
@@ -1235,6 +1264,7 @@ export type ItemPatchStatUncheckedUpdateWithoutPatchInput = {
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ItemPatchStatUncheckedUpdateManyWithoutPatchInput = {
@@ -1261,6 +1291,7 @@ export type ItemPatchStatUncheckedUpdateManyWithoutPatchInput = {
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ItemPatchStatCreateManyItemInput = {
@@ -1287,6 +1318,7 @@ export type ItemPatchStatCreateManyItemInput = {
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type ItemPatchStatUpdateWithoutItemInput = {
@@ -1312,6 +1344,7 @@ export type ItemPatchStatUpdateWithoutItemInput = {
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   patch?: Prisma.PatchUpdateOneRequiredWithoutItemPatchStatsNestedInput
 }
 
@@ -1339,6 +1372,7 @@ export type ItemPatchStatUncheckedUpdateWithoutItemInput = {
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type ItemPatchStatUncheckedUpdateManyWithoutItemInput = {
@@ -1365,6 +1399,7 @@ export type ItemPatchStatUncheckedUpdateManyWithoutItemInput = {
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -1394,6 +1429,7 @@ export type ItemPatchStatSelect<ExtArgs extends runtime.Types.Extensions.Interna
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   item?: boolean | Prisma.ItemDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["itemPatchStat"]>
@@ -1423,6 +1459,7 @@ export type ItemPatchStatSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   item?: boolean | Prisma.ItemDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["itemPatchStat"]>
@@ -1452,6 +1489,7 @@ export type ItemPatchStatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   item?: boolean | Prisma.ItemDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["itemPatchStat"]>
@@ -1481,9 +1519,10 @@ export type ItemPatchStatSelectScalar = {
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type ItemPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "itemId" | "patchId" | "cost" | "abilityPower" | "attackDamage" | "armor" | "magicResist" | "health" | "mana" | "abilityHaste" | "critRate" | "attackSpeed" | "armorPenetration" | "magicPenetration" | "antiHealValue" | "shieldPower" | "movementSpeed" | "magicVamp" | "manaRegen" | "healShieldPower" | "effectDescription" | "createdAt" | "updatedAt", ExtArgs["result"]["itemPatchStat"]>
+export type ItemPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "itemId" | "patchId" | "cost" | "abilityPower" | "attackDamage" | "armor" | "magicResist" | "health" | "mana" | "abilityHaste" | "critRate" | "attackSpeed" | "armorPenetration" | "magicPenetration" | "antiHealValue" | "shieldPower" | "movementSpeed" | "magicVamp" | "manaRegen" | "healShieldPower" | "effectDescription" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["itemPatchStat"]>
 export type ItemPatchStatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   item?: boolean | Prisma.ItemDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -1528,6 +1567,7 @@ export type $ItemPatchStatPayload<ExtArgs extends runtime.Types.Extensions.Inter
     effectDescription: string | null
     createdAt: Date
     updatedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["itemPatchStat"]>
   composites: {}
 }
@@ -1977,6 +2017,7 @@ export interface ItemPatchStatFieldRefs {
   readonly effectDescription: Prisma.FieldRef<"ItemPatchStat", 'String'>
   readonly createdAt: Prisma.FieldRef<"ItemPatchStat", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ItemPatchStat", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"ItemPatchStat", 'DateTime'>
 }
     
 

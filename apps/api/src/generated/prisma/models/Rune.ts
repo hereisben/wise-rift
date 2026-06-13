@@ -238,7 +238,7 @@ export type RuneWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Rune"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Rune"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Rune"> | Date | string | null
-  patchStats?: Prisma.RunePatchStatListRelationFilter
+  runePatchStats?: Prisma.RunePatchStatListRelationFilter
   runeBuildRecommendationRunes?: Prisma.RuneBuildRecommendationRuneListRelationFilter
 }
 
@@ -255,7 +255,7 @@ export type RuneOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  patchStats?: Prisma.RunePatchStatOrderByRelationAggregateInput
+  runePatchStats?: Prisma.RunePatchStatOrderByRelationAggregateInput
   runeBuildRecommendationRunes?: Prisma.RuneBuildRecommendationRuneOrderByRelationAggregateInput
 }
 
@@ -275,7 +275,7 @@ export type RuneWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Rune"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Rune"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Rune"> | Date | string | null
-  patchStats?: Prisma.RunePatchStatListRelationFilter
+  runePatchStats?: Prisma.RunePatchStatListRelationFilter
   runeBuildRecommendationRunes?: Prisma.RuneBuildRecommendationRuneListRelationFilter
 }, "id" | "key">
 
@@ -328,7 +328,7 @@ export type RuneCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  patchStats?: Prisma.RunePatchStatCreateNestedManyWithoutRuneInput
+  runePatchStats?: Prisma.RunePatchStatCreateNestedManyWithoutRuneInput
   runeBuildRecommendationRunes?: Prisma.RuneBuildRecommendationRuneCreateNestedManyWithoutRuneInput
 }
 
@@ -345,7 +345,7 @@ export type RuneUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  patchStats?: Prisma.RunePatchStatUncheckedCreateNestedManyWithoutRuneInput
+  runePatchStats?: Prisma.RunePatchStatUncheckedCreateNestedManyWithoutRuneInput
   runeBuildRecommendationRunes?: Prisma.RuneBuildRecommendationRuneUncheckedCreateNestedManyWithoutRuneInput
 }
 
@@ -362,7 +362,7 @@ export type RuneUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.RunePatchStatUpdateManyWithoutRuneNestedInput
+  runePatchStats?: Prisma.RunePatchStatUpdateManyWithoutRuneNestedInput
   runeBuildRecommendationRunes?: Prisma.RuneBuildRecommendationRuneUpdateManyWithoutRuneNestedInput
 }
 
@@ -379,7 +379,7 @@ export type RuneUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.RunePatchStatUncheckedUpdateManyWithoutRuneNestedInput
+  runePatchStats?: Prisma.RunePatchStatUncheckedUpdateManyWithoutRuneNestedInput
   runeBuildRecommendationRunes?: Prisma.RuneBuildRecommendationRuneUncheckedUpdateManyWithoutRuneNestedInput
 }
 
@@ -486,18 +486,18 @@ export type EnumRuneSlotFieldUpdateOperationsInput = {
   set?: $Enums.RuneSlot
 }
 
-export type RuneCreateNestedOneWithoutPatchStatsInput = {
-  create?: Prisma.XOR<Prisma.RuneCreateWithoutPatchStatsInput, Prisma.RuneUncheckedCreateWithoutPatchStatsInput>
-  connectOrCreate?: Prisma.RuneCreateOrConnectWithoutPatchStatsInput
+export type RuneCreateNestedOneWithoutRunePatchStatsInput = {
+  create?: Prisma.XOR<Prisma.RuneCreateWithoutRunePatchStatsInput, Prisma.RuneUncheckedCreateWithoutRunePatchStatsInput>
+  connectOrCreate?: Prisma.RuneCreateOrConnectWithoutRunePatchStatsInput
   connect?: Prisma.RuneWhereUniqueInput
 }
 
-export type RuneUpdateOneRequiredWithoutPatchStatsNestedInput = {
-  create?: Prisma.XOR<Prisma.RuneCreateWithoutPatchStatsInput, Prisma.RuneUncheckedCreateWithoutPatchStatsInput>
-  connectOrCreate?: Prisma.RuneCreateOrConnectWithoutPatchStatsInput
-  upsert?: Prisma.RuneUpsertWithoutPatchStatsInput
+export type RuneUpdateOneRequiredWithoutRunePatchStatsNestedInput = {
+  create?: Prisma.XOR<Prisma.RuneCreateWithoutRunePatchStatsInput, Prisma.RuneUncheckedCreateWithoutRunePatchStatsInput>
+  connectOrCreate?: Prisma.RuneCreateOrConnectWithoutRunePatchStatsInput
+  upsert?: Prisma.RuneUpsertWithoutRunePatchStatsInput
   connect?: Prisma.RuneWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.RuneUpdateToOneWithWhereWithoutPatchStatsInput, Prisma.RuneUpdateWithoutPatchStatsInput>, Prisma.RuneUncheckedUpdateWithoutPatchStatsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.RuneUpdateToOneWithWhereWithoutRunePatchStatsInput, Prisma.RuneUpdateWithoutRunePatchStatsInput>, Prisma.RuneUncheckedUpdateWithoutRunePatchStatsInput>
 }
 
 export type RuneCreateNestedOneWithoutRuneBuildRecommendationRunesInput = {
@@ -514,7 +514,7 @@ export type RuneUpdateOneRequiredWithoutRuneBuildRecommendationRunesNestedInput 
   update?: Prisma.XOR<Prisma.XOR<Prisma.RuneUpdateToOneWithWhereWithoutRuneBuildRecommendationRunesInput, Prisma.RuneUpdateWithoutRuneBuildRecommendationRunesInput>, Prisma.RuneUncheckedUpdateWithoutRuneBuildRecommendationRunesInput>
 }
 
-export type RuneCreateWithoutPatchStatsInput = {
+export type RuneCreateWithoutRunePatchStatsInput = {
   id?: string
   key: string
   name: string
@@ -530,7 +530,7 @@ export type RuneCreateWithoutPatchStatsInput = {
   runeBuildRecommendationRunes?: Prisma.RuneBuildRecommendationRuneCreateNestedManyWithoutRuneInput
 }
 
-export type RuneUncheckedCreateWithoutPatchStatsInput = {
+export type RuneUncheckedCreateWithoutRunePatchStatsInput = {
   id?: string
   key: string
   name: string
@@ -546,23 +546,23 @@ export type RuneUncheckedCreateWithoutPatchStatsInput = {
   runeBuildRecommendationRunes?: Prisma.RuneBuildRecommendationRuneUncheckedCreateNestedManyWithoutRuneInput
 }
 
-export type RuneCreateOrConnectWithoutPatchStatsInput = {
+export type RuneCreateOrConnectWithoutRunePatchStatsInput = {
   where: Prisma.RuneWhereUniqueInput
-  create: Prisma.XOR<Prisma.RuneCreateWithoutPatchStatsInput, Prisma.RuneUncheckedCreateWithoutPatchStatsInput>
+  create: Prisma.XOR<Prisma.RuneCreateWithoutRunePatchStatsInput, Prisma.RuneUncheckedCreateWithoutRunePatchStatsInput>
 }
 
-export type RuneUpsertWithoutPatchStatsInput = {
-  update: Prisma.XOR<Prisma.RuneUpdateWithoutPatchStatsInput, Prisma.RuneUncheckedUpdateWithoutPatchStatsInput>
-  create: Prisma.XOR<Prisma.RuneCreateWithoutPatchStatsInput, Prisma.RuneUncheckedCreateWithoutPatchStatsInput>
+export type RuneUpsertWithoutRunePatchStatsInput = {
+  update: Prisma.XOR<Prisma.RuneUpdateWithoutRunePatchStatsInput, Prisma.RuneUncheckedUpdateWithoutRunePatchStatsInput>
+  create: Prisma.XOR<Prisma.RuneCreateWithoutRunePatchStatsInput, Prisma.RuneUncheckedCreateWithoutRunePatchStatsInput>
   where?: Prisma.RuneWhereInput
 }
 
-export type RuneUpdateToOneWithWhereWithoutPatchStatsInput = {
+export type RuneUpdateToOneWithWhereWithoutRunePatchStatsInput = {
   where?: Prisma.RuneWhereInput
-  data: Prisma.XOR<Prisma.RuneUpdateWithoutPatchStatsInput, Prisma.RuneUncheckedUpdateWithoutPatchStatsInput>
+  data: Prisma.XOR<Prisma.RuneUpdateWithoutRunePatchStatsInput, Prisma.RuneUncheckedUpdateWithoutRunePatchStatsInput>
 }
 
-export type RuneUpdateWithoutPatchStatsInput = {
+export type RuneUpdateWithoutRunePatchStatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -578,7 +578,7 @@ export type RuneUpdateWithoutPatchStatsInput = {
   runeBuildRecommendationRunes?: Prisma.RuneBuildRecommendationRuneUpdateManyWithoutRuneNestedInput
 }
 
-export type RuneUncheckedUpdateWithoutPatchStatsInput = {
+export type RuneUncheckedUpdateWithoutRunePatchStatsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -607,7 +607,7 @@ export type RuneCreateWithoutRuneBuildRecommendationRunesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  patchStats?: Prisma.RunePatchStatCreateNestedManyWithoutRuneInput
+  runePatchStats?: Prisma.RunePatchStatCreateNestedManyWithoutRuneInput
 }
 
 export type RuneUncheckedCreateWithoutRuneBuildRecommendationRunesInput = {
@@ -623,7 +623,7 @@ export type RuneUncheckedCreateWithoutRuneBuildRecommendationRunesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  patchStats?: Prisma.RunePatchStatUncheckedCreateNestedManyWithoutRuneInput
+  runePatchStats?: Prisma.RunePatchStatUncheckedCreateNestedManyWithoutRuneInput
 }
 
 export type RuneCreateOrConnectWithoutRuneBuildRecommendationRunesInput = {
@@ -655,7 +655,7 @@ export type RuneUpdateWithoutRuneBuildRecommendationRunesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.RunePatchStatUpdateManyWithoutRuneNestedInput
+  runePatchStats?: Prisma.RunePatchStatUpdateManyWithoutRuneNestedInput
 }
 
 export type RuneUncheckedUpdateWithoutRuneBuildRecommendationRunesInput = {
@@ -671,7 +671,7 @@ export type RuneUncheckedUpdateWithoutRuneBuildRecommendationRunesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  patchStats?: Prisma.RunePatchStatUncheckedUpdateManyWithoutRuneNestedInput
+  runePatchStats?: Prisma.RunePatchStatUncheckedUpdateManyWithoutRuneNestedInput
 }
 
 
@@ -680,12 +680,12 @@ export type RuneUncheckedUpdateWithoutRuneBuildRecommendationRunesInput = {
  */
 
 export type RuneCountOutputType = {
-  patchStats: number
+  runePatchStats: number
   runeBuildRecommendationRunes: number
 }
 
 export type RuneCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  patchStats?: boolean | RuneCountOutputTypeCountPatchStatsArgs
+  runePatchStats?: boolean | RuneCountOutputTypeCountRunePatchStatsArgs
   runeBuildRecommendationRunes?: boolean | RuneCountOutputTypeCountRuneBuildRecommendationRunesArgs
 }
 
@@ -702,7 +702,7 @@ export type RuneCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
 /**
  * RuneCountOutputType without action
  */
-export type RuneCountOutputTypeCountPatchStatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type RuneCountOutputTypeCountRunePatchStatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.RunePatchStatWhereInput
 }
 
@@ -727,7 +727,7 @@ export type RuneSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
-  patchStats?: boolean | Prisma.Rune$patchStatsArgs<ExtArgs>
+  runePatchStats?: boolean | Prisma.Rune$runePatchStatsArgs<ExtArgs>
   runeBuildRecommendationRunes?: boolean | Prisma.Rune$runeBuildRecommendationRunesArgs<ExtArgs>
   _count?: boolean | Prisma.RuneCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["rune"]>
@@ -779,7 +779,7 @@ export type RuneSelectScalar = {
 
 export type RuneOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "key" | "name" | "nameVi" | "description" | "descriptionVi" | "iconUrl" | "path" | "slot" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["rune"]>
 export type RuneInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  patchStats?: boolean | Prisma.Rune$patchStatsArgs<ExtArgs>
+  runePatchStats?: boolean | Prisma.Rune$runePatchStatsArgs<ExtArgs>
   runeBuildRecommendationRunes?: boolean | Prisma.Rune$runeBuildRecommendationRunesArgs<ExtArgs>
   _count?: boolean | Prisma.RuneCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -789,7 +789,7 @@ export type RuneIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $RunePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Rune"
   objects: {
-    patchStats: Prisma.$RunePatchStatPayload<ExtArgs>[]
+    runePatchStats: Prisma.$RunePatchStatPayload<ExtArgs>[]
     runeBuildRecommendationRunes: Prisma.$RuneBuildRecommendationRunePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1199,7 +1199,7 @@ readonly fields: RuneFieldRefs;
  */
 export interface Prisma__RuneClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  patchStats<T extends Prisma.Rune$patchStatsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Rune$patchStatsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RunePatchStatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  runePatchStats<T extends Prisma.Rune$runePatchStatsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Rune$runePatchStatsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RunePatchStatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   runeBuildRecommendationRunes<T extends Prisma.Rune$runeBuildRecommendationRunesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Rune$runeBuildRecommendationRunesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RuneBuildRecommendationRunePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1635,9 +1635,9 @@ export type RuneDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * Rune.patchStats
+ * Rune.runePatchStats
  */
-export type Rune$patchStatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Rune$runePatchStatsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the RunePatchStat
    */

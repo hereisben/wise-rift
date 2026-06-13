@@ -252,7 +252,8 @@ export const ItemPatchStatScalarFieldEnum = {
   healShieldPower: 'healShieldPower',
   effectDescription: 'effectDescription',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type ItemPatchStatScalarFieldEnum = (typeof ItemPatchStatScalarFieldEnum)[keyof typeof ItemPatchStatScalarFieldEnum]

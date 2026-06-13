@@ -463,7 +463,7 @@ export type RunePatchStatCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  rune: Prisma.RuneCreateNestedOneWithoutPatchStatsInput
+  rune: Prisma.RuneCreateNestedOneWithoutRunePatchStatsInput
   patch: Prisma.PatchCreateNestedOneWithoutRunePatchStatsInput
 }
 
@@ -509,7 +509,7 @@ export type RunePatchStatUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rune?: Prisma.RuneUpdateOneRequiredWithoutPatchStatsNestedInput
+  rune?: Prisma.RuneUpdateOneRequiredWithoutRunePatchStatsNestedInput
   patch?: Prisma.PatchUpdateOneRequiredWithoutRunePatchStatsNestedInput
 }
 
@@ -868,7 +868,7 @@ export type RunePatchStatCreateWithoutPatchInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  rune: Prisma.RuneCreateNestedOneWithoutPatchStatsInput
+  rune: Prisma.RuneCreateNestedOneWithoutRunePatchStatsInput
 }
 
 export type RunePatchStatUncheckedCreateWithoutPatchInput = {
@@ -1056,7 +1056,7 @@ export type RunePatchStatUpdateWithoutPatchInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rune?: Prisma.RuneUpdateOneRequiredWithoutPatchStatsNestedInput
+  rune?: Prisma.RuneUpdateOneRequiredWithoutRunePatchStatsNestedInput
 }
 
 export type RunePatchStatUncheckedUpdateWithoutPatchInput = {
