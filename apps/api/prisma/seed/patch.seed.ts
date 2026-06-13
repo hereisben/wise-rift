@@ -1,36 +1,36 @@
 import { PrismaClient } from '../../src/generated/prisma/client.js';
 
-export async function seedPatch(prisma: PrismaClient) {
-  await prisma.patch.deleteMany({
-    where: {
-      version: {
-        not: '7.1f',
-      },
-    },
-  });
+const ACTIVE_PATCH_VERSION = `7.1g`;
+const ACTIVE_PATCH_NAME = `Patch 7.1g`;
+const ACTIVE_PATCH_RELEASED_AT = new Date(`2026-06-13T00:00:00.000Z`);
+const ACTIVE_PATCH_NOTES = `Manual Wise Rift data snapshot for Wild Rift patch 7.1g.`;
 
+export async function seedPatch(prisma: PrismaClient) {
   const patch = await prisma.patch.upsert({
     where: {
-      version: `7.1f`,
+      version: ACTIVE_PATCH_VERSION,
     },
     update: {
-      name: `Patch 7.1f`,
+      name: ACTIVE_PATCH_VERSION,
       isActive: true,
-      releasedAt: new Date('2026-06-11T00:00:00.000Z'),
+      releasedAt: ACTIVE_PATCH_RELEASED_AT,
+      notes: ACTIVE_PATCH_NOTES,
     },
     create: {
-      version: `7.1f`,
-      name: 'Patch 7.1f',
+      version: ACTIVE_PATCH_VERSION,
+      name: ACTIVE_PATCH_NAME,
       isActive: true,
-      releasedAt: new Date('2026-06-11T00:00:00.000Z'),
+      releasedAt: ACTIVE_PATCH_RELEASED_AT,
+      notes: ACTIVE_PATCH_NOTES,
     },
   });
 
   await prisma.patch.updateMany({
     where: {
       version: {
-        not: '7.1f',
+        not: ACTIVE_PATCH_VERSION,
       },
+      deletedAt: null,
     },
     data: {
       isActive: false,
