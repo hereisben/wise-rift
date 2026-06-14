@@ -474,4 +474,66 @@ const championSkillSeeds: ChampionSkillSeed[] = [
 export async function seedChampionSkills(
   prisma: PrismaClient,
   patchId: string,
-) {}
+) {
+  for (const championSkillSeed of championSkillSeeds) {
+    const champion = await prisma.champion.findUnique({
+      where: {
+        key: championSkillSeed.championKey,
+      },
+    });
+
+    if (!champion || champion.deletedAt) {
+      throw new Error(
+        `Champion not found or deleted: ${championSkillSeed.championKey}`,
+      );
+    }
+
+    const championSkill = await prisma.championSkill.upsert({
+      where: {
+        championId_patchId_slot: {
+          championId: champion.id,
+          patchId,
+          slot: championSkillSeed.slot,
+        },
+      },
+      update: {
+        name: championSkillSeed.name,
+        nameVi: championSkillSeed.nameVi,
+        description: championSkillSeed.description,
+        descriptionVi: championSkillSeed.descriptionVi,
+        damageType: championSkillSeed.damageType,
+        targetType: championSkillSeed.targetType,
+        cooldown: championSkillSeed.cooldown ?? Prisma.DbNull,
+        cost: championSkillSeed.cost ?? Prisma.DbNull,
+        range: championSkillSeed.range ?? Prisma.DbNull,
+        scaling: championSkillSeed.scaling ?? Prisma.DbNull,
+        effects: championSkillSeed.effects,
+        tags: championSkillSeed.tags ?? [],
+        deletedAt: null,
+      },
+      create: {
+        championId: champion.id,
+        patchId: patchId,
+        slot: championSkillSeed.slot,
+        name: championSkillSeed.name,
+        nameVi: championSkillSeed.nameVi,
+        description: championSkillSeed.description,
+        descriptionVi: championSkillSeed.descriptionVi,
+        damageType: championSkillSeed.damageType,
+        targetType: championSkillSeed.targetType,
+        cooldown: championSkillSeed.cooldown ?? Prisma.DbNull,
+        cost: championSkillSeed.cost ?? Prisma.DbNull,
+        range: championSkillSeed.range ?? Prisma.DbNull,
+        scaling: championSkillSeed.scaling ?? Prisma.DbNull,
+        effects: championSkillSeed.effects,
+        tags: championSkillSeed.tags ?? [],
+      },
+    });
+
+    console.log(
+      `Seeded champion skill: ${champion.name} - ${championSkill.slot} ${championSkill.name}`,
+    );
+  }
+
+  console.log(`SEEDED CHAMPIONS SKILLS`);
+}
