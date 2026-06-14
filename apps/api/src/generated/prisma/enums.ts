@@ -299,6 +299,7 @@ export const SkillEffect = {
   STUN: 'STUN',
   KNOCK_UP: 'KNOCK_UP',
   KNOCK_BACK: 'KNOCK_BACK',
+  PULL: 'PULL',
   CHARM: 'CHARM',
   SILENCE: 'SILENCE',
   FEAR: 'FEAR',

@@ -931,6 +931,7 @@ enum SkillEffect {
   STUN
   KNOCK_UP
   KNOCK_BACK
+  PULL
   CHARM
   SILENCE
   FEAR
