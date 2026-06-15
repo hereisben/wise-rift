@@ -5,7 +5,7 @@ type ChampionPatchStatSeed = {
   baseHealth?: number | null;
   baseArmor?: number | null;
   baseMana?: number | null;
-  baseMagicResist: number;
+  baseMagicResist?: number | null;
   baseAttackDamage?: number | null;
   baseAbilityPower?: number | null;
   attackSpeed?: number | null;
@@ -215,4 +215,74 @@ const championPatchStatSeeds: ChampionPatchStatSeed[] = [
 export async function seedChampionPatchStats(
   prisma: PrismaClient,
   patchId: string,
-) {}
+) {
+  for (const championPatchStatSeed of championPatchStatSeeds) {
+    const champion = await prisma.champion.findUnique({
+      where: {
+        key: championPatchStatSeed.championKey,
+      },
+    });
+
+    if (!champion || champion.deletedAt) {
+      throw new Error(
+        `Champion not found or deleted: ${championPatchStatSeed.championKey}`,
+      );
+    }
+
+    await prisma.championPatchStat.upsert({
+      where: {
+        championId_patchId: {
+          championId: champion.id,
+          patchId,
+        },
+      },
+      update: {
+        baseHealth: championPatchStatSeed.baseHealth ?? null,
+        baseMana: championPatchStatSeed.baseMana ?? null,
+        baseArmor: championPatchStatSeed.baseArmor ?? null,
+        baseMagicResist: championPatchStatSeed.baseMagicResist ?? null,
+        baseAttackDamage: championPatchStatSeed.baseAttackDamage ?? null,
+        baseAbilityPower: championPatchStatSeed.baseAbilityPower ?? null,
+        attackSpeed: championPatchStatSeed.attackSpeed ?? null,
+        moveSpeed: championPatchStatSeed.moveSpeed ?? null,
+        healthGrowth: championPatchStatSeed.healthGrowth ?? null,
+        manaGrowth: championPatchStatSeed.manaGrowth ?? null,
+        armorGrowth: championPatchStatSeed.armorGrowth ?? null,
+        magicResistGrowth: championPatchStatSeed.magicResistGrowth ?? null,
+        attackDamageGrowth: championPatchStatSeed.attackDamageGrowth ?? null,
+        attackSpeedGrowth: championPatchStatSeed.attackSpeedGrowth ?? null,
+        scalingProfile: championPatchStatSeed.scalingProfile ?? Prisma.DbNull,
+        laneProfile: championPatchStatSeed.laneProfile ?? Prisma.DbNull,
+        teamProfile: championPatchStatSeed.teamProfile ?? Prisma.DbNull,
+        metaScore: championPatchStatSeed.metaScore ?? null,
+        deletedAt: null,
+      },
+      create: {
+        championId: champion.id,
+        patchId,
+        baseHealth: championPatchStatSeed.baseHealth ?? null,
+        baseMana: championPatchStatSeed.baseMana ?? null,
+        baseArmor: championPatchStatSeed.baseArmor ?? null,
+        baseMagicResist: championPatchStatSeed.baseMagicResist ?? null,
+        baseAttackDamage: championPatchStatSeed.baseAttackDamage ?? null,
+        baseAbilityPower: championPatchStatSeed.baseAbilityPower ?? null,
+        attackSpeed: championPatchStatSeed.attackSpeed ?? null,
+        moveSpeed: championPatchStatSeed.moveSpeed ?? null,
+        healthGrowth: championPatchStatSeed.healthGrowth ?? null,
+        manaGrowth: championPatchStatSeed.manaGrowth ?? null,
+        armorGrowth: championPatchStatSeed.armorGrowth ?? null,
+        magicResistGrowth: championPatchStatSeed.magicResistGrowth ?? null,
+        attackDamageGrowth: championPatchStatSeed.attackDamageGrowth ?? null,
+        attackSpeedGrowth: championPatchStatSeed.attackSpeedGrowth ?? null,
+        scalingProfile: championPatchStatSeed.scalingProfile ?? Prisma.DbNull,
+        laneProfile: championPatchStatSeed.laneProfile ?? Prisma.DbNull,
+        teamProfile: championPatchStatSeed.teamProfile ?? Prisma.DbNull,
+        metaScore: championPatchStatSeed.metaScore ?? null,
+      },
+    });
+
+    console.log(`Seeded champion ${champion.name} for patch ${patchId}`);
+  }
+
+  console.log(`SEEDED CHAMPIONS PATCH STATS`);
+}
