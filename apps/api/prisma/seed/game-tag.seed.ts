@@ -360,6 +360,24 @@ const gameTagSeeds: GameTagSeed[] = [
     'Tầm nhìn khuất',
     GameTagCategory.MATCHUP,
   ),
+  createTag(
+    'MELEE_TRADING',
+    'Melee Trading',
+    'Trao đổi chiêu cận chiến',
+    GameTagCategory.MATCHUP,
+  ),
+  createTag(
+    'LOW_COOLDOWN_HARASS',
+    'Low Cooldown Harass',
+    'Cấu rỉa hồi chiêu thấp',
+    GameTagCategory.MATCHUP,
+  ),
+  createTag(
+    'LOW_ULTIMATE_VALUE',
+    'Low Ultimate Value',
+    'Giá trị chiêu cuối thấp',
+    GameTagCategory.MATCHUP,
+  ),
 
   // GAME PLAN / CONTEXT TAGS
   createTag(
@@ -381,12 +399,6 @@ const gameTagSeeds: GameTagSeed[] = [
     GameTagCategory.TEAM_COMP,
   ),
   createTag(
-    'SKIRMISH',
-    'Skirmish',
-    'Giao tranh nhỏ',
-    GameTagCategory.TEAM_COMP,
-  ),
-  createTag(
     'SCALING_GAME',
     'Scaling Game',
     'Trận đấu kéo dài',
@@ -402,6 +414,18 @@ const gameTagSeeds: GameTagSeed[] = [
     'FAST_SNOWBALL',
     'Fast Snowball',
     'Lăn cầu tuyết nhanh',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag(
+    'FOLLOW_UP_DAMAGE',
+    'Follow Up Damage',
+    'Sát thương theo sau mở giao tranh',
+    GameTagCategory.TEAM_COMP,
+  ),
+  createTag(
+    'LANE_PARTNER_DAMAGE',
+    'Lane Partner Damage',
+    'Sát thương từ đồng đội đi đường',
     GameTagCategory.TEAM_COMP,
   ),
   createTag(
@@ -651,6 +675,30 @@ const gameTagSeeds: GameTagSeed[] = [
     'Tướng phụ thuộc chiêu cuối',
     GameTagCategory.PLAYSTYLE,
   ),
+  createTag(
+    'EXTENDED_FIGHT_CHAMPION',
+    'Extended Fight Champion',
+    'Tướng mạnh trong giao tranh kéo dài',
+    GameTagCategory.PLAYSTYLE,
+  ),
+  createTag(
+    'UTILITY_MARKSMAN',
+    'Utility Marksman',
+    'Xạ thủ thiên về tiện ích',
+    GameTagCategory.PLAYSTYLE,
+  ),
+  createTag(
+    'VISION_CONTROL',
+    'Vision Control',
+    'Kiểm soát tầm nhìn',
+    GameTagCategory.PLAYSTYLE,
+  ),
+  createTag(
+    'SKIRMISH',
+    'Skirmish',
+    'Giao tranh nhỏ lẻ',
+    GameTagCategory.PLAYSTYLE,
+  ),
 
   // CHAMPION UTILITY TAGS
   createTag('CHARM', 'Charm', 'Hôn gió', GameTagCategory.CHAMPION),
@@ -689,6 +737,36 @@ const gameTagSeeds: GameTagSeed[] = [
     'LOW_MOBILITY',
     'Low Mobility',
     'Kém cơ động',
+    GameTagCategory.CHAMPION,
+  ),
+  createTag(
+    'POSITIONING_RELIANT',
+    'Positioning Reliant',
+    'Phụ thuộc vị trí đứng',
+    GameTagCategory.CHAMPION,
+  ),
+  createTag(
+    'WEAK_EARLY_GAME',
+    'Weak Early Game',
+    'Yếu đầu trận',
+    GameTagCategory.CHAMPION,
+  ),
+  createTag(
+    'INTERRUPT_VULNERABLE',
+    'Interrupt Vulnerable',
+    'Dễ bị ngắt kỹ năng',
+    GameTagCategory.CHAMPION,
+  ),
+  createTag(
+    'SHORT_RANGE_MAGE',
+    'Short Range Mage',
+    'Pháp sư tầm ngắn',
+    GameTagCategory.CHAMPION,
+  ),
+  createTag(
+    'FLASH_RELIANT',
+    'Flash Reliant',
+    'Phụ thuộc Tốc Biến',
     GameTagCategory.CHAMPION,
   ),
 
@@ -742,13 +820,15 @@ const gameTagSeeds: GameTagSeed[] = [
     GameTagCategory.CHAMPION,
   ),
 
-  // SKIll TAGS
+  // SKILL TAGS
   createTag(
     'SKILL_SHOT',
     'Skill Shot',
     'Kỹ năng định hướng',
     GameTagCategory.SKILL,
   ),
+  createTag('KNOCK_BACK', 'Knock Back', 'Đẩy lùi', GameTagCategory.SKILL),
+  createTag('STUN', 'Stun', 'Làm choáng', GameTagCategory.SKILL),
   createTag('CAMOUFLAGE', 'Camouflage', 'Ngụy trang', GameTagCategory.SKILL),
   createTag(
     'DOUBLE_SHOT',
@@ -770,22 +850,139 @@ const gameTagSeeds: GameTagSeed[] = [
   ),
   createTag('LOCK_ON', 'Lock On', 'Khóa mục tiêu', GameTagCategory.SKILL),
   createTag(
-    'MELEE_TRADING',
-    'Melee Trading',
-    'Trao đổi chiêu cận chiến',
-    GameTagCategory.MATCHUP,
+    'MULTI_CAST',
+    'Multi Cast',
+    'Kỹ năng có nhiều lần sử dụng',
+    GameTagCategory.SKILL,
   ),
   createTag(
-    'LOW_COOLDOWN_HARASS',
-    'Low Cooldown Harass',
-    'Cấu rỉa hồi chiêu thấp',
-    GameTagCategory.MATCHUP,
+    'ARMOR_PENETRATION',
+    'Armor Penetration',
+    'Xuyên giáp',
+    GameTagCategory.SKILL,
+  ),
+  createTag('SUPPRESS', 'Suppress', 'Áp chế', GameTagCategory.SKILL),
+  createTag(
+    'UNSTOPPABLE',
+    'Unstoppable',
+    'Không thể bị cản phá',
+    GameTagCategory.SKILL,
   ),
   createTag(
-    'LOW_ULTIMATE_VALUE',
-    'Low Ultimate Value',
-    'Giá trị chiêu cuối thấp',
-    GameTagCategory.MATCHUP,
+    'PHYSICAL_VAMP',
+    'Physical Vamp',
+    'Hút máu vật lý',
+    GameTagCategory.SKILL,
+  ),
+  createTag('ROOT', 'Root', 'Trói chân', GameTagCategory.SKILL),
+  createTag('TOGGLE', 'Toggle', 'Kỹ năng bật tắt', GameTagCategory.SKILL),
+  createTag(
+    'STACKING_PASSIVE',
+    'Stacking Passive',
+    'Nội tại tích cộng dồn',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'BURST_SETUP',
+    'Burst Setup',
+    'Thiết lập dồn sát thương',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'LAST_HIT_REFUND',
+    'Last Hit Refund',
+    'Hoàn trả tài nguyên khi kết liễu',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'CONE_DAMAGE',
+    'Cone Damage',
+    'Sát thương hình nón',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'SELF_BUFF',
+    'Self Buff',
+    'Tự cường hóa bản thân',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'SUMMON_SUPPORT',
+    'Summon Support',
+    'Hỗ trợ đơn vị triệu hồi',
+    GameTagCategory.SKILL,
+  ),
+  createTag('SUMMON', 'Summon', 'Triệu hồi', GameTagCategory.SKILL),
+  createTag(
+    'ATTACK_SPEED_STEROID',
+    'Attack Speed Steroid',
+    'Tăng mạnh tốc độ đánh',
+    GameTagCategory.SKILL,
+  ),
+  createTag('VISION', 'Vision', 'Cung cấp tầm nhìn', GameTagCategory.SKILL),
+  createTag(
+    'GLOBAL_RANGE',
+    'Global Range',
+    'Tầm sử dụng toàn bản đồ',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'STEERABLE_PROJECTILE',
+    'Steerable Projectile',
+    'Đạn có thể điều khiển hướng bay',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'ABILITY_EVOLUTION',
+    'Ability Evolution',
+    'Kỹ năng tiến hóa theo cộng dồn',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'CHANNEL',
+    'Channel',
+    'Vận sức duy trì kỹ năng',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'FLIGHT',
+    'Flight',
+    'Bay theo hướng chỉ định',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'COOLDOWN_REFUND',
+    'Cooldown Refund',
+    'Hoàn trả hồi chiêu',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'REALM_HOPPER',
+    'Realm Hopper',
+    'Nhảy giữa các vùng linh giới',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'SELF_DISPLACEMENT',
+    'Self Displacement',
+    'Tự dịch chuyển vị trí',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'BOUNDARY_CONTROL',
+    'Boundary Control',
+    'Kiểm soát ranh giới vùng',
+    GameTagCategory.SKILL,
+  ),
+  createTag('PULL', 'Pull', 'Kéo mục tiêu', GameTagCategory.SKILL),
+  createTag('RECAST', 'Recast', 'Tái kích hoạt', GameTagCategory.SKILL),
+  createTag('STEALTH', 'Stealth', 'Tàng hình', GameTagCategory.SKILL),
+  createTag('SPEED_UP', 'Speed Up', 'Tăng tốc', GameTagCategory.SKILL),
+  createTag(
+    'ENERGY_RESTORE',
+    'Energy Restore',
+    'Hồi nội năng',
+    GameTagCategory.SKILL,
   ),
   // CHAMPION SEED COVERAGE TAGS
   createTag(
