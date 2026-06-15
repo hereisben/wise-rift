@@ -464,6 +464,12 @@ const gameTagSeeds: GameTagSeed[] = [
     'Đội hình hồi phục',
     GameTagCategory.TEAM_COMP,
   ),
+  createTag(
+    'TEAM_COORDINATION',
+    'Team Coordination',
+    'Cần phối hợp đội',
+    GameTagCategory.TEAM_COMP,
+  ),
 
   // SPELL / SUMMONER SPELL TAGS
   createTag('CHASE', 'Chase', 'Truy đuổi', GameTagCategory.SPELL),
@@ -769,6 +775,24 @@ const gameTagSeeds: GameTagSeed[] = [
     'Phụ thuộc Tốc Biến',
     GameTagCategory.CHAMPION,
   ),
+  createTag(
+    'COOLDOWN_RELIANT',
+    'Cooldown Reliant',
+    'Phụ thuộc hồi chiêu',
+    GameTagCategory.CHAMPION,
+  ),
+  createTag(
+    'PUNISHABLE_WHEN_MISSED',
+    'Punishable When Missed',
+    'Dễ bị trừng phạt khi dùng hụt',
+    GameTagCategory.CHAMPION,
+  ),
+  createTag(
+    'MISS_DEPENDENT',
+    'Miss Dependent',
+    'Phụ thuộc dùng trúng kỹ năng',
+    GameTagCategory.CHAMPION,
+  ),
 
   // CHAMPION STRENGTH / WEAKNESS TAGS
   createTag(
@@ -982,6 +1006,80 @@ const gameTagSeeds: GameTagSeed[] = [
     'ENERGY_RESTORE',
     'Energy Restore',
     'Hồi nội năng',
+    GameTagCategory.SKILL,
+  ),
+  createTag('STASIS', 'Stasis', 'Ngưng đọng', GameTagCategory.SKILL),
+  createTag(
+    'AOE_STASIS',
+    'Area Stasis',
+    'Ngưng đọng diện rộng',
+    GameTagCategory.SKILL,
+  ),
+  createTag('PORTAL', 'Portal', 'Cổng dịch chuyển', GameTagCategory.SKILL),
+  createTag(
+    'TERRAIN_TRAVEL',
+    'Terrain Travel',
+    'Di chuyển xuyên địa hình',
+    GameTagCategory.SKILL,
+  ),
+  createTag('SHRINE', 'Shrine', 'Điện hồi phục', GameTagCategory.SKILL),
+  createTag('CHIME', 'Chime', 'Chuông ma thuật', GameTagCategory.SKILL),
+  createTag('MEEP', 'Meep', 'Meep hỗ trợ', GameTagCategory.SKILL),
+  createTag(
+    'ALLY_HEAL',
+    'Ally Heal',
+    'Hồi máu cho đồng minh',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'EMPOWERED_ATTACK',
+    'Empowered Attack',
+    'Đòn đánh cường hóa',
+    GameTagCategory.SKILL,
+  ),
+  createTag('HOOK', 'Hook', 'Kéo móc', GameTagCategory.SKILL),
+  createTag(
+    'LOW_HEALTH_TRIGGER',
+    'Low Health Trigger',
+    'Kích hoạt khi thấp máu',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'MANA_SCALING',
+    'Mana Scaling',
+    'Tỉ lệ theo năng lượng',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'DECAYING_MOVEMENT_SPEED',
+    'Decaying Movement Speed',
+    'Tốc độ di chuyển giảm dần',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'SELF_SLOW',
+    'Self Slow',
+    'Tự làm chậm bản thân',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'CRITICAL_STRIKE',
+    'Critical Strike',
+    'Chí mạng',
+    GameTagCategory.SKILL,
+  ),
+  createTag('MARK', 'Mark', 'Đánh dấu', GameTagCategory.SKILL),
+  createTag(
+    'PASSIVE_DAMAGE',
+    'Passive Damage',
+    'Sát thương nội tại',
+    GameTagCategory.SKILL,
+  ),
+  createTag('SILENCE', 'Silence', 'Câm lặng', GameTagCategory.SKILL),
+  createTag(
+    'AUTO_ATTACK_RESET',
+    'Auto Attack Reset',
+    'Tái tạo đòn đánh thường',
     GameTagCategory.SKILL,
   ),
 ];

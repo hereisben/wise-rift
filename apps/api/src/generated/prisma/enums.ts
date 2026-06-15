@@ -316,7 +316,8 @@ export const SkillEffect = {
   EMPOWERED_ATTACK: 'EMPOWERED_ATTACK',
   TRUE_DAMAGE: 'TRUE_DAMAGE',
   VISION: 'VISION',
-  ZONE_CONTROL: 'ZONE_CONTROL'
+  ZONE_CONTROL: 'ZONE_CONTROL',
+  STASIS: 'STASIS'
 } as const
 
 export type SkillEffect = (typeof SkillEffect)[keyof typeof SkillEffect]

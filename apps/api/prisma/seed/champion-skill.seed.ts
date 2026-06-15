@@ -24,7 +24,8 @@ type ChampionSkillSeed = {
 };
 
 const championSkillSeeds: ChampionSkillSeed[] = [
-  // AATROX
+  // === AATROX ===
+  // AATROX - PASSIVE
   {
     championKey: `aatrox`,
     slot: SkillSlot.PASSIVE,
@@ -35,8 +36,9 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     damageType: DamageType.PHYSICAL,
     targetType: TargetType.ENEMY,
     cooldown: {
-      staticSeconds: 24,
-      refundSecondsOnChampionOrLargeMonsterHit: 3,
+      value: 24,
+      unit: `seconds`,
+      refundOnChampionOrLargeMonsterHit: 3,
     },
     scaling: {
       targetMaxHealthPhysicalDamagePercentByLevel: {
@@ -54,6 +56,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     ],
     tags: [`SUSTAIN`, `PERCENT_HEALTH_DAMAGE`, `EMPOWERED_ATTACK`],
   },
+  // AATROX - Q
   {
     championKey: `aatrox`,
     slot: SkillSlot.Q,
@@ -64,7 +67,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     damageType: DamageType.PHYSICAL,
     targetType: TargetType.AREA,
     cooldown: {
-      byRank: [12, 10, 8, 6],
+      values: [12, 10, 8, 6],
+      unit: `seconds`,
     },
     range: {
       type: `area_swing`,
@@ -87,6 +91,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     ],
     tags: [`AREA_DAMAGE`, `KNOCK_UP`, `SKILL_SHOT`, `EXTENDED_FIGHT`],
   },
+  // AATROX - W
   {
     championKey: `aatrox`,
     slot: SkillSlot.W,
@@ -97,7 +102,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     damageType: DamageType.PHYSICAL,
     targetType: TargetType.ENEMY,
     cooldown: {
-      byRank: [15, 14, 13, 12],
+      values: [15, 14, 13, 12],
+      unit: `seconds`,
     },
     range: {
       type: `line_projectile`,
@@ -114,6 +120,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.PULL],
     tags: [`SLOW`, `PICK_POTENTIAL`, `SKILL_SHOT`, `ZONE_CONTROL`],
   },
+  // AATROX - E
   {
     championKey: `aatrox`,
     slot: SkillSlot.E,
@@ -124,7 +131,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     damageType: DamageType.UTILITY,
     targetType: TargetType.SELF,
     cooldown: {
-      byRank: [8, 7, 6, 5],
+      values: [8, 7, 6, 5],
+      unit: `seconds`,
     },
     range: {
       type: `dash`,
@@ -138,6 +146,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DASH],
     tags: [`DASH`, `SUSTAIN`, `AUTO_ATTACK_RESET`, `MOBILITY`],
   },
+  // AATROX - R
   {
     championKey: `aatrox`,
     slot: SkillSlot.R,
@@ -148,7 +157,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     damageType: DamageType.UTILITY,
     targetType: TargetType.SELF,
     cooldown: {
-      byRank: [75, 65, 55],
+      values: [75, 65, 55],
+      unit: `seconds`,
     },
     range: {
       type: `self_buff_area_fear`,
@@ -167,7 +177,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.SPEED_UP, SkillEffect.FEAR],
     tags: [`ULTIMATE_RELIANT_CHAMPION`, `TEAMFIGHT`, `SUSTAIN`, `SNOWBALL`],
   },
-  // AHRI
+  // === AHRI ===
+  // AHRI - PASSIVE
   {
     championKey: `ahri`,
     slot: SkillSlot.PASSIVE,
@@ -190,6 +201,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.HEAL],
     tags: [`SUSTAIN`, `HEALING`, `TAKEDOWN_REWARD`],
   },
+  // AHRI - Q
   {
     championKey: `ahri`,
     slot: SkillSlot.Q,
@@ -220,6 +232,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE, SkillEffect.TRUE_DAMAGE],
     tags: [`SKILL_SHOT`, `MAGIC_DAMAGE`, `TRUE_DAMAGE`, `WAVE_CLEAR`, `POKE`],
   },
+  // AHRI - W
   {
     championKey: `ahri`,
     slot: SkillSlot.W,
@@ -248,6 +261,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE, SkillEffect.SPEED_UP],
     tags: [`MAGIC_DAMAGE`, `MOBILITY`, `CHASE`, `AUTO_TARGET`],
   },
+  // AHRI - E
   {
     championKey: `ahri`,
     slot: SkillSlot.E,
@@ -280,6 +294,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `ANTI_DASH`,
     ],
   },
+  // AHRI - R
   {
     championKey: `ahri`,
     slot: SkillSlot.R,
@@ -316,7 +331,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `TAKEDOWN_REWARD`,
     ],
   },
-  // AKALI
+  // === AKALI ===
+  // AKALI - PASSIVE
   {
     championKey: `akali`,
     slot: SkillSlot.PASSIVE,
@@ -326,22 +342,26 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     descriptionVi: `Gây sát thương lên tướng bằng kỹ năng chủ động sẽ tạo một vòng tròn trong 4 giây. Khi Akali băng qua vòng tròn, đòn đánh tiếp theo của cô được cường hóa, nhận thêm 100 tầm đánh và gây 25 + 12 mỗi cấp (+60% SMCK cộng thêm +65% SMPT) sát thương phép cộng thêm. Akali nhận 30% tốc độ di chuyển khi di chuyển về phía vòng tròn. Sau khi băng qua vòng tròn, cô nhận 30% tốc độ di chuyển khi di chuyển về phía tướng địch trong 2 giây.`,
     damageType: DamageType.MAGIC,
     targetType: TargetType.ENEMY,
-    cooldown: {
-      ringDurationSeconds: 4,
-    },
+    cooldown: null,
+    cost: null,
     range: {
       empoweredAttackBonusRange: 100,
     },
     scaling: {
+      ring: {
+        durationSeconds: 4,
+      },
       bonusMagicDamage: {
         baseValue: 25,
         perLevel: 12,
         bonusAttackDamageRatio: 0.6,
         abilityPowerRatio: 0.65,
       },
-      movementSpeedTowardRingPercent: 30,
-      movementSpeedTowardChampionPercent: 30,
-      movementSpeedTowardChampionDurationSeconds: 2,
+      movementSpeed: {
+        towardRingPercent: 30,
+        towardChampionPercent: 30,
+        towardChampionDurationSeconds: 2,
+      },
     },
     effects: [
       SkillEffect.DAMAGE,
@@ -350,6 +370,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     ],
     tags: [`MAGIC_DAMAGE`, `EMPOWERED_ATTACK`, `MOBILITY`, `BURST_DAMAGE`],
   },
+  // AKALI - Q
   {
     championKey: `akali`,
     slot: SkillSlot.Q,
@@ -385,6 +406,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `LOW_COOLDOWN_HARASS`,
     ],
   },
+  // AKALI - W
   {
     championKey: `akali`,
     slot: SkillSlot.W,
@@ -405,6 +427,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.STEALTH, SkillEffect.SPEED_UP],
     tags: [`STEALTH`, `MOBILITY`, `ESCAPE`, `ENERGY_RESTORE`, `OUTPLAY_TOOL`],
   },
+  // AKALI - E
   {
     championKey: `akali`,
     slot: SkillSlot.E,
@@ -437,6 +460,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE, SkillEffect.DASH],
     tags: [`MAGIC_DAMAGE`, `DASH`, `SKILL_SHOT`, `RECAST`, `PICK_POTENTIAL`],
   },
+  // AKALI - R
   {
     championKey: `akali`,
     slot: SkillSlot.R,
@@ -469,7 +493,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE, SkillEffect.DASH, SkillEffect.EXECUTE],
     tags: [`MAGIC_DAMAGE`, `DASH`, `EXECUTE`, `BURST_DAMAGE`, `MOBILITY`],
   },
-  // AKSHAN
+  // === AKSHAN ===
+  // AKSHAN - PASSIVE
   {
     championKey: `akshan`,
     slot: SkillSlot.PASSIVE,
@@ -483,23 +508,31 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     cost: null,
     range: null,
     scaling: {
-      bonusMagicDamage: {
-        base: 25,
-        damageType: `MAGIC`,
-      },
-      shield: {
-        base: 40,
-        attackDamageRatio: 0.4,
+      threeHitPassive: {
+        requiredHits: 3,
+        bonusMagicDamage: {
+          baseValue: 25,
+          damageType: `MAGIC`,
+        },
+        shieldAgainstChampions: {
+          baseValue: 40,
+          attackDamageRatio: 0.4,
+        },
       },
       secondShot: {
-        base: 26,
-        attackDamageRatio: 0.5,
-        damageType: `PHYSICAL`,
+        physicalDamage: {
+          baseValue: 26,
+          attackDamageRatio: 0.5,
+          damageType: `PHYSICAL`,
+        },
+        canCancelForMovementSpeed: true,
+        movementSpeedType: `DECAYING`,
       },
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.SHIELD, SkillEffect.SPEED_UP],
     tags: [`DOUBLE_SHOT`, `SHIELD`, `MOVEMENT_SPEED`, `ON_HIT_CHAMPION`],
   },
+  // AKSHAN - Q
   {
     championKey: `akshan`,
     slot: SkillSlot.Q,
@@ -519,6 +552,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     },
     range: {
       type: `EXTENDING_LINE`,
+      extendsOnEnemyHit: true,
+      returnsToCaster: true,
     },
     scaling: {
       damage: {
@@ -527,10 +562,14 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         damageType: `PHYSICAL`,
       },
       minionDamageRatio: [0.55, 0.7, 0.85, 1],
+      revealsEnemiesHit: true,
+      grantsDecayingMovementSpeedOnChampionHit: true,
+      returnAppliesSameEffects: true,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.VISION, SkillEffect.SPEED_UP],
     tags: [`SKILL_SHOT`, `REVEAL`, `MOVEMENT_SPEED`, `POKE`, `WAVE_CLEAR`],
   },
+  // AKSHAN - W
   {
     championKey: `akshan`,
     slot: SkillSlot.W,
@@ -550,12 +589,22 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     },
     range: null,
     scaling: {
-      movementSpeedPercentTowardScoundrels: [80, 90, 100, 110],
-      missingManaRegenPercentPerSecond: 2,
+      passive: {
+        marksScoundrels: true,
+        bonusGoldOnScoundrelTakedown: true,
+        revivesSlainAlliesOnScoundrelTakedown: true,
+      },
+      active: {
+        camouflage: true,
+        movementSpeedPercentTowardScoundrels: [80, 90, 100, 110],
+        remainsCamouflagedNearTerrainOrBrush: true,
+        missingManaRegenPercentPerSecond: 2,
+      },
     },
     effects: [SkillEffect.STEALTH, SkillEffect.SPEED_UP],
     tags: [`CAMOUFLAGE`, `REVIVE`, `ROAMING`, `MOVEMENT_SPEED`, `MANA_REGEN`],
   },
+  // AKSHAN - E
   {
     championKey: `akshan`,
     slot: SkillSlot.E,
@@ -567,6 +616,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     targetType: TargetType.ENEMY,
     cooldown: {
       values: [18, 16, 14, 12],
+      resetsOnChampionTakedown: true,
       unit: `seconds`,
     },
     cost: {
@@ -584,6 +634,9 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       },
       onHitEffectDamageRatio: 0.25,
       criticalStrikeDamageRatio: 1.5,
+      attacksNearestEnemyWhileSwinging: true,
+      jumpsOffOnChampionOrTerrainCollision: true,
+      recastJumpsOffRope: true,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.DASH],
     tags: [
@@ -594,6 +647,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `CRITICAL_SCALING`,
     ],
   },
+  // AKSHAN - R
   {
     championKey: `akshan`,
     slot: SkillSlot.R,
@@ -625,12 +679,17 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         attackDamageRatio: 0.4,
         damageType: `PHYSICAL`,
       },
+      damageScalesWithTargetMissingHealth: true,
       criticalRateDamageMultiplierRatio: 0.5,
+      recastFiresShots: true,
+      firstEnemyOrStructureCanBlockShots: true,
+      shotsExecuteMinions: true,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.EXECUTE],
     tags: [`LOCK_ON`, `EXECUTE`, `CRITICAL_SCALING`, `MISSING_HEALTH_DAMAGE`],
   },
-  // ALISTAR
+  // === ALISTAR ===
+  // ALISTAR - PASSIVE
   {
     championKey: `alistar`,
     slot: SkillSlot.PASSIVE,
@@ -648,11 +707,12 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     scaling: {
       selfHeal: 27,
       allyHeal: 54,
-      cooldownReductionOnKnockUpOrStun: 10,
+      cooldownReductionOnKnockUpOrStunSeconds: 10,
     },
     effects: [SkillEffect.HEAL],
     tags: [`HEALING`, `TEAM_SUPPORT`, `PEEL`],
   },
+  // ALISTAR - Q
   {
     championKey: `alistar`,
     slot: SkillSlot.Q,
@@ -679,11 +739,12 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         abilityPowerRatio: 0.5,
         damageType: `MAGIC`,
       },
-      knockUpDuration: 1,
+      knockUpDurationSeconds: 1,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.KNOCK_UP],
     tags: [`AREA_DAMAGE`, `KNOCK_UP`, `ENGAGE`, `CROWD_CONTROL`],
   },
+  // ALISTAR - W
   {
     championKey: `alistar`,
     slot: SkillSlot.W,
@@ -715,6 +776,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE, SkillEffect.KNOCK_BACK, SkillEffect.DASH],
     tags: [`KNOCK_BACK`, `DASH`, `ENGAGE`, `PEEL`, `CROWD_CONTROL`],
   },
+  // ALISTAR - E
   {
     championKey: `alistar`,
     slot: SkillSlot.E,
@@ -739,13 +801,13 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       damageOverDuration: {
         values: [100, 150, 200, 250],
         abilityPowerRatio: 0.4,
-        duration: 5,
+        durationSeconds: 5,
         damageType: `MAGIC`,
       },
       requiredChampionTicks: 5,
-      empoweredAttackWindow: 5,
+      empoweredAttackWindowSeconds: 5,
       empoweredAttackBonusMagicDamage: 40,
-      stunDuration: 1,
+      stunDurationSeconds: 1,
     },
     effects: [
       SkillEffect.DAMAGE,
@@ -754,6 +816,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     ],
     tags: [`AREA_DAMAGE`, `STUN`, `EMPOWERED_ATTACK`, `MELEE_TRADING`],
   },
+  // ALISTAR - R
   {
     championKey: `alistar`,
     slot: SkillSlot.R,
@@ -774,12 +837,14 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     range: null,
     scaling: {
       damageReductionPercent: [55, 65, 75],
-      duration: 7,
+      durationSeconds: 7,
+      removesCrowdControl: true,
     },
     effects: [],
     tags: [`CLEANSE`, `DAMAGE_REDUCTION`, `SURVIVABILITY`, `FRONTLINE`],
   },
-  // AMBESSA
+  // === AMBESSA ===
+  // AMBESSA - PASSIVE
   {
     championKey: `ambessa`,
     slot: SkillSlot.PASSIVE,
@@ -793,7 +858,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     cost: null,
     range: null,
     scaling: {
-      empoweredAttackWindow: 4,
+      empoweredAttackWindowSeconds: 4,
       empoweredAttackSpeedPercent: 50,
       bonusPhysicalDamage: {
         baseByLevel: {
@@ -817,6 +882,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     ],
     tags: [`DASH`, `EMPOWERED_ATTACK`, `ENERGY_RESTORE`, `MOBILITY`],
   },
+  // AMBESSA - Q
   {
     championKey: `ambessa`,
     slot: SkillSlot.Q,
@@ -856,7 +922,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         maxHealthDamagePercent: [4, 5, 6, 7],
         maxHealthDamageBonusAttackDamageRatioPercent: 0.04,
       },
-      transformWindow: 3.5,
+      transformWindowSeconds: 3.5,
       sunderingSlamFirstTarget: {
         damage: {
           values: [70, 100, 130, 160],
@@ -884,6 +950,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `MELEE_TRADING`,
     ],
   },
+  // AMBESSA - W
   {
     championKey: `ambessa`,
     slot: SkillSlot.W,
@@ -911,9 +978,9 @@ const championSkillSeeds: ChampionSkillSeed[] = [
           max: 330,
         },
         bonusAttackDamageRatio: 1.2,
-        duration: 1.5,
+        durationSeconds: 1.5,
       },
-      crowdControlBlockDuration: 0.5,
+      crowdControlBlockDurationSeconds: 0.5,
       shockwaveDamage: {
         values: [70, 100, 130, 160],
         bonusAttackDamageRatio: 0.8,
@@ -928,6 +995,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE, SkillEffect.SHIELD],
     tags: [`SHIELD`, `ANTI_CC`, `AREA_DAMAGE`, `DAMAGE_REDUCTION`],
   },
+  // AMBESSA - E
   {
     championKey: `ambessa`,
     slot: SkillSlot.E,
@@ -955,12 +1023,13 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         damageType: `PHYSICAL`,
       },
       slowPercent: 99,
-      slowDecayDuration: 1,
+      slowDecayDurationSeconds: 1,
       recastAfterFeint: true,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
     tags: [`AREA_DAMAGE`, `SLOW`, `RECAST`, `DASH`, `MULTI_CAST`],
   },
+  // AMBESSA - R
   {
     championKey: `ambessa`,
     slot: SkillSlot.R,
@@ -983,9 +1052,9 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       activeAbilityHealingPercent: [12.5, 15, 17.5],
       minionHealingRatio: 0.25,
       monsterHealingRatio: 0.4,
-      suppressDuration: 1,
+      suppressDurationSeconds: 1,
       damageReductionPercent: [30, 40, 50],
-      stunDuration: 0.4,
+      stunDurationSeconds: 0.4,
       damage: {
         values: [200, 300, 400],
         bonusAttackDamageRatio: 0.0005,
@@ -1011,7 +1080,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `STUN`,
     ],
   },
-  // AMUMU
+  // === AMUMU ===
+  // AMUMU - PASSIVE
   {
     championKey: `amumu`,
     slot: SkillSlot.PASSIVE,
@@ -1030,6 +1100,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.TRUE_DAMAGE],
     tags: [`MAGIC_DAMAGE`, `TRUE_DAMAGE`, `DAMAGE_AMP`, `ANTI_TANK`],
   },
+  // AMUMU - Q
   {
     championKey: `amumu`,
     slot: SkillSlot.Q,
@@ -1041,8 +1112,6 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     targetType: TargetType.ENEMY,
     cooldown: {
       values: [13, 12, 12, 11],
-      chargeRechargeValues: [13, 12.5, 12, 11.5],
-      maxCharges: 2,
       unit: `seconds`,
     },
     cost: {
@@ -1053,16 +1122,19 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       type: `LINE_SKILLSHOT`,
     },
     scaling: {
+      chargeRechargeValues: [13, 12.5, 12, 11.5],
+      maxCharges: 2,
       damage: {
         values: [60, 95, 130, 165],
         abilityPowerRatio: 0.7,
         damageType: `MAGIC`,
       },
-      stunDuration: 1,
+      stunDurationSeconds: 1,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.STUN, SkillEffect.PULL],
     tags: [`SKILL_SHOT`, `STUN`, `PULL`, `ENGAGE`, `MULTI_CAST`],
   },
+  // AMUMU - W
   {
     championKey: `amumu`,
     slot: SkillSlot.W,
@@ -1094,6 +1166,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE],
     tags: [`AREA_DAMAGE`, `PERCENT_HEALTH_DAMAGE`, `ANTI_TANK`, `TOGGLE`],
   },
+  // AMUMU - E
   {
     championKey: `amumu`,
     slot: SkillSlot.E,
@@ -1105,7 +1178,6 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     targetType: TargetType.ENEMIES,
     cooldown: {
       values: [9, 8, 7, 6],
-      cooldownReductionOnBeingHit: 0.5,
       unit: `seconds`,
     },
     cost: {
@@ -1121,17 +1193,19 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         armorRatio: 0.04,
         magicResistRatio: 0.04,
       },
+      cooldownReductionOnBeingHitSeconds: 0.5,
       damage: {
         values: [90, 120, 150, 180],
         abilityPowerRatio: 0.5,
         damageType: `MAGIC`,
       },
       slowPercent: 10,
-      slowDuration: 0.5,
+      slowDurationSeconds: 0.5,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
     tags: [`AREA_DAMAGE`, `SLOW`, `DAMAGE_REDUCTION`, `LOW_COOLDOWN_HARASS`],
   },
+  // AMUMU - R
   {
     championKey: `amumu`,
     slot: SkillSlot.R,
@@ -1158,12 +1232,13 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         abilityPowerRatio: 0.7,
         damageType: `MAGIC`,
       },
-      disableDuration: 1.5,
+      disableDurationSeconds: 1.5,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.ROOT],
     tags: [`AREA_DAMAGE`, `ROOT`, `TEAMFIGHT`, `CROWD_CONTROL`, `ENGAGE`],
   },
-  // ANNIE
+  // === ANNIE ===
+  // ANNIE - PASSIVE
   {
     championKey: `annie`,
     slot: SkillSlot.PASSIVE,
@@ -1178,11 +1253,12 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     range: null,
     scaling: {
       requiredAbilityCasts: 4,
-      stunDuration: 1,
+      stunDurationSeconds: 1,
     },
     effects: [SkillEffect.STUN],
     tags: [`STUN`, `STACKING_PASSIVE`, `BURST_SETUP`, `CROWD_CONTROL`],
   },
+  // ANNIE - Q
   {
     championKey: `annie`,
     slot: SkillSlot.Q,
@@ -1215,6 +1291,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE],
     tags: [`MAGIC_DAMAGE`, `BURST`, `LAST_HIT_REFUND`, `LOW_COOLDOWN_HARASS`],
   },
+  // ANNIE - W
   {
     championKey: `annie`,
     slot: SkillSlot.W,
@@ -1245,6 +1322,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE],
     tags: [`MAGIC_DAMAGE`, `AREA_DAMAGE`, `BURST`, `CONE_DAMAGE`],
   },
+  // ANNIE - E
   {
     championKey: `annie`,
     slot: SkillSlot.E,
@@ -1269,7 +1347,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       shield: {
         values: [50, 100, 150, 200],
         abilityPowerRatio: 0.4,
-        duration: 3,
+        durationSeconds: 3,
       },
       movementSpeedPercent: [25, 30, 33, 40],
       movementSpeedDecayAfterSeconds: 3,
@@ -1277,6 +1355,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.SHIELD, SkillEffect.SPEED_UP],
     tags: [`SHIELD`, `MOVEMENT_SPEED`, `SELF_BUFF`, `SUMMON_SUPPORT`],
   },
+  // ANNIE - R
   {
     championKey: `annie`,
     slot: SkillSlot.R,
@@ -1303,14 +1382,14 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         abilityPowerRatio: 0.6,
         damageType: `MAGIC`,
       },
-      recastDelay: 2,
+      recastDelaySeconds: 2,
       pounceDamage: {
         values: [110, 150, 190],
         abilityPowerRatio: 0.3,
         damageType: `MAGIC`,
       },
-      airborneDuration: 1,
-      tibbersDuration: 20,
+      airborneDurationSeconds: 1,
+      tibbersDurationSeconds: 20,
       tibbersEnrage: {
         hastePercent: 100,
         attackSpeedPercent: 210,
@@ -1327,7 +1406,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `TEAMFIGHT`,
     ],
   },
-  // ASHE
+  // === ASHE ===
+  // ASHE - PASSIVE
   {
     championKey: `ashe`,
     slot: SkillSlot.PASSIVE,
@@ -1342,7 +1422,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     range: null,
     scaling: {
       slowPercent: 15,
-      slowDuration: 2,
+      slowDurationSeconds: 2,
       attackDamageMultiplierPercent: 110,
       criticalSlowPercent: 40,
       criticalSlowDecays: true,
@@ -1351,6 +1431,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
     tags: [`SLOW`, `CRITICAL_SCALING`, `KITE`, `AUTO_ATTACK_CHAMPION`],
   },
+  // ASHE - Q
   {
     championKey: `ashe`,
     slot: SkillSlot.Q,
@@ -1361,7 +1442,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     damageType: DamageType.PHYSICAL,
     targetType: TargetType.SELF,
     cooldown: {
-      values: [0, 0, 0],
+      values: [0, 0, 0, 0],
       unit: `seconds`,
     },
     cost: {
@@ -1371,9 +1452,9 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     range: null,
     scaling: {
       requiredFocusStacks: 4,
-      focusStackDuration: 4,
+      focusStackDurationSeconds: 4,
       attackSpeedPercent: [20, 30, 40, 50],
-      duration: 6,
+      durationSeconds: 6,
       flurryAttackDamageMultiplierPercent: [115, 120, 125, 130],
     },
     effects: [SkillEffect.DAMAGE],
@@ -1384,6 +1465,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `AUTO_ATTACK_CHAMPION`,
     ],
   },
+  // ASHE - W
   {
     championKey: `ashe`,
     slot: SkillSlot.W,
@@ -1416,6 +1498,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
     tags: [`POKE`, `CONE_DAMAGE`, `SLOW`, `PHYSICAL_DAMAGE`, `SKILL_SHOT`],
   },
+  // ASHE - E
   {
     championKey: `ashe`,
     slot: SkillSlot.E,
@@ -1434,13 +1517,14 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       type: `GLOBAL_SCOUTING_PROJECTILE`,
     },
     scaling: {
-      areaVisionDuration: 5,
-      revealDuration: 5,
+      areaVisionDurationSeconds: 5,
+      revealDurationSeconds: 5,
       recastDetonatesHawk: true,
     },
     effects: [SkillEffect.VISION],
     tags: [`VISION`, `REVEAL`, `RECAST`, `GLOBAL_RANGE`, `UTILITY_MARKSMAN`],
   },
+  // ASHE - R
   {
     championKey: `ashe`,
     slot: SkillSlot.R,
@@ -1467,7 +1551,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         abilityPowerRatio: 0.4,
         damageType: `MAGIC`,
       },
-      stunDuration: {
+      stunDurationSeconds: {
         min: 1.5,
         max: 3.5,
         scalesWithDistance: true,
@@ -1485,7 +1569,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `MAGIC_DAMAGE`,
     ],
   },
-  // AURELION SOL
+  // === AURELION SOL ===
+  // AURELION SOL - PASSIVE
   {
     championKey: `aurelion-sol`,
     slot: SkillSlot.PASSIVE,
@@ -1509,6 +1594,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [],
     tags: [`SCALING`, `STACKING_PASSIVE`, `ABILITY_EVOLUTION`, `ZONE_CONTROL`],
   },
+  // AURELION SOL - Q
   {
     championKey: `aurelion-sol`,
     slot: SkillSlot.Q,
@@ -1520,8 +1606,6 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     targetType: TargetType.ENEMIES,
     cooldown: {
       values: [3, 3, 3, 3],
-      interruptedEarlyCooldown: 1,
-      interruptGracePeriod: 0.25,
       unit: `seconds`,
     },
     cost: {
@@ -1536,7 +1620,9 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       },
     },
     scaling: {
-      channelDuration: 3.25,
+      interruptedEarlyCooldownSeconds: 1,
+      interruptGracePeriodSeconds: 0.25,
+      channelDurationSeconds: 3.25,
       infiniteDurationAtMaxRank: true,
       damagePerSecond: {
         values: [58, 53, 88, 103],
@@ -1544,7 +1630,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         damageType: `MAGIC`,
       },
       nearbyEnemyDamageRatio: 0.5,
-      burstIntervalOnSameTarget: 1,
+      burstIntervalOnSameTargetSeconds: 1,
       burstDamage: {
         values: [70, 80, 90, 100],
         abilityPowerRatio: 0.35,
@@ -1565,6 +1651,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `STACKING_PASSIVE`,
     ],
   },
+  // AURELION SOL - W
   {
     championKey: `aurelion-sol`,
     slot: SkillSlot.W,
@@ -1576,8 +1663,6 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     targetType: TargetType.SELF,
     cooldown: {
       values: [17, 16, 15, 14],
-      cooldownRefundOnRecentChampionKillPercent: 90,
-      recentDamageWindow: 3,
       unit: `seconds`,
     },
     cost: {
@@ -1588,6 +1673,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       type: `DIRECTIONAL_FLIGHT`,
     },
     scaling: {
+      cooldownRefundOnRecentChampionKillPercent: 90,
+      recentDamageWindowSeconds: 3,
       breathOfLightDamageAmpPercent: [115, 120, 125, 130],
       breathOfLightNoCooldownWhileFlying: true,
       breathOfLightNoMaxChannelDurationWhileFlying: true,
@@ -1600,6 +1687,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DASH],
     tags: [`FLIGHT`, `RECAST`, `MOBILITY`, `COOLDOWN_REFUND`, `SCALING`],
   },
+  // AURELION SOL - E
   {
     championKey: `aurelion-sol`,
     slot: SkillSlot.E,
@@ -1621,7 +1709,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       type: `GROUND_AREA_BLACK_HOLE`,
     },
     scaling: {
-      duration: 5,
+      durationSeconds: 5,
       damagePerSecond: {
         values: [20, 27.5, 35, 42.5],
         abilityPowerRatio: 0.15,
@@ -1645,6 +1733,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `STACKING_PASSIVE`,
     ],
   },
+  // AURELION SOL - R
   {
     championKey: `aurelion-sol`,
     slot: SkillSlot.R,
@@ -1671,7 +1760,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         abilityPowerRatio: 0.65,
         damageType: `MAGIC`,
       },
-      fallingStarStunDuration: 1,
+      fallingStarStunDurationSeconds: 1,
       stardustPerChampionHit: 8,
       skiesDescendRequiredStardust: 65,
       skiesDescendDamage: {
@@ -1679,14 +1768,14 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         abilityPowerRatio: 0.65,
         damageType: `MAGIC`,
       },
-      skiesDescendAirborneDuration: 1,
+      skiesDescendAirborneDurationSeconds: 1,
       shockwaveDamage: {
         values: [150, 250, 350],
         abilityPowerRatio: 0.65,
         damageType: `MAGIC`,
       },
       shockwaveSlowPercent: 50,
-      shockwaveSlowDuration: 1,
+      shockwaveSlowDurationSeconds: 1,
       areaIncreasedByStardust: true,
     },
     effects: [
@@ -1705,7 +1794,8 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `SCALING`,
     ],
   },
-  // AURORA
+  // === AURORA ===
+  // AURORA - PASSIVE
   {
     championKey: `aurora`,
     slot: SkillSlot.PASSIVE,
@@ -1722,7 +1812,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       requiredHits: 3,
       maxHealthMagicDamagePercent: 2.5,
       maxHealthMagicDamageAbilityPowerRatioPercent: 2,
-      spiritDuration: 4,
+      spiritDurationSeconds: 4,
       maxSpirits: 4,
       healingPerSecond: {
         valuesByLevel: {
@@ -1735,6 +1825,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     effects: [SkillEffect.DAMAGE, SkillEffect.HEAL],
     tags: [`PERCENT_HEALTH_DAMAGE`, `STACKING_PASSIVE`, `HEALING`, `SKIRMISH`],
   },
+  // AURORA - Q
   {
     championKey: `aurora`,
     slot: SkillSlot.Q,
@@ -1761,7 +1852,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         abilityPowerRatio: 0.3,
         damageType: `MAGIC`,
       },
-      curseDuration: 3.5,
+      curseDurationSeconds: 3.5,
       recastDamage: {
         values: [35, 65, 95, 125],
         abilityPowerRatio: 0.3,
@@ -1781,6 +1872,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `POKE`,
     ],
   },
+  // AURORA - W
   {
     championKey: `aurora`,
     slot: SkillSlot.W,
@@ -1792,7 +1884,6 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     targetType: TargetType.SELF,
     cooldown: {
       values: [21, 20, 19, 18],
-      resetsOnChampionTakedown: true,
       unit: `seconds`,
     },
     cost: {
@@ -1803,9 +1894,10 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       type: `DIRECTIONAL_HOP`,
     },
     scaling: {
-      invisibilityDuration: [1, 1.2, 1.4, 1.6],
+      resetsCooldownOnChampionTakedown: true,
+      invisibilityDurationSeconds: [1, 1.2, 1.4, 1.6],
       realmHopperMovementSpeedPercent: [25, 30, 35, 40],
-      realmHopperDuration: 4,
+      realmHopperDurationSeconds: 4,
     },
     effects: [SkillEffect.DASH, SkillEffect.STEALTH, SkillEffect.SPEED_UP],
     tags: [
@@ -1816,6 +1908,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `REALM_HOPPER`,
     ],
   },
+  // AURORA - E
   {
     championKey: `aurora`,
     slot: SkillSlot.E,
@@ -1843,12 +1936,13 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         damageType: `MAGIC`,
       },
       slowPercent: 80,
-      slowDecayDuration: 1,
+      slowDecayDurationSeconds: 1,
       backwardHopAfterCast: true,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.DASH],
     tags: [`AREA_DAMAGE`, `SLOW`, `SELF_DISPLACEMENT`, `MAGIC_DAMAGE`],
   },
+  // AURORA - R
   {
     championKey: `aurora`,
     slot: SkillSlot.R,
@@ -1876,12 +1970,12 @@ const championSkillSeeds: ChampionSkillSeed[] = [
         damageType: `MAGIC`,
       },
       initialSlowPercent: 30,
-      initialSlowDuration: 2,
-      areaDuration: [2.5, 3.25, 4],
+      initialSlowDurationSeconds: 2,
+      areaDurationSeconds: [2.5, 3.25, 4],
       grantsRealmHopper: true,
       edgeJumpEnabled: true,
       boundarySlowPercent: 50,
-      boundarySlowDuration: [1.5, 1.75, 2],
+      boundarySlowDurationSeconds: [1.5, 1.75, 2],
       recastEndsAreaEarly: true,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.DASH],
@@ -1893,6 +1987,416 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `BOUNDARY_CONTROL`,
       `MAGIC_DAMAGE`,
     ],
+  },
+  // === BARD ===
+  // BARD - PASSIVE
+  {
+    championKey: `bard`,
+    slot: SkillSlot.PASSIVE,
+    name: `Traveler's Call`,
+    nameVi: `Tiếng Gọi Lữ Khách`,
+    description: `Chimes: Bard attracts and collects chimes on the map. Nearby chimes are collected automatically, granting out-of-combat Movement Speed for 20 seconds, experience, and restoring max Mana. Chimes remain for 10 minutes. Starting from 5 minutes into the game, Bard gains additional experience every minute. Meeps: Bard summons a meep every 7 seconds, up to 1 meep. Meeps empower Bard's attacks to deal bonus magic damage. Chime milestones add a slow and larger area damage effects.`,
+    descriptionVi: `Chuông: Bard thu hút và nhặt chuông trên bản đồ. Chuông ở gần sẽ tự động được thu thập, cho Tốc Độ Di Chuyển ngoài giao tranh trong 20 giây, kinh nghiệm và hồi năng lượng tối đa. Chuông tồn tại trong 10 phút. Từ phút thứ 5 của trận đấu, Bard nhận thêm kinh nghiệm mỗi phút. Meep: Bard triệu hồi một meep mỗi 7 giây, tối đa 1 meep. Meep cường hóa đòn đánh của Bard để gây thêm sát thương phép. Các mốc chuông giúp đòn đánh có thêm làm chậm và sát thương diện rộng lớn hơn.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      chimes: {
+        outOfCombatMovementSpeedPercent: 24,
+        movementSpeedDurationSeconds: 20,
+        movementSpeedMaxStacks: 10,
+        movementSpeedMaxPercent: 150,
+        experienceGain: 400,
+        maxManaRestorePercent: 12,
+        chimeLifetimeMinutes: 10,
+        bonusExperienceStartMinute: 5,
+        bonusExperiencePerMinute: 20,
+      },
+      meeps: {
+        spawnSeconds: 7,
+        maxMeepsBase: 1,
+        bonusMagicDamage: {
+          baseValue: 35,
+          abilityPowerRatio: 0.4,
+          bonusPerThreeChimes: 12,
+        },
+        milestoneEffects: [
+          {
+            chimes: 3,
+            effect: `SLOW`,
+            slowPercent: 25,
+            durationSeconds: 1,
+          },
+          {
+            chimes: 9,
+            effect: `AREA_DAMAGE_BEHIND_TARGET`,
+          },
+          {
+            chimes: 27,
+            effect: `LARGER_AREA_DAMAGE`,
+          },
+        ],
+      },
+    },
+    effects: [
+      SkillEffect.DAMAGE,
+      SkillEffect.SLOW,
+      SkillEffect.EMPOWERED_ATTACK,
+    ],
+    tags: [
+      `CHIME`,
+      `MEEP`,
+      `MAGIC_DAMAGE`,
+      `EMPOWERED_ATTACK`,
+      `SLOW`,
+      `SCALING`,
+      `ROAMING`,
+    ],
+  },
+  // BARD - Q
+  {
+    championKey: `bard`,
+    slot: SkillSlot.Q,
+    name: `Cosmic Binding`,
+    nameVi: `Mắt Xích Không Gian`,
+    description: `Bard fires an energy bolt, dealing magic damage to the first enemy hit and slowing them. The bolt continues for a short distance. If it hits a second enemy or a wall, both enemies are stunned. If a second enemy is struck, the bolt also deals the same damage to them.`,
+    descriptionVi: `Bard bắn ra một luồng năng lượng, gây sát thương phép lên kẻ địch đầu tiên trúng phải và làm chậm chúng. Luồng năng lượng tiếp tục bay thêm một đoạn ngắn. Nếu trúng kẻ địch thứ hai hoặc địa hình, cả hai mục tiêu bị làm choáng. Nếu trúng kẻ địch thứ hai, luồng năng lượng cũng gây cùng lượng sát thương lên mục tiêu đó.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [10, 9, 8, 7],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [60, 60, 60, 60],
+      resource: `MANA`,
+    },
+    range: {
+      type: `LINE_PROJECTILE_EXTENDS_AFTER_FIRST_HIT`,
+    },
+    scaling: {
+      damage: {
+        values: [80, 130, 180, 230],
+        abilityPowerRatio: 0.8,
+        damageType: `MAGIC`,
+      },
+      slowPercent: 60,
+      crowdControlDurationSeconds: [1.1, 1.3, 1.5, 1.7],
+      stunIfSecondEnemyOrWallHit: true,
+      secondEnemyTakesSameDamage: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.STUN],
+    tags: [
+      `SKILL_SHOT`,
+      `MAGIC_DAMAGE`,
+      `SLOW`,
+      `STUN`,
+      `PICK_POTENTIAL`,
+      `CROWD_CONTROL`,
+    ],
+  },
+  // BARD - W
+  {
+    championKey: `bard`,
+    slot: SkillSlot.W,
+    name: `Caretaker's Shrine`,
+    nameVi: `Điện An Lạc`,
+    description: `Bard creates a health shrine that grows to max efficiency after 5 seconds. The first allied champion to enter gains Movement Speed and is healed. A fully charged shrine restores more Health. Bard can store 2 charges and can have up to 3 shrines active at once. Enemy champions crush shrines by entering them.`,
+    descriptionVi: `Bard tạo một điện hồi máu, tăng dần sức mạnh và đạt hiệu quả tối đa sau 5 giây. Tướng đồng minh đầu tiên bước vào sẽ nhận Tốc Độ Di Chuyển và được hồi máu. Điện đã sạc đầy hồi nhiều máu hơn. Bard có thể tích trữ 2 điểm dùng và đặt tối đa 3 điện cùng lúc. Tướng địch bước vào sẽ phá hủy điện.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.ALLY,
+    cooldown: {
+      values: [15, 15, 15, 15],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [70, 70, 70, 70],
+      resource: `MANA`,
+    },
+    range: {
+      type: `GROUND_SHRINE`,
+      maxActiveShrines: 3,
+    },
+    scaling: {
+      charges: 2,
+      growToMaxEfficiencySeconds: 5,
+      movementSpeedPercent: [22.5, 25, 27.5, 30],
+      movementSpeedAbilityPowerRatioPercent: 0.05,
+      movementSpeedDurationSeconds: 1.5,
+      minimumHeal: {
+        values: [50, 80, 110, 140],
+        abilityPowerRatio: 0.3,
+      },
+      chargedHeal: {
+        values: [100, 160, 220, 280],
+        abilityPowerRatio: 0.6,
+      },
+      enemyChampionCrushesShrine: true,
+    },
+    effects: [SkillEffect.HEAL, SkillEffect.SPEED_UP],
+    tags: [
+      `SHRINE`,
+      `HEALING`,
+      `ALLY_HEAL`,
+      `MOVEMENT_SPEED`,
+      `TEAM_SUPPORT`,
+      `LANE_SURVIVAL`,
+    ],
+  },
+  // BARD - E
+  {
+    championKey: `bard`,
+    slot: SkillSlot.E,
+    name: `Magical Journey`,
+    nameVi: `Hành Trình Kỳ Diệu`,
+    description: `Bard opens a one-way corridor through nearby terrain for 10 seconds. Nearby allied and enemy champions can use the corridor. Allies travel faster than enemies.`,
+    descriptionVi: `Bard mở một hành lang một chiều xuyên qua địa hình gần đó trong 10 giây. Tướng đồng minh và tướng địch ở gần đều có thể dùng hành lang. Đồng minh di chuyển qua hành lang nhanh hơn kẻ địch.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [19, 17, 16, 14],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [30, 30, 30, 30],
+      resource: `MANA`,
+    },
+    range: {
+      type: `TERRAIN_PORTAL`,
+      oneWay: true,
+    },
+    scaling: {
+      corridorDurationSeconds: 10,
+      alliedTravelSpeedBonusPercent: 50,
+      enemiesCanUsePortal: true,
+    },
+    effects: [SkillEffect.DASH],
+    tags: [
+      `PORTAL`,
+      `TERRAIN_TRAVEL`,
+      `MOBILITY`,
+      `ROAMING`,
+      `PLAYMAKING`,
+      `ESCAPE`,
+    ],
+  },
+  // BARD - R
+  {
+    championKey: `bard`,
+    slot: SkillSlot.R,
+    name: `Tempered Fate`,
+    nameVi: `Thiên Mệnh Khả Biến`,
+    description: `Bard hurls magical protective energy to an area, placing all units and structures within into stasis. While in stasis, they are invulnerable, untargetable, and unable to act.`,
+    descriptionVi: `Bard ném năng lượng bảo hộ ma thuật vào một khu vực, đưa toàn bộ đơn vị và công trình trong vùng vào trạng thái ngưng đọng. Khi ngưng đọng, mục tiêu bất tử, không thể bị chọn làm mục tiêu và không thể hành động.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [75, 65, 55],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `GROUND_AREA_STASIS`,
+    },
+    scaling: {
+      stasisDurationSeconds: 2.5,
+      affectsUnits: true,
+      affectsStructures: true,
+      invulnerable: true,
+      untargetable: true,
+      unableToAct: true,
+    },
+    effects: [SkillEffect.STASIS],
+    tags: [
+      `STASIS`,
+      `AOE_STASIS`,
+      `ZONE_CONTROL`,
+      `TEAMFIGHT`,
+      `PLAYMAKING`,
+      `HIGH_EXECUTION`,
+    ],
+  },
+  // === BLITZCRANK ===
+  // BLITZCRANK - PASSIVE
+  {
+    championKey: `blitzcrank`,
+    slot: SkillSlot.PASSIVE,
+    name: `Mana Barrier`,
+    nameVi: `Lá Chắn Năng Lượng`,
+    description: `Blitzcrank gains a shield that absorbs 90 (+30% Mana) damage for 10 seconds upon falling below 35% Health.`,
+    descriptionVi: `Blitzcrank nhận một lá chắn hấp thụ 90 (+30% Năng Lượng) sát thương trong 10 giây khi còn dưới 35% Máu.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      shield: {
+        baseValue: 90,
+        manaRatio: 0.3,
+        durationSeconds: 10,
+        triggerHealthPercent: 35,
+      },
+    },
+    effects: [SkillEffect.SHIELD],
+    tags: [`SHIELD`, `LOW_HEALTH_TRIGGER`, `MANA_SCALING`, `SURVIVABILITY`],
+  },
+  // BLITZCRANK - Q
+  {
+    championKey: `blitzcrank`,
+    slot: SkillSlot.Q,
+    name: `Rocket Grab`,
+    nameVi: `Bàn Tay Hỏa Tiễn`,
+    description: `Blitzcrank fires his right hand to deal magic damage and pull the target back to him.`,
+    descriptionVi: `Blitzcrank bắn bàn tay phải ra, gây sát thương phép và kéo mục tiêu về phía hắn.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [18, 17, 16, 15],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [80, 80, 80, 80],
+      resource: `MANA`,
+    },
+    range: {
+      type: `LINE_SKILLSHOT`,
+    },
+    scaling: {
+      damage: {
+        values: [110, 175, 240, 305],
+        abilityPowerRatio: 1,
+        damageType: `MAGIC`,
+      },
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.PULL],
+    tags: [`HOOK`, `PULL`, `SKILL_SHOT`, `PICK_POTENTIAL`, `MAGIC_DAMAGE`],
+  },
+  // BLITZCRANK - W
+  {
+    championKey: `blitzcrank`,
+    slot: SkillSlot.W,
+    name: `Overdrive`,
+    nameVi: `Tăng Tốc`,
+    description: `Blitzcrank gains decaying Movement Speed. He may reactivate Overdrive to gain a stronger burst of decaying Movement Speed. When Overdrive ends, Blitzcrank is slowed briefly.`,
+    descriptionVi: `Blitzcrank nhận Tốc Độ Di Chuyển giảm dần. Có thể tái kích hoạt Tăng Tốc để nhận lượng Tốc Độ Di Chuyển giảm dần mạnh hơn. Khi hiệu ứng kết thúc, Blitzcrank bị làm chậm trong thời gian ngắn.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [10, 10, 10, 10],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [75, 75, 75, 75],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      firstCast: {
+        movementSpeedPercent: [35, 40, 45, 50],
+        decaysToPercent: 10,
+        durationSeconds: 2.5,
+      },
+      recast: {
+        movementSpeedPercent: [140, 150, 160, 170],
+        durationSeconds: 1.5,
+      },
+      drawback: {
+        slowPercent: 33,
+        recastSlowPercent: 99,
+        durationSeconds: 1,
+      },
+    },
+    effects: [SkillEffect.SPEED_UP, SkillEffect.SLOW],
+    tags: [
+      `SPEED_UP`,
+      `RECAST`,
+      `SELF_BUFF`,
+      `DECAYING_MOVEMENT_SPEED`,
+      `SELF_SLOW`,
+    ],
+  },
+  // BLITZCRANK - E
+  {
+    championKey: `blitzcrank`,
+    slot: SkillSlot.E,
+    name: `Power Fist`,
+    nameVi: `Đấm Móc`,
+    description: `Blitzcrank empowers his next attack to critically strike for physical damage and knock up the target.`,
+    descriptionVi: `Blitzcrank cường hóa đòn đánh kế tiếp để chí mạng, gây sát thương vật lý và hất tung mục tiêu.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [8, 7, 6, 5],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [25, 25, 25, 25],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damage: {
+        baseValue: 105,
+        attackDamageRatio: [1.8, 2, 2.2, 2.4],
+        damageType: `PHYSICAL`,
+      },
+    },
+    effects: [
+      SkillEffect.DAMAGE,
+      SkillEffect.EMPOWERED_ATTACK,
+      SkillEffect.KNOCK_UP,
+    ],
+    tags: [
+      `EMPOWERED_ATTACK`,
+      `AUTO_ATTACK_RESET`,
+      `KNOCK_UP`,
+      `CRITICAL_STRIKE`,
+      `PHYSICAL_DAMAGE`,
+    ],
+  },
+  // BLITZCRANK - R
+  {
+    championKey: `blitzcrank`,
+    slot: SkillSlot.R,
+    name: `Static Field`,
+    nameVi: `Trường Điện Từ`,
+    description: `Passive: While Static Field is off cooldown, attacks mark enemies to deal magic damage after 1 second. Active: Blitzcrank deals magic damage to nearby enemies and silences them for 0.5 seconds.`,
+    descriptionVi: `Nội tại: Khi Trường Điện Từ không trong hồi chiêu, đòn đánh đánh dấu kẻ địch để gây sát thương phép sau 1 giây. Kích hoạt: Blitzcrank gây sát thương phép lên kẻ địch xung quanh và câm lặng chúng trong 0.5 giây.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [55, 35, 15],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `AREA_AROUND_SELF`,
+    },
+    scaling: {
+      passiveDamage: {
+        values: [40, 80, 120],
+        abilityPowerRatio: 0.15,
+        delaySeconds: 1,
+        damageType: `MAGIC`,
+      },
+      activeDamage: {
+        values: [275, 400, 525],
+        abilityPowerRatio: 0.8,
+        damageType: `MAGIC`,
+      },
+      silenceDurationSeconds: 0.5,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SILENCE],
+    tags: [`MAGIC_DAMAGE`, `SILENCE`, `AREA_DAMAGE`, `MARK`, `PASSIVE_DAMAGE`],
   },
 ];
 
