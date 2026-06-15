@@ -28,7 +28,7 @@ export type AggregateChampionPatchStat = {
 
 export type ChampionPatchStatAvgAggregateOutputType = {
   baseHealth: number | null
-  baseMana: number | null
+  baseResource: number | null
   baseArmor: number | null
   baseMagicResist: number | null
   baseAttackDamage: number | null
@@ -36,7 +36,7 @@ export type ChampionPatchStatAvgAggregateOutputType = {
   attackSpeed: number | null
   moveSpeed: number | null
   healthGrowth: number | null
-  manaGrowth: number | null
+  resourceGrowth: number | null
   armorGrowth: number | null
   magicResistGrowth: number | null
   attackDamageGrowth: number | null
@@ -46,7 +46,7 @@ export type ChampionPatchStatAvgAggregateOutputType = {
 
 export type ChampionPatchStatSumAggregateOutputType = {
   baseHealth: number | null
-  baseMana: number | null
+  baseResource: number | null
   baseArmor: number | null
   baseMagicResist: number | null
   baseAttackDamage: number | null
@@ -54,7 +54,7 @@ export type ChampionPatchStatSumAggregateOutputType = {
   attackSpeed: number | null
   moveSpeed: number | null
   healthGrowth: number | null
-  manaGrowth: number | null
+  resourceGrowth: number | null
   armorGrowth: number | null
   magicResistGrowth: number | null
   attackDamageGrowth: number | null
@@ -67,7 +67,7 @@ export type ChampionPatchStatMinAggregateOutputType = {
   championId: string | null
   patchId: string | null
   baseHealth: number | null
-  baseMana: number | null
+  baseResource: number | null
   baseArmor: number | null
   baseMagicResist: number | null
   baseAttackDamage: number | null
@@ -75,7 +75,7 @@ export type ChampionPatchStatMinAggregateOutputType = {
   attackSpeed: number | null
   moveSpeed: number | null
   healthGrowth: number | null
-  manaGrowth: number | null
+  resourceGrowth: number | null
   armorGrowth: number | null
   magicResistGrowth: number | null
   attackDamageGrowth: number | null
@@ -91,7 +91,7 @@ export type ChampionPatchStatMaxAggregateOutputType = {
   championId: string | null
   patchId: string | null
   baseHealth: number | null
-  baseMana: number | null
+  baseResource: number | null
   baseArmor: number | null
   baseMagicResist: number | null
   baseAttackDamage: number | null
@@ -99,7 +99,7 @@ export type ChampionPatchStatMaxAggregateOutputType = {
   attackSpeed: number | null
   moveSpeed: number | null
   healthGrowth: number | null
-  manaGrowth: number | null
+  resourceGrowth: number | null
   armorGrowth: number | null
   magicResistGrowth: number | null
   attackDamageGrowth: number | null
@@ -115,7 +115,7 @@ export type ChampionPatchStatCountAggregateOutputType = {
   championId: number
   patchId: number
   baseHealth: number
-  baseMana: number
+  baseResource: number
   baseArmor: number
   baseMagicResist: number
   baseAttackDamage: number
@@ -123,7 +123,7 @@ export type ChampionPatchStatCountAggregateOutputType = {
   attackSpeed: number
   moveSpeed: number
   healthGrowth: number
-  manaGrowth: number
+  resourceGrowth: number
   armorGrowth: number
   magicResistGrowth: number
   attackDamageGrowth: number
@@ -141,7 +141,7 @@ export type ChampionPatchStatCountAggregateOutputType = {
 
 export type ChampionPatchStatAvgAggregateInputType = {
   baseHealth?: true
-  baseMana?: true
+  baseResource?: true
   baseArmor?: true
   baseMagicResist?: true
   baseAttackDamage?: true
@@ -149,7 +149,7 @@ export type ChampionPatchStatAvgAggregateInputType = {
   attackSpeed?: true
   moveSpeed?: true
   healthGrowth?: true
-  manaGrowth?: true
+  resourceGrowth?: true
   armorGrowth?: true
   magicResistGrowth?: true
   attackDamageGrowth?: true
@@ -159,7 +159,7 @@ export type ChampionPatchStatAvgAggregateInputType = {
 
 export type ChampionPatchStatSumAggregateInputType = {
   baseHealth?: true
-  baseMana?: true
+  baseResource?: true
   baseArmor?: true
   baseMagicResist?: true
   baseAttackDamage?: true
@@ -167,7 +167,7 @@ export type ChampionPatchStatSumAggregateInputType = {
   attackSpeed?: true
   moveSpeed?: true
   healthGrowth?: true
-  manaGrowth?: true
+  resourceGrowth?: true
   armorGrowth?: true
   magicResistGrowth?: true
   attackDamageGrowth?: true
@@ -180,7 +180,7 @@ export type ChampionPatchStatMinAggregateInputType = {
   championId?: true
   patchId?: true
   baseHealth?: true
-  baseMana?: true
+  baseResource?: true
   baseArmor?: true
   baseMagicResist?: true
   baseAttackDamage?: true
@@ -188,7 +188,7 @@ export type ChampionPatchStatMinAggregateInputType = {
   attackSpeed?: true
   moveSpeed?: true
   healthGrowth?: true
-  manaGrowth?: true
+  resourceGrowth?: true
   armorGrowth?: true
   magicResistGrowth?: true
   attackDamageGrowth?: true
@@ -204,7 +204,7 @@ export type ChampionPatchStatMaxAggregateInputType = {
   championId?: true
   patchId?: true
   baseHealth?: true
-  baseMana?: true
+  baseResource?: true
   baseArmor?: true
   baseMagicResist?: true
   baseAttackDamage?: true
@@ -212,7 +212,7 @@ export type ChampionPatchStatMaxAggregateInputType = {
   attackSpeed?: true
   moveSpeed?: true
   healthGrowth?: true
-  manaGrowth?: true
+  resourceGrowth?: true
   armorGrowth?: true
   magicResistGrowth?: true
   attackDamageGrowth?: true
@@ -228,7 +228,7 @@ export type ChampionPatchStatCountAggregateInputType = {
   championId?: true
   patchId?: true
   baseHealth?: true
-  baseMana?: true
+  baseResource?: true
   baseArmor?: true
   baseMagicResist?: true
   baseAttackDamage?: true
@@ -236,7 +236,7 @@ export type ChampionPatchStatCountAggregateInputType = {
   attackSpeed?: true
   moveSpeed?: true
   healthGrowth?: true
-  manaGrowth?: true
+  resourceGrowth?: true
   armorGrowth?: true
   magicResistGrowth?: true
   attackDamageGrowth?: true
@@ -342,7 +342,7 @@ export type ChampionPatchStatGroupByOutputType = {
   championId: string
   patchId: string
   baseHealth: number | null
-  baseMana: number | null
+  baseResource: number | null
   baseArmor: number | null
   baseMagicResist: number | null
   baseAttackDamage: number | null
@@ -350,7 +350,7 @@ export type ChampionPatchStatGroupByOutputType = {
   attackSpeed: number | null
   moveSpeed: number | null
   healthGrowth: number | null
-  manaGrowth: number | null
+  resourceGrowth: number | null
   armorGrowth: number | null
   magicResistGrowth: number | null
   attackDamageGrowth: number | null
@@ -392,7 +392,7 @@ export type ChampionPatchStatWhereInput = {
   championId?: Prisma.StringFilter<"ChampionPatchStat"> | string
   patchId?: Prisma.StringFilter<"ChampionPatchStat"> | string
   baseHealth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
-  baseMana?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
+  baseResource?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   baseArmor?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   baseMagicResist?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   baseAttackDamage?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
@@ -400,7 +400,7 @@ export type ChampionPatchStatWhereInput = {
   attackSpeed?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   moveSpeed?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   healthGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
-  manaGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
+  resourceGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   armorGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   magicResistGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   attackDamageGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
@@ -421,7 +421,7 @@ export type ChampionPatchStatOrderByWithRelationInput = {
   championId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
   baseHealth?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseMana?: Prisma.SortOrderInput | Prisma.SortOrder
+  baseResource?: Prisma.SortOrderInput | Prisma.SortOrder
   baseArmor?: Prisma.SortOrderInput | Prisma.SortOrder
   baseMagicResist?: Prisma.SortOrderInput | Prisma.SortOrder
   baseAttackDamage?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -429,7 +429,7 @@ export type ChampionPatchStatOrderByWithRelationInput = {
   attackSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
   moveSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
   healthGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
-  manaGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
+  resourceGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
   armorGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
   magicResistGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
   attackDamageGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -454,7 +454,7 @@ export type ChampionPatchStatWhereUniqueInput = Prisma.AtLeast<{
   championId?: Prisma.StringFilter<"ChampionPatchStat"> | string
   patchId?: Prisma.StringFilter<"ChampionPatchStat"> | string
   baseHealth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
-  baseMana?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
+  baseResource?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   baseArmor?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   baseMagicResist?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   baseAttackDamage?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
@@ -462,7 +462,7 @@ export type ChampionPatchStatWhereUniqueInput = Prisma.AtLeast<{
   attackSpeed?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   moveSpeed?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   healthGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
-  manaGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
+  resourceGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   armorGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   magicResistGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   attackDamageGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
@@ -483,7 +483,7 @@ export type ChampionPatchStatOrderByWithAggregationInput = {
   championId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
   baseHealth?: Prisma.SortOrderInput | Prisma.SortOrder
-  baseMana?: Prisma.SortOrderInput | Prisma.SortOrder
+  baseResource?: Prisma.SortOrderInput | Prisma.SortOrder
   baseArmor?: Prisma.SortOrderInput | Prisma.SortOrder
   baseMagicResist?: Prisma.SortOrderInput | Prisma.SortOrder
   baseAttackDamage?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -491,7 +491,7 @@ export type ChampionPatchStatOrderByWithAggregationInput = {
   attackSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
   moveSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
   healthGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
-  manaGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
+  resourceGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
   armorGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
   magicResistGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
   attackDamageGrowth?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -518,7 +518,7 @@ export type ChampionPatchStatScalarWhereWithAggregatesInput = {
   championId?: Prisma.StringWithAggregatesFilter<"ChampionPatchStat"> | string
   patchId?: Prisma.StringWithAggregatesFilter<"ChampionPatchStat"> | string
   baseHealth?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
-  baseMana?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
+  baseResource?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
   baseArmor?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
   baseMagicResist?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
   baseAttackDamage?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
@@ -526,7 +526,7 @@ export type ChampionPatchStatScalarWhereWithAggregatesInput = {
   attackSpeed?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
   moveSpeed?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
   healthGrowth?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
-  manaGrowth?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
+  resourceGrowth?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
   armorGrowth?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
   magicResistGrowth?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
   attackDamageGrowth?: Prisma.FloatNullableWithAggregatesFilter<"ChampionPatchStat"> | number | null
@@ -543,7 +543,7 @@ export type ChampionPatchStatScalarWhereWithAggregatesInput = {
 export type ChampionPatchStatCreateInput = {
   id?: string
   baseHealth?: number | null
-  baseMana?: number | null
+  baseResource?: number | null
   baseArmor?: number | null
   baseMagicResist?: number | null
   baseAttackDamage?: number | null
@@ -551,7 +551,7 @@ export type ChampionPatchStatCreateInput = {
   attackSpeed?: number | null
   moveSpeed?: number | null
   healthGrowth?: number | null
-  manaGrowth?: number | null
+  resourceGrowth?: number | null
   armorGrowth?: number | null
   magicResistGrowth?: number | null
   attackDamageGrowth?: number | null
@@ -572,7 +572,7 @@ export type ChampionPatchStatUncheckedCreateInput = {
   championId: string
   patchId: string
   baseHealth?: number | null
-  baseMana?: number | null
+  baseResource?: number | null
   baseArmor?: number | null
   baseMagicResist?: number | null
   baseAttackDamage?: number | null
@@ -580,7 +580,7 @@ export type ChampionPatchStatUncheckedCreateInput = {
   attackSpeed?: number | null
   moveSpeed?: number | null
   healthGrowth?: number | null
-  manaGrowth?: number | null
+  resourceGrowth?: number | null
   armorGrowth?: number | null
   magicResistGrowth?: number | null
   attackDamageGrowth?: number | null
@@ -597,7 +597,7 @@ export type ChampionPatchStatUncheckedCreateInput = {
 export type ChampionPatchStatUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   baseHealth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  baseMana?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  baseResource?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseArmor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseMagicResist?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseAttackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -605,7 +605,7 @@ export type ChampionPatchStatUpdateInput = {
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   moveSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healthGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  manaGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  resourceGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   armorGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicResistGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamageGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -626,7 +626,7 @@ export type ChampionPatchStatUncheckedUpdateInput = {
   championId?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
   baseHealth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  baseMana?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  baseResource?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseArmor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseMagicResist?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseAttackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -634,7 +634,7 @@ export type ChampionPatchStatUncheckedUpdateInput = {
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   moveSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healthGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  manaGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  resourceGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   armorGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicResistGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamageGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -653,7 +653,7 @@ export type ChampionPatchStatCreateManyInput = {
   championId: string
   patchId: string
   baseHealth?: number | null
-  baseMana?: number | null
+  baseResource?: number | null
   baseArmor?: number | null
   baseMagicResist?: number | null
   baseAttackDamage?: number | null
@@ -661,7 +661,7 @@ export type ChampionPatchStatCreateManyInput = {
   attackSpeed?: number | null
   moveSpeed?: number | null
   healthGrowth?: number | null
-  manaGrowth?: number | null
+  resourceGrowth?: number | null
   armorGrowth?: number | null
   magicResistGrowth?: number | null
   attackDamageGrowth?: number | null
@@ -678,7 +678,7 @@ export type ChampionPatchStatCreateManyInput = {
 export type ChampionPatchStatUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   baseHealth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  baseMana?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  baseResource?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseArmor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseMagicResist?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseAttackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -686,7 +686,7 @@ export type ChampionPatchStatUpdateManyMutationInput = {
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   moveSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healthGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  manaGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  resourceGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   armorGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicResistGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamageGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -705,7 +705,7 @@ export type ChampionPatchStatUncheckedUpdateManyInput = {
   championId?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
   baseHealth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  baseMana?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  baseResource?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseArmor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseMagicResist?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseAttackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -713,7 +713,7 @@ export type ChampionPatchStatUncheckedUpdateManyInput = {
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   moveSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healthGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  manaGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  resourceGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   armorGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicResistGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamageGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -747,7 +747,7 @@ export type ChampionPatchStatCountOrderByAggregateInput = {
   championId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
   baseHealth?: Prisma.SortOrder
-  baseMana?: Prisma.SortOrder
+  baseResource?: Prisma.SortOrder
   baseArmor?: Prisma.SortOrder
   baseMagicResist?: Prisma.SortOrder
   baseAttackDamage?: Prisma.SortOrder
@@ -755,7 +755,7 @@ export type ChampionPatchStatCountOrderByAggregateInput = {
   attackSpeed?: Prisma.SortOrder
   moveSpeed?: Prisma.SortOrder
   healthGrowth?: Prisma.SortOrder
-  manaGrowth?: Prisma.SortOrder
+  resourceGrowth?: Prisma.SortOrder
   armorGrowth?: Prisma.SortOrder
   magicResistGrowth?: Prisma.SortOrder
   attackDamageGrowth?: Prisma.SortOrder
@@ -771,7 +771,7 @@ export type ChampionPatchStatCountOrderByAggregateInput = {
 
 export type ChampionPatchStatAvgOrderByAggregateInput = {
   baseHealth?: Prisma.SortOrder
-  baseMana?: Prisma.SortOrder
+  baseResource?: Prisma.SortOrder
   baseArmor?: Prisma.SortOrder
   baseMagicResist?: Prisma.SortOrder
   baseAttackDamage?: Prisma.SortOrder
@@ -779,7 +779,7 @@ export type ChampionPatchStatAvgOrderByAggregateInput = {
   attackSpeed?: Prisma.SortOrder
   moveSpeed?: Prisma.SortOrder
   healthGrowth?: Prisma.SortOrder
-  manaGrowth?: Prisma.SortOrder
+  resourceGrowth?: Prisma.SortOrder
   armorGrowth?: Prisma.SortOrder
   magicResistGrowth?: Prisma.SortOrder
   attackDamageGrowth?: Prisma.SortOrder
@@ -792,7 +792,7 @@ export type ChampionPatchStatMaxOrderByAggregateInput = {
   championId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
   baseHealth?: Prisma.SortOrder
-  baseMana?: Prisma.SortOrder
+  baseResource?: Prisma.SortOrder
   baseArmor?: Prisma.SortOrder
   baseMagicResist?: Prisma.SortOrder
   baseAttackDamage?: Prisma.SortOrder
@@ -800,7 +800,7 @@ export type ChampionPatchStatMaxOrderByAggregateInput = {
   attackSpeed?: Prisma.SortOrder
   moveSpeed?: Prisma.SortOrder
   healthGrowth?: Prisma.SortOrder
-  manaGrowth?: Prisma.SortOrder
+  resourceGrowth?: Prisma.SortOrder
   armorGrowth?: Prisma.SortOrder
   magicResistGrowth?: Prisma.SortOrder
   attackDamageGrowth?: Prisma.SortOrder
@@ -816,7 +816,7 @@ export type ChampionPatchStatMinOrderByAggregateInput = {
   championId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
   baseHealth?: Prisma.SortOrder
-  baseMana?: Prisma.SortOrder
+  baseResource?: Prisma.SortOrder
   baseArmor?: Prisma.SortOrder
   baseMagicResist?: Prisma.SortOrder
   baseAttackDamage?: Prisma.SortOrder
@@ -824,7 +824,7 @@ export type ChampionPatchStatMinOrderByAggregateInput = {
   attackSpeed?: Prisma.SortOrder
   moveSpeed?: Prisma.SortOrder
   healthGrowth?: Prisma.SortOrder
-  manaGrowth?: Prisma.SortOrder
+  resourceGrowth?: Prisma.SortOrder
   armorGrowth?: Prisma.SortOrder
   magicResistGrowth?: Prisma.SortOrder
   attackDamageGrowth?: Prisma.SortOrder
@@ -837,7 +837,7 @@ export type ChampionPatchStatMinOrderByAggregateInput = {
 
 export type ChampionPatchStatSumOrderByAggregateInput = {
   baseHealth?: Prisma.SortOrder
-  baseMana?: Prisma.SortOrder
+  baseResource?: Prisma.SortOrder
   baseArmor?: Prisma.SortOrder
   baseMagicResist?: Prisma.SortOrder
   baseAttackDamage?: Prisma.SortOrder
@@ -845,7 +845,7 @@ export type ChampionPatchStatSumOrderByAggregateInput = {
   attackSpeed?: Prisma.SortOrder
   moveSpeed?: Prisma.SortOrder
   healthGrowth?: Prisma.SortOrder
-  manaGrowth?: Prisma.SortOrder
+  resourceGrowth?: Prisma.SortOrder
   armorGrowth?: Prisma.SortOrder
   magicResistGrowth?: Prisma.SortOrder
   attackDamageGrowth?: Prisma.SortOrder
@@ -956,7 +956,7 @@ export type NullableIntFieldUpdateOperationsInput = {
 export type ChampionPatchStatCreateWithoutPatchInput = {
   id?: string
   baseHealth?: number | null
-  baseMana?: number | null
+  baseResource?: number | null
   baseArmor?: number | null
   baseMagicResist?: number | null
   baseAttackDamage?: number | null
@@ -964,7 +964,7 @@ export type ChampionPatchStatCreateWithoutPatchInput = {
   attackSpeed?: number | null
   moveSpeed?: number | null
   healthGrowth?: number | null
-  manaGrowth?: number | null
+  resourceGrowth?: number | null
   armorGrowth?: number | null
   magicResistGrowth?: number | null
   attackDamageGrowth?: number | null
@@ -983,7 +983,7 @@ export type ChampionPatchStatUncheckedCreateWithoutPatchInput = {
   id?: string
   championId: string
   baseHealth?: number | null
-  baseMana?: number | null
+  baseResource?: number | null
   baseArmor?: number | null
   baseMagicResist?: number | null
   baseAttackDamage?: number | null
@@ -991,7 +991,7 @@ export type ChampionPatchStatUncheckedCreateWithoutPatchInput = {
   attackSpeed?: number | null
   moveSpeed?: number | null
   healthGrowth?: number | null
-  manaGrowth?: number | null
+  resourceGrowth?: number | null
   armorGrowth?: number | null
   magicResistGrowth?: number | null
   attackDamageGrowth?: number | null
@@ -1039,7 +1039,7 @@ export type ChampionPatchStatScalarWhereInput = {
   championId?: Prisma.StringFilter<"ChampionPatchStat"> | string
   patchId?: Prisma.StringFilter<"ChampionPatchStat"> | string
   baseHealth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
-  baseMana?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
+  baseResource?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   baseArmor?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   baseMagicResist?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   baseAttackDamage?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
@@ -1047,7 +1047,7 @@ export type ChampionPatchStatScalarWhereInput = {
   attackSpeed?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   moveSpeed?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   healthGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
-  manaGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
+  resourceGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   armorGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   magicResistGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
   attackDamageGrowth?: Prisma.FloatNullableFilter<"ChampionPatchStat"> | number | null
@@ -1064,7 +1064,7 @@ export type ChampionPatchStatScalarWhereInput = {
 export type ChampionPatchStatCreateWithoutChampionInput = {
   id?: string
   baseHealth?: number | null
-  baseMana?: number | null
+  baseResource?: number | null
   baseArmor?: number | null
   baseMagicResist?: number | null
   baseAttackDamage?: number | null
@@ -1072,7 +1072,7 @@ export type ChampionPatchStatCreateWithoutChampionInput = {
   attackSpeed?: number | null
   moveSpeed?: number | null
   healthGrowth?: number | null
-  manaGrowth?: number | null
+  resourceGrowth?: number | null
   armorGrowth?: number | null
   magicResistGrowth?: number | null
   attackDamageGrowth?: number | null
@@ -1091,7 +1091,7 @@ export type ChampionPatchStatUncheckedCreateWithoutChampionInput = {
   id?: string
   patchId: string
   baseHealth?: number | null
-  baseMana?: number | null
+  baseResource?: number | null
   baseArmor?: number | null
   baseMagicResist?: number | null
   baseAttackDamage?: number | null
@@ -1099,7 +1099,7 @@ export type ChampionPatchStatUncheckedCreateWithoutChampionInput = {
   attackSpeed?: number | null
   moveSpeed?: number | null
   healthGrowth?: number | null
-  manaGrowth?: number | null
+  resourceGrowth?: number | null
   armorGrowth?: number | null
   magicResistGrowth?: number | null
   attackDamageGrowth?: number | null
@@ -1143,7 +1143,7 @@ export type ChampionPatchStatCreateManyPatchInput = {
   id?: string
   championId: string
   baseHealth?: number | null
-  baseMana?: number | null
+  baseResource?: number | null
   baseArmor?: number | null
   baseMagicResist?: number | null
   baseAttackDamage?: number | null
@@ -1151,7 +1151,7 @@ export type ChampionPatchStatCreateManyPatchInput = {
   attackSpeed?: number | null
   moveSpeed?: number | null
   healthGrowth?: number | null
-  manaGrowth?: number | null
+  resourceGrowth?: number | null
   armorGrowth?: number | null
   magicResistGrowth?: number | null
   attackDamageGrowth?: number | null
@@ -1168,7 +1168,7 @@ export type ChampionPatchStatCreateManyPatchInput = {
 export type ChampionPatchStatUpdateWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   baseHealth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  baseMana?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  baseResource?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseArmor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseMagicResist?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseAttackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1176,7 +1176,7 @@ export type ChampionPatchStatUpdateWithoutPatchInput = {
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   moveSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healthGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  manaGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  resourceGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   armorGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicResistGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamageGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1195,7 +1195,7 @@ export type ChampionPatchStatUncheckedUpdateWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   championId?: Prisma.StringFieldUpdateOperationsInput | string
   baseHealth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  baseMana?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  baseResource?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseArmor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseMagicResist?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseAttackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1203,7 +1203,7 @@ export type ChampionPatchStatUncheckedUpdateWithoutPatchInput = {
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   moveSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healthGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  manaGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  resourceGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   armorGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicResistGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamageGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1221,7 +1221,7 @@ export type ChampionPatchStatUncheckedUpdateManyWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   championId?: Prisma.StringFieldUpdateOperationsInput | string
   baseHealth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  baseMana?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  baseResource?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseArmor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseMagicResist?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseAttackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1229,7 +1229,7 @@ export type ChampionPatchStatUncheckedUpdateManyWithoutPatchInput = {
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   moveSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healthGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  manaGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  resourceGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   armorGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicResistGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamageGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1247,7 +1247,7 @@ export type ChampionPatchStatCreateManyChampionInput = {
   id?: string
   patchId: string
   baseHealth?: number | null
-  baseMana?: number | null
+  baseResource?: number | null
   baseArmor?: number | null
   baseMagicResist?: number | null
   baseAttackDamage?: number | null
@@ -1255,7 +1255,7 @@ export type ChampionPatchStatCreateManyChampionInput = {
   attackSpeed?: number | null
   moveSpeed?: number | null
   healthGrowth?: number | null
-  manaGrowth?: number | null
+  resourceGrowth?: number | null
   armorGrowth?: number | null
   magicResistGrowth?: number | null
   attackDamageGrowth?: number | null
@@ -1272,7 +1272,7 @@ export type ChampionPatchStatCreateManyChampionInput = {
 export type ChampionPatchStatUpdateWithoutChampionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   baseHealth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  baseMana?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  baseResource?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseArmor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseMagicResist?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseAttackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1280,7 +1280,7 @@ export type ChampionPatchStatUpdateWithoutChampionInput = {
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   moveSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healthGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  manaGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  resourceGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   armorGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicResistGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamageGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1299,7 +1299,7 @@ export type ChampionPatchStatUncheckedUpdateWithoutChampionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
   baseHealth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  baseMana?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  baseResource?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseArmor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseMagicResist?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseAttackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1307,7 +1307,7 @@ export type ChampionPatchStatUncheckedUpdateWithoutChampionInput = {
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   moveSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healthGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  manaGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  resourceGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   armorGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicResistGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamageGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1325,7 +1325,7 @@ export type ChampionPatchStatUncheckedUpdateManyWithoutChampionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
   baseHealth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  baseMana?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  baseResource?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseArmor?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseMagicResist?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   baseAttackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1333,7 +1333,7 @@ export type ChampionPatchStatUncheckedUpdateManyWithoutChampionInput = {
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   moveSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healthGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  manaGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  resourceGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   armorGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicResistGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamageGrowth?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1354,7 +1354,7 @@ export type ChampionPatchStatSelect<ExtArgs extends runtime.Types.Extensions.Int
   championId?: boolean
   patchId?: boolean
   baseHealth?: boolean
-  baseMana?: boolean
+  baseResource?: boolean
   baseArmor?: boolean
   baseMagicResist?: boolean
   baseAttackDamage?: boolean
@@ -1362,7 +1362,7 @@ export type ChampionPatchStatSelect<ExtArgs extends runtime.Types.Extensions.Int
   attackSpeed?: boolean
   moveSpeed?: boolean
   healthGrowth?: boolean
-  manaGrowth?: boolean
+  resourceGrowth?: boolean
   armorGrowth?: boolean
   magicResistGrowth?: boolean
   attackDamageGrowth?: boolean
@@ -1383,7 +1383,7 @@ export type ChampionPatchStatSelectCreateManyAndReturn<ExtArgs extends runtime.T
   championId?: boolean
   patchId?: boolean
   baseHealth?: boolean
-  baseMana?: boolean
+  baseResource?: boolean
   baseArmor?: boolean
   baseMagicResist?: boolean
   baseAttackDamage?: boolean
@@ -1391,7 +1391,7 @@ export type ChampionPatchStatSelectCreateManyAndReturn<ExtArgs extends runtime.T
   attackSpeed?: boolean
   moveSpeed?: boolean
   healthGrowth?: boolean
-  manaGrowth?: boolean
+  resourceGrowth?: boolean
   armorGrowth?: boolean
   magicResistGrowth?: boolean
   attackDamageGrowth?: boolean
@@ -1412,7 +1412,7 @@ export type ChampionPatchStatSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   championId?: boolean
   patchId?: boolean
   baseHealth?: boolean
-  baseMana?: boolean
+  baseResource?: boolean
   baseArmor?: boolean
   baseMagicResist?: boolean
   baseAttackDamage?: boolean
@@ -1420,7 +1420,7 @@ export type ChampionPatchStatSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   attackSpeed?: boolean
   moveSpeed?: boolean
   healthGrowth?: boolean
-  manaGrowth?: boolean
+  resourceGrowth?: boolean
   armorGrowth?: boolean
   magicResistGrowth?: boolean
   attackDamageGrowth?: boolean
@@ -1441,7 +1441,7 @@ export type ChampionPatchStatSelectScalar = {
   championId?: boolean
   patchId?: boolean
   baseHealth?: boolean
-  baseMana?: boolean
+  baseResource?: boolean
   baseArmor?: boolean
   baseMagicResist?: boolean
   baseAttackDamage?: boolean
@@ -1449,7 +1449,7 @@ export type ChampionPatchStatSelectScalar = {
   attackSpeed?: boolean
   moveSpeed?: boolean
   healthGrowth?: boolean
-  manaGrowth?: boolean
+  resourceGrowth?: boolean
   armorGrowth?: boolean
   magicResistGrowth?: boolean
   attackDamageGrowth?: boolean
@@ -1463,7 +1463,7 @@ export type ChampionPatchStatSelectScalar = {
   deletedAt?: boolean
 }
 
-export type ChampionPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "championId" | "patchId" | "baseHealth" | "baseMana" | "baseArmor" | "baseMagicResist" | "baseAttackDamage" | "baseAbilityPower" | "attackSpeed" | "moveSpeed" | "healthGrowth" | "manaGrowth" | "armorGrowth" | "magicResistGrowth" | "attackDamageGrowth" | "attackSpeedGrowth" | "scalingProfile" | "laneProfile" | "teamProfile" | "metaScore" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["championPatchStat"]>
+export type ChampionPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "championId" | "patchId" | "baseHealth" | "baseResource" | "baseArmor" | "baseMagicResist" | "baseAttackDamage" | "baseAbilityPower" | "attackSpeed" | "moveSpeed" | "healthGrowth" | "resourceGrowth" | "armorGrowth" | "magicResistGrowth" | "attackDamageGrowth" | "attackSpeedGrowth" | "scalingProfile" | "laneProfile" | "teamProfile" | "metaScore" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["championPatchStat"]>
 export type ChampionPatchStatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -1488,7 +1488,7 @@ export type $ChampionPatchStatPayload<ExtArgs extends runtime.Types.Extensions.I
     championId: string
     patchId: string
     baseHealth: number | null
-    baseMana: number | null
+    baseResource: number | null
     baseArmor: number | null
     baseMagicResist: number | null
     baseAttackDamage: number | null
@@ -1496,7 +1496,7 @@ export type $ChampionPatchStatPayload<ExtArgs extends runtime.Types.Extensions.I
     attackSpeed: number | null
     moveSpeed: number | null
     healthGrowth: number | null
-    manaGrowth: number | null
+    resourceGrowth: number | null
     armorGrowth: number | null
     magicResistGrowth: number | null
     attackDamageGrowth: number | null
@@ -1937,7 +1937,7 @@ export interface ChampionPatchStatFieldRefs {
   readonly championId: Prisma.FieldRef<"ChampionPatchStat", 'String'>
   readonly patchId: Prisma.FieldRef<"ChampionPatchStat", 'String'>
   readonly baseHealth: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
-  readonly baseMana: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
+  readonly baseResource: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
   readonly baseArmor: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
   readonly baseMagicResist: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
   readonly baseAttackDamage: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
@@ -1945,7 +1945,7 @@ export interface ChampionPatchStatFieldRefs {
   readonly attackSpeed: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
   readonly moveSpeed: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
   readonly healthGrowth: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
-  readonly manaGrowth: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
+  readonly resourceGrowth: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
   readonly armorGrowth: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
   readonly magicResistGrowth: Prisma.FieldRef<"ChampionPatchStat", 'Float'>
   readonly attackDamageGrowth: Prisma.FieldRef<"ChampionPatchStat", 'Float'>

@@ -590,6 +590,7 @@ const gameTagSeeds: GameTagSeed[] = [
     'Pháp sư kiểm soát',
     GameTagCategory.CHAMPION,
   ),
+  createTag('MARKSMAN', 'Marksman', 'Xạ thủ', GameTagCategory.CHAMPION),
 
   // CHAMPION PLAYSTYLE TAGS
   createTag('BURST', 'Burst', 'Dồn sát thương', GameTagCategory.PLAYSTYLE),
@@ -656,6 +657,7 @@ const gameTagSeeds: GameTagSeed[] = [
   createTag('DASH', 'Dash', 'Lướt', GameTagCategory.CHAMPION),
   createTag('KNOCK_UP', 'Knock Up', 'Hất tung', GameTagCategory.CHAMPION),
   createTag('WIND_WALL', 'Wind Wall', 'Tường gió', GameTagCategory.CHAMPION),
+  createTag('REVIVE', 'Revive', 'Hồi sinh đồng minh', GameTagCategory.CHAMPION),
 
   // CHAMPION RISK TAGS
   createTag(
@@ -739,12 +741,34 @@ const gameTagSeeds: GameTagSeed[] = [
     'Dễ bị lao vào',
     GameTagCategory.CHAMPION,
   ),
+
+  // SKIll TAGS
   createTag(
     'SKILL_SHOT',
     'Skill Shot',
     'Kỹ năng định hướng',
     GameTagCategory.SKILL,
   ),
+  createTag('CAMOUFLAGE', 'Camouflage', 'Ngụy trang', GameTagCategory.SKILL),
+  createTag(
+    'DOUBLE_SHOT',
+    'Double Shot',
+    'Bắn thêm phát thứ hai',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'CRITICAL_SCALING',
+    'Critical Scaling',
+    'Tăng sức mạnh theo tỉ lệ chí mạng',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'MISSING_HEALTH_DAMAGE',
+    'Missing Health Damage',
+    'Sát thương theo máu đã mất',
+    GameTagCategory.SKILL,
+  ),
+  createTag('LOCK_ON', 'Lock On', 'Khóa mục tiêu', GameTagCategory.SKILL),
   createTag(
     'MELEE_TRADING',
     'Melee Trading',

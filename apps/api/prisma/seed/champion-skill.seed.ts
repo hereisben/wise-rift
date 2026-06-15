@@ -15,10 +15,10 @@ type ChampionSkillSeed = {
   descriptionVi: string;
   damageType: DamageType;
   targetType: TargetType;
-  cooldown?: Prisma.InputJsonValue;
-  cost?: Prisma.InputJsonValue;
-  range?: Prisma.InputJsonValue;
-  scaling?: Prisma.InputJsonValue;
+  cooldown?: Prisma.InputJsonValue | null;
+  cost?: Prisma.InputJsonValue | null;
+  range?: Prisma.InputJsonValue | null;
+  scaling?: Prisma.InputJsonValue | null;
   effects: SkillEffect[];
   tags: string[];
 };
@@ -468,6 +468,167 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.DASH, SkillEffect.EXECUTE],
     tags: [`MAGIC_DAMAGE`, `DASH`, `EXECUTE`, `BURST_DAMAGE`, `MOBILITY`],
+  },
+  // AKSHAN
+  {
+    championKey: `akshan`,
+    slot: SkillSlot.PASSIVE,
+    name: `Dirty Fighting`,
+    nameVi: `Không Từ Thủ Đoạn`,
+    description: `Every three hits from attacks and abilities deal bonus magic damage. Against champions, Akshan also gains a shield. After launching an attack, Akshan fires a second shot that can be cancelled to gain bonus decaying movement speed.`,
+    descriptionVi: `Mỗi ba đòn đánh hoặc kỹ năng gây thêm sát thương phép. Khi tác động lên tướng, Akshan nhận một lá chắn. Sau khi tấn công, Akshan bắn thêm một phát thứ hai, có thể hủy để nhận tốc độ di chuyển giảm dần.`,
+    damageType: DamageType.MIXED,
+    targetType: TargetType.ENEMY,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      bonusMagicDamage: {
+        base: 25,
+        damageType: `MAGIC`,
+      },
+      shield: {
+        base: 40,
+        attackDamageRatio: 0.4,
+      },
+      secondShot: {
+        base: 26,
+        attackDamageRatio: 0.5,
+        damageType: `PHYSICAL`,
+      },
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SHIELD, SkillEffect.SPEED_UP],
+    tags: [`DOUBLE_SHOT`, `SHIELD`, `MOVEMENT_SPEED`, `ON_HIT_CHAMPION`],
+  },
+  {
+    championKey: `akshan`,
+    slot: SkillSlot.Q,
+    name: `Avengerang`,
+    nameVi: `Boomerang Hàng Hiệu`,
+    description: `Akshan hurls a boomerang in the target direction, dealing physical damage to enemies it passes through and revealing them. Its range extends whenever it hits an enemy. If it hits an enemy champion, Akshan gains bonus movement speed decaying over time. The boomerang returns to Akshan and applies the same effects.`,
+    descriptionVi: `Akshan ném boomerang theo hướng chỉ định, gây sát thương vật lý lên kẻ địch đi qua và làm lộ diện chúng. Tầm bay tăng mỗi khi trúng kẻ địch. Nếu trúng tướng địch, Akshan nhận tốc độ di chuyển giảm dần. Boomerang quay lại Akshan và áp dụng hiệu ứng tương tự.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [8, 7, 6, 5],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 60, 70, 80],
+      resource: `MANA`,
+    },
+    range: {
+      type: `EXTENDING_LINE`,
+    },
+    scaling: {
+      damage: {
+        values: [10, 40, 70, 100],
+        attackDamageRatio: 0.85,
+        damageType: `PHYSICAL`,
+      },
+      minionDamageRatio: [0.55, 0.7, 0.85, 1],
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.VISION, SkillEffect.SPEED_UP],
+    tags: [`SKILL_SHOT`, `REVEAL`, `MOVEMENT_SPEED`, `POKE`, `WAVE_CLEAR`],
+  },
+  {
+    championKey: `akshan`,
+    slot: SkillSlot.W,
+    name: `Going Rogue`,
+    nameVi: `Len Lén Báo Thù`,
+    description: `Passive: Enemies that kill allied champions become Scoundrels. When Akshan takes down a Scoundrel, he gains bonus gold and revives slain allies. Active: Akshan becomes camouflaged and gains bonus movement speed toward Scoundrels. He remains camouflaged near terrain or in brushes and restores missing mana while chasing Scoundrels.`,
+    descriptionVi: `Nội tại: Kẻ địch hạ gục đồng minh trở thành Kẻ Vô Lại. Khi Akshan tham gia hạ gục Kẻ Vô Lại, hắn nhận thêm vàng và hồi sinh đồng minh đã bị hạ. Kích hoạt: Akshan ngụy trang và nhận tốc độ di chuyển khi hướng về Kẻ Vô Lại. Hắn luôn ngụy trang khi ở gần địa hình hoặc trong bụi và hồi năng lượng đã mất khi truy đuổi Kẻ Vô Lại.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [14, 10, 6, 2],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [30, 30, 30, 30],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      movementSpeedPercentTowardScoundrels: [80, 90, 100, 110],
+      missingManaRegenPercentPerSecond: 2,
+    },
+    effects: [SkillEffect.STEALTH, SkillEffect.SPEED_UP],
+    tags: [`CAMOUFLAGE`, `REVIVE`, `ROAMING`, `MOVEMENT_SPEED`, `MANA_REGEN`],
+  },
+  {
+    championKey: `akshan`,
+    slot: SkillSlot.E,
+    name: `Heroic Swing`,
+    nameVi: `Đu Kiểu Anh Hùng`,
+    description: `Akshan fires a hook to attach and swing around terrain, attacking the nearest enemy. He jumps off the rope if he collides with an enemy champion or terrain. Re-cast: jumps off the rope. Champion takedowns refresh this ability's cooldown.`,
+    descriptionVi: `Akshan bắn móc để bám vào địa hình và đu quanh đó, tấn công kẻ địch gần nhất. Hắn nhảy khỏi dây nếu va vào tướng địch hoặc địa hình. Tái kích hoạt: nhảy khỏi dây. Tham gia hạ gục tướng sẽ hồi lại kỹ năng này.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [18, 16, 14, 12],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 50, 50, 50],
+      resource: `MANA`,
+    },
+    range: {
+      type: `TERRAIN_HOOK_SWING`,
+    },
+    scaling: {
+      damagePerShot: {
+        values: [30, 70, 110, 150],
+        attackDamageRatio: 0.15,
+        damageType: `PHYSICAL`,
+      },
+      onHitEffectDamageRatio: 0.25,
+      criticalStrikeDamageRatio: 1.5,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.DASH],
+    tags: [
+      `DASH`,
+      `RECAST`,
+      `TAKEDOWN_REWARD`,
+      `ON_HIT_CHAMPION`,
+      `CRITICAL_SCALING`,
+    ],
+  },
+  {
+    championKey: `akshan`,
+    slot: SkillSlot.R,
+    name: `Comeuppance`,
+    nameVi: `Phát Bắn Nhớ Đời`,
+    description: `Akshan locks onto an enemy champion and charges multiple shots. Re-cast: fires the shots, dealing physical damage to the first enemy or structure hit, increased based on the target's missing Health. Each shot's damage is further increased by Critical Rate. Shots execute minions.`,
+    descriptionVi: `Akshan khóa mục tiêu tướng địch và tích trữ nhiều phát bắn. Tái kích hoạt: bắn ra các phát đạn, gây sát thương vật lý lên kẻ địch hoặc công trình đầu tiên trúng phải, tăng theo máu đã mất của mục tiêu. Sát thương mỗi phát bắn tăng thêm theo Tỉ lệ Chí mạng. Phát bắn kết liễu lính.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.CHAMPION,
+    cooldown: {
+      values: [65, 60, 55],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `LOCK_ON`,
+    },
+    scaling: {
+      minDamagePerShot: {
+        values: [20, 30, 40],
+        attackDamageRatio: 0.1,
+        damageType: `PHYSICAL`,
+      },
+      maxDamagePerShot: {
+        values: [80, 120, 160],
+        attackDamageRatio: 0.4,
+        damageType: `PHYSICAL`,
+      },
+      criticalRateDamageMultiplierRatio: 0.5,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.EXECUTE],
+    tags: [`LOCK_ON`, `EXECUTE`, `CRITICAL_SCALING`, `MISSING_HEALTH_DAMAGE`],
   },
 ];
 

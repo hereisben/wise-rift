@@ -19,6 +19,7 @@ type ChampionSeed = {
 };
 
 const championSeeds: ChampionSeed[] = [
+  // AATROX
   {
     key: `aatrox`,
     name: `Aatrox`,
@@ -36,6 +37,7 @@ const championSeeds: ChampionSeed[] = [
     strengths: [`SUSTAIN`, `EXTENDED_FIGHT`, `TEAMFIGHT`, `AREA_DAMAGE`],
     weaknesses: [`ANTI_HEAL`, `HIGH_MOBILITY`, `KITE`, `POINT_AND_CLICK_CC`],
   },
+  // AHRI
   {
     key: `ahri`,
     name: `Ahri`,
@@ -53,6 +55,7 @@ const championSeeds: ChampionSeed[] = [
     strengths: [`PICK_POTENTIAL`, `MOBILITY`, `BURST_DAMAGE`],
     weaknesses: [`WEAK_WHEN_BEHIND`, `SKILLSHOT_RELIANT`],
   },
+  // AKALI
   {
     key: `akali`,
     name: `Akali`,
@@ -75,6 +78,25 @@ const championSeeds: ChampionSeed[] = [
     ],
     weaknesses: [`POINT_AND_CLICK_CC`, `REVEAL`, `HARD_TO_PLAY`],
   },
+  // AKSHAN
+  {
+    key: `akshan`,
+    name: `Akshan`,
+    title: `The Rogue Sentinel`,
+    titleVi: `Vệ Binh Nổi Loạn`,
+    roles: [GameRole.MID, GameRole.ADC],
+    damageType: `PHYSICAL`,
+    rangeType: `RANGED`,
+    difficulty: `MEDIUM`,
+    resourceType: `MANA`,
+    classTags: [`MARKSMAN`, `ASSASSIN`],
+    playstyleTags: [`MOBILITY`, `ROAMING`, `PICK`, `ON_HIT_CHAMPION`],
+    utilityTags: [`DASH`, `STEALTH`, `REVEAL`, `REVIVE`, `EXECUTE`],
+    riskTags: [`HIGH_EXECUTION`, `CC_VULNERABLE`, `SQUISHY`],
+    strengths: [`ROAMING`, `PICK_POTENTIAL`, `MOBILITY`, `KILL_PRESSURE`],
+    weaknesses: [`POINT_AND_CLICK_CC`, `LOW_DURABILITY_TEAM`, `REVEAL`],
+  },
+  // YASUO
   {
     key: 'yasuo',
     name: 'Yasuo',
@@ -92,6 +114,7 @@ const championSeeds: ChampionSeed[] = [
     strengths: ['SCALING_DAMAGE', 'MOBILITY', 'TEAMFIGHT_FOLLOWUP'],
     weaknesses: ['HARD_TO_PLAY', 'WEAK_INTO_POINT_CLICK_CC'],
   },
+  // VIKTOR
   {
     key: 'viktor',
     name: 'Viktor',
