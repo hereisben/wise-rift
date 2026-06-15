@@ -3,8 +3,8 @@ import { GameRole, PrismaClient } from '../../src/generated/prisma/client.js';
 type ChampionSeed = {
   key: string;
   name: string;
-  title?: string;
-  titleVi?: string;
+  title?: string | null;
+  titleVi?: string | null;
   roles: GameRole[];
   damageType: string;
   rangeType: string;
@@ -119,8 +119,8 @@ export async function seedChampions(prisma: PrismaClient) {
       },
       update: {
         name: championSeed.name,
-        title: championSeed.title,
-        titleVi: championSeed.titleVi,
+        title: championSeed.title ?? null,
+        titleVi: championSeed.titleVi ?? null,
         roles: championSeed.roles,
         damageType: championSeed.damageType,
         rangeType: championSeed.rangeType,

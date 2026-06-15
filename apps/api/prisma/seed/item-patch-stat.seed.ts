@@ -2,23 +2,23 @@ import { PrismaClient } from '../../src/generated/prisma/client.js';
 
 type ItemPatchStatSeed = {
   key: string;
-  cost?: number;
-  abilityPower?: number;
-  attackDamage?: number;
-  health?: number;
-  mana?: number;
-  abilityHaste?: number;
-  critRate?: number;
-  attackSpeed?: number;
-  armorPenetration?: number;
-  magicPenetration?: number;
-  antiHealValue?: number;
-  shieldPower?: number;
-  movementSpeed?: number;
-  magicVamp?: number;
-  manaRegen?: number;
-  healShieldPower?: number;
-  effectDescription?: string;
+  cost?: number | null;
+  abilityPower?: number | null;
+  attackDamage?: number | null;
+  health?: number | null;
+  mana?: number | null;
+  abilityHaste?: number | null;
+  critRate?: number | null;
+  attackSpeed?: number | null;
+  armorPenetration?: number | null;
+  magicPenetration?: number | null;
+  antiHealValue?: number | null;
+  shieldPower?: number | null;
+  movementSpeed?: number | null;
+  magicVamp?: number | null;
+  manaRegen?: number | null;
+  healShieldPower?: number | null;
+  effectDescription?: string | null;
 };
 
 const itemPatchStatSeeds: ItemPatchStatSeed[] = [
@@ -409,44 +409,45 @@ export async function seedItemPatchStats(
         },
       },
       update: {
-        cost: patchStatSeed.cost,
-        abilityPower: patchStatSeed.abilityPower,
-        attackDamage: patchStatSeed.attackDamage,
-        health: patchStatSeed.health,
-        mana: patchStatSeed.mana,
-        abilityHaste: patchStatSeed.abilityHaste,
-        critRate: patchStatSeed.critRate,
-        attackSpeed: patchStatSeed.attackSpeed,
-        armorPenetration: patchStatSeed.armorPenetration,
-        magicPenetration: patchStatSeed.magicPenetration,
-        antiHealValue: patchStatSeed.antiHealValue,
-        shieldPower: patchStatSeed.shieldPower,
-        movementSpeed: patchStatSeed.movementSpeed,
-        magicVamp: patchStatSeed.magicVamp,
-        manaRegen: patchStatSeed.manaRegen,
-        healShieldPower: patchStatSeed.healShieldPower,
-        effectDescription: patchStatSeed.effectDescription,
+        cost: patchStatSeed.cost ?? null,
+        abilityPower: patchStatSeed.abilityPower ?? null,
+        attackDamage: patchStatSeed.attackDamage ?? null,
+        health: patchStatSeed.health ?? null,
+        mana: patchStatSeed.mana ?? null,
+        abilityHaste: patchStatSeed.abilityHaste ?? null,
+        critRate: patchStatSeed.critRate ?? null,
+        attackSpeed: patchStatSeed.attackSpeed ?? null,
+        armorPenetration: patchStatSeed.armorPenetration ?? null,
+        magicPenetration: patchStatSeed.magicPenetration ?? null,
+        antiHealValue: patchStatSeed.antiHealValue ?? null,
+        shieldPower: patchStatSeed.shieldPower ?? null,
+        movementSpeed: patchStatSeed.movementSpeed ?? null,
+        magicVamp: patchStatSeed.magicVamp ?? null,
+        manaRegen: patchStatSeed.manaRegen ?? null,
+        healShieldPower: patchStatSeed.healShieldPower ?? null,
+        effectDescription: patchStatSeed.effectDescription ?? null,
+        deletedAt: null,
       },
       create: {
         patchId,
         itemId: item.id,
-        cost: patchStatSeed.cost,
-        abilityPower: patchStatSeed.abilityPower,
-        attackDamage: patchStatSeed.attackDamage,
-        health: patchStatSeed.health,
-        mana: patchStatSeed.mana,
-        abilityHaste: patchStatSeed.abilityHaste,
-        critRate: patchStatSeed.critRate,
-        attackSpeed: patchStatSeed.attackSpeed,
-        armorPenetration: patchStatSeed.armorPenetration,
-        magicPenetration: patchStatSeed.magicPenetration,
-        antiHealValue: patchStatSeed.antiHealValue,
-        shieldPower: patchStatSeed.shieldPower,
-        movementSpeed: patchStatSeed.movementSpeed,
-        magicVamp: patchStatSeed.magicVamp,
-        manaRegen: patchStatSeed.manaRegen,
-        healShieldPower: patchStatSeed.healShieldPower,
-        effectDescription: patchStatSeed.effectDescription,
+        cost: patchStatSeed.cost ?? null,
+        abilityPower: patchStatSeed.abilityPower ?? null,
+        attackDamage: patchStatSeed.attackDamage ?? null,
+        health: patchStatSeed.health ?? null,
+        mana: patchStatSeed.mana ?? null,
+        abilityHaste: patchStatSeed.abilityHaste ?? null,
+        critRate: patchStatSeed.critRate ?? null,
+        attackSpeed: patchStatSeed.attackSpeed ?? null,
+        armorPenetration: patchStatSeed.armorPenetration ?? null,
+        magicPenetration: patchStatSeed.magicPenetration ?? null,
+        antiHealValue: patchStatSeed.antiHealValue ?? null,
+        shieldPower: patchStatSeed.shieldPower ?? null,
+        movementSpeed: patchStatSeed.movementSpeed ?? null,
+        magicVamp: patchStatSeed.magicVamp ?? null,
+        manaRegen: patchStatSeed.manaRegen ?? null,
+        healShieldPower: patchStatSeed.healShieldPower ?? null,
+        effectDescription: patchStatSeed.effectDescription ?? null,
       },
     });
 

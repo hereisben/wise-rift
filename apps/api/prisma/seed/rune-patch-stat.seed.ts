@@ -8,19 +8,19 @@ import {
 
 type RunePatchStatSeed = {
   key: string;
-  shortDescription?: string;
-  fullDescription?: string;
+  shortDescription?: string | null;
+  fullDescription?: string | null;
   effectTypes: RuneEffectType[];
   triggerTypes: RuneTriggerType[];
   targetTypes: TargetType[];
-  baseValue?: number;
-  scalingValue?: number;
-  cooldown?: number;
-  duration?: number;
-  maxStacks?: number;
+  baseValue?: number | null;
+  scalingValue?: number | null;
+  cooldown?: number | null;
+  duration?: number | null;
+  maxStacks?: number | null;
   statTypes: RuneStatType[];
   statBonuses?: Prisma.InputJsonValue;
-  notes?: string;
+  notes?: string | null;
 };
 
 const runePatchStatSeeds: RunePatchStatSeed[] = [
@@ -770,36 +770,37 @@ export async function seedRunesPatchStats(
         },
       },
       update: {
-        shortDescription: runePatchStatSeed.shortDescription,
-        fullDescription: runePatchStatSeed.fullDescription,
+        shortDescription: runePatchStatSeed.shortDescription ?? null,
+        fullDescription: runePatchStatSeed.fullDescription ?? null,
         effectTypes: runePatchStatSeed.effectTypes,
         triggerTypes: runePatchStatSeed.triggerTypes,
         targetTypes: runePatchStatSeed.targetTypes,
-        baseValue: runePatchStatSeed.baseValue,
-        scalingValue: runePatchStatSeed.scalingValue,
-        cooldown: runePatchStatSeed.cooldown,
-        duration: runePatchStatSeed.duration,
-        maxStacks: runePatchStatSeed.maxStacks,
+        baseValue: runePatchStatSeed.baseValue ?? null,
+        scalingValue: runePatchStatSeed.scalingValue ?? null,
+        cooldown: runePatchStatSeed.cooldown ?? null,
+        duration: runePatchStatSeed.duration ?? null,
+        maxStacks: runePatchStatSeed.maxStacks ?? null,
         statTypes: runePatchStatSeed.statTypes,
-        statBonuses: runePatchStatSeed.statBonuses,
-        notes: runePatchStatSeed.notes,
+        statBonuses: runePatchStatSeed.statBonuses ?? Prisma.DbNull,
+        notes: runePatchStatSeed.notes ?? null,
+        deletedAt: null,
       },
       create: {
         patchId,
         runeId: rune.id,
-        shortDescription: runePatchStatSeed.shortDescription,
-        fullDescription: runePatchStatSeed.fullDescription,
-        effectTypes: runePatchStatSeed.effectTypes ?? [],
-        triggerTypes: runePatchStatSeed.triggerTypes ?? [],
-        targetTypes: runePatchStatSeed.targetTypes ?? [],
-        baseValue: runePatchStatSeed.baseValue,
-        scalingValue: runePatchStatSeed.scalingValue,
-        cooldown: runePatchStatSeed.cooldown,
-        duration: runePatchStatSeed.duration,
-        maxStacks: runePatchStatSeed.maxStacks,
+        shortDescription: runePatchStatSeed.shortDescription ?? null,
+        fullDescription: runePatchStatSeed.fullDescription ?? null,
+        effectTypes: runePatchStatSeed.effectTypes,
+        triggerTypes: runePatchStatSeed.triggerTypes,
+        targetTypes: runePatchStatSeed.targetTypes,
+        baseValue: runePatchStatSeed.baseValue ?? null,
+        scalingValue: runePatchStatSeed.scalingValue ?? null,
+        cooldown: runePatchStatSeed.cooldown ?? null,
+        duration: runePatchStatSeed.duration ?? null,
+        maxStacks: runePatchStatSeed.maxStacks ?? null,
         statTypes: runePatchStatSeed.statTypes,
-        statBonuses: runePatchStatSeed.statBonuses,
-        notes: runePatchStatSeed.notes,
+        statBonuses: runePatchStatSeed.statBonuses ?? Prisma.DbNull,
+        notes: runePatchStatSeed.notes ?? null,
       },
     });
 

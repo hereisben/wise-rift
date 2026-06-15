@@ -2,11 +2,11 @@ import { PrismaClient } from './../../src/generated/prisma/client.js';
 
 type SpellPatchStatSeed = {
   key: string;
-  cooldownSeconds?: number;
-  duration?: number;
-  damageValue?: number;
-  shieldValue?: number;
-  healValue?: number;
+  cooldownSeconds?: number | null;
+  duration?: number | null;
+  damageValue?: number | null;
+  shieldValue?: number | null;
+  healValue?: number | null;
 };
 
 const spellPatchStatSeeds: SpellPatchStatSeed[] = [
@@ -86,21 +86,21 @@ export async function seedSpellsPatchStats(
         },
       },
       update: {
-        cooldownSeconds: spellPatchStatSeed.cooldownSeconds,
-        duration: spellPatchStatSeed.duration,
-        damageValue: spellPatchStatSeed.damageValue,
-        shieldValue: spellPatchStatSeed.shieldValue,
-        healValue: spellPatchStatSeed.healValue,
+        cooldownSeconds: spellPatchStatSeed.cooldownSeconds ?? null,
+        duration: spellPatchStatSeed.duration ?? null,
+        damageValue: spellPatchStatSeed.damageValue ?? null,
+        shieldValue: spellPatchStatSeed.shieldValue ?? null,
+        healValue: spellPatchStatSeed.healValue ?? null,
         deletedAt: null,
       },
       create: {
         patchId,
         spellId: spell.id,
-        cooldownSeconds: spellPatchStatSeed.cooldownSeconds,
-        duration: spellPatchStatSeed.duration,
-        damageValue: spellPatchStatSeed.damageValue,
-        shieldValue: spellPatchStatSeed.shieldValue,
-        healValue: spellPatchStatSeed.healValue,
+        cooldownSeconds: spellPatchStatSeed.cooldownSeconds ?? null,
+        duration: spellPatchStatSeed.duration ?? null,
+        damageValue: spellPatchStatSeed.damageValue ?? null,
+        shieldValue: spellPatchStatSeed.shieldValue ?? null,
+        healValue: spellPatchStatSeed.healValue ?? null,
       },
     });
 

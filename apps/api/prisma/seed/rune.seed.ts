@@ -7,7 +7,7 @@ type RuneSeed = {
   nameVi: string;
   description: string;
   descriptionVi: string;
-  iconUrl?: string;
+  iconUrl?: string | null;
   path: RunePath;
   slot: RuneSlot;
 };
@@ -541,7 +541,7 @@ export async function seedRunes(prisma: PrismaClient) {
         nameVi: runeSeed.nameVi,
         description: runeSeed.description,
         descriptionVi: runeSeed.descriptionVi,
-        iconUrl: runeSeed.iconUrl ?? '',
+        iconUrl: runeSeed.iconUrl ?? null,
         path: runeSeed.path,
         slot: runeSeed.slot,
       },

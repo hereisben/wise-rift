@@ -1,6 +1,7 @@
 import { PrismaPg } from '@prisma/adapter-pg';
 import env from '../../src/config/env.js';
 import { PrismaClient } from '../../src/generated/prisma/client.js';
+import { seedChampionPatchStats } from './champion-patch-stat.seed.js';
 import { seedChampionSkills } from './champion-skill.seed.js';
 import { seedChampions } from './champion.seed.js';
 import { seedGameTags } from './game-tag.seed.js';
@@ -24,6 +25,7 @@ async function main() {
   const patch = await seedPatch(prisma);
   await seedGameTags(prisma);
   await seedChampions(prisma);
+  await seedChampionPatchStats(prisma, patch.id);
   await seedChampionSkills(prisma, patch.id);
   await seedItems(prisma);
   await seedItemPatchStats(prisma, patch.id);
