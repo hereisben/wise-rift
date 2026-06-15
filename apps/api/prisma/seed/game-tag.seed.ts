@@ -763,6 +763,85 @@ const gameTagSeeds: GameTagSeed[] = [
     'Giá trị chiêu cuối thấp',
     GameTagCategory.MATCHUP,
   ),
+  // CHAMPION SEED COVERAGE TAGS
+  createTag(
+    'DRAIN_TANK',
+    'Drain Tank',
+    'Đấu sĩ hồi phục trong giao tranh',
+    GameTagCategory.PLAYSTYLE,
+  ),
+  createTag(
+    'HEALING_RELIANT',
+    'Healing Reliant',
+    'Phụ thuộc hồi phục',
+    GameTagCategory.CHAMPION,
+  ),
+  createTag('KITEABLE', 'Kiteable', 'Dễ bị thả diều', GameTagCategory.CHAMPION),
+  createTag(
+    'ENERGY_RELIANT',
+    'Energy Reliant',
+    'Phụ thuộc nội năng',
+    GameTagCategory.CHAMPION,
+  ),
+  createTag(
+    'OUTPLAY_POTENTIAL',
+    'Outplay Potential',
+    'Khả năng tạo đột biến cá nhân',
+    GameTagCategory.CHAMPION,
+  ),
+  createTag('FEAR', 'Fear', 'Hoảng sợ', GameTagCategory.CHAMPION),
+
+  // CHAMPION SKILL TAGS
+  createTag(
+    'EMPOWERED_ATTACK',
+    'Empowered Attack',
+    'Đòn đánh cường hóa',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'AUTO_ATTACK_RESET',
+    'Auto Attack Reset',
+    'Đặt lại đòn đánh thường',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'TAKEDOWN_REWARD',
+    'Takedown Reward',
+    'Lợi ích sau khi tham gia hạ gục',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'AUTO_TARGET',
+    'Auto Target',
+    'Tự chọn mục tiêu',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'ANTI_DASH',
+    'Anti Dash',
+    'Khắc chế kỹ năng lướt',
+    GameTagCategory.SKILL,
+  ),
+  createTag('STEALTH', 'Stealth', 'Tàng hình', GameTagCategory.SKILL),
+  createTag(
+    'ENERGY_COST',
+    'Energy Cost',
+    'Tiêu hao nội năng',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'ENERGY_RESTORE',
+    'Energy Restore',
+    'Hồi nội năng',
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    'OUTPLAY_TOOL',
+    'Outplay Tool',
+    'Công cụ xử lý kỹ năng cao',
+    GameTagCategory.SKILL,
+  ),
+  createTag('RECAST', 'Recast', 'Tái kích hoạt kỹ năng', GameTagCategory.SKILL),
 ];
 
 export async function seedGameTags(prisma: PrismaClient) {
