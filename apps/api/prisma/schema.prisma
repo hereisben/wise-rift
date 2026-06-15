@@ -99,7 +99,7 @@ model ChampionPatchStat {
   patchId            String
   patch              Patch     @relation(fields: [patchId], references: [id])
   baseHealth         Float?
-  baseMana           Float?
+  baseResource       Float?
   baseArmor          Float?
   baseMagicResist    Float?
   baseAttackDamage   Float?
@@ -107,7 +107,7 @@ model ChampionPatchStat {
   attackSpeed        Float?
   moveSpeed          Float?
   healthGrowth       Float?
-  manaGrowth         Float?
+  resourceGrowth     Float?
   armorGrowth        Float?
   magicResistGrowth  Float?
   attackDamageGrowth Float?
