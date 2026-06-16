@@ -907,6 +907,7 @@ enum DamageType {
   MIXED
   TRUE_DAMAGE
   UTILITY
+  NONE
   UNKNOWN
 }
 
@@ -922,6 +923,8 @@ enum TargetType {
   TURRET
   AREA
   LOCATION
+  LINE
+  CHAMPIONS
 }
 
 enum SkillEffect {
@@ -950,6 +953,10 @@ enum SkillEffect {
   VISION
   ZONE_CONTROL
   STASIS
+  BUFF
+  DAMAGE_REDUCTION
+  ARMOR_REDUCTION
+  REVEAL
 }
 
 enum RangeType {

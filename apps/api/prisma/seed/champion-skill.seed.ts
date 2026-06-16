@@ -6250,7 +6250,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
     },
     effects: [SkillEffect.DAMAGE],
     tags: [
-      `END_OF_THE_LINE`,
+      `PIERCING_PROJECTILE`,
       `PHYSICAL_DAMAGE`,
       `DELAYED_DETONATION`,
       `TERRAIN_INTERACTION`,
@@ -6820,6 +6820,3847 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       `MAGIC_DAMAGE`,
       `LONG_RANGE_ENGAGE`,
       `TEAMFIGHT`,
+    ],
+  },
+  // === HEIMERDINGER ===
+  // HEIMERDINGER - PASSIVE
+  {
+    championKey: `heimerdinger`,
+    slot: SkillSlot.PASSIVE,
+    name: `Hextech Affinity`,
+    nameVi: `Ái Lực Hextech`,
+    description: `Heimerdinger gains 20% Movement Speed while near allied turrets and turrets deployed by Heimerdinger.`,
+    descriptionVi: `Heimerdinger nhận 20% Tốc Độ Di Chuyển khi ở gần trụ đồng minh và ụ súng do Heimerdinger triển khai.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: {
+      type: `NEAR_ALLIED_OR_DEPLOYED_TURRETS`,
+    },
+    scaling: {
+      movementSpeedBonusPercent: 20,
+      activeNearAlliedTurrets: true,
+      activeNearHeimerdingerTurrets: true,
+    },
+    effects: [SkillEffect.SPEED_UP],
+    tags: [`HEXTECH_AFFINITY`, `MOVEMENT_SPEED`, `TURRET_SYNERGY`],
+  },
+  // HEIMERDINGER - Q
+  {
+    championKey: `heimerdinger`,
+    slot: SkillSlot.Q,
+    name: `H-28G Evolution Turret`,
+    nameVi: `Ụ Súng Tiến Hóa H-28G`,
+    description: `Heimerdinger constructs a turret that slowly builds up charge and attacks nearby enemies. The turret deals magic damage on hit. At max charge, it fires a beam that deals magic damage. Heimerdinger can have 3 H-28G Evolution Turrets active at once. If Heimerdinger gets too far away, his turrets become dormant. UPGRADE!!! enhances this ability into H-28Q Apex Turret.`,
+    descriptionVi: `Heimerdinger dựng một ụ súng tích tụ năng lượng dần và tấn công kẻ địch gần đó. Ụ súng gây sát thương phép khi bắn trúng. Khi đạt tối đa năng lượng, nó bắn một tia gây sát thương phép. Heimerdinger có thể có tối đa 3 Ụ Súng Tiến Hóa H-28G cùng lúc. Nếu Heimerdinger đi quá xa, ụ súng sẽ ngủ đông. NÂNG CẤP!!! cường hóa kỹ năng này thành Ụ Súng Đỉnh Cao H-28Q.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [1, 1, 1, 1],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [20, 20, 20, 20],
+      resource: `MANA`,
+    },
+    range: {
+      type: `DEPLOYABLE_TURRET`,
+    },
+    scaling: {
+      turretOnHitDamage: {
+        values: [5, 10, 15, 20],
+        abilityPowerRatio: 0.25,
+        damageType: `MAGIC`,
+      },
+      turretBeamDamage: {
+        values: [25, 45, 65, 85],
+        abilityPowerRatio: 0.55,
+        damageType: `MAGIC`,
+      },
+      maxActiveTurrets: 3,
+      turretChargeBuildsOverTime: true,
+      turretBeamFiresAtMaxCharge: true,
+      turretBecomesDormantIfHeimerdingerTooFar: true,
+      turretStats: {
+        baseHealth: 110,
+        healthAbilityPowerRatioByRank: {
+          min: 0.08,
+          max: 0.5,
+        },
+        armorByLevel: {
+          min: 20,
+          max: 90,
+        },
+        magicResist: 25,
+      },
+      upgradedByUltimate: {
+        upgradedName: `H-28Q Apex Turret`,
+        durationSeconds: 10,
+        turretShotDamage: {
+          values: [80, 100, 120],
+          abilityPowerRatio: 0.35,
+          damageType: `MAGIC`,
+        },
+        turretMaxChargeDamage: {
+          values: [100, 140, 180],
+          abilityPowerRatio: 0.6,
+          damageType: `MAGIC`,
+        },
+        slowDurationSeconds: 1,
+      },
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `TURRET`,
+      `DEPLOYABLE`,
+      `SUMMON`,
+      `MAGIC_DAMAGE`,
+      `ZONE_CONTROL`,
+      `UPGRADE_SYNERGY`,
+    ],
+  },
+  // HEIMERDINGER - W
+  {
+    championKey: `heimerdinger`,
+    slot: SkillSlot.W,
+    name: `Hextech Micro-Rockets`,
+    nameVi: `Tên Lửa Hextech Cỡ Nhỏ`,
+    description: `Heimerdinger unleashes a barrage of 5 rockets that deal magic damage to the first enemy hit. Nearby turrets gain charge for every rocket that hits a champion. Additional rocket hits after the first to the same champion or monster deal reduced damage, while minions take a higher reduced damage amount. UPGRADE!!! enhances this ability into Hextech Rocket Swarm.`,
+    descriptionVi: `Heimerdinger phóng loạt 5 tên lửa gây sát thương phép lên kẻ địch đầu tiên trúng phải. Các ụ súng gần đó nhận thêm năng lượng với mỗi tên lửa bắn trúng tướng. Các tên lửa trúng thêm sau phát đầu lên cùng một tướng hoặc quái chỉ gây sát thương giảm, còn lính nhận mức sát thương giảm cao hơn. NÂNG CẤP!!! cường hóa kỹ năng này thành Bầy Tên Lửa Hextech.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [9, 8, 7, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 50, 50, 50],
+      resource: `MANA`,
+    },
+    range: {
+      type: `MULTI_ROCKET_SKILLSHOT`,
+      rocketCount: 5,
+    },
+    scaling: {
+      rocketDamage: {
+        values: [60, 85, 110, 135],
+        abilityPowerRatio: 0.6,
+        damageType: `MAGIC`,
+      },
+      rocketCount: 5,
+      nearbyTurretChargeGainPerChampionRocketHitPercent: 20,
+      additionalRocketDamageModifierVsSameChampionOrMonster: 0.2,
+      additionalRocketDamageModifierVsMinions: 0.6,
+      upgradedByUltimate: {
+        upgradedName: `Hextech Rocket Swarm`,
+        waveCount: 4,
+        rocketDamage: {
+          baseValue: 135,
+          abilityPowerRatio: 0.45,
+          damageType: `MAGIC`,
+        },
+        additionalRocketDamageModifierVsSameChampionOrMonster: 0.25,
+        furtherDamageDecayAfterRocketHits: 5,
+        fullDamageToMinions: true,
+        maxDamageToChampionOrMonster: {
+          baseValue: 524,
+          abilityPowerRatio: 1.75,
+          damageType: `MAGIC`,
+        },
+      },
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `MICRO_ROCKETS`,
+      `MISSILE`,
+      `MAGIC_DAMAGE`,
+      `POKE`,
+      `SKILL_SHOT`,
+      `TURRET_CHARGE`,
+      `UPGRADE_SYNERGY`,
+    ],
+  },
+  // HEIMERDINGER - E
+  {
+    championKey: `heimerdinger`,
+    slot: SkillSlot.E,
+    name: `CH-2 Electron Storm Grenade`,
+    nameVi: `Lựu Đạn Bão Điện Tử CH-2`,
+    description: `Heimerdinger hurls a grenade that deals magic damage in a target area and slows enemies. Enemies in the center are also stunned. Hitting a champion fully charges nearby turrets. UPGRADE!!! enhances this ability into CH-3X Lightning Grenade.`,
+    descriptionVi: `Heimerdinger ném một quả lựu đạn gây sát thương phép trong vùng chỉ định và làm chậm kẻ địch. Kẻ địch ở tâm vụ nổ còn bị làm choáng. Bắn trúng tướng sẽ nạp đầy năng lượng cho các ụ súng gần đó. NÂNG CẤP!!! cường hóa kỹ năng này thành Lựu Đạn Sấm Sét CH-3X.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [10, 10, 10, 10],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [85, 85, 85, 85],
+      resource: `MANA`,
+    },
+    range: {
+      type: `AREA_GRENADE`,
+    },
+    scaling: {
+      damage: {
+        values: [70, 120, 170, 220],
+        abilityPowerRatio: 0.6,
+        damageType: `MAGIC`,
+      },
+      slowPercent: 35,
+      slowDurationSeconds: 2,
+      centerStunDurationSeconds: 1,
+      fullyChargesNearbyTurretsOnChampionHit: true,
+      upgradedByUltimate: {
+        upgradedName: `CH-3X Lightning Grenade`,
+        bounceCount: 3,
+        damagePerDischarge: {
+          baseValue: 100,
+          abilityPowerRatio: 0.6,
+          damageType: `MAGIC`,
+        },
+        largerStunArea: true,
+        largerSlowArea: true,
+        slowPercent: 40,
+      },
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.STUN],
+    tags: [
+      `ELECTRON_STORM_GRENADE`,
+      `MAGIC_DAMAGE`,
+      `AREA_DAMAGE`,
+      `SLOW`,
+      `STUN`,
+      `TURRET_CHARGE`,
+      `UPGRADE_SYNERGY`,
+    ],
+  },
+  // HEIMERDINGER - R
+  {
+    championKey: `heimerdinger`,
+    slot: SkillSlot.R,
+    name: `UPGRADE!!!`,
+    nameVi: `NÂNG CẤP!!!`,
+    description: `Heimerdinger upgrades his next basic ability. H-28Q Apex Turret places an upgraded turret for 10 seconds. Hextech Rocket Swarm fires 4 waves of rockets. CH-3X Lightning Grenade throws a bouncing grenade that discharges 3 times with larger stun and slow areas. Recast cancels this ability.`,
+    descriptionVi: `Heimerdinger nâng cấp kỹ năng cơ bản tiếp theo. Ụ Súng Đỉnh Cao H-28Q đặt một ụ súng nâng cấp trong 10 giây. Bầy Tên Lửa Hextech bắn 4 đợt tên lửa. Lựu Đạn Sấm Sét CH-3X ném một quả lựu đạn nảy và phóng điện 3 lần với vùng làm choáng và làm chậm lớn hơn. Tái kích hoạt để hủy kỹ năng này.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [75, 66, 56],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `NEXT_BASIC_ABILITY_UPGRADE`,
+    },
+    scaling: {
+      upgradesNextBasicAbility: true,
+      recastCancelsAbility: true,
+      upgradedAbilities: {
+        h28qApexTurret: {
+          sourceAbility: `H-28G Evolution Turret`,
+          durationSeconds: 10,
+          shotDamage: {
+            values: [80, 100, 120],
+            abilityPowerRatio: 0.35,
+            damageType: `MAGIC`,
+          },
+          maxChargeDamage: {
+            values: [100, 140, 180],
+            abilityPowerRatio: 0.6,
+            damageType: `MAGIC`,
+          },
+          slowDurationSeconds: 1,
+        },
+        hextechRocketSwarm: {
+          sourceAbility: `Hextech Micro-Rockets`,
+          waveCount: 4,
+          rocketDamage: {
+            baseValue: 135,
+            abilityPowerRatio: 0.45,
+            damageType: `MAGIC`,
+          },
+          additionalRocketDamageModifierVsSameChampionOrMonster: 0.25,
+          furtherDamageDecayAfterRocketHits: 5,
+          fullDamageToMinions: true,
+          maxDamageToChampionOrMonster: {
+            baseValue: 524,
+            abilityPowerRatio: 1.75,
+            damageType: `MAGIC`,
+          },
+        },
+        ch3xLightningGrenade: {
+          sourceAbility: `CH-2 Electron Storm Grenade`,
+          dischargeCount: 3,
+          damagePerDischarge: {
+            baseValue: 100,
+            abilityPowerRatio: 0.6,
+            damageType: `MAGIC`,
+          },
+          largerStunArea: true,
+          largerSlowArea: true,
+          slowPercent: 40,
+        },
+      },
+    },
+    effects: [SkillEffect.BUFF],
+    tags: [
+      `UPGRADE`,
+      `ABILITY_UPGRADE`,
+      `RECAST`,
+      `TURRET`,
+      `MISSILE`,
+      `GRENADE`,
+    ],
+  },
+  // === IRELIA ===
+  // IRELIA - PASSIVE
+  {
+    championKey: `irelia`,
+    slot: SkillSlot.PASSIVE,
+    name: `Ionian Fervor`,
+    nameVi: `Tinh Thần Ionia`,
+    description: `Hitting enemies with abilities grants bonus Attack Speed for 6 seconds, stacking up to 4 times. At max stacks, Irelia's attacks deal additional magic damage on hit. Attacking enemy champions refreshes the duration. An ability grants multiple stacks upon hitting multiple champions.`,
+    descriptionVi: `Dùng kỹ năng trúng kẻ địch cho Irelia thêm Tốc Độ Đánh trong 6 giây, cộng dồn tối đa 4 lần. Khi đạt tối đa cộng dồn, đòn đánh của Irelia gây thêm sát thương phép trên đòn đánh. Tấn công tướng địch sẽ làm mới thời gian hiệu lực. Một kỹ năng có thể cho nhiều cộng dồn nếu trúng nhiều tướng.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: {
+      type: `ABILITY_HIT_STACKING_PASSIVE`,
+    },
+    scaling: {
+      stackDurationSeconds: 6,
+      maxStacks: 4,
+      attackSpeedBonusPercentByLevel: {
+        min: 3,
+        max: 17,
+      },
+      maxStackOnHitDamage: {
+        minByLevel: 25,
+        maxByLevel: 150,
+        attackDamageRatio: 0.3,
+        damageType: `MAGIC`,
+      },
+      championBasicAttackRefreshesDuration: true,
+      abilityGrantsMultipleStacksOnMultipleChampionHits: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.BUFF],
+    tags: [
+      `IONIAN_FERVOR`,
+      `STACKING_PASSIVE`,
+      `ATTACK_SPEED_STEROID`,
+      `ON_HIT_DAMAGE`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+  // IRELIA - Q
+  {
+    championKey: `irelia`,
+    slot: SkillSlot.Q,
+    name: `Bladesurge`,
+    nameVi: `Đâm Kiếm`,
+    description: `Irelia dashes through an enemy, dealing physical damage and healing herself based on Attack Damage. Bladesurge's cooldown is refreshed if the target was Marked or dies to Bladesurge. When aimed, Bladesurge prioritizes targets it will reset on. Deals increased damage to minions.`,
+    descriptionVi: `Irelia lướt xuyên qua một kẻ địch, gây sát thương vật lý và hồi máu dựa trên Sức Mạnh Công Kích. Hồi chiêu Đâm Kiếm được làm mới nếu mục tiêu đã bị Đánh Dấu hoặc bị hạ gục bởi Đâm Kiếm. Khi ngắm chiêu, Đâm Kiếm ưu tiên mục tiêu có thể giúp hồi lại chiêu. Gây thêm sát thương lên lính.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [9, 8, 7, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [20, 20, 20, 20],
+      resource: `MANA`,
+    },
+    range: {
+      type: `TARGETED_DASH_THROUGH_ENEMY`,
+    },
+    scaling: {
+      damage: {
+        values: [10, 40, 70, 100],
+        attackDamageRatio: 0.65,
+        damageType: `PHYSICAL`,
+      },
+      healAttackDamagePercent: [11, 14, 17, 20],
+      cooldownRefreshesIfTargetMarked: true,
+      cooldownRefreshesIfTargetDiesToBladesurge: true,
+      aimedCastPrioritizesResetTargets: true,
+      minionDamageModifier: 1.5,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.DASH, SkillEffect.HEAL],
+    tags: [
+      `BLADESURGE`,
+      `DASH`,
+      `PHYSICAL_DAMAGE`,
+      `HEALING`,
+      `MARK_CONSUME`,
+      `COOLDOWN_RESET`,
+      `MINION_DAMAGE_MODIFIER`,
+    ],
+  },
+  // IRELIA - W
+  {
+    championKey: `irelia`,
+    slot: SkillSlot.W,
+    name: `Defiant Dance`,
+    nameVi: `Vũ Điệu Thách Thức`,
+    description: `Hold: Irelia defends with her blades for up to 1.5 seconds, reducing incoming damage. Release: Irelia whips the blades forward, dealing physical damage that increases with charge time. Defiant Dance cannot be interrupted.`,
+    descriptionVi: `Giữ: Irelia phòng thủ bằng lưỡi kiếm trong tối đa 1.5 giây, giảm sát thương nhận vào. Thả: Irelia phóng kiếm về phía trước, gây sát thương vật lý tăng theo thời gian tích tụ. Vũ Điệu Thách Thức không thể bị ngắt.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [14, 13, 12, 11],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [75, 80, 85, 90],
+      resource: `MANA`,
+    },
+    range: {
+      type: `CHARGED_DIRECTIONAL_SLASH`,
+    },
+    scaling: {
+      holdMaxDurationSeconds: 1.5,
+      damageReduction: {
+        basePercent: 60,
+        abilityPowerRatioPercent: 7,
+      },
+      releaseDamage: {
+        values: [20, 35, 50, 65],
+        attackDamageRatio: 0.5,
+        abilityPowerRatio: 0.4,
+        damageType: `PHYSICAL`,
+      },
+      maxChargeDamageIncreasePercent: 100,
+      cannotBeInterrupted: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.DAMAGE_REDUCTION],
+    tags: [
+      `DEFIANT_DANCE`,
+      `DAMAGE_REDUCTION`,
+      `CHARGED_RELEASE`,
+      `PHYSICAL_DAMAGE`,
+      `UNINTERRUPTIBLE`,
+    ],
+  },
+  // IRELIA - E
+  {
+    championKey: `irelia`,
+    slot: SkillSlot.E,
+    name: `Flawless Duet`,
+    nameVi: `Bước Nhảy Hoàn Vũ`,
+    description: `Irelia sends a blade to a target location and may recast within 3 seconds to send another blade. The blades converge upon reaching their destination, dealing magic damage, stunning enemies, and Marking enemy champions and large monsters hit.`,
+    descriptionVi: `Irelia phóng một lưỡi kiếm đến vị trí chỉ định và có thể tái kích hoạt trong 3 giây để phóng lưỡi kiếm thứ hai. Hai lưỡi kiếm hội tụ khi đến điểm đến, gây sát thương phép, làm choáng kẻ địch và Đánh Dấu tướng địch cùng quái lớn trúng phải.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [12, 11, 10, 9],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 50, 50, 50],
+      resource: `MANA`,
+    },
+    range: {
+      type: `RECAST_CONVERGING_BLADES`,
+    },
+    scaling: {
+      recastWindowSeconds: 3,
+      damage: {
+        values: [80, 130, 180, 230],
+        abilityPowerRatio: 0.8,
+        damageType: `MAGIC`,
+      },
+      stunDurationSeconds: 1,
+      markDurationSeconds: 5,
+      marksEnemyChampions: true,
+      marksLargeMonsters: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.STUN],
+    tags: [
+      `FLAWLESS_DUET`,
+      `RECAST`,
+      `MAGIC_DAMAGE`,
+      `STUN`,
+      `MARK`,
+      `BLADE_CONVERGE`,
+    ],
+  },
+  // IRELIA - R
+  {
+    championKey: `irelia`,
+    slot: SkillSlot.R,
+    name: `Vanguard's Edge`,
+    nameVi: `Thanh Kiếm Tiên Phong`,
+    description: `Irelia fires a storm of blades that deals magic damage and Marks enemy champions and large monsters. The blades explode into a wall upon hitting an enemy champion. The bladewall deals magic damage and heavily slows enemies.`,
+    descriptionVi: `Irelia phóng ra một cơn bão lưỡi kiếm gây sát thương phép và Đánh Dấu tướng địch cùng quái lớn. Khi trúng tướng địch, các lưỡi kiếm nổ thành một bức tường kiếm. Tường kiếm gây sát thương phép và làm chậm mạnh kẻ địch.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [70, 65, 60],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `BLADE_STORM_PROJECTILE_AND_WALL`,
+    },
+    scaling: {
+      initialDamage: {
+        values: [125, 250, 375],
+        abilityPowerRatio: 0.7,
+        damageType: `MAGIC`,
+      },
+      markDurationSeconds: 5,
+      marksEnemyChampions: true,
+      marksLargeMonsters: true,
+      bladeWallDurationSeconds: 3,
+      bladeWallDamage: {
+        values: [100, 225, 350],
+        abilityPowerRatio: 0.7,
+        damageType: `MAGIC`,
+      },
+      bladeWallSlowPercent: 90,
+      bladeWallSlowDurationSeconds: 1,
+      bladeWallFormsOnEnemyChampionHit: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
+    tags: [
+      `VANGUARDS_EDGE`,
+      `MAGIC_DAMAGE`,
+      `MARK`,
+      `BLADE_WALL`,
+      `SLOW`,
+      `AREA_DAMAGE`,
+    ],
+  },
+  // === JANNA ===
+  // JANNA - PASSIVE
+  {
+    championKey: `janna`,
+    slot: SkillSlot.PASSIVE,
+    name: `Tailwind`,
+    nameVi: `Thuận Gió`,
+    description: `Janna passively gains 5% Movement Speed. Nearby allied champions also gain this bonus.`,
+    descriptionVi: `Janna nhận 5% Tốc Độ Di Chuyển. Tướng đồng minh ở gần cũng nhận hiệu ứng này.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.ALLIES,
+    cooldown: null,
+    cost: null,
+    range: {
+      type: `NEARBY_ALLIED_CHAMPIONS_AURA`,
+    },
+    scaling: {
+      movementSpeedBonusPercent: 5,
+      affectsSelf: true,
+      affectsNearbyAlliedChampions: true,
+    },
+    effects: [SkillEffect.SPEED_UP, SkillEffect.BUFF],
+    tags: [`TAILWIND`, `MOVEMENT_SPEED`, `AURA`, `TEAM_SUPPORT`],
+  },
+  // JANNA - Q
+  {
+    championKey: `janna`,
+    slot: SkillSlot.Q,
+    name: `Howling Gale`,
+    nameVi: `Gió Lốc`,
+    description: `Janna charges up and summons a powerful whirlwind that deals magic damage and knocks up enemies in its path. The whirlwind always reaches its destination quickly. Howling Gale stores charges over time, up to a maximum of 2 charges.`,
+    descriptionVi: `Janna tụ lực và triệu hồi một cơn lốc mạnh gây sát thương phép, đồng thời hất tung kẻ địch trên đường bay. Cơn lốc luôn đến điểm đến rất nhanh. Gió Lốc tích trữ điểm dùng theo thời gian, tối đa 2 điểm.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [1, 1, 1, 1],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 50, 50, 50],
+      resource: `MANA`,
+    },
+    range: {
+      type: `CHARGED_LINE_WHIRLWIND`,
+    },
+    scaling: {
+      chargeDurationSeconds: 0.75,
+      travelTimeToDestinationSeconds: 0.5,
+      storedChargeRechargeSeconds: 14,
+      maxStoredCharges: 2,
+      damage: {
+        values: [50, 90, 130, 170],
+        abilityPowerRatio: 0.5,
+        damageType: `MAGIC`,
+      },
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.KNOCK_UP],
+    tags: [
+      `HOWLING_GALE`,
+      `CHARGE_SYSTEM`,
+      `STORED_CHARGES`,
+      `MAGIC_DAMAGE`,
+      `KNOCK_UP`,
+      `PEEL`,
+      `DISENGAGE`,
+    ],
+  },
+  // JANNA - W
+  {
+    championKey: `janna`,
+    slot: SkillSlot.W,
+    name: `Zephyr`,
+    nameVi: `Gió Tây`,
+    description: `Janna gains Movement Speed for 2 seconds. The wind spirit automatically searches for the nearest 3 champions within range, granting Movement Speed bonuses to allies and dealing magic damage to enemies based on Ability Power and bonus Movement Speed.`,
+    descriptionVi: `Janna nhận Tốc Độ Di Chuyển trong 2 giây. Linh hồn gió tự động tìm 3 tướng gần nhất trong phạm vi, tăng Tốc Độ Di Chuyển cho đồng minh và gây sát thương phép lên kẻ địch dựa trên Sức Mạnh Phép Thuật cùng Tốc Độ Di Chuyển cộng thêm.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.CHAMPIONS,
+    cooldown: {
+      values: [9, 8, 8, 7],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 55, 60, 65],
+      resource: `MANA`,
+    },
+    range: {
+      type: `AUTO_SEARCH_NEAREST_CHAMPIONS`,
+      maxTargets: 3,
+    },
+    scaling: {
+      selfMovementSpeedBonusPercent: [10, 15, 20, 25],
+      selfMovementSpeedDurationSeconds: 2,
+      maxSearchedChampions: 3,
+      grantsMovementSpeedToAllies: true,
+      damagesEnemies: true,
+      damage: {
+        values: [50, 90, 130, 170],
+        abilityPowerRatio: 0.5,
+        bonusMovementSpeedRatio: 0.2,
+        damageType: `MAGIC`,
+      },
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SPEED_UP, SkillEffect.BUFF],
+    tags: [
+      `ZEPHYR`,
+      `MOVEMENT_SPEED`,
+      `AUTO_TARGET`,
+      `ALLY_BUFF`,
+      `MAGIC_DAMAGE`,
+      `TEAM_SUPPORT`,
+    ],
+  },
+  // JANNA - E
+  {
+    championKey: `janna`,
+    slot: SkillSlot.E,
+    name: `Eye Of The Storm`,
+    nameVi: `Mắt Bão`,
+    description: `Janna blesses herself and the allied champion with the lowest Health with a shield that absorbs damage and grants Attack Damage while it holds. If there is a turret within range, the turret is shielded as well.`,
+    descriptionVi: `Janna ban phước cho bản thân và tướng đồng minh có Máu thấp nhất bằng một lớp lá chắn hấp thụ sát thương và tăng Sức Mạnh Công Kích khi lá chắn còn tồn tại. Nếu có trụ trong phạm vi, trụ cũng nhận lá chắn.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.ALLIES,
+    cooldown: {
+      values: [16, 14, 12, 10],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [70, 80, 90, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `SELF_AND_LOWEST_HEALTH_ALLY_PLUS_TURRET`,
+    },
+    scaling: {
+      shieldAmount: {
+        values: [65, 90, 115, 140],
+        abilityPowerRatio: 0.45,
+      },
+      attackDamageGranted: {
+        values: [10, 20, 30, 40],
+        abilityPowerRatio: 0.1,
+      },
+      shieldDurationSeconds: 3,
+      targetsSelf: true,
+      targetsLowestHealthAlliedChampion: true,
+      shieldsTurretIfWithinRange: true,
+      attackDamageBuffLastsWhileShieldHolds: true,
+    },
+    effects: [SkillEffect.SHIELD, SkillEffect.BUFF],
+    tags: [
+      `EYE_OF_THE_STORM`,
+      `SHIELD`,
+      `ATTACK_DAMAGE_BUFF`,
+      `LOW_HEALTH_ALLY_TARGETING`,
+      `TURRET_SHIELD`,
+      `TEAM_SUPPORT`,
+    ],
+  },
+  // JANNA - R
+  {
+    championKey: `janna`,
+    slot: SkillSlot.R,
+    name: `Monsoon`,
+    nameVi: `Gió Mùa`,
+    description: `Janna calls forth mighty winds of salvation to knock back surrounding enemies and restore Health to nearby allies each second for 3 seconds.`,
+    descriptionVi: `Janna triệu hồi những cơn gió cứu rỗi mạnh mẽ để đẩy lùi kẻ địch xung quanh và hồi Máu cho đồng minh gần đó mỗi giây trong 3 giây.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [80, 75, 70],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `SURROUNDING_AREA_CHANNEL`,
+    },
+    scaling: {
+      healPerSecond: {
+        values: [50, 100, 150],
+        abilityPowerRatio: 0.3,
+      },
+      durationSeconds: 3,
+      knocksBackSurroundingEnemies: true,
+      healsNearbyAlliesEachSecond: true,
+      totalHealing: {
+        values: [150, 300, 450],
+        abilityPowerRatio: 0.9,
+      },
+    },
+    effects: [SkillEffect.KNOCK_BACK, SkillEffect.HEAL],
+    tags: [
+      `MONSOON`,
+      `KNOCK_BACK`,
+      `HEALING`,
+      `CHANNEL`,
+      `DISENGAGE`,
+      `TEAM_SUPPORT`,
+    ],
+  },
+  // === JARVAN IV ===
+  // JARVAN IV - PASSIVE
+  {
+    championKey: `jarvan-iv`,
+    slot: SkillSlot.PASSIVE,
+    name: `Martial Cadence`,
+    nameVi: `Thương Thuật`,
+    description: `Jarvan IV's first attack against an enemy deals bonus physical damage equal to a percent of their current Health. This effect has a cooldown per unique enemy.`,
+    descriptionVi: `Đòn đánh đầu tiên của Jarvan IV lên một kẻ địch gây thêm sát thương vật lý bằng một phần Máu hiện tại của mục tiêu. Hiệu ứng này có hồi chiêu riêng trên từng kẻ địch.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMY,
+    cooldown: null,
+    cost: null,
+    range: {
+      type: `BASIC_ATTACK_MODIFIER`,
+    },
+    scaling: {
+      currentHealthPhysicalDamagePercent: 8,
+      cooldownPerUniqueEnemySeconds: 5,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `MARTIAL_CADENCE`,
+      `CURRENT_HEALTH_DAMAGE`,
+      `PHYSICAL_DAMAGE`,
+      `BASIC_ATTACK_MODIFIER`,
+    ],
+  },
+  // JARVAN IV - Q
+  {
+    championKey: `jarvan-iv`,
+    slot: SkillSlot.Q,
+    name: `Dragon Strike`,
+    nameVi: `Giáng Long Kích`,
+    description: `Jarvan IV extends his lance, dealing physical damage and reducing the Armor of enemies hit. If the lance contacts a Demacian Standard, Jarvan IV is pulled to the Standard's location, knocking up enemies in his path.`,
+    descriptionVi: `Jarvan IV vươn thương về phía trước, gây sát thương vật lý và giảm Giáp của kẻ địch trúng chiêu. Nếu thương chạm vào Hoàng Kỳ Demacia, Jarvan IV sẽ được kéo đến vị trí Hoàng Kỳ, hất tung kẻ địch trên đường lướt.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [9, 8, 7, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 55, 60, 65],
+      resource: `MANA`,
+    },
+    range: {
+      type: `LINE_LANCE_THRUST`,
+    },
+    scaling: {
+      damage: {
+        values: [80, 140, 200, 260],
+        bonusAttackDamageRatio: 1.3,
+        damageType: `PHYSICAL`,
+      },
+      armorReductionPercent: 10,
+      armorReductionDurationSeconds: 3,
+      pullsToDemacianStandardOnContact: true,
+      knockUpDurationSeconds: 0.75,
+    },
+    effects: [
+      SkillEffect.DAMAGE,
+      SkillEffect.ARMOR_REDUCTION,
+      SkillEffect.DASH,
+      SkillEffect.KNOCK_UP,
+    ],
+    tags: [
+      `DRAGON_STRIKE`,
+      `PHYSICAL_DAMAGE`,
+      `ARMOR_REDUCTION`,
+      `DASH`,
+      `KNOCK_UP`,
+      `FLAG_AND_DRAG`,
+    ],
+  },
+  // JARVAN IV - W
+  {
+    championKey: `jarvan-iv`,
+    slot: SkillSlot.W,
+    name: `Golden Aegis`,
+    nameVi: `Hoàng Kim Giáp`,
+    description: `Jarvan IV unleashes a regal aura that slows nearby enemies and grants himself a shield. The shield absorbs additional damage for each nearby enemy champion.`,
+    descriptionVi: `Jarvan IV phóng thích hào quang vương giả làm chậm kẻ địch xung quanh và tạo lá chắn cho bản thân. Lá chắn hấp thụ thêm sát thương với mỗi tướng địch gần đó.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [10, 10, 10, 10],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [30, 30, 30, 30],
+      resource: `MANA`,
+    },
+    range: {
+      type: `NEARBY_ENEMY_AURA`,
+    },
+    scaling: {
+      slowPercent: [30, 35, 40, 45],
+      slowDurationSeconds: 2,
+      shieldAmount: {
+        values: [100, 140, 180, 220],
+        maxHealthRatio: 0.05,
+      },
+      shieldDurationSeconds: 5,
+      bonusShieldPerNearbyEnemyChampion: {
+        flatValue: 10,
+        maxHealthRatioByRank: [0.016, 0.019, 0.022, 0.025],
+      },
+    },
+    effects: [SkillEffect.SHIELD, SkillEffect.SLOW],
+    tags: [
+      `GOLDEN_AEGIS`,
+      `SHIELD`,
+      `SLOW`,
+      `MAX_HEALTH_SCALING`,
+      `NEARBY_ENEMY_SCALING`,
+    ],
+  },
+  // JARVAN IV - E
+  {
+    championKey: `jarvan-iv`,
+    slot: SkillSlot.E,
+    name: `Demacian Standard`,
+    nameVi: `Hoàng Kỳ Demacia`,
+    description: `Passive: Jarvan IV gains Attack Speed. Active: Jarvan IV throws a Demacian Standard that deals magic damage and remains in place, granting nearby allied champions Attack Speed. Tapping this ability while near a Demacian Standard casts Dragon Strike towards it.`,
+    descriptionVi: `Nội tại: Jarvan IV nhận thêm Tốc Độ Đánh. Kích hoạt: Jarvan IV ném Hoàng Kỳ Demacia gây sát thương phép và tồn tại tại vị trí đó, tăng Tốc Độ Đánh cho tướng đồng minh gần đó. Nhấn kỹ năng này khi ở gần Hoàng Kỳ Demacia sẽ dùng Giáng Long Kích về phía nó.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LOCATION,
+    cooldown: {
+      values: [11, 11, 10, 9],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [55, 55, 55, 55],
+      resource: `MANA`,
+    },
+    range: {
+      type: `STANDARD_DEPLOY_LOCATION`,
+    },
+    scaling: {
+      passiveAttackSpeedBonusPercent: [25, 30, 33, 40],
+      activeDamage: {
+        values: [85, 140, 195, 250],
+        abilityPowerRatio: 0.8,
+        damageType: `MAGIC`,
+      },
+      standardDurationSeconds: 8,
+      alliedChampionAttackSpeedBonusPercent: [30, 35, 40, 45],
+      castsDragonStrikeTowardStandardWhenTappedNearby: true,
+      enablesFlagAndDragCombo: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.BUFF],
+    tags: [
+      `DEMACIAN_STANDARD`,
+      `ATTACK_SPEED_STEROID`,
+      `ALLY_BUFF`,
+      `MAGIC_DAMAGE`,
+      `DEPLOYABLE`,
+      `FLAG_AND_DRAG`,
+    ],
+  },
+  // JARVAN IV - R
+  {
+    championKey: `jarvan-iv`,
+    slot: SkillSlot.R,
+    name: `Cataclysm`,
+    nameVi: `Đại Địa Chấn`,
+    description: `Jarvan IV leaps to an enemy champion, dealing physical damage to nearby enemies and creating an arena of impassable terrain around them. Damage dealt by enemies within the arena is reduced. The effect ends once they leave the terrain or when it collapses. Recast to collapse the terrain.`,
+    descriptionVi: `Jarvan IV anh dũng lao tới một tướng địch, gây sát thương vật lý lên kẻ địch gần đó và tạo một đấu trường địa hình không thể vượt qua xung quanh chúng. Sát thương do kẻ địch trong đấu trường gây ra bị giảm. Hiệu ứng kết thúc khi chúng rời khỏi địa hình hoặc khi địa hình sụp xuống. Tái kích hoạt để phá hủy địa hình.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.CHAMPION,
+    cooldown: {
+      values: [70, 65, 60],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `TARGETED_ENEMY_CHAMPION_LEAP`,
+    },
+    scaling: {
+      damage: {
+        values: [200, 350, 500],
+        bonusAttackDamageRatio: 1.7,
+        damageType: `PHYSICAL`,
+      },
+      arenaDurationSeconds: 3.5,
+      createsImpassableTerrain: true,
+      enemyDamageDealtReductionPercent: [12, 16, 20],
+      damageReductionEndsWhenEnemyLeavesArena: true,
+      recastCollapsesTerrain: true,
+    },
+    effects: [
+      SkillEffect.DAMAGE,
+      SkillEffect.DASH,
+      SkillEffect.DAMAGE_REDUCTION,
+    ],
+    tags: [
+      `CATACLYSM`,
+      `PHYSICAL_DAMAGE`,
+      `DIVE`,
+      `TERRAIN_CONTROL`,
+      `ARENA`,
+      `RECAST`,
+      `DAMAGE_REDUCTION`,
+    ],
+  },
+  // === JAX ===
+  // JAX - PASSIVE
+  {
+    championKey: `jax`,
+    slot: SkillSlot.PASSIVE,
+    name: `Relentless Assault`,
+    nameVi: `Không Khoan Nhượng`,
+    description: `Jax's attacks against champions and minions grant bonus Attack Speed for 3 seconds, stacking up to 5 times.`,
+    descriptionVi: `Đòn đánh của Jax lên tướng và lính cho thêm Tốc Độ Đánh trong 3 giây, cộng dồn tối đa 5 lần.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: {
+      type: `BASIC_ATTACK_STACKING_PASSIVE`,
+    },
+    scaling: {
+      attackSpeedBonusPercentByLevel: {
+        min: 6,
+        max: 20,
+      },
+      stackDurationSeconds: 3,
+      maxStacks: 5,
+      stacksFromAttackingChampions: true,
+      stacksFromAttackingMinions: true,
+    },
+    effects: [SkillEffect.BUFF],
+    tags: [
+      `RELENTLESS_ASSAULT`,
+      `STACKING_PASSIVE`,
+      `ATTACK_SPEED_STEROID`,
+      `EXTENDED_FIGHT`,
+    ],
+  },
+  // JAX - Q
+  {
+    championKey: `jax`,
+    slot: SkillSlot.Q,
+    name: `Leap Strike`,
+    nameVi: `Nhảy Và Nện`,
+    description: `Jax leaps to a target unit, dealing physical damage if the target is an enemy.`,
+    descriptionVi: `Jax nhảy đến một đơn vị mục tiêu, gây sát thương vật lý nếu mục tiêu là kẻ địch.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [8, 7, 7, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [65, 65, 65, 65],
+      resource: `MANA`,
+    },
+    range: {
+      type: `TARGETED_UNIT_LEAP`,
+    },
+    scaling: {
+      damage: {
+        values: [70, 125, 180, 235],
+        attackDamageRatio: 1,
+        damageType: `PHYSICAL`,
+      },
+      canLeapToTargetUnit: true,
+      dealsDamageIfTargetIsEnemy: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.DASH],
+    tags: [`LEAP_STRIKE`, `DASH`, `PHYSICAL_DAMAGE`, `TARGETED_LEAP`],
+  },
+  // JAX - W
+  {
+    championKey: `jax`,
+    slot: SkillSlot.W,
+    name: `Empower`,
+    nameVi: `Vận Sức`,
+    description: `Jax empowers his next attack or Leap Strike to deal additional magic damage. Empower deals increased damage to monsters.`,
+    descriptionVi: `Jax cường hóa đòn đánh kế tiếp hoặc Nhảy Và Nện để gây thêm sát thương phép. Vận Sức gây thêm sát thương lên quái.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [6, 5, 4, 3],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [30, 30, 30, 30],
+      resource: `MANA`,
+    },
+    range: {
+      type: `NEXT_ATTACK_OR_LEAP_STRIKE_EMPOWER`,
+    },
+    scaling: {
+      bonusMagicDamage: {
+        values: [55, 100, 145, 190],
+        abilityPowerRatio: 0.6,
+        damageType: `MAGIC`,
+      },
+      empowersNextAttack: true,
+      empowersLeapStrike: true,
+      monsterDamageModifier: 1.75,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.BUFF],
+    tags: [
+      `EMPOWER`,
+      `MAGIC_DAMAGE`,
+      `ON_HIT_DAMAGE`,
+      `ATTACK_RESET`,
+      `MONSTER_DAMAGE_MODIFIER`,
+    ],
+  },
+  // JAX - E
+  {
+    championKey: `jax`,
+    slot: SkillSlot.E,
+    name: `Counter Strike`,
+    nameVi: `Phản Công`,
+    description: `Jax enters a defensive stance, dodging all incoming attacks and taking reduced damage from champions. After the duration, nearby enemies are stunned and take magic damage. Each attack dodged increases this damage. Recast ends the defensive stance early to damage and stun nearby enemies immediately.`,
+    descriptionVi: `Jax vào thế phòng thủ, né tất cả đòn đánh nhận vào và giảm sát thương từ tướng. Sau thời gian hiệu lực, kẻ địch gần đó bị làm choáng và chịu sát thương phép. Mỗi đòn đánh né được sẽ tăng sát thương này. Tái kích hoạt để kết thúc thế phòng thủ sớm, gây sát thương và làm choáng kẻ địch gần đó ngay lập tức.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [12, 11, 9, 8],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [60, 70, 80, 90],
+      resource: `MANA`,
+    },
+    range: {
+      type: `SELF_DEFENSIVE_STANCE_AREA_STUN`,
+    },
+    scaling: {
+      defensiveStanceDurationSeconds: 2,
+      dodgesAllIncomingAttacks: true,
+      championDamageReductionPercent: 25,
+      damage: {
+        values: [35, 75, 115, 155],
+        targetMaxHealthRatio: 0.035,
+        abilityPowerRatio: 0.7,
+        damageType: `MAGIC`,
+      },
+      stunDurationSeconds: 1,
+      damageIncreasePerAttackDodgedPercent: 20,
+      maxDamageIncreaseFromDodgedAttacksPercent: 100,
+      recastEndsDefensiveStanceEarly: true,
+      recastDealsDamageAndStunsImmediately: true,
+    },
+    effects: [
+      SkillEffect.DAMAGE,
+      SkillEffect.STUN,
+      SkillEffect.DAMAGE_REDUCTION,
+    ],
+    tags: [
+      `COUNTER_STRIKE`,
+      `DODGE`,
+      `ATTACK_DODGE`,
+      `DAMAGE_REDUCTION`,
+      `STUN`,
+      `MAGIC_DAMAGE`,
+      `PERCENT_HEALTH_DAMAGE`,
+      `RECAST`,
+    ],
+  },
+  // JAX - R
+  {
+    championKey: `jax`,
+    slot: SkillSlot.R,
+    name: `Grandmaster-at-Arms`,
+    nameVi: `Sức Mạnh Bậc Thầy`,
+    description: `Passive: Jax deals additional magic damage with every 3 consecutive attacks within 3 seconds. Active: Jax swings his stave, dealing magic damage to nearby enemies and gaining Armor and Magic Resist based on the number of champions hit. During this time, his size increases and he deals additional magic damage with every 2 attacks instead. Grandmaster-at-Arms deals increased damage to monsters.`,
+    descriptionVi: `Nội tại: Jax gây thêm sát thương phép với mỗi 3 đòn đánh liên tiếp trong vòng 3 giây. Kích hoạt: Jax vung vũ khí, gây sát thương phép lên kẻ địch gần đó và nhận Giáp cùng Kháng Phép dựa trên số tướng trúng chiêu. Trong thời gian này, kích cỡ của Jax tăng lên và hắn gây thêm sát thương phép mỗi 2 đòn đánh thay vì mỗi 3 đòn. Sức Mạnh Bậc Thầy gây thêm sát thương lên quái.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [55, 55, 55],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `NEARBY_AREA_STAVE_SWING`,
+    },
+    scaling: {
+      passiveEveryThirdAttackDamage: {
+        values: [75, 130, 185],
+        abilityPowerRatio: 0.7,
+        damageType: `MAGIC`,
+      },
+      passiveConsecutiveAttackWindowSeconds: 3,
+      activeDamage: {
+        values: [100, 200, 300],
+        abilityPowerRatio: 1,
+        damageType: `MAGIC`,
+      },
+      resistancesIfHitsChampion: {
+        armor: {
+          values: [30, 50, 70],
+          bonusAttackDamageRatio: 0.5,
+        },
+        magicResist: {
+          values: [18, 30, 42],
+          bonusAttackDamageRatio: 0.3,
+        },
+      },
+      bonusResistancesPerAdditionalChampionHit: {
+        armor: {
+          values: [15, 20, 25],
+          bonusAttackDamageRatio: 0.1,
+        },
+        magicResist: {
+          values: [9, 12, 15],
+          bonusAttackDamageRatio: 0.06,
+        },
+      },
+      bonusResistanceDurationSeconds: 8,
+      sizeIncreasePercent: 10,
+      duringActiveEverySecondAttackDealsBonusMagicDamage: true,
+      monsterDamageModifier: 1.1,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.BUFF],
+    tags: [
+      `GRANDMASTER_AT_ARMS`,
+      `EVERY_THIRD_ATTACK`,
+      `BONUS_RESISTANCES`,
+      `SIZE_INCREASE`,
+      `MAGIC_DAMAGE`,
+      `ON_HIT_DAMAGE`,
+      `MONSTER_DAMAGE_MODIFIER`,
+    ],
+  },
+  // === JAYCE ===
+  // JAYCE - PASSIVE
+  {
+    championKey: `jayce`,
+    slot: SkillSlot.PASSIVE,
+    name: `Hextech Capacitor`,
+    nameVi: `Tụ Điện Hextech`,
+    description: `Transforming between the Mercury Hammer and Mercury Cannon grants Movement Speed for a short duration.`,
+    descriptionVi: `Chuyển đổi giữa Búa Thủy Ngân và Pháo Thủy Ngân cho Jayce thêm Tốc Độ Di Chuyển trong thời gian ngắn.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: {
+      type: `FORM_SWAP_SELF_BUFF`,
+    },
+    scaling: {
+      movementSpeedFlat: 30,
+      durationSeconds: 1.25,
+      triggersOnFormSwap: true,
+    },
+    effects: [SkillEffect.SPEED_UP, SkillEffect.BUFF],
+    tags: [`HEXTECH_CAPACITOR`, `FORM_SWAP`, `MOVEMENT_SPEED`, `SELF_BUFF`],
+  },
+  // JAYCE - Q
+  {
+    championKey: `jayce`,
+    slot: SkillSlot.Q,
+    name: `To The Skies! / Shock Blast`,
+    nameVi: `Chỉ Thiên! / Cầu Sấm`,
+    description: `Mercury Hammer: Jayce leaps to an enemy, dealing physical damage and slowing nearby enemies. Mercury Cannon: Jayce fires an orb of electricity that detonates on hitting an enemy or reaching the end of its path. Shock Blast fired through Acceleration Gate travels farther and faster and deals increased damage. Deals reduced damage to monsters.`,
+    descriptionVi: `Búa Thủy Ngân: Jayce nhảy tới một kẻ địch, gây sát thương vật lý và làm chậm kẻ địch gần đó. Pháo Thủy Ngân: Jayce bắn một quả cầu điện phát nổ khi trúng kẻ địch hoặc đi hết đường bay. Cầu Sấm bắn qua Cổng Tăng Tốc bay xa hơn, nhanh hơn và gây thêm sát thương. Gây giảm sát thương lên quái.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [14, 12, 10, 8],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [40, 40, 40, 40],
+      resource: `MANA`,
+    },
+    range: {
+      type: `HAMMER_TARGETED_LEAP_OR_CANNON_LINE_ORB`,
+    },
+    scaling: {
+      hammerForm: {
+        abilityName: `To The Skies!`,
+        damage: {
+          values: [70, 120, 170, 220, 270],
+          attackDamageRatio: 1.4,
+          damageType: `PHYSICAL`,
+        },
+        slowPercent: [35, 40, 45, 50, 55],
+        slowDurationSeconds: 2,
+        leapToEnemy: true,
+        damagesNearbyEnemies: true,
+      },
+      cannonForm: {
+        abilityName: `Shock Blast`,
+        damage: {
+          values: [65, 130, 195, 260, 325],
+          attackDamageRatio: 1.4,
+          damageType: `PHYSICAL`,
+        },
+        detonatesOnEnemyHit: true,
+        detonatesAtEndOfPath: true,
+        accelerationGateInteraction: {
+          travelsFarther: true,
+          travelsFaster: true,
+          damageIncreasePercent: 45,
+        },
+      },
+      monsterDamageModifier: 0.8,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.DASH],
+    tags: [
+      `TO_THE_SKIES`,
+      `SHOCK_BLAST`,
+      `FORM_SWAP`,
+      `PHYSICAL_DAMAGE`,
+      `DASH`,
+      `SLOW`,
+      `POKE`,
+      `ACCELERATION_GATE_SYNERGY`,
+      `MONSTER_DAMAGE_MODIFIER`,
+    ],
+  },
+  // JAYCE - W
+  {
+    championKey: `jayce`,
+    slot: SkillSlot.W,
+    name: `Lightning Field / Hyper Charge`,
+    nameVi: `Tích Tụ / Sạc Siêu Tốc`,
+    description: `Mercury Hammer: Jayce restores Mana on attacks passively and can release an electrifying aura that deals magic damage over time to nearby enemies. Mercury Cannon: Jayce gains a burst of energy, increasing Attack Speed to maximum for 3 attacks within a short duration. These attacks deal modified physical damage.`,
+    descriptionVi: `Búa Thủy Ngân: Jayce hồi Năng Lượng khi đánh thường và có thể phóng thích một vùng điện gây sát thương phép theo thời gian lên kẻ địch gần đó. Pháo Thủy Ngân: Jayce nhận một luồng năng lượng, tăng Tốc Độ Đánh lên tối đa trong 3 đòn đánh trong thời gian ngắn. Các đòn đánh này gây sát thương vật lý đã điều chỉnh.`,
+    damageType: DamageType.MIXED,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [10, 10, 10, 10],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [40, 40, 40, 40],
+      resource: `MANA`,
+    },
+    range: {
+      type: `HAMMER_AURA_OR_CANNON_ATTACK_SPEED_BUFF`,
+    },
+    scaling: {
+      hammerForm: {
+        abilityName: `Lightning Field`,
+        passiveManaRestoreOnHammerAttack: [12, 15, 18, 21, 24],
+        activeDamageOverTime: {
+          values: [160, 230, 300, 370, 440],
+          abilityPowerRatio: 1,
+          damageType: `MAGIC`,
+        },
+        activeDurationSeconds: 4,
+        damagesNearbyEnemies: true,
+      },
+      cannonForm: {
+        abilityName: `Hyper Charge`,
+        separateCooldown: {
+          values: [13, 11, 9, 7, 5],
+          unit: `seconds`,
+        },
+        attackCount: 3,
+        attackWindowSeconds: 4,
+        attackSpeedSetToMaximum: true,
+        attackDamageModifierPercent: [70, 80, 90, 100, 110],
+        damageType: `PHYSICAL`,
+      },
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.BUFF],
+    tags: [
+      `LIGHTNING_FIELD`,
+      `HYPER_CHARGE`,
+      `FORM_SWAP`,
+      `MAGIC_DAMAGE`,
+      `PHYSICAL_DAMAGE`,
+      `DAMAGE_OVER_TIME`,
+      `MANA_RESTORE`,
+      `ATTACK_SPEED_STEROID`,
+    ],
+  },
+  // JAYCE - E
+  {
+    championKey: `jayce`,
+    slot: SkillSlot.E,
+    name: `Thundering Blow / Acceleration Gate`,
+    nameVi: `Lôi Phạt / Cổng Tăng Tốc`,
+    description: `Mercury Hammer: Jayce knocks a target and nearby enemies backwards, dealing magic damage based on their maximum Health. Mercury Cannon: Jayce deploys an Acceleration Gate that grants decaying Movement Speed to allied champions that pass through it. Shock Blasts fired through the gate travel farther and faster and deal increased damage.`,
+    descriptionVi: `Búa Thủy Ngân: Jayce đánh bật mục tiêu và kẻ địch gần đó ra sau, gây sát thương phép theo Máu tối đa của chúng. Pháo Thủy Ngân: Jayce triển khai Cổng Tăng Tốc, cho tướng đồng minh đi qua nhận Tốc Độ Di Chuyển giảm dần. Cầu Sấm bắn qua cổng bay xa hơn, nhanh hơn và gây thêm sát thương.`,
+    damageType: DamageType.MIXED,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [18, 16, 14, 12],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 50, 50, 50],
+      resource: `MANA`,
+    },
+    range: {
+      type: `HAMMER_KNOCKBACK_OR_CANNON_ACCELERATION_GATE`,
+    },
+    scaling: {
+      hammerForm: {
+        abilityName: `Thundering Blow`,
+        targetMaxHealthDamagePercent: [10, 12.5, 15, 17.5, 20],
+        attackDamageRatio: 1,
+        damageType: `MAGIC`,
+        knocksBackTarget: true,
+        knocksBackNearbyEnemies: true,
+      },
+      cannonForm: {
+        abilityName: `Acceleration Gate`,
+        separateCooldown: {
+          values: [14],
+          unit: `seconds`,
+        },
+        movementSpeedBonusPercent: [35, 40, 45, 50, 55],
+        movementSpeedIsDecaying: true,
+        movementSpeedDurationSeconds: [2.5, 3, 3.5, 4, 4.5],
+        affectsAllyChampionsPassingThrough: true,
+        shockBlastInteraction: {
+          travelsFarther: true,
+          travelsFaster: true,
+          damageIncreasePercent: 40,
+        },
+      },
+    },
+    effects: [
+      SkillEffect.DAMAGE,
+      SkillEffect.KNOCK_BACK,
+      SkillEffect.SPEED_UP,
+      SkillEffect.BUFF,
+    ],
+    tags: [
+      `THUNDERING_BLOW`,
+      `ACCELERATION_GATE`,
+      `FORM_SWAP`,
+      `KNOCK_BACK`,
+      `PERCENT_HEALTH_DAMAGE`,
+      `MOVEMENT_SPEED`,
+      `ALLY_BUFF`,
+      `ACCELERATION_GATE_SYNERGY`,
+    ],
+  },
+  // JAYCE - R
+  {
+    championKey: `jayce`,
+    slot: SkillSlot.R,
+    name: `Mercury Cannon / Mercury Hammer`,
+    nameVi: `Pháo Thủy Ngân / Búa Thủy Ngân`,
+    description: `Jayce transforms between Mercury Hammer and Mercury Cannon, gaining new abilities and changing attack style. Transforming into Mercury Cannon empowers the next ranged attack to deal bonus magic damage and reduce the target's Armor and Magic Resist. Transforming into Mercury Hammer grants Attack Speed, Armor, Magic Resist, and empowers the next hammer attack to deal bonus magic damage.`,
+    descriptionVi: `Jayce chuyển đổi giữa Búa Thủy Ngân và Pháo Thủy Ngân, nhận bộ kỹ năng mới và thay đổi dạng tấn công. Chuyển sang Pháo Thủy Ngân cường hóa đòn đánh xa kế tiếp để gây thêm sát thương phép và giảm Giáp cùng Kháng Phép của mục tiêu. Chuyển sang Búa Thủy Ngân cho thêm Tốc Độ Đánh, Giáp, Kháng Phép và cường hóa đòn đánh bằng búa kế tiếp để gây thêm sát thương phép.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [5, 5, 5, 5],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: {
+      type: `FORM_SWAP`,
+    },
+    scaling: {
+      transformsBetweenMercuryHammerAndMercuryCannon: true,
+      mercuryCannon: {
+        grantsRangedAttacks: true,
+        empoweredNextAttack: {
+          bonusMagicDamage: {
+            baseValue: 13,
+            attackDamageRatio: 0.1,
+            damageType: `MAGIC`,
+          },
+          armorReductionPercent: 11,
+          magicResistReductionPercent: 11,
+          reductionDurationSeconds: 5,
+        },
+      },
+      mercuryHammer: {
+        grantsMeleeAbilities: true,
+        attackSpeedBonusPercent: 16,
+        armorBonus: {
+          baseValue: 5,
+          bonusAttackDamageRatio: 0.09,
+        },
+        magicResistBonus: {
+          baseValue: 5,
+          bonusAttackDamageRatio: 0.09,
+        },
+        empoweredNextAttack: {
+          bonusMagicDamage: {
+            baseValue: 28,
+            bonusAttackDamageRatio: 0.25,
+            damageType: `MAGIC`,
+          },
+        },
+      },
+    },
+    effects: [SkillEffect.BUFF],
+    tags: [
+      `MERCURY_CANNON`,
+      `MERCURY_HAMMER`,
+      `FORM_SWAP`,
+      `STANCE_CHANGE`,
+      `EMPOWERED_ATTACK`,
+      `ARMOR_REDUCTION`,
+      `MAGIC_RESIST_REDUCTION`,
+    ],
+  },
+  // === JHIN ===
+  // JHIN - PASSIVE
+  {
+    championKey: `jhin`,
+    slot: SkillSlot.PASSIVE,
+    name: `Whisper`,
+    nameVi: `Lời Thì Thầm`,
+    description: `Jhin's hand cannon, Whisper, carries 4 shots before needing to reload and fires at a fixed rate. Attack Speed is converted into Attack Damage. The final bullet critically strikes and deals additional missing Health physical damage. Whenever Whisper critically strikes, Jhin gains a burst of Movement Speed. Attack Damage scales with Critical Rate and bonus Attack Speed.`,
+    descriptionVi: `Khẩu súng ngắn Lời Thì Thầm của Jhin có 4 viên đạn trước khi phải nạp lại và bắn với tốc độ cố định. Tốc Độ Đánh được chuyển hóa thành Sức Mạnh Công Kích. Viên đạn cuối luôn chí mạng và gây thêm sát thương vật lý theo Máu đã mất của mục tiêu. Mỗi khi Lời Thì Thầm chí mạng, Jhin nhận một lượng Tốc Độ Di Chuyển. Sức Mạnh Công Kích tăng theo Tỉ Lệ Chí Mạng và Tốc Độ Đánh cộng thêm.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: {
+      type: `FIXED_RATE_FOUR_SHOT_HAND_CANNON`,
+    },
+    scaling: {
+      ammoCount: 4,
+      requiresReloadAfterShots: 4,
+      fixedAttackRate: true,
+      attackSpeedConvertedToAttackDamage: true,
+      attackDamageScalesWithCriticalRate: true,
+      attackDamageScalesWithBonusAttackSpeed: true,
+      finalBulletAlwaysCrits: true,
+      finalBulletMissingHealthPhysicalDamagePercent: 11,
+      movementSpeedOnCrit: {
+        basePercent: 15,
+        bonusAttackSpeedRatioPerOnePercent: 0.55,
+        durationSeconds: 2,
+      },
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SPEED_UP, SkillEffect.BUFF],
+    tags: [
+      `WHISPER`,
+      `FOURTH_SHOT`,
+      `RELOAD`,
+      `CRITICAL_SCALING`,
+      `MISSING_HEALTH_DAMAGE`,
+      `MOVEMENT_SPEED`,
+    ],
+  },
+  // JHIN - Q
+  {
+    championKey: `jhin`,
+    slot: SkillSlot.Q,
+    name: `Dancing Grenade`,
+    nameVi: `Lựu Đạn Nhảy Múa`,
+    description: `Jhin launches a magical cartridge at an enemy, dealing physical damage before bouncing to nearby targets that have not yet been hit. It can hit up to 4 targets and gains increased damage each time it kills.`,
+    descriptionVi: `Jhin phóng một viên đạn ma thuật vào kẻ địch, gây sát thương vật lý rồi nảy sang mục tiêu gần đó chưa bị trúng. Kỹ năng có thể trúng tối đa 4 mục tiêu và tăng sát thương mỗi khi hạ gục mục tiêu.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [7, 6, 6, 5],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [45, 50, 55, 60],
+      resource: `MANA`,
+    },
+    range: {
+      type: `TARGETED_BOUNCING_PROJECTILE`,
+      maxTargets: 4,
+    },
+    scaling: {
+      damage: {
+        values: [45, 80, 115, 150],
+        attackDamageRatioByRank: [0.35, 0.45, 0.55, 0.65],
+        abilityPowerRatio: 0.6,
+        damageType: `PHYSICAL`,
+      },
+      maxTargets: 4,
+      bouncesOnlyToTargetsNotYetHit: true,
+      damageIncreasePerKillPercent: 44,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `DANCING_GRENADE`,
+      `BOUNCE`,
+      `PHYSICAL_DAMAGE`,
+      `EXECUTE_CHAIN`,
+      `MULTI_TARGET`,
+    ],
+  },
+  // JHIN - W
+  {
+    championKey: `jhin`,
+    slot: SkillSlot.W,
+    name: `Deadly Flourish`,
+    nameVi: `Nét Vẽ Chết Chóc`,
+    description: `Jhin fires a long range shot that stops on the first champion hit, dealing physical damage to that champion and reduced damage to minions and monsters hit along the way. If the target champion was struck by Jhin, Jhin's allies, or Lotus Traps recently, they are rooted and Jhin gains Movement Speed as though he had critically struck them.`,
+    descriptionVi: `Jhin bắn một phát đạn tầm xa dừng lại ở tướng đầu tiên trúng phải, gây sát thương vật lý lên tướng đó và gây sát thương giảm lên lính cùng quái trên đường bay. Nếu tướng mục tiêu vừa bị Jhin, đồng minh của Jhin hoặc Bẫy Hoa Sen đánh trúng gần đây, chúng bị trói chân và Jhin nhận Tốc Độ Di Chuyển như khi chí mạng.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [12, 12, 12, 12],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [60, 60, 60, 60],
+      resource: `MANA`,
+    },
+    range: {
+      type: `LONG_RANGE_LINE_SHOT`,
+    },
+    scaling: {
+      damage: {
+        values: [60, 100, 140, 180],
+        attackDamageRatio: 0.4,
+        damageType: `PHYSICAL`,
+      },
+      stopsOnFirstChampionHit: true,
+      minionAndMonsterDamageModifier: 0.75,
+      rootConditionWindowSeconds: 4,
+      rootsIfRecentlyStruckByJhin: true,
+      rootsIfRecentlyStruckByJhinAllies: true,
+      rootsIfRecentlyStruckByLotusTraps: true,
+      rootDurationSeconds: [1.25, 1.5, 1.75, 2],
+      grantsCritMovementSpeedOnRoot: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.ROOT, SkillEffect.SPEED_UP],
+    tags: [
+      `DEADLY_FLOURISH`,
+      `LONG_RANGE_POKE`,
+      `PHYSICAL_DAMAGE`,
+      `ROOT`,
+      `MARK_CONSUME`,
+      `MOVEMENT_SPEED`,
+    ],
+  },
+  // JHIN - E
+  {
+    championKey: `jhin`,
+    slot: SkillSlot.E,
+    name: `Captive Audience`,
+    nameVi: `Cạm Bẫy Nghệ Thuật`,
+    description: `Jhin places an invisible Lotus Trap that reveals nearby enemies when walked over. The trap slows enemies before dealing magic damage. When Jhin kills an enemy champion, a Lotus Trap spawns and detonates where they were killed. The trap deals reduced damage to non-champions and champions recently hit by another trap.`,
+    descriptionVi: `Jhin đặt một Bẫy Hoa Sen vô hình, làm lộ diện kẻ địch gần đó khi bị kích hoạt. Bẫy làm chậm kẻ địch trước khi gây sát thương phép. Khi Jhin hạ gục tướng địch, một Bẫy Hoa Sen sẽ xuất hiện và phát nổ tại nơi chúng bị hạ. Bẫy gây giảm sát thương lên đơn vị không phải tướng và tướng vừa bị một bẫy khác đánh trúng gần đây.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LOCATION,
+    cooldown: {
+      values: [2, 2, 2, 2],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [35, 40, 45, 50],
+      resource: `MANA`,
+    },
+    range: {
+      type: `INVISIBLE_LOTUS_TRAP_PLACEMENT`,
+    },
+    scaling: {
+      isInvisibleTrap: true,
+      revealsNearbyEnemiesWhenTriggered: true,
+      slowPercent: 30,
+      damage: {
+        values: [20, 100, 180, 260],
+        attackDamageRatio: 1.2,
+        abilityPowerRatio: 1,
+        damageType: `MAGIC`,
+      },
+      spawnsAndDetonatesOnEnemyChampionKill: true,
+      damageModifierVsNonChampions: 0.65,
+      damageModifierVsChampionsRecentlyHitByAnotherTrap: 0.65,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.REVEAL],
+    tags: [
+      `CAPTIVE_AUDIENCE`,
+      `LOTUS_TRAP`,
+      `INVISIBLE_TRAP`,
+      `VISION`,
+      `REVEAL`,
+      `SLOW`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+  // JHIN - R
+  {
+    championKey: `jhin`,
+    slot: SkillSlot.R,
+    name: `Curtain Call`,
+    nameVi: `Sân Khấu Tử Thần`,
+    description: `Jhin channels to fire 4 super shots at extreme range in a cone. The shots stop on the first champion hit, slowing them and dealing physical damage that increases based on the target's missing Health. The 4th shot critically strikes. Jhin can cancel the channel.`,
+    descriptionVi: `Jhin vận sức để bắn 4 phát đạn siêu cấp ở tầm cực xa theo hình nón. Các phát bắn dừng lại ở tướng đầu tiên trúng phải, làm chậm mục tiêu và gây sát thương vật lý tăng theo Máu đã mất của mục tiêu. Phát bắn thứ 4 chí mạng. Jhin có thể hủy vận sức.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [80, 70, 60],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `EXTREME_RANGE_CONE_CHANNEL_SHOTS`,
+      shotCount: 4,
+    },
+    scaling: {
+      channel: true,
+      shotCount: 4,
+      stopsOnFirstChampionHit: true,
+      slowPercent: 80,
+      slowDurationSeconds: 0.75,
+      damage: {
+        values: [75, 150, 225],
+        attackDamageRatio: 0.25,
+        damageType: `PHYSICAL`,
+      },
+      damageIncreasePercentPerOnePercentMissingHealth: 3,
+      fourthShotCritDamageModifier: 2,
+      canCancelChannel: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
+    tags: [
+      `CURTAIN_CALL`,
+      `CHANNEL`,
+      `LONG_RANGE_POKE`,
+      `EXECUTE`,
+      `FOURTH_SHOT`,
+      `CRITICAL_SCALING`,
+      `MISSING_HEALTH_DAMAGE`,
+    ],
+  },
+  // === JINX ===
+  // JINX - PASSIVE
+  {
+    championKey: `jinx`,
+    slot: SkillSlot.PASSIVE,
+    name: `Get Excited!`,
+    nameVi: `Hưng Phấn!`,
+    description: `Scoring a takedown on a champion or structure that Jinx has damaged recently grants her decaying Movement Speed and Total Attack Speed. While Excited, Jinx can exceed the Attack Speed cap. When Get Excited! triggers, Jinx restores a portion of her missing Mana.`,
+    descriptionVi: `Tham gia hạ gục tướng hoặc công trình mà Jinx đã gây sát thương gần đây cho cô Tốc Độ Di Chuyển giảm dần và Tốc Độ Đánh tổng. Khi đang Hưng Phấn, Jinx có thể vượt giới hạn Tốc Độ Đánh. Khi Hưng Phấn! kích hoạt, Jinx hồi một phần Năng Lượng đã mất.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: {
+      type: `TAKEDOWN_RESET_SELF_BUFF`,
+    },
+    scaling: {
+      triggerWindowSeconds: 3,
+      triggersOnChampionTakedownDamagedByJinx: true,
+      triggersOnStructureTakedownDamagedByJinx: true,
+      decayingMovementSpeedBonusPercent: 140,
+      totalAttackSpeedBonusPercent: 12,
+      durationSeconds: 6,
+      canExceedAttackSpeedCapWhileExcited: true,
+      missingManaRestorePercent: 10,
+    },
+    effects: [SkillEffect.SPEED_UP, SkillEffect.BUFF],
+    tags: [
+      `GET_EXCITED`,
+      `TAKEDOWN_RESET`,
+      `MOVEMENT_SPEED`,
+      `ATTACK_SPEED_STEROID`,
+      `MANA_RESTORE`,
+      `RESET_CARRY`,
+    ],
+  },
+  // JINX - Q
+  {
+    championKey: `jinx`,
+    slot: SkillSlot.Q,
+    name: `Switcheroo!`,
+    nameVi: `Tráo Hàng!`,
+    description: `Jinx swaps weapons between Fishbones, the Rocket Launcher, and Pow-Pow, the Minigun. Fishbones attacks cost Mana, gain bonus range, and explode to deal increased damage to the target and nearby enemies. Pow-Pow attacks grant stacking Attack Speed for a short duration. Pow-Pow stacks fall off one at a time and only benefit the first attack fired from Fishbones.`,
+    descriptionVi: `Jinx đổi vũ khí giữa Xương Cá, Súng Phóng Lựu, và Bằng Chíu, Súng Nhỏ. Đòn đánh với Xương Cá tốn Năng Lượng, được tăng tầm đánh và phát nổ gây thêm sát thương lên mục tiêu cùng kẻ địch xung quanh. Đòn đánh với Bằng Chíu cho Tốc Độ Đánh cộng dồn trong thời gian ngắn. Cộng dồn của Bằng Chíu mất dần từng cộng dồn và chỉ có lợi cho phát bắn Xương Cá đầu tiên.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [1, 1, 1, 1],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [20, 20, 20, 20],
+      resource: `MANA`,
+    },
+    range: {
+      type: `WEAPON_SWAP_TOGGLE`,
+    },
+    scaling: {
+      fishbonesRocketLauncher: {
+        attacksCostMana: true,
+        bonusRange: [80, 95, 110, 125],
+        explosionDamageModifier: 1.12,
+        damagesTargetAndNearbyEnemies: true,
+      },
+      powPowMinigun: {
+        attackSpeedStackDurationSeconds: 2.5,
+        maxStacks: 3,
+        totalAttackSpeedBonusPercent: [35, 60, 85, 110],
+        stacksFallOffOneAtATime: true,
+        stacksOnlyBenefitFirstFishbonesAttack: true,
+      },
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.BUFF],
+    tags: [
+      `SWITCHEROO`,
+      `WEAPON_SWAP`,
+      `ROCKET_LAUNCHER`,
+      `MINIGUN`,
+      `ATTACK_SPEED_STEROID`,
+      `AREA_DAMAGE`,
+    ],
+  },
+  // JINX - W
+  {
+    championKey: `jinx`,
+    slot: SkillSlot.W,
+    name: `Zap!`,
+    nameVi: `Giật Bắn!`,
+    description: `Jinx fires a shock blast that deals physical damage to the first enemy hit, grants vision of them, and slows them.`,
+    descriptionVi: `Jinx bắn một luồng điện gây sát thương vật lý lên kẻ địch đầu tiên trúng phải, làm lộ diện chúng và làm chậm chúng.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [8, 7, 6, 5],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 60, 70, 80],
+      resource: `MANA`,
+    },
+    range: {
+      type: `LINE_SHOCK_BLAST`,
+    },
+    scaling: {
+      damage: {
+        values: [10, 80, 150, 220],
+        attackDamageRatio: 1.6,
+        damageType: `PHYSICAL`,
+      },
+      stopsOnFirstEnemyHit: true,
+      grantsVisionOfTarget: true,
+      slowPercent: [30, 40, 50, 60],
+      slowDurationSeconds: 2,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.REVEAL],
+    tags: [
+      `ZAP`,
+      `PHYSICAL_DAMAGE`,
+      `LONG_RANGE_POKE`,
+      `SLOW`,
+      `VISION`,
+      `REVEAL`,
+    ],
+  },
+  // JINX - E
+  {
+    championKey: `jinx`,
+    slot: SkillSlot.E,
+    name: `Flame Chompers!`,
+    nameVi: `Lựu Đạn Ma Hỏa!`,
+    description: `Jinx tosses out three chompers that arm after a brief delay. Chompers explode on contact with enemy champions, interrupting their dashes and rooting them. Enemies hit by the explosion take magic damage. Chompers last for a short duration and explode automatically if no champion triggers them.`,
+    descriptionVi: `Jinx ném ra ba quả lựu đạn ma hỏa, chúng được kích hoạt sau một khoảng trễ ngắn. Chúng phát nổ khi tiếp xúc với tướng địch, ngắt lướt và trói chân mục tiêu. Kẻ địch trúng vụ nổ chịu sát thương phép. Lựu đạn tồn tại trong thời gian ngắn và tự phát nổ nếu không có tướng kích hoạt.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LOCATION,
+    cooldown: {
+      values: [15, 13, 11, 9],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [70, 70, 70, 70],
+      resource: `MANA`,
+    },
+    range: {
+      type: `THREE_TRAP_PLACEMENT`,
+      trapCount: 3,
+    },
+    scaling: {
+      trapCount: 3,
+      armsAfterBriefDelay: true,
+      explodesOnEnemyChampionContact: true,
+      interruptsDashes: true,
+      rootDurationSeconds: [1.45, 1.55, 1.65, 1.75],
+      damage: {
+        values: [70, 140, 210, 280],
+        abilityPowerRatio: 1,
+        damageType: `MAGIC`,
+      },
+      trapDurationSeconds: 5,
+      automaticallyExplodesIfNoChampionTriggers: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.ROOT],
+    tags: [
+      `FLAME_CHOMPERS`,
+      `TRAP`,
+      `DASH_INTERRUPT`,
+      `ROOT`,
+      `MAGIC_DAMAGE`,
+      `ZONE_CONTROL`,
+    ],
+  },
+  // JINX - R
+  {
+    championKey: `jinx`,
+    slot: SkillSlot.R,
+    name: `Super Mega Death Rocket!`,
+    nameVi: `Tên Lửa Đạn Đạo Siêu Khủng Khiếp!`,
+    description: `Jinx fires a mega-rocket that gains damage and speed over the first second it travels. The rocket explodes on the first enemy champion hit, dealing physical damage plus missing Health damage. Nearby enemies take reduced damage. The rocket has a damage cap against epic monsters.`,
+    descriptionVi: `Jinx bắn một quả tên lửa siêu khủng tăng sát thương và tốc độ trong giây đầu tiên bay đi. Tên lửa phát nổ khi trúng tướng địch đầu tiên, gây sát thương vật lý cộng thêm sát thương theo Máu đã mất. Kẻ địch gần đó chịu sát thương giảm. Tên lửa có giới hạn sát thương lên quái khủng.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [50, 45, 40],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `LONG_RANGE_MEGA_ROCKET`,
+    },
+    scaling: {
+      gainsDamageAndSpeedOverFirstSecond: true,
+      explodesOnFirstEnemyChampionHit: true,
+      damageByTravelTime: {
+        minValues: [25, 35, 45],
+        maxValues: [250, 350, 450],
+        minAttackDamageRatio: 0.15,
+        maxAttackDamageRatio: 1.5,
+        damageType: `PHYSICAL`,
+      },
+      missingHealthDamagePercent: [25, 30, 35],
+      nearbyEnemyDamageModifier: 0.8,
+      maxDamageToEpicMonsters: 500,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `SUPER_MEGA_DEATH_ROCKET`,
+      `LONG_RANGE_EXECUTE`,
+      `MISSING_HEALTH_DAMAGE`,
+      `PHYSICAL_DAMAGE`,
+      `AREA_DAMAGE`,
+      `EPIC_MONSTER`,
+    ],
+  },
+  // === K'SANTE ===
+  // K'SANTE - PASSIVE
+  {
+    championKey: `ksante`,
+    slot: SkillSlot.PASSIVE,
+    name: `Dauntless Instinct`,
+    nameVi: `Bản Năng Bất Khuất`,
+    description: `K'Sante's damaging abilities mark enemies with Dauntless Instinct. Attacking a marked target deals physical damage based on the target's maximum Health and consumes the mark. During All Out, K'Sante's attacks, active abilities, and passive deal additional maximum Health physical damage that scales with bonus Armor and bonus Magic Resist.`,
+    descriptionVi: `Kỹ năng gây sát thương của K'Sante đánh dấu kẻ địch bằng Bản Năng Bất Khuất. Đòn đánh lên mục tiêu bị đánh dấu gây sát thương vật lý theo Máu tối đa của mục tiêu và tiêu thụ dấu ấn. Khi Khô Máu, đòn đánh, kỹ năng kích hoạt và nội tại của K'Sante gây thêm sát thương vật lý theo Máu tối đa, tỉ lệ với Giáp cộng thêm và Kháng Phép cộng thêm.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMY,
+    cooldown: null,
+    cost: null,
+    range: {
+      type: `MARKED_TARGET_BASIC_ATTACK_PROC`,
+    },
+    scaling: {
+      damagingAbilitiesApplyMark: true,
+      basicAttackConsumesMark: true,
+      markDamage: {
+        targetMaxHealthBasePercent: 12,
+        targetMaxHealthScalingPercentByLevel: {
+          min: 1,
+          max: 2,
+        },
+        damageType: `PHYSICAL`,
+      },
+      allOutBonusDamage: {
+        appliesToBasicAttacks: true,
+        appliesToActiveAbilities: true,
+        appliesToPassive: true,
+        targetMaxHealthBasePercent: 1,
+        bonusArmorRatioPercent: 0.01,
+        bonusMagicResistRatioPercent: 0.01,
+        damageType: `PHYSICAL`,
+      },
+      minionMinimumDamageByLevel: {
+        min: 15,
+        max: 85,
+      },
+      monsterMinimumDamageByLevel: {
+        min: 25,
+        max: 95,
+      },
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `DAUNTLESS_INSTINCT`,
+      `MARK`,
+      `MARK_CONSUME`,
+      `MAX_HEALTH_DAMAGE`,
+      `PHYSICAL_DAMAGE`,
+      `ALL_OUT`,
+    ],
+  },
+  // K'SANTE - Q
+  {
+    championKey: `ksante`,
+    slot: SkillSlot.Q,
+    name: `Ntofo Strikes`,
+    nameVi: `Ntofo Công Phá`,
+    description: `K'Sante slams his weapon, dealing physical damage and slowing enemies. If he hits a target, he gains a stack of Ntofo Strikes. At 2 stacks, he instead fires a shockwave that pulls in and stuns the target. During All Out, this ability's cooldown is reduced.`,
+    descriptionVi: `K'Sante đập vũ khí xuống, gây sát thương vật lý và làm chậm kẻ địch. Nếu trúng mục tiêu, hắn nhận một cộng dồn Ntofo Công Phá. Ở 2 cộng dồn, kỹ năng đổi thành sóng xung kích kéo mục tiêu vào và làm choáng. Khi Khô Máu, hồi chiêu kỹ năng này được giảm.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [3, 3, 3, 3],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [20, 20, 20, 20],
+      resource: `MANA`,
+    },
+    range: {
+      type: `LINE_WEAPON_SLAM_OR_SHOCKWAVE`,
+    },
+    scaling: {
+      damage: {
+        values: [80, 120, 160, 200],
+        bonusArmorRatio: 0.35,
+        bonusMagicResistRatio: 0.35,
+        damageType: `PHYSICAL`,
+      },
+      slowPercent: 80,
+      slowDurationSeconds: 0.5,
+      stackDurationSeconds: 6,
+      maxStacks: 2,
+      gainsStackOnHit: true,
+      atTwoStacksFiresShockwave: true,
+      shockwavePullsTarget: true,
+      shockwaveStunDurationSeconds: 0.75,
+      allOut: {
+        cooldownReductionPercent: 30,
+      },
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.STUN],
+    tags: [
+      `NTOFO_STRIKES`,
+      `STACKING_ABILITY`,
+      `SHOCKWAVE`,
+      `PULL`,
+      `STUN`,
+      `SLOW`,
+      `ALL_OUT`,
+    ],
+  },
+  // K'SANTE - W
+  {
+    championKey: `ksante`,
+    slot: SkillSlot.W,
+    name: `Path Maker`,
+    nameVi: `Mở Đường`,
+    description: `K'Sante raises his weapons and charges up. During this time, he is unstoppable and reduces incoming damage. After charging, he dashes forward, dealing physical damage based on the target's maximum Health, knocking back the target, and stunning based on charge time. During All Out, this ability's cooldown is refreshed, deals additional true damage based on charge time, gains increased damage reduction and dash speed, but no longer knocks back or stuns.`,
+    descriptionVi: `K'Sante giương vũ khí và tụ lực. Trong thời gian này, hắn không thể bị cản phá và giảm sát thương nhận vào. Sau khi tụ lực, hắn lướt về phía trước, gây sát thương vật lý theo Máu tối đa của mục tiêu, đẩy lùi và làm choáng dựa trên thời gian tụ lực. Khi Khô Máu, hồi chiêu kỹ năng này được làm mới, gây thêm sát thương chuẩn theo thời gian tụ lực, tăng giảm sát thương và tốc độ lướt, nhưng không còn đẩy lùi hoặc làm choáng.`,
+    damageType: DamageType.MIXED,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [13, 12, 11, 10],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [40, 45, 50, 55],
+      resource: `MANA`,
+    },
+    range: {
+      type: `CHARGED_UNSTOPPABLE_DASH`,
+    },
+    scaling: {
+      chargeDurationSeconds: {
+        min: 0.3,
+        max: 0.75,
+      },
+      unstoppableWhileCharging: true,
+      incomingDamageReductionPercent: 30,
+      dashDamage: {
+        flatValues: [50, 80, 110, 140],
+        targetMaxHealthPercent: 8,
+        bonusArmorRatioPercent: 0.02,
+        bonusMagicResistRatioPercent: 0.02,
+        damageType: `PHYSICAL`,
+      },
+      knocksBackTarget: true,
+      stunDurationByChargeTimeSeconds: {
+        min: 0.5,
+        max: 1.65,
+      },
+      maxDamageToMonsters: [180, 280, 380, 480],
+      allOut: {
+        refreshesCooldown: true,
+        additionalTrueDamagePercentByChargeTime: {
+          min: 10,
+          max: 80,
+        },
+        damageReductionIncreasePercent: 75,
+        dashSpeedIncreased: true,
+        noLongerKnocksBack: true,
+        noLongerStuns: true,
+      },
+    },
+    effects: [
+      SkillEffect.DAMAGE,
+      SkillEffect.DASH,
+      SkillEffect.KNOCK_BACK,
+      SkillEffect.STUN,
+      SkillEffect.DAMAGE_REDUCTION,
+    ],
+    tags: [
+      `PATH_MAKER`,
+      `CHARGED_DASH`,
+      `UNSTOPPABLE`,
+      `DAMAGE_REDUCTION`,
+      `KNOCK_BACK`,
+      `STUN`,
+      `TRUE_DAMAGE`,
+      `ALL_OUT`,
+    ],
+  },
+  // K'SANTE - E
+  {
+    championKey: `ksante`,
+    slot: SkillSlot.E,
+    name: `Footwork`,
+    nameVi: `Bước Chân Dũng Mãnh`,
+    description: `K'Sante dashes and gains a shield. If dashing to an allied champion, the dash distance is significantly increased and the ally gains the same shield. During All Out, this ability's cooldown is reduced and dash speed is increased.`,
+    descriptionVi: `K'Sante lướt và nhận một lớp lá chắn. Nếu lướt tới tướng đồng minh, khoảng cách lướt được tăng mạnh và đồng minh cũng nhận lá chắn tương tự. Khi Khô Máu, hồi chiêu kỹ năng này được giảm và tốc độ lướt tăng.`,
+    damageType: DamageType.UTILITY,
+    targetType: TargetType.ALLY,
+    cooldown: {
+      values: [11, 10, 9, 8],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [40, 45, 50, 55],
+      resource: `MANA`,
+    },
+    range: {
+      type: `SELF_OR_ALLIED_CHAMPION_DASH_SHIELD`,
+    },
+    scaling: {
+      shieldAmount: {
+        values: [75, 120, 165, 210],
+        bonusHealthRatio: 0.15,
+      },
+      shieldDurationSeconds: 2,
+      dashesToTarget: true,
+      alliedChampionDashDistanceSignificantlyIncreased: true,
+      alliedChampionReceivesSameShield: true,
+      allOut: {
+        cooldownReductionPercent: 50,
+        dashSpeedIncreased: true,
+      },
+    },
+    effects: [SkillEffect.DASH, SkillEffect.SHIELD],
+    tags: [
+      `FOOTWORK`,
+      `DASH`,
+      `SHIELD`,
+      `ALLY_SHIELD`,
+      `BONUS_HEALTH_SCALING`,
+      `ALL_OUT`,
+    ],
+  },
+  // K'SANTE - R
+  {
+    championKey: `ksante`,
+    slot: SkillSlot.R,
+    name: `All Out`,
+    nameVi: `Khô Máu`,
+    description: `K'Sante shatters his ntofos to knock back an enemy champion, deal physical damage, dash behind them, and enter All Out. If the enemy would hit a wall, they are knocked back through the wall and K'Sante strikes them again. During All Out, his basic abilities are upgraded, he gains Attack Speed, bonus Armor Penetration and Omnivamp, but loses maximum Health, bonus Armor, and bonus Magic Resist. K'Sante is unstoppable and roots his target while casting this ability.`,
+    descriptionVi: `K'Sante phá vỡ ntofo để đẩy lùi một tướng địch, gây sát thương vật lý, lướt ra sau chúng và bước vào trạng thái Khô Máu. Nếu kẻ địch va vào tường, chúng bị đẩy xuyên tường và K'Sante tấn công thêm lần nữa. Khi Khô Máu, kỹ năng cơ bản của hắn được nâng cấp, nhận Tốc Độ Đánh, Xuyên Giáp cộng thêm và Hút Máu Toàn Phần, nhưng mất Máu tối đa, Giáp cộng thêm và Kháng Phép cộng thêm. K'Sante không thể bị cản phá và trói chân mục tiêu khi đang thi triển kỹ năng này.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.CHAMPION,
+    cooldown: {
+      values: [80, 70, 60],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: {
+      type: `TARGETED_ENEMY_CHAMPION_KNOCKBACK_TRANSFORM`,
+    },
+    scaling: {
+      initialDamage: {
+        values: [80, 115, 150],
+        damageType: `PHYSICAL`,
+      },
+      knocksBackEnemyChampion: true,
+      dashesBehindTarget: true,
+      allOutDurationSeconds: 15,
+      demolishingStrike: {
+        triggersIfEnemyWouldHitWall: true,
+        knocksTargetThroughWall: true,
+        secondStrikeDamage: {
+          values: [80, 115, 150],
+          bonusHealthRatio: 0.05,
+          damageType: `PHYSICAL`,
+        },
+      },
+      allOutBuffs: {
+        upgradesBasicAbilities: true,
+        attackSpeedBonusPercent: [40, 60, 80],
+        bonusArmorPenetrationPercent: 50,
+        omnivampPercent: 20,
+        maxHealthLossPercent: 30,
+        bonusArmorLossPercent: 80,
+        bonusMagicResistLossPercent: 80,
+      },
+      unstoppableWhileCasting: true,
+      rootsTargetWhileCasting: true,
+    },
+    effects: [
+      SkillEffect.DAMAGE,
+      SkillEffect.KNOCK_BACK,
+      SkillEffect.DASH,
+      SkillEffect.BUFF,
+      SkillEffect.ROOT,
+    ],
+    tags: [
+      `ALL_OUT`,
+      `DEMOLISHING_STRIKE`,
+      `FORM_SWAP`,
+      `KNOCK_BACK`,
+      `WALL_COLLISION`,
+      `ARMOR_PENETRATION`,
+      `OMNIVAMP`,
+      `UNSTOPPABLE`,
+    ],
+  },
+  // === KAI'SA ===
+  // KAI'SA - PASSIVE
+  {
+    championKey: `kaisa`,
+    slot: SkillSlot.PASSIVE,
+    name: `Second Skin`,
+    nameVi: `Lớp Da Thứ Hai`,
+    description: `Living Weapon: Kai'Sa's abilities evolve based upon the permanent stats she gains from advanced equipment.
+
+Caustic Wounds: Kai'Sa's attacks stack Plasma for 4 seconds and deal 5 (+15% AP) bonus magic damage. Plasma detonates at 5 stacks, dealing 15% (+0.025% AP) bonus magic damage of their missing Health. Nearby allies apply 1 stack to champions they Immobilize.
+
+Plasma detonations deal a max of 400 damage to monsters.`,
+    descriptionVi: `Vũ Khí Sống: Kỹ năng của Kai'Sa tiến hóa dựa trên chỉ số vĩnh viễn cô nhận được từ trang bị nâng cấp.
+
+Vết Thương Ăn Mòn: Đòn đánh của Kai'Sa cộng dồn Plasma trong 4 giây và gây thêm 5 (+15% SMPT) sát thương phép. Khi đạt 5 cộng dồn, Plasma phát nổ, gây sát thương phép cộng thêm bằng 15% (+0.025% SMPT) Máu đã mất của mục tiêu. Đồng minh gần đó áp dụng 1 cộng dồn lên tướng địch khi khống chế bất động chúng.
+
+Sát thương kích nổ Plasma lên quái tối đa 400.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMY,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      plasmaDurationSeconds: 4,
+      plasmaStacksToDetonate: 5,
+      bonusMagicDamageBase: 5,
+      bonusMagicDamageApRatio: 0.15,
+      detonationMissingHealthDamagePercent: 15,
+      detonationMissingHealthDamageApRatioPercent: 0.025,
+      maxMonsterDetonationDamage: 400,
+      allyImmobilizePlasmaStacks: 1,
+      livingWeaponEvolvesFromPermanentAdvancedEquipmentStats: true,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `PLASMA`,
+      `LIVING_WEAPON`,
+      `ABILITY_EVOLUTION`,
+      `ON_HIT_EFFECTS`,
+      `MISSING_HEALTH_DAMAGE`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KAI'SA - Q
+  {
+    championKey: `kaisa`,
+    slot: SkillSlot.Q,
+    name: `Icathian Rain`,
+    nameVi: `Cơn Mưa Icathia`,
+    description: `Launches 6 missiles that split evenly among nearby enemies, each dealing 40 / 60 / 80 / 100 (+50% AD +30% AP) physical damage. Additional hits on champions or monsters deal 25% damage.
+
+Living Weapon: 70 Attack Damage - Fires 12 missiles.
+
+Minions below 35% Health take 150% damage. Damage factor to Monsters: 50%.`,
+    descriptionVi: `Phóng 6 tên lửa chia đều lên các kẻ địch gần đó, mỗi tên lửa gây 40 / 60 / 80 / 100 (+50% SMCK +30% SMPT) sát thương vật lý. Các lần trúng thêm lên tướng hoặc quái gây 25% sát thương.
+
+Vũ Khí Sống: 70 Sức Mạnh Công Kích - Bắn 12 tên lửa.
+
+Lính dưới 35% Máu nhận 150% sát thương. Hệ số sát thương lên quái: 50%.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [9, 8, 7, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [55, 55, 55, 55],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      missileCount: 6,
+      evolvedMissileCount: 12,
+      livingWeaponAttackDamageRequirement: 70,
+      damageValues: [40, 60, 80, 100],
+      attackDamageRatio: 0.5,
+      abilityPowerRatio: 0.3,
+      additionalHitDamageRatio: 0.25,
+      lowHealthMinionThresholdPercent: 35,
+      lowHealthMinionDamageRatio: 1.5,
+      monsterDamageRatio: 0.5,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `MISSILE`,
+      `MULTI_HIT`,
+      `LIVING_WEAPON`,
+      `ABILITY_EVOLUTION`,
+      `PHYSICAL_DAMAGE`,
+      `WAVE_CLEAR`,
+    ],
+  },
+
+  // KAI'SA - W
+  {
+    championKey: `kaisa`,
+    slot: SkillSlot.W,
+    name: `Void Seeker`,
+    nameVi: `Tia Truy Kích`,
+    description: `Fires a blast that reveals the first enemy hit, adds 2 Plasma stacks, and deals 30 / 60 / 90 / 120 (+110% AD +60% AP) magic damage.
+
+Living Weapon: 80 Ability Power - Adds 3 stacks and refunds 70% Cooldown on champion hits.`,
+    descriptionVi: `Bắn ra một luồng năng lượng làm lộ diện kẻ địch đầu tiên trúng phải, cộng 2 điểm Plasma và gây 30 / 60 / 90 / 120 (+110% SMCK +60% SMPT) sát thương phép.
+
+Vũ Khí Sống: 80 Sức Mạnh Phép Thuật - Cộng 3 điểm Plasma và hoàn lại 70% hồi chiêu khi trúng tướng.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [20, 18, 16, 14],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [60, 65, 70, 75],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damageValues: [30, 60, 90, 120],
+      attackDamageRatio: 1.1,
+      abilityPowerRatio: 0.6,
+      plasmaStacks: 2,
+      evolvedPlasmaStacks: 3,
+      livingWeaponAbilityPowerRequirement: 80,
+      cooldownRefundOnChampionHitRatio: 0.7,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.REVEAL],
+    tags: [
+      `PLASMA`,
+      `SKILL_SHOT`,
+      `REVEAL`,
+      `LONG_RANGE_POKE`,
+      `COOLDOWN_REFUND`,
+      `LIVING_WEAPON`,
+      `ABILITY_EVOLUTION`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KAI'SA - E
+  {
+    championKey: `kaisa`,
+    slot: SkillSlot.E,
+    name: `Supercharge`,
+    nameVi: `Tích Tụ Năng Lượng`,
+    description: `Charges up for 1 second, gaining 50% / 55% / 60% / 65% (+80% Attack Speed) Movement Speed. For 4 seconds after charging, gain 40% / 50% / 60% / 70% Attack Speed.
+
+Living Weapon: 65% Attack Speed - Grants invisibility during the charge up.
+
+Attacks reduce Supercharge's Cooldown by 0.5 seconds. Charge time and Movement Speed scale with Attack Speed.`,
+    descriptionVi: `Tích tụ trong 1 giây, nhận 50% / 55% / 60% / 65% (+80% Tốc Độ Đánh) Tốc Độ Di Chuyển. Trong 4 giây sau khi tích tụ, nhận 40% / 50% / 60% / 70% Tốc Độ Đánh.
+
+Vũ Khí Sống: 65% Tốc Độ Đánh - Nhận tàng hình trong thời gian tích tụ.
+
+Đòn đánh giảm hồi chiêu của Tích Tụ Năng Lượng đi 0.5 giây. Thời gian tích tụ và Tốc Độ Di Chuyển tỉ lệ với Tốc Độ Đánh.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [16, 14, 12, 10],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [30, 30, 30, 30],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      chargeDurationSeconds: 1,
+      buffDurationSeconds: 4,
+      movementSpeedValuesPercent: [50, 55, 60, 65],
+      movementSpeedAttackSpeedRatioPercent: 80,
+      attackSpeedValuesPercent: [40, 50, 60, 70],
+      livingWeaponAttackSpeedRequirementPercent: 65,
+      grantsInvisibilityDuringChargeWhenEvolved: true,
+      cooldownReductionPerAttackSeconds: 0.5,
+      chargeTimeScalesWithAttackSpeed: true,
+      movementSpeedScalesWithAttackSpeed: true,
+    },
+    effects: [SkillEffect.SPEED_UP, SkillEffect.BUFF],
+    tags: [
+      `MOVEMENT_SPEED`,
+      `ATTACK_SPEED_STEROID`,
+      `STEALTH`,
+      `SELF_BUFF`,
+      `COOLDOWN_REDUCTION`,
+      `LIVING_WEAPON`,
+      `ABILITY_EVOLUTION`,
+    ],
+  },
+
+  // KAI'SA - R
+  {
+    championKey: `kaisa`,
+    slot: SkillSlot.R,
+    name: `Killer Instinct`,
+    nameVi: `Bản Năng Sát Thủ`,
+    description: `Dash to a location near an enemy champion marked by Plasma, gaining a shield that absorbs 75 / 100 / 125 (+100% / 150% / 200% AD +75% AP) damage for 2 seconds.`,
+    descriptionVi: `Lướt tới một vị trí gần tướng địch bị đánh dấu Plasma, nhận lá chắn hấp thụ 75 / 100 / 125 (+100% / 150% / 200% SMCK +75% SMPT) sát thương trong 2 giây.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.CHAMPION,
+    cooldown: {
+      values: [80, 70, 60],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      shieldValues: [75, 100, 125],
+      shieldAttackDamageRatios: [1, 1.5, 2],
+      shieldAbilityPowerRatio: 0.75,
+      shieldDurationSeconds: 2,
+      requiresEnemyChampionMarkedByPlasma: true,
+      dashToLocationNearMarkedChampion: true,
+    },
+    effects: [SkillEffect.DASH, SkillEffect.SHIELD],
+    tags: [
+      `PLASMA`,
+      `DASH`,
+      `SHIELD`,
+      `BACKLINE_ACCESS`,
+      `PICK_POTENTIAL`,
+      `KILLER_INSTINCT`,
+    ],
+  },
+  // === KALISTA ===
+  // KALISTA - PASSIVE
+  {
+    championKey: `kalista`,
+    slot: SkillSlot.PASSIVE,
+    name: `Martial Poise`,
+    nameVi: `Phong Thái Quân Nhân`,
+    description: `When Kalista winds up her attacks, moving the left joystick will cause her to dash for a short distance in that direction after she throws her spear.
+
+When the game starts, she can choose an ally to become her Oathsworn. Kalista cannot change her Oathsworn.
+
+Once Kalista launches her attacks, they cannot be canceled. Her dash speed and distance scale with boot tier.`,
+    descriptionVi: `Khi Kalista chuẩn bị tung đòn đánh, di chuyển cần điều khiển trái sẽ khiến cô lướt một đoạn ngắn theo hướng đó sau khi phóng lao.
+
+Khi trận đấu bắt đầu, cô có thể chọn một đồng minh làm Thệ Ước. Kalista không thể thay đổi Thệ Ước.
+
+Sau khi Kalista tung đòn đánh, đòn đánh đó không thể bị hủy. Tốc độ và khoảng cách lướt của cô tỉ lệ với bậc giày.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      dashAfterAttackWindup: true,
+      attackCannotBeCanceledAfterLaunch: true,
+      dashSpeedScalesWithBootTier: true,
+      dashDistanceScalesWithBootTier: true,
+      oathswornSelectedAtGameStart: true,
+      oathswornCannotBeChanged: true,
+    },
+    effects: [SkillEffect.DASH],
+    tags: [
+      `MARTIAL_POISE`,
+      `DASH`,
+      `OATHSWORN`,
+      `BOOT_SCALING`,
+      `AUTO_ATTACK_CHAMPION`,
+    ],
+  },
+
+  // KALISTA - Q
+  {
+    championKey: `kalista`,
+    slot: SkillSlot.Q,
+    name: `Pierce`,
+    nameVi: `Đâm Xuyên`,
+    description: `Hurls a spear, dealing 70 / 135 / 200 / 265 (+110% AD) physical damage to the first target hit. If this kills the target, the spear continues onward, carrying the target's Rend stacks to the next enemy hit.
+
+After casting this ability, Kalista can dash using Martial Poise.`,
+    descriptionVi: `Phóng một ngọn lao, gây 70 / 135 / 200 / 265 (+110% SMCK) sát thương vật lý lên mục tiêu đầu tiên trúng phải. Nếu kỹ năng này hạ gục mục tiêu, ngọn lao tiếp tục bay tiếp, mang theo cộng dồn Giày Vò của mục tiêu sang kẻ địch tiếp theo trúng phải.
+
+Sau khi dùng kỹ năng này, Kalista có thể lướt bằng Phong Thái Quân Nhân.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [8, 7, 7, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [55, 60, 65, 70],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damageValues: [70, 135, 200, 265],
+      attackDamageRatio: 1.1,
+      continuesOnKill: true,
+      transfersRendStacksOnKill: true,
+      enablesMartialPoiseDashAfterCast: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.DASH],
+    tags: [
+      `SPEAR`,
+      `SKILL_SHOT`,
+      `PIERCING_PROJECTILE`,
+      `REND_STACK_TRANSFER`,
+      `MARTIAL_POISE`,
+      `PHYSICAL_DAMAGE`,
+    ],
+  },
+
+  // KALISTA - W
+  {
+    championKey: `kalista`,
+    slot: SkillSlot.W,
+    name: `Sentinel`,
+    nameVi: `Lính Canh`,
+    description: `Passive: When the distance between Kalista and her Oathsworn is less than 8, and both hit the same target within 4 seconds using attacks or Pierce, Kalista deals 16% / 17% / 18% / 19% of the target's max Health as bonus magic damage. This effect has a 8 second cooldown per target.
+
+Active: Sends a Soul Sentinel to patrol an area. Upon spotting an enemy champion, the Sentinel follows them for 4 seconds, revealing them for 4 seconds. Sentinels disappear after patrolling 3 laps.
+
+Charge: Kalista gains a charge every 45 / 40 / 35 / 30 seconds, storing up to 2 charges.
+
+This ability's passive deals at least 75 damage against minions and executes them if their Health is below 125.`,
+    descriptionVi: `Nội tại: Khi khoảng cách giữa Kalista và Thệ Ước nhỏ hơn 8, và cả hai cùng đánh trúng một mục tiêu trong vòng 4 giây bằng đòn đánh hoặc Đâm Xuyên, Kalista gây thêm sát thương phép bằng 16% / 17% / 18% / 19% Máu tối đa của mục tiêu. Hiệu ứng này có 8 giây hồi chiêu trên mỗi mục tiêu.
+
+Kích hoạt: Gửi một Lính Canh Linh Hồn đi tuần tra một khu vực. Khi phát hiện tướng địch, Lính Canh bám theo chúng trong 4 giây, làm lộ diện chúng trong 4 giây. Lính Canh biến mất sau khi tuần tra 3 vòng.
+
+Tích trữ: Kalista nhận một điểm tích trữ mỗi 45 / 40 / 35 / 30 giây, tối đa 2 điểm.
+
+Nội tại của kỹ năng này gây ít nhất 75 sát thương lên lính và kết liễu chúng nếu Máu của chúng dưới 125.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [20, 20, 20, 20],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [30, 30, 30, 30],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      oathswornDistanceThreshold: 8,
+      sameTargetHitWindowSeconds: 4,
+      maxHealthDamagePercentValues: [16, 17, 18, 19],
+      perTargetCooldownSeconds: 8,
+      revealFollowDurationSeconds: 4,
+      revealDurationSeconds: 4,
+      patrolLapsBeforeDisappear: 3,
+      chargeRechargeSeconds: [45, 40, 35, 30],
+      maxCharges: 2,
+      minimumMinionDamage: 75,
+      minionExecuteHealthThreshold: 125,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.REVEAL],
+    tags: [
+      `OATHSWORN`,
+      `SOUL_SENTINEL`,
+      `REVEAL`,
+      `VISION`,
+      `PATROL`,
+      `CHARGE_SYSTEM`,
+      `PERCENT_HEALTH_DAMAGE`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KALISTA - E
+  {
+    championKey: `kalista`,
+    slot: SkillSlot.E,
+    name: `Rend`,
+    nameVi: `Giày Vò`,
+    description: `Passive: On hit, Kalista's spears linger in their target for 4 seconds, applying a stacking Rend.
+
+Active: Kalista rips the spears from nearby enemies, dealing 30 / 45 / 60 / 75 (+70% AD) physical damage plus 12 / 22 / 32 / 42 (+36% / 43% / 50% / 57% AD) physical damage per spear after the first. Slows enemies hit by 15% / 25% / 35% / 45% for 2 seconds.
+
+If this ability kills at least one target, its cooldown is refreshed, and it refunds 12 / 18 / 24 / 30 Mana.
+
+Deals 50% damage to epic monsters.`,
+    descriptionVi: `Nội tại: Khi đánh trúng, lao của Kalista lưu lại trong mục tiêu trong 4 giây, tạo cộng dồn Giày Vò.
+
+Kích hoạt: Kalista rút lao khỏi các kẻ địch gần đó, gây 30 / 45 / 60 / 75 (+70% SMCK) sát thương vật lý cộng thêm 12 / 22 / 32 / 42 (+36% / 43% / 50% / 57% SMCK) sát thương vật lý với mỗi lao sau lao đầu tiên. Làm chậm kẻ địch trúng phải 15% / 25% / 35% / 45% trong 2 giây.
+
+Nếu kỹ năng này hạ gục ít nhất một mục tiêu, hồi chiêu được làm mới và hoàn lại 12 / 18 / 24 / 30 Năng Lượng.
+
+Gây 50% sát thương lên quái khủng.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [10, 9, 8, 7],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [30, 30, 30, 30],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      rendStackDurationSeconds: 4,
+      baseDamageValues: [30, 45, 60, 75],
+      baseDamageAttackDamageRatio: 0.7,
+      damagePerSpearAfterFirstValues: [12, 22, 32, 42],
+      damagePerSpearAfterFirstAttackDamageRatios: [0.36, 0.43, 0.5, 0.57],
+      slowValuesPercent: [15, 25, 35, 45],
+      slowDurationSeconds: 2,
+      cooldownRefreshOnKill: true,
+      manaRefundOnKillValues: [12, 18, 24, 30],
+      epicMonsterDamageRatio: 0.5,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
+    tags: [
+      `REND`,
+      `STACKING_PASSIVE`,
+      `SLOW`,
+      `COOLDOWN_REFRESH`,
+      `MANA_REFUND`,
+      `OBJECTIVE_CONTROL`,
+      `PHYSICAL_DAMAGE`,
+    ],
+  },
+
+  // KALISTA - R
+  {
+    championKey: `kalista`,
+    slot: SkillSlot.R,
+    name: `Fate's Call`,
+    nameVi: `Định Mệnh Vẫy Gọi`,
+    description: `Kalista puts her Oathsworn into stasis and draws them to herself for up to 4 seconds.
+
+The Oathsworn can launch themselves in a direction, knocking nearby enemies airborne for 1 / 1.5 / 2 seconds upon hitting the first enemy champion. The Oathsworn then ricochets for a distance based on their max attack range.`,
+    descriptionVi: `Kalista đưa Thệ Ước vào trạng thái ngưng đọng và kéo họ về phía mình trong tối đa 4 giây.
+
+Thệ Ước có thể tự phóng về một hướng, hất tung các kẻ địch gần đó trong 1 / 1.5 / 2 giây khi chạm tướng địch đầu tiên. Sau đó Thệ Ước nảy đi một khoảng cách dựa trên tầm đánh tối đa của họ.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.ALLY,
+    cooldown: {
+      values: [60, 55, 50],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      stasisMaxDurationSeconds: 4,
+      knockUpDurationSeconds: [1, 1.5, 2],
+      oathswornLaunchDirection: true,
+      ricochetDistanceScalesWithOathswornMaxAttackRange: true,
+    },
+    effects: [SkillEffect.BUFF, SkillEffect.KNOCK_UP],
+    tags: [
+      `FATES_CALL`,
+      `OATHSWORN`,
+      `STASIS`,
+      `ALLY_ENGAGE`,
+      `KNOCK_UP`,
+      `ALLY_FOLLOW_UP`,
+    ],
+  },
+  // === KARMA ===
+  // KARMA - PASSIVE
+  {
+    championKey: `karma`,
+    slot: SkillSlot.PASSIVE,
+    name: `Mantra`,
+    nameVi: `Kinh Mantra`,
+    description: `Every ability cast grants Karma a stack of Mantra. At 3 stacks, she enters a Mantra State, enhancing her next basic ability.`,
+    descriptionVi: `Mỗi lần dùng kỹ năng cho Karma một cộng dồn Mantra. Khi đạt 3 cộng dồn, cô bước vào Trạng Thái Mantra, cường hóa kỹ năng cơ bản tiếp theo.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      mantraStacksPerAbilityCast: 1,
+      mantraStacksRequired: 3,
+      enhancesNextBasicAbility: true,
+    },
+    effects: [SkillEffect.BUFF],
+    tags: [`MANTRA`, `EMPOWERED_ABILITY`, `STACKING_PASSIVE`, `SELF_BUFF`],
+  },
+
+  // KARMA - Q
+  {
+    championKey: `karma`,
+    slot: SkillSlot.Q,
+    name: `Inner Flame`,
+    nameVi: `Nội Hỏa`,
+    description: `Fires a blast of energy, dealing 60 / 100 / 140 / 180 (+40% AP) magic damage to the first target hit and surrounding enemies, and slowing them by 35% for 1.5 seconds.
+
+Mantra: Increases the destructive power of the blast, dealing 65 / 140 / 215 / 290 (+50% AP) magic damage to the first target hit and surrounding enemies. The blast leaves a field for 1.5 seconds, slowing targets by 42.5% / 45% / 47.5% / 50%, after which it explodes and deals 40 / 80 / 120 / 160 (+50% AP) magic damage.`,
+    descriptionVi: `Bắn ra một luồng năng lượng, gây 60 / 100 / 140 / 180 (+40% SMPT) sát thương phép lên mục tiêu đầu tiên trúng phải và các kẻ địch xung quanh, đồng thời làm chậm chúng 35% trong 1.5 giây.
+
+Mantra: Tăng sức công phá của luồng năng lượng, gây 65 / 140 / 215 / 290 (+50% SMPT) sát thương phép lên mục tiêu đầu tiên trúng phải và các kẻ địch xung quanh. Luồng năng lượng để lại một vùng trong 1.5 giây, làm chậm mục tiêu 42.5% / 45% / 47.5% / 50%, sau đó phát nổ và gây 40 / 80 / 120 / 160 (+50% SMPT) sát thương phép.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [9, 8, 7, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [60, 60, 60, 60],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damageValues: [60, 100, 140, 180],
+      abilityPowerRatio: 0.4,
+      slowPercent: 35,
+      slowDurationSeconds: 1.5,
+      mantraDamageValues: [65, 140, 215, 290],
+      mantraAbilityPowerRatio: 0.5,
+      mantraFieldDurationSeconds: 1.5,
+      mantraFieldSlowValuesPercent: [42.5, 45, 47.5, 50],
+      mantraExplosionDamageValues: [40, 80, 120, 160],
+      mantraExplosionAbilityPowerRatio: 0.5,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
+    tags: [
+      `MANTRA`,
+      `EMPOWERED_ABILITY`,
+      `SKILL_SHOT`,
+      `AREA_DAMAGE`,
+      `SLOW`,
+      `ZONE_CONTROL`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KARMA - W
+  {
+    championKey: `karma`,
+    slot: SkillSlot.W,
+    name: `Focused Resolve`,
+    nameVi: `Chuyên Tâm`,
+    description: `Tethers up to two nearby enemy champions, dealing 35 / 60 / 85 / 110 (+40% AP) magic damage and revealing them for 1.75 seconds. If targets fail to break the tether, they take 40 / 70 / 100 / 130 (+45% AP) magic damage and are rooted for 1 / 1.25 / 1.5 / 1.75 seconds.
+
+Mantra: A new tether will be formed between tethered targets. If there is only one tethered target, the new tether will spread toward an additional nearby enemy champion. If targets fail to break all the tethers, they take 40 / 70 / 100 / 130 (+45% AP) magic damage and are rooted for an improved 1.5 / 1.75 / 2 / 2.25 seconds.`,
+    descriptionVi: `Liên kết tối đa hai tướng địch gần đó, gây 35 / 60 / 85 / 110 (+40% SMPT) sát thương phép và làm lộ diện chúng trong 1.75 giây. Nếu mục tiêu không phá được liên kết, chúng nhận 40 / 70 / 100 / 130 (+45% SMPT) sát thương phép và bị trói chân trong 1 / 1.25 / 1.5 / 1.75 giây.
+
+Mantra: Một liên kết mới được hình thành giữa các mục tiêu đang bị liên kết. Nếu chỉ có một mục tiêu bị liên kết, liên kết mới sẽ lan sang một tướng địch gần đó. Nếu mục tiêu không phá được toàn bộ liên kết, chúng nhận 40 / 70 / 100 / 130 (+45% SMPT) sát thương phép và bị trói chân lâu hơn trong 1.5 / 1.75 / 2 / 2.25 giây.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.CHAMPIONS,
+    cooldown: {
+      values: [15, 15, 15, 15],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [55, 60, 65, 70],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      maxTetherTargets: 2,
+      initialDamageValues: [35, 60, 85, 110],
+      initialDamageAbilityPowerRatio: 0.4,
+      revealDurationSeconds: 1.75,
+      delayedDamageValues: [40, 70, 100, 130],
+      delayedDamageAbilityPowerRatio: 0.45,
+      rootDurationSeconds: [1, 1.25, 1.5, 1.75],
+      mantraCreatesAdditionalTether: true,
+      mantraCanSpreadToAdditionalNearbyEnemyChampion: true,
+      mantraRootDurationSeconds: [1.5, 1.75, 2, 2.25],
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.REVEAL, SkillEffect.ROOT],
+    tags: [
+      `MANTRA`,
+      `EMPOWERED_ABILITY`,
+      `TETHER`,
+      `REVEAL`,
+      `ROOT`,
+      `PICK_POTENTIAL`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KARMA - E
+  {
+    championKey: `karma`,
+    slot: SkillSlot.E,
+    name: `Inspire`,
+    nameVi: `Linh Giáp`,
+    description: `Grants an allied champion 60 / 90 / 120 / 150 (+65% AP) shield for 3 seconds and 30% movement speed for 1.5 seconds.
+
+Mantra: Karma focuses her power, granting a 120 / 180 / 240 / 300 (+65% AP) shield that decays over 4 seconds and 60% movement speed that decays to 20% over the same duration.
+
+An additional ring is generated around the shielded target, and the first ally champion who enters the ring will be granted the same shield and movement speed.`,
+    descriptionVi: `Cho một tướng đồng minh lá chắn 60 / 90 / 120 / 150 (+65% SMPT) trong 3 giây và 30% Tốc Độ Di Chuyển trong 1.5 giây.
+
+Mantra: Karma tập trung sức mạnh, cho lá chắn 120 / 180 / 240 / 300 (+65% SMPT) giảm dần trong 4 giây và 60% Tốc Độ Di Chuyển giảm dần còn 20% trong cùng thời gian.
+
+Một vòng năng lượng được tạo quanh mục tiêu được tạo lá chắn, và tướng đồng minh đầu tiên bước vào vòng sẽ nhận cùng lá chắn và Tốc Độ Di Chuyển.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.ALLY,
+    cooldown: {
+      values: [10, 9, 8, 7],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [70, 70, 70, 70],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      shieldValues: [60, 90, 120, 150],
+      shieldAbilityPowerRatio: 0.65,
+      shieldDurationSeconds: 3,
+      movementSpeedPercent: 30,
+      movementSpeedDurationSeconds: 1.5,
+      mantraShieldValues: [120, 180, 240, 300],
+      mantraShieldAbilityPowerRatio: 0.65,
+      mantraShieldDecayDurationSeconds: 4,
+      mantraMovementSpeedStartPercent: 60,
+      mantraMovementSpeedEndPercent: 20,
+      mantraMovementSpeedDecayDurationSeconds: 4,
+      grantsSameShieldAndMovementSpeedToFirstAllyEnteringRing: true,
+    },
+    effects: [SkillEffect.SHIELD, SkillEffect.SPEED_UP],
+    tags: [
+      `MANTRA`,
+      `EMPOWERED_ABILITY`,
+      `SHIELD`,
+      `ALLY_SHIELD`,
+      `MOVEMENT_SPEED`,
+      `ALLY_BUFF`,
+      `TEAM_SUPPORT`,
+    ],
+  },
+
+  // KARMA - R
+  {
+    championKey: `karma`,
+    slot: SkillSlot.R,
+    name: `Transcendent Embrace`,
+    nameVi: `Vòng Tay Siêu Phàm`,
+    description: `Immediately enters Mantra state.
+
+Forms a ring of spirit energy at the target location. After 1 second, it detonates, dealing 170 / 280 / 390 (+80% AP) magic damage to all enemies inside the circle and slowing them by 35% for 1 second.`,
+    descriptionVi: `Ngay lập tức bước vào Trạng Thái Mantra.
+
+Tạo một vòng linh năng tại vị trí chỉ định. Sau 1 giây, vòng năng lượng phát nổ, gây 170 / 280 / 390 (+80% SMPT) sát thương phép lên tất cả kẻ địch bên trong vòng tròn và làm chậm chúng 35% trong 1 giây.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LOCATION,
+    cooldown: {
+      values: [70, 65, 60],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      immediatelyEntersMantraState: true,
+      detonationDelaySeconds: 1,
+      damageValues: [170, 280, 390],
+      abilityPowerRatio: 0.8,
+      slowPercent: 35,
+      slowDurationSeconds: 1,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.BUFF],
+    tags: [
+      `MANTRA`,
+      `AREA_DAMAGE`,
+      `ZONE_CONTROL`,
+      `SLOW`,
+      `MAGIC_DAMAGE`,
+      `ULTIMATE_EMPOWER`,
+    ],
+  },
+  // === KASSADIN ===
+  // KASSADIN - PASSIVE
+  {
+    championKey: `kassadin`,
+    slot: SkillSlot.PASSIVE,
+    name: `Void Stone`,
+    nameVi: `Đá Hư Không`,
+    description: `Gains a shield that absorbs 50 (+30% AP) magic damage for 1.5 seconds when casting an ability near a visible enemy champion.`,
+    descriptionVi: `Nhận một lá chắn hấp thụ 50 (+30% SMPT) sát thương phép trong 1.5 giây khi dùng kỹ năng gần một tướng địch nhìn thấy được.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      shieldValue: 50,
+      shieldAbilityPowerRatio: 0.3,
+      shieldDurationSeconds: 1.5,
+      triggersWhenCastingAbilityNearVisibleEnemyChampion: true,
+      absorbsMagicDamageOnly: true,
+    },
+    effects: [SkillEffect.SHIELD],
+    tags: [`VOID_STONE`, `MAGIC_SHIELD`, `ANTI_MAGIC`, `SELF_SHIELD`],
+  },
+
+  // KASSADIN - Q
+  {
+    championKey: `kassadin`,
+    slot: SkillSlot.Q,
+    name: `Null Sphere`,
+    nameVi: `Quả Cầu Hư Không`,
+    description: `Fires an orb that deals 80 / 145 / 210 / 275 (+80% AP) magic damage and silences the first enemy hit for 1 second.`,
+    descriptionVi: `Bắn ra một quả cầu gây 80 / 145 / 210 / 275 (+80% SMPT) sát thương phép và câm lặng kẻ địch đầu tiên trúng phải trong 1 giây.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [10, 9, 8, 7],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [70, 75, 80, 85],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damageValues: [80, 145, 210, 275],
+      abilityPowerRatio: 0.8,
+      silenceDurationSeconds: 1,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [`NULL_SPHERE`, `SKILL_SHOT`, `SILENCE`, `MAGIC_DAMAGE`, `POKE`],
+  },
+
+  // KASSADIN - W
+  {
+    championKey: `kassadin`,
+    slot: SkillSlot.W,
+    name: `Nether Blade`,
+    nameVi: `Lưỡi Kiếm Âm Ti`,
+    description: `Enhances his next attack within 4 seconds to gain 250 range, deal an additional 50 / 80 / 110 / 140 (+50% AP) magic damage and restore 5% (15% vs. champions) of missing mana.
+
+If the attack killed the target Nether Blade's remaining cooldown is reduced by 50%.`,
+    descriptionVi: `Cường hóa đòn đánh kế tiếp trong vòng 4 giây, tăng 250 tầm đánh, gây thêm 50 / 80 / 110 / 140 (+50% SMPT) sát thương phép và hồi 5% Năng Lượng đã mất, tăng thành 15% khi đánh tướng.
+
+Nếu đòn đánh này hạ gục mục tiêu, hồi chiêu còn lại của Lưỡi Kiếm Âm Ti giảm 50%.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [10, 10, 10, 10],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [20, 20, 20, 20],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      empoweredAttackWindowSeconds: 4,
+      bonusRange: 250,
+      bonusDamageValues: [50, 80, 110, 140],
+      abilityPowerRatio: 0.5,
+      missingManaRestorePercent: 5,
+      missingManaRestoreVsChampionsPercent: 15,
+      remainingCooldownReductionOnKillRatio: 0.5,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.BUFF],
+    tags: [
+      `NETHER_BLADE`,
+      `EMPOWERED_ATTACK`,
+      `MANA_RESTORE`,
+      `COOLDOWN_REFUND`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KASSADIN - E
+  {
+    championKey: `kassadin`,
+    slot: SkillSlot.E,
+    name: `Force Pulse`,
+    nameVi: `Áp Suất Hư Không`,
+    description: `Deals 60 / 100 / 140 / 180 (+50% AP) magic damage to enemies and slows them by 30% for 1 second.
+
+Force Pulse is enhanced after 6 other abilities are cast nearby, dealing 40% increased damage and slowing for 90% instead.`,
+    descriptionVi: `Gây 60 / 100 / 140 / 180 (+50% SMPT) sát thương phép lên kẻ địch và làm chậm chúng 30% trong 1 giây.
+
+Áp Suất Hư Không được cường hóa sau khi có 6 kỹ năng khác được dùng gần đó, gây thêm 40% sát thương và làm chậm 90%.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [12, 10, 8, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [70, 75, 80, 85],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damageValues: [60, 100, 140, 180],
+      abilityPowerRatio: 0.5,
+      slowPercent: 30,
+      slowDurationSeconds: 1,
+      nearbyAbilityCastsRequiredToEnhance: 6,
+      enhancedDamageIncreasePercent: 40,
+      enhancedSlowPercent: 90,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
+    tags: [
+      `FORCE_PULSE`,
+      `EMPOWERED_ABILITY`,
+      `AREA_DAMAGE`,
+      `SLOW`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KASSADIN - R
+  {
+    championKey: `kassadin`,
+    slot: SkillSlot.R,
+    name: `Riftwalk`,
+    nameVi: `Hư Vô Bộ Pháp`,
+    description: `Blinks to target location and deals 80 / 100 / 120 (+30% AP +1.5% Mana) magic damage to nearby enemies.
+
+The next Riftwalk cast within 12 seconds deals 50% increased damage and costs 200% additional mana. Stacks 3 times.`,
+    descriptionVi: `Dịch chuyển tức thời tới vị trí chỉ định và gây 80 / 100 / 120 (+30% SMPT +1.5% Năng Lượng) sát thương phép lên kẻ địch gần đó.
+
+Lần dùng Hư Vô Bộ Pháp kế tiếp trong vòng 12 giây gây thêm 50% sát thương và tốn thêm 200% Năng Lượng. Cộng dồn tối đa 3 lần.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LOCATION,
+    cooldown: {
+      values: [5, 4, 2],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [70, 70, 70],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damageValues: [80, 100, 120],
+      abilityPowerRatio: 0.3,
+      manaRatioPercent: 1.5,
+      stackWindowSeconds: 12,
+      damageIncreasePerStackPercent: 50,
+      additionalManaCostPerStackPercent: 200,
+      maxStacks: 3,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.DASH],
+    tags: [
+      `RIFTWALK`,
+      `BLINK`,
+      `MANA_SCALING`,
+      `STACKING_DAMAGE`,
+      `AREA_DAMAGE`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+  // === KATARINA ===
+  // KATARINA - PASSIVE
+  {
+    championKey: `katarina`,
+    slot: SkillSlot.PASSIVE,
+    name: `Voracity`,
+    nameVi: `Tham Lam`,
+    description: `Whenever an enemy champion dies that Katarina has damaged in the last 3 seconds, her remaining ability cooldowns are reduced by 15 seconds.
+
+Katarina slashes at all nearby enemies whenever she picks up a Dagger, dealing 55 (+100% bonus AD +34.5% AP) magic damage.`,
+    descriptionVi: `Mỗi khi một tướng địch mà Katarina đã gây sát thương trong vòng 3 giây gần nhất bị hạ gục, hồi chiêu còn lại của các kỹ năng của cô giảm 15 giây.
+
+Katarina chém tất cả kẻ địch gần đó mỗi khi cô nhặt một Dao Găm, gây 55 (+100% SMCK cộng thêm +34.5% SMPT) sát thương phép.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMIES,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      takedownAssistWindowSeconds: 3,
+      remainingCooldownReductionSeconds: 15,
+      daggerPickupDamage: 55,
+      daggerPickupBonusAttackDamageRatio: 1,
+      daggerPickupAbilityPowerRatio: 0.345,
+      triggersOnDaggerPickup: true,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `VORACITY`,
+      `DAGGER`,
+      `COOLDOWN_RESET`,
+      `RESET_CHAMPION`,
+      `AREA_DAMAGE`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KATARINA - Q
+  {
+    championKey: `katarina`,
+    slot: SkillSlot.Q,
+    name: `Bouncing Blades`,
+    nameVi: `Phi Dao`,
+    description: `Throws a Dagger, dealing 75 / 115 / 155 / 195 (+30% AP) magic damage to the target and 2 nearby enemies. The Dagger then ricochets to the ground behind the initial strike point.
+
+The Dagger's time in the air is the same regardless of how many times it bounces.`,
+    descriptionVi: `Ném một Dao Găm, gây 75 / 115 / 155 / 195 (+30% SMPT) sát thương phép lên mục tiêu và 2 kẻ địch gần đó. Dao Găm sau đó nảy xuống mặt đất phía sau điểm trúng đầu tiên.
+
+Thời gian Dao Găm bay trên không là như nhau bất kể nó nảy bao nhiêu lần.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [10, 9, 8, 7],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: null,
+    scaling: {
+      damageValues: [75, 115, 155, 195],
+      abilityPowerRatio: 0.3,
+      nearbyEnemyBounceCount: 2,
+      createsDaggerBehindInitialStrikePoint: true,
+      daggerAirTimeConstantRegardlessOfBounceCount: true,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [`DAGGER`, `BOUNCE`, `DAGGER_SETUP`, `AREA_DAMAGE`, `MAGIC_DAMAGE`],
+  },
+
+  // KATARINA - W
+  {
+    championKey: `katarina`,
+    slot: SkillSlot.W,
+    name: `Preparation`,
+    nameVi: `Tung Hứng`,
+    description: `Tosses a Dagger in the air and hastes Katarina by 50% / 60% / 70% / 80%.`,
+    descriptionVi: `Tung một Dao Găm lên không và tăng tốc cho Katarina thêm 50% / 60% / 70% / 80%.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [14, 13, 12, 11],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: null,
+    scaling: {
+      movementSpeedValuesPercent: [50, 60, 70, 80],
+      tossesDaggerInAir: true,
+    },
+    effects: [SkillEffect.SPEED_UP, SkillEffect.BUFF],
+    tags: [`DAGGER`, `DAGGER_SETUP`, `MOVEMENT_SPEED`, `SELF_BUFF`],
+  },
+
+  // KATARINA - E
+  {
+    championKey: `katarina`,
+    slot: SkillSlot.E,
+    name: `Shunpo`,
+    nameVi: `Ám Sát`,
+    description: `Blink to a location near a Dagger or unit, dealing 20 / 50 / 80 / 110 (+50% AD +30% AP) magic damage to the nearest enemy.
+
+Picking up a Dagger greatly reduces the Cooldown of Shunpo.`,
+    descriptionVi: `Dịch chuyển tức thời tới một vị trí gần Dao Găm hoặc đơn vị, gây 20 / 50 / 80 / 110 (+50% SMCK +30% SMPT) sát thương phép lên kẻ địch gần nhất.
+
+Nhặt Dao Găm sẽ giảm mạnh hồi chiêu của Ám Sát.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LOCATION,
+    cooldown: {
+      values: [11, 10, 9, 8],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: null,
+    scaling: {
+      damageValues: [20, 50, 80, 110],
+      attackDamageRatio: 0.5,
+      abilityPowerRatio: 0.3,
+      canBlinkNearDaggerOrUnit: true,
+      daggerPickupGreatlyReducesCooldown: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.DASH],
+    tags: [
+      `SHUNPO`,
+      `BLINK`,
+      `DAGGER`,
+      `DAGGER_PICKUP`,
+      `COOLDOWN_REFUND`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KATARINA - R
+  {
+    championKey: `katarina`,
+    slot: SkillSlot.R,
+    name: `Death Lotus`,
+    nameVi: `Bông Sen Tử Thần`,
+    description: `Rapidly throws blades at the 3 nearest enemy champions, dealing 400 / 600 / 800 (+260% AD +290% AP) magic damage and applying 60% Grievous Wounds. Katarina can move and throw blades for up to 2.6 seconds.
+
+Grievous Wounds reduces the effectiveness of Healing and Regeneration effects.`,
+    descriptionVi: `Liên tục phóng dao vào 3 tướng địch gần nhất, gây 400 / 600 / 800 (+260% SMCK +290% SMPT) sát thương phép và áp dụng 60% Vết Thương Sâu. Katarina có thể di chuyển và phóng dao trong tối đa 2.6 giây.
+
+Vết Thương Sâu làm giảm hiệu quả hồi máu và hồi phục.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.CHAMPIONS,
+    cooldown: {
+      values: [60, 50, 40],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: null,
+    scaling: {
+      nearestEnemyChampionTargets: 3,
+      damageValues: [400, 600, 800],
+      attackDamageRatio: 2.6,
+      abilityPowerRatio: 2.9,
+      grievousWoundsPercent: 60,
+      channelMaxDurationSeconds: 2.6,
+      canMoveWhileThrowingBlades: true,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `DEATH_LOTUS`,
+      `CHANNEL`,
+      `ANTI_HEAL`,
+      `GRIEVOUS_WOUNDS`,
+      `AREA_DAMAGE`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+  // === KAYLE ===
+  // KAYLE - PASSIVE
+  {
+    championKey: `kayle`,
+    slot: SkillSlot.PASSIVE,
+    name: `Divine Ascent`,
+    nameVi: `Thượng Nhân Cảnh Giới`,
+    description: `Kayle ascends as she gains levels.
+
+Level 1: Attacks grant 4% (+1% AP) Attack Speed for 5 seconds, stacking up to 5 times. Gains 8% Movement Speed at max stacks.
+
+Level 5: Attack range is increased to 525.
+
+Level 9: Attacks fire waves of flame at max stacks, dealing the passive damage of Starfire Spellblade.
+
+Level 13: Attack range is increased to 575. The bonus from reaching max stacks becomes permanent.`,
+    descriptionVi: `Kayle thăng hoa khi tăng cấp.
+
+Cấp 1: Đòn đánh cho 4% (+1% SMPT) Tốc Độ Đánh trong 5 giây, cộng dồn tối đa 5 lần. Nhận 8% Tốc Độ Di Chuyển khi đạt tối đa cộng dồn.
+
+Cấp 5: Tầm đánh tăng lên 525.
+
+Cấp 9: Đòn đánh phóng ra sóng lửa khi đạt tối đa cộng dồn, gây sát thương nội tại của Kiếm Tinh Hỏa.
+
+Cấp 13: Tầm đánh tăng lên 575. Hiệu ứng khi đạt tối đa cộng dồn trở thành vĩnh viễn.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      levelOneAttackSpeedPerStackPercent: 4,
+      levelOneAttackSpeedPerStackAbilityPowerRatioPercent: 1,
+      stackDurationSeconds: 5,
+      maxStacks: 5,
+      maxStackMovementSpeedPercent: 8,
+      levelFiveAttackRange: 525,
+      levelNineFiresFlameWavesAtMaxStacks: true,
+      levelThirteenAttackRange: 575,
+      levelThirteenMaxStackBonusBecomesPermanent: true,
+    },
+    effects: [SkillEffect.BUFF, SkillEffect.DAMAGE, SkillEffect.SPEED_UP],
+    tags: [
+      `DIVINE_ASCENT`,
+      `LEVEL_SCALING`,
+      `ATTACK_SPEED_STEROID`,
+      `MOVEMENT_SPEED`,
+      `RANGE_SCALING`,
+      `FLAME_WAVE`,
+      `HYPERCARRY`,
+    ],
+  },
+
+  // KAYLE - Q
+  {
+    championKey: `kayle`,
+    slot: SkillSlot.Q,
+    name: `Radiant Blast`,
+    nameVi: `Hào Quang Trừng Phạt`,
+    description: `Launches a celestial sword, dealing 70 / 120 / 170 / 220 (+60% AD +50% AP) magic damage. Enemies hit are slowed by 26% / 34% / 42% / 50% for 2 seconds and their armor and magic resist is reduced by 20% for 4 seconds.`,
+    descriptionVi: `Phóng ra một thanh kiếm thiên giới, gây 70 / 120 / 170 / 220 (+60% SMCK +50% SMPT) sát thương phép. Kẻ địch trúng chiêu bị làm chậm 26% / 34% / 42% / 50% trong 2 giây và bị giảm 20% Giáp cùng Kháng Phép trong 4 giây.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [11, 10, 9, 8],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [80, 85, 90, 95],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damageValues: [70, 120, 170, 220],
+      attackDamageRatio: 0.6,
+      abilityPowerRatio: 0.5,
+      slowValuesPercent: [26, 34, 42, 50],
+      slowDurationSeconds: 2,
+      armorReductionPercent: 20,
+      magicResistReductionPercent: 20,
+      resistanceReductionDurationSeconds: 4,
+    },
+    effects: [
+      SkillEffect.DAMAGE,
+      SkillEffect.SLOW,
+      SkillEffect.ARMOR_REDUCTION,
+    ],
+    tags: [
+      `RADIANT_BLAST`,
+      `SKILL_SHOT`,
+      `SLOW`,
+      `RESISTANCE_REDUCTION`,
+      `ARMOR_REDUCTION`,
+      `MAGIC_RESIST_REDUCTION`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KAYLE - W
+  {
+    championKey: `kayle`,
+    slot: SkillSlot.W,
+    name: `Celestial Blessing`,
+    nameVi: `Thiên Giới Ban Phước`,
+    description: `Heals herself and an allied champion for 95 / 125 / 155 / 185 (+40% AP) and grants them 25% / 30% / 35% / 40% (+0.08% AP) Movement Speed for 2 seconds.`,
+    descriptionVi: `Hồi máu cho bản thân và một tướng đồng minh 95 / 125 / 155 / 185 (+40% SMPT), đồng thời cho cả hai 25% / 30% / 35% / 40% (+0.08% SMPT) Tốc Độ Di Chuyển trong 2 giây.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.ALLY,
+    cooldown: {
+      values: [14, 14, 14, 14],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [85, 90, 95, 100],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      healValues: [95, 125, 155, 185],
+      healAbilityPowerRatio: 0.4,
+      movementSpeedValuesPercent: [25, 30, 35, 40],
+      movementSpeedAbilityPowerRatioPercent: 0.08,
+      movementSpeedDurationSeconds: 2,
+      affectsSelfAndAlliedChampion: true,
+    },
+    effects: [SkillEffect.HEAL, SkillEffect.SPEED_UP],
+    tags: [
+      `CELESTIAL_BLESSING`,
+      `HEAL`,
+      `MOVEMENT_SPEED`,
+      `ALLY_BUFF`,
+      `TEAM_SUPPORT`,
+    ],
+  },
+
+  // KAYLE - E
+  {
+    championKey: `kayle`,
+    slot: SkillSlot.E,
+    name: `Starfire Spellblade`,
+    nameVi: `Kiếm Tinh Hỏa`,
+    description: `Passive: Attacks deal bonus 8 / 11 / 14 / 17 (+5% bonus AD +15% AP) magic damage.
+
+Active: Empowers her next attack to become ranged and deal bonus 7% / 8% / 9% / 10% (+0.02% AP) magic damage of the target's missing Health.
+
+When Kayle reaches level 10, Starfire Spellblade affects all nearby enemies.
+
+Deals 60% damage to monsters.`,
+    descriptionVi: `Nội tại: Đòn đánh gây thêm 8 / 11 / 14 / 17 (+5% SMCK cộng thêm +15% SMPT) sát thương phép.
+
+Kích hoạt: Cường hóa đòn đánh kế tiếp thành đánh xa và gây thêm sát thương phép bằng 7% / 8% / 9% / 10% (+0.02% SMPT) Máu đã mất của mục tiêu.
+
+Khi Kayle đạt cấp 10, Kiếm Tinh Hỏa ảnh hưởng tất cả kẻ địch gần đó.
+
+Gây 60% sát thương lên quái.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [8, 7, 7, 6],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: null,
+    scaling: {
+      passiveBonusDamageValues: [8, 11, 14, 17],
+      passiveBonusAttackDamageRatio: 0.05,
+      passiveAbilityPowerRatio: 0.15,
+      activeMissingHealthDamagePercentValues: [7, 8, 9, 10],
+      activeMissingHealthDamageAbilityPowerRatioPercent: 0.02,
+      activeEmpowersNextAttackToBecomeRanged: true,
+      levelTenAffectsNearbyEnemies: true,
+      monsterDamageRatio: 0.6,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.BUFF],
+    tags: [
+      `STARFIRE_SPELLBLADE`,
+      `EMPOWERED_ATTACK`,
+      `ON_HIT_EFFECTS`,
+      `MISSING_HEALTH_DAMAGE`,
+      `AOE_ON_HIT`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KAYLE - R
+  {
+    championKey: `kayle`,
+    slot: SkillSlot.R,
+    name: `Divine Judgment`,
+    nameVi: `Thần Linh Định Đoạt`,
+    description: `Grants invulnerability to an allied champion for 2.5 seconds.
+
+Blades rain down around the target, dealing 150 / 225 / 300 (+85% bonus AD +60% AP) magic damage.`,
+    descriptionVi: `Ban trạng thái bất tử cho một tướng đồng minh trong 2.5 giây.
+
+Những lưỡi kiếm mưa xuống quanh mục tiêu, gây 150 / 225 / 300 (+85% SMCK cộng thêm +60% SMPT) sát thương phép.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ALLY,
+    cooldown: {
+      values: [100, 90, 80],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: null,
+    scaling: {
+      invulnerabilityDurationSeconds: 2.5,
+      damageValues: [150, 225, 300],
+      bonusAttackDamageRatio: 0.85,
+      abilityPowerRatio: 0.6,
+      bladesRainAroundTarget: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.BUFF],
+    tags: [
+      `DIVINE_JUDGMENT`,
+      `INVULNERABILITY`,
+      `ALLY_PROTECTION`,
+      `AREA_DAMAGE`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+  // === KAYN ===
+  // KAYN - PASSIVE
+  {
+    championKey: `kayn`,
+    slot: SkillSlot.PASSIVE,
+    name: `The Darkin Scythe`,
+    nameVi: `Lưỡi Hái Darkin`,
+    description: `Kayn the Shadow Assassin fights Rhaast the Darkin Slayer for control.
+
+Damaging ranged champions charges the Shadow Assassin, and damaging melee champions charges the Darkin Slayer. At full charge, Kayn can permanently transform at his base.
+
+Shadow Assassin: Attacks and abilities deal an additional 52% - 66% magic damage for 3 seconds. This only occurs if Kayn has been out of combat for 6 seconds or used Umbral Trespass.
+
+Darkin Slayer: Kayn heals for 24% - 38% of physical damage dealt to champions.`,
+    descriptionVi: `Kayn Sát Thủ Bóng Tối tranh giành quyền kiểm soát với Rhaast, Darkin Đoạt Mệnh.
+
+Gây sát thương lên tướng đánh xa sẽ tích năng lượng cho Sát Thủ Bóng Tối, còn gây sát thương lên tướng cận chiến sẽ tích năng lượng cho Darkin Đoạt Mệnh. Khi đầy năng lượng, Kayn có thể biến đổi vĩnh viễn tại căn cứ.
+
+Sát Thủ Bóng Tối: Đòn đánh và kỹ năng gây thêm 52% - 66% sát thương phép trong 3 giây. Hiệu ứng này chỉ xảy ra nếu Kayn đã rời giao tranh trong 6 giây hoặc vừa dùng Nhập Hồn.
+
+Darkin Đoạt Mệnh: Kayn hồi máu bằng 24% - 38% sát thương vật lý gây lên tướng.`,
+    damageType: DamageType.MIXED,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      damagesRangedChampionsChargesShadowAssassin: true,
+      damagesMeleeChampionsChargesDarkinSlayer: true,
+      canPermanentlyTransformAtBaseAtFullCharge: true,
+      shadowAssassinAdditionalMagicDamagePercentRange: [52, 66],
+      shadowAssassinDamageWindowSeconds: 3,
+      shadowAssassinRequiresOutOfCombatSeconds: 6,
+      shadowAssassinAlsoTriggersAfterUmbralTrespass: true,
+      rhaastPhysicalDamageHealingPercentRange: [24, 38],
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.HEAL, SkillEffect.BUFF],
+    tags: [
+      `DARKIN_SCYTHE`,
+      `FORM_CHANGE`,
+      `SHADOW_ASSASSIN`,
+      `DARKIN_SLAYER`,
+      `OUT_OF_COMBAT_BURST`,
+      `SUSTAIN`,
+    ],
+  },
+
+  // KAYN - Q
+  {
+    championKey: `kayn`,
+    slot: SkillSlot.Q,
+    name: `Reaping Slash`,
+    nameVi: `Trảm Quét`,
+    description: `Shadow Assassin: Dashes and deals 70 / 100 / 130 / 160 (+60% / 65% / 70% / 75% AD) physical damage, then spins his scythe to deal the same damage. Deals an additional 35 physical damage to minions and monsters.
+
+Rhaast: Dashes and deals 70 / 100 / 130 / 160 (+60% / 65% / 70% / 75% AD) plus 7% (+0.06% bonus AD) of the target's maximum Health as physical damage, then spins his scythe to deal the same damage. Maximum percent-health damage against monsters is 235 / 310 / 385 / 460. Deals an additional 35 physical damage to minions and monsters.`,
+    descriptionVi: `Sát Thủ Bóng Tối: Lướt tới trước và gây 70 / 100 / 130 / 160 (+60% / 65% / 70% / 75% SMCK) sát thương vật lý, sau đó xoay lưỡi hái gây cùng lượng sát thương. Gây thêm 35 sát thương vật lý lên lính và quái.
+
+Rhaast: Lướt tới trước và gây 70 / 100 / 130 / 160 (+60% / 65% / 70% / 75% SMCK) cộng thêm 7% (+0.06% SMCK cộng thêm) Máu tối đa của mục tiêu thành sát thương vật lý, sau đó xoay lưỡi hái gây cùng lượng sát thương. Sát thương theo máu tối đa lên quái tối đa 235 / 310 / 385 / 460. Gây thêm 35 sát thương vật lý lên lính và quái.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [5, 4, 4, 3],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 50, 50, 50],
+      resource: `NONE`,
+    },
+    range: null,
+    scaling: {
+      shadowAssassinCooldownValues: [5, 4, 4, 3],
+      rhaastCooldownValues: [4, 3, 3, 3],
+      baseDamageValues: [70, 100, 130, 160],
+      attackDamageRatios: [0.6, 0.65, 0.7, 0.75],
+      dealsDamageTwice: true,
+      bonusDamageToMinionsAndMonsters: 35,
+      rhaastMaxHealthDamagePercent: 7,
+      rhaastMaxHealthDamageBonusAttackDamageRatioPercent: 0.06,
+      rhaastMonsterMaxDamageValues: [235, 310, 385, 460],
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.DASH],
+    tags: [
+      `REAPING_SLASH`,
+      `DASH`,
+      `DOUBLE_HIT`,
+      `JUNGLE_CLEAR`,
+      `PERCENT_HEALTH_DAMAGE`,
+      `PHYSICAL_DAMAGE`,
+    ],
+  },
+
+  // KAYN - W
+  {
+    championKey: `kayn`,
+    slot: SkillSlot.W,
+    name: `Blade's Reach`,
+    nameVi: `Phá`,
+    description: `Shadow Assassin: Swipes the scythe upward, dealing 105 / 165 / 225 / 285 (+120% AD) physical damage and slowing enemies hit by 90% decaying over 1.5 seconds.
+
+Rhaast: Swipes the scythe upward, dealing 105 / 165 / 225 / 285 (+120% AD) physical damage. Enemies hit are knocked up for 1 second and slowed by 90% decaying over 1.5 seconds.`,
+    descriptionVi: `Sát Thủ Bóng Tối: Vung lưỡi hái lên phía trước, gây 105 / 165 / 225 / 285 (+120% SMCK) sát thương vật lý và làm chậm kẻ địch trúng chiêu 90%, giảm dần trong 1.5 giây.
+
+Rhaast: Vung lưỡi hái lên phía trước, gây 105 / 165 / 225 / 285 (+120% SMCK) sát thương vật lý. Kẻ địch trúng chiêu bị hất tung trong 1 giây và bị làm chậm 90%, giảm dần trong 1.5 giây.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [9, 8, 7, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 60, 70, 80],
+      resource: `NONE`,
+    },
+    range: null,
+    scaling: {
+      shadowAssassinCooldownValues: [9, 8, 7, 6],
+      rhaastCooldownValues: [8, 7, 6, 5],
+      damageValues: [105, 165, 225, 285],
+      attackDamageRatio: 1.2,
+      slowPercent: 90,
+      slowDecayDurationSeconds: 1.5,
+      rhaastKnockUpDurationSeconds: 1,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.KNOCK_UP],
+    tags: [
+      `BLADES_REACH`,
+      `LINE_ATTACK`,
+      `SLOW`,
+      `DECAYING_SLOW`,
+      `KNOCK_UP`,
+      `PHYSICAL_DAMAGE`,
+    ],
+  },
+
+  // KAYN - E
+  {
+    championKey: `kayn`,
+    slot: SkillSlot.E,
+    name: `Shadow Step`,
+    nameVi: `Bộ Pháp Bóng Tối`,
+    description: `Shadow Assassin: Gains 75% movement speed, slow immunity, and the ability to move through terrain for 5 / 5.5 / 6 / 6.5 seconds. Kayn restores 100 / 120 / 140 / 160 health upon entering terrain for the first time. Being immobilized or spending more than 1.2 consecutive seconds outside of terrain or in combat with enemy champions ends this ability early.
+
+Rhaast: Gains 35% movement speed and can move through terrain for 5 / 5.5 / 6 / 6.5 seconds. Kayn restores 100 / 120 / 140 / 160 (+50% AD) health upon entering terrain for the first time. Being immobilized or spending more than 1.2 consecutive seconds outside of terrain or in combat with enemy champions ends this ability early.`,
+    descriptionVi: `Sát Thủ Bóng Tối: Nhận 75% Tốc Độ Di Chuyển, miễn nhiễm làm chậm và khả năng đi xuyên địa hình trong 5 / 5.5 / 6 / 6.5 giây. Kayn hồi 100 / 120 / 140 / 160 máu khi lần đầu đi vào địa hình. Bị khống chế bất động hoặc ở ngoài địa hình / giao tranh với tướng địch quá 1.2 giây liên tục sẽ kết thúc kỹ năng sớm.
+
+Rhaast: Nhận 35% Tốc Độ Di Chuyển và có thể đi xuyên địa hình trong 5 / 5.5 / 6 / 6.5 giây. Kayn hồi 100 / 120 / 140 / 160 (+50% SMCK) máu khi lần đầu đi vào địa hình. Bị khống chế bất động hoặc ở ngoài địa hình / giao tranh với tướng địch quá 1.2 giây liên tục sẽ kết thúc kỹ năng sớm.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [6, 6, 6, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 50, 50, 50],
+      resource: `NONE`,
+    },
+    range: null,
+    scaling: {
+      shadowAssassinCooldownValues: [6, 6, 6, 6],
+      rhaastCooldownValues: [7, 7, 7, 7],
+      durationValuesSeconds: [5, 5.5, 6, 6.5],
+      shadowAssassinMovementSpeedPercent: 75,
+      rhaastMovementSpeedPercent: 35,
+      grantsSlowImmunityInShadowAssassinForm: true,
+      canMoveThroughTerrain: true,
+      healValues: [100, 120, 140, 160],
+      rhaastHealAttackDamageRatio: 0.5,
+      earlyEndOutsideTerrainOrChampionCombatSeconds: 1.2,
+      endsEarlyWhenImmobilized: true,
+    },
+    effects: [SkillEffect.SPEED_UP, SkillEffect.HEAL, SkillEffect.BUFF],
+    tags: [
+      `SHADOW_STEP`,
+      `TERRAIN_WALK`,
+      `MOVEMENT_SPEED`,
+      `SLOW_IMMUNITY`,
+      `HEAL`,
+      `FLANK_ANGLE`,
+    ],
+  },
+
+  // KAYN - R
+  {
+    championKey: `kayn`,
+    slot: SkillSlot.R,
+    name: `Umbral Trespass`,
+    nameVi: `Nhập Hồn`,
+    description: `Shadow Assassin: Infests an enemy champion for 2.5 seconds, becoming untargetable. When the infestation ends, the target is dealt 200 / 300 / 400 (+165% AD) physical damage and The Darkin Scythe's cooldown is refreshed. Re-cast: Ends the infestation early.
+
+Rhaast: Infests an enemy champion for 2.5 seconds, becoming untargetable. When the infestation ends, the target is dealt 36% (+0.13% AD) of the target's maximum Health as physical damage and Kayn heals for 27% (+0.1% AD) of the target's maximum Health. If the target dies and ends the infestation early, the ultimate still triggers the health regeneration. Re-cast: Ends the infestation early.`,
+    descriptionVi: `Sát Thủ Bóng Tối: Nhập vào một tướng địch trong 2.5 giây và trở nên không thể bị chọn làm mục tiêu. Khi thời gian nhập kết thúc, mục tiêu nhận 200 / 300 / 400 (+165% SMCK) sát thương vật lý và hồi chiêu của Lưỡi Hái Darkin được làm mới. Tái kích hoạt: Kết thúc nhập hồn sớm.
+
+Rhaast: Nhập vào một tướng địch trong 2.5 giây và trở nên không thể bị chọn làm mục tiêu. Khi thời gian nhập kết thúc, mục tiêu nhận sát thương vật lý bằng 36% (+0.13% SMCK) Máu tối đa của mục tiêu và Kayn hồi máu bằng 27% (+0.1% SMCK) Máu tối đa của mục tiêu. Nếu mục tiêu chết và kết thúc nhập hồn sớm, chiêu cuối vẫn kích hoạt hồi máu. Tái kích hoạt: Kết thúc nhập hồn sớm.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.CHAMPION,
+    cooldown: {
+      values: [59, 52, 44],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `NONE`,
+    },
+    range: null,
+    scaling: {
+      shadowAssassinCooldownValues: [59, 52, 44],
+      rhaastCooldownValues: [50, 44, 38],
+      infestationDurationSeconds: 2.5,
+      becomesUntargetable: true,
+      canRecastToEndEarly: true,
+      shadowAssassinDamageValues: [200, 300, 400],
+      shadowAssassinAttackDamageRatio: 1.65,
+      shadowAssassinRefreshesDarkinScytheCooldown: true,
+      rhaastTargetMaxHealthDamagePercent: 36,
+      rhaastTargetMaxHealthDamageAttackDamageRatioPercent: 0.13,
+      rhaastHealTargetMaxHealthPercent: 27,
+      rhaastHealTargetMaxHealthAttackDamageRatioPercent: 0.1,
+      rhaastHealStillTriggersIfTargetDiesEarly: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.HEAL, SkillEffect.BUFF],
+    tags: [
+      `UMBRAL_TRESPASS`,
+      `UNTARGETABLE`,
+      `INFEST`,
+      `RECAST`,
+      `COOLDOWN_RESET`,
+      `PERCENT_HEALTH_DAMAGE`,
+      `HEAL`,
+      `PHYSICAL_DAMAGE`,
+    ],
+  },
+  // === KENNEN ===
+  // KENNEN - PASSIVE
+  {
+    championKey: `kennen`,
+    slot: SkillSlot.PASSIVE,
+    name: `Mark of the Storm`,
+    nameVi: `Dấu Ấn Sấm Sét`,
+    description: `Hitting enemies with abilities places a Mark of the Storm on them for 6 seconds. At 3 stacks, the enemy is stunned for 1.25 seconds and Kennen gains 25 Energy.
+
+Stunning an enemy multiple times within 6 seconds reduces the stun duration to 0.5 seconds.`,
+    descriptionVi: `Dùng kỹ năng trúng kẻ địch sẽ đặt một Dấu Ấn Sấm Sét lên chúng trong 6 giây. Khi đạt 3 cộng dồn, kẻ địch bị choáng trong 1.25 giây và Kennen nhận 25 Nội Năng.
+
+Làm choáng cùng một kẻ địch nhiều lần trong vòng 6 giây sẽ giảm thời gian choáng còn 0.5 giây.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.ENEMY,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      markDurationSeconds: 6,
+      stacksRequiredToStun: 3,
+      stunDurationSeconds: 1.25,
+      energyGainOnStun: 25,
+      repeatedStunWindowSeconds: 6,
+      repeatedStunDurationSeconds: 0.5,
+    },
+    effects: [SkillEffect.STUN, SkillEffect.BUFF],
+    tags: [
+      `MARK_OF_THE_STORM`,
+      `MARK`,
+      `STACKING_PASSIVE`,
+      `STUN`,
+      `ENERGY_RESTORE`,
+    ],
+  },
+
+  // KENNEN - Q
+  {
+    championKey: `kennen`,
+    slot: SkillSlot.Q,
+    name: `Thundering Shuriken`,
+    nameVi: `Phi Tiêu Sấm Sét`,
+    description: `Throws a shuriken, dealing 75 / 140 / 205 / 270 (+75% AP) magic damage to the first enemy hit.`,
+    descriptionVi: `Ném một phi tiêu, gây 75 / 140 / 205 / 270 (+75% SMPT) sát thương phép lên kẻ địch đầu tiên trúng phải.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [7, 6, 5, 4],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [60, 55, 50, 45],
+      resource: `ENERGY`,
+    },
+    range: null,
+    scaling: {
+      damageValues: [75, 140, 205, 270],
+      abilityPowerRatio: 0.75,
+      appliesMarkOfTheStorm: true,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `THUNDERING_SHURIKEN`,
+      `SKILL_SHOT`,
+      `MARK_OF_THE_STORM`,
+      `MAGIC_DAMAGE`,
+      `POKE`,
+    ],
+  },
+
+  // KENNEN - W
+  {
+    championKey: `kennen`,
+    slot: SkillSlot.W,
+    name: `Electrical Surge`,
+    nameVi: `Giật Sét`,
+    description: `Passive: Every 5th attack deals 55 / 65 / 75 / 85 (+70% / 80% / 90% / 100% bonus AD +30% AP) bonus magic damage and applies a Mark of the Storm.
+
+Active: Shocks nearby enemies afflicted by Mark of the Storm, dealing 70 / 100 / 130 / 160 (+80% AP) magic damage.`,
+    descriptionVi: `Nội tại: Mỗi đòn đánh thứ 5 gây thêm 55 / 65 / 75 / 85 (+70% / 80% / 90% / 100% SMCK cộng thêm +30% SMPT) sát thương phép và áp dụng một Dấu Ấn Sấm Sét.
+
+Kích hoạt: Giật sét các kẻ địch gần đó đang có Dấu Ấn Sấm Sét, gây 70 / 100 / 130 / 160 (+80% SMPT) sát thương phép.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [12, 10, 8, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [40, 40, 40, 40],
+      resource: `ENERGY`,
+    },
+    range: null,
+    scaling: {
+      empoweredAttackInterval: 5,
+      passiveBonusDamageValues: [55, 65, 75, 85],
+      passiveBonusAttackDamageRatios: [0.7, 0.8, 0.9, 1],
+      passiveAbilityPowerRatio: 0.3,
+      activeDamageValues: [70, 100, 130, 160],
+      activeAbilityPowerRatio: 0.8,
+      activeRequiresMarkOfTheStorm: true,
+      appliesMarkOfTheStormOnPassiveAttack: true,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [
+      `ELECTRICAL_SURGE`,
+      `EMPOWERED_ATTACK`,
+      `MARK_OF_THE_STORM`,
+      `AREA_DAMAGE`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KENNEN - E
+  {
+    championKey: `kennen`,
+    slot: SkillSlot.E,
+    name: `Lightning Rush`,
+    nameVi: `Tốc Độ Sấm Sét`,
+    description: `Transform into an electric ball for 2 seconds, becoming unable to attack but gaining 100% bonus Movement Speed, and dealing 70 / 120 / 170 / 220 (+70% AP) magic damage to enemies he passes through. The bonus Movement Speed is doubled during the first 0.5 seconds.
+
+Kennen gains 50% / 60% / 70% / 80% Attack Speed for 3 seconds upon exiting Lightning Rush.
+
+Gains 40 Energy when Lightning Rush first damages an enemy. Deals 50% damage to minions.`,
+    descriptionVi: `Biến thành một quả cầu điện trong 2 giây, không thể đánh thường nhưng nhận 100% Tốc Độ Di Chuyển cộng thêm, gây 70 / 120 / 170 / 220 (+70% SMPT) sát thương phép lên kẻ địch đi xuyên qua. Tốc Độ Di Chuyển cộng thêm được nhân đôi trong 0.5 giây đầu.
+
+Kennen nhận 50% / 60% / 70% / 80% Tốc Độ Đánh trong 3 giây khi kết thúc Tốc Độ Sấm Sét.
+
+Nhận 40 Nội Năng khi Tốc Độ Sấm Sét lần đầu gây sát thương lên kẻ địch. Gây 50% sát thương lên lính.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [8, 7, 6, 6],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 95, 90, 85],
+      resource: `ENERGY`,
+    },
+    range: null,
+    scaling: {
+      electricBallDurationSeconds: 2,
+      baseMovementSpeedBonusPercent: 100,
+      doubledMovementSpeedDurationSeconds: 0.5,
+      damageValues: [70, 120, 170, 220],
+      abilityPowerRatio: 0.7,
+      attackSpeedValuesPercent: [50, 60, 70, 80],
+      attackSpeedDurationSeconds: 3,
+      energyGainOnFirstEnemyDamaged: 40,
+      minionDamageRatio: 0.5,
+      unableToAttackDuringTransform: true,
+      appliesMarkOfTheStorm: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SPEED_UP, SkillEffect.BUFF],
+    tags: [
+      `LIGHTNING_RUSH`,
+      `FORM_CHANGE`,
+      `MOVEMENT_SPEED`,
+      `ATTACK_SPEED_STEROID`,
+      `ENERGY_RESTORE`,
+      `MARK_OF_THE_STORM`,
+      `MAGIC_DAMAGE`,
+    ],
+  },
+
+  // KENNEN - R
+  {
+    championKey: `kennen`,
+    slot: SkillSlot.R,
+    name: `Slicing Maelstrom`,
+    nameVi: `Bão Sấm Sét`,
+    description: `Summons a storm that grants Kennen 20 / 40 / 60 Armor and Magic Resist and deals 20 / 55 / 90 (+13% AP) magic damage every 0.5 seconds for 3 seconds.
+
+Each subsequent bolt against the same target deals 10% increased damage.
+
+Only applies 3 Marks of the Storm to a single target.`,
+    descriptionVi: `Triệu hồi một cơn bão cho Kennen 20 / 40 / 60 Giáp và Kháng Phép, đồng thời gây 20 / 55 / 90 (+13% SMPT) sát thương phép mỗi 0.5 giây trong 3 giây.
+
+Mỗi tia sét tiếp theo lên cùng một mục tiêu gây thêm 10% sát thương.
+
+Chỉ áp dụng tối đa 3 Dấu Ấn Sấm Sét lên một mục tiêu.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [80, 75, 70],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [80, 80, 80],
+      resource: `ENERGY`,
+    },
+    range: null,
+    scaling: {
+      armorAndMagicResistValues: [20, 40, 60],
+      damageValues: [20, 55, 90],
+      abilityPowerRatio: 0.13,
+      tickIntervalSeconds: 0.5,
+      durationSeconds: 3,
+      subsequentBoltDamageIncreasePercent: 10,
+      maxMarksAppliedPerTarget: 3,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.BUFF],
+    tags: [
+      `SLICING_MAELSTROM`,
+      `AREA_DAMAGE`,
+      `TEAMFIGHT`,
+      `BONUS_RESISTANCES`,
+      `MARK_OF_THE_STORM`,
+      `MAGIC_DAMAGE`,
     ],
   },
 ];
