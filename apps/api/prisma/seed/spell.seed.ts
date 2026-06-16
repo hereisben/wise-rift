@@ -20,7 +20,7 @@ const spellSeeds: SpellSeed[] = [
     descriptionVi: `Tăng mạnh Tốc Độ Di Chuyển và giảm dần còn 25% Tốc Độ Di Chuyển cộng thêm trong 8 giây. Sau mỗi lần hạ gục, thời gian tác dụng của Tốc Hành sẽ tăng thêm 6 giây và làm mới hiệu ứng, có thể tăng lên tối đa bằng với mức ban đầu.`,
     tags: [`MOBILITY`, `CHASE`, `ESCAPE`],
     goodFor: [`EXTENDED_FIGHT`, `ROAMING`, `CHASE`],
-    badFor: [`BURST_PROTECTION`],
+    badFor: [`ANTI_BURST`],
   },
   {
     key: `heal`,
@@ -39,7 +39,7 @@ const spellSeeds: SpellSeed[] = [
     description: `Gain a shield that absorbs incoming damage for a short duration.`,
     descriptionVi: `Nhận 1 Lá Chắn hấp thụ 120 sát thương (120 - 560) trong 2.5 giây.`,
     tags: [`SHIELD`, `DEFENSE`, `SURVIVABILITY`],
-    goodFor: [`BURST_PROTECTION`, `LANE_SURVIVAL`, `SQUISHY_CHAMPION`],
+    goodFor: [`ANTI_BURST`, `LANE_SURVIVAL`, `SQUISHY_CHAMPION`],
     badFor: [`LONG_FIGHT`, `TRUE_DAMAGE`],
   },
   {

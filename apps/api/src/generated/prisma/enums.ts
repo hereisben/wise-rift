@@ -269,6 +269,7 @@ export const DamageType = {
   MIXED: 'MIXED',
   TRUE_DAMAGE: 'TRUE_DAMAGE',
   UTILITY: 'UTILITY',
+  NONE: 'NONE',
   UNKNOWN: 'UNKNOWN'
 } as const
 
@@ -286,7 +287,9 @@ export const TargetType = {
   MONSTER: 'MONSTER',
   TURRET: 'TURRET',
   AREA: 'AREA',
-  LOCATION: 'LOCATION'
+  LOCATION: 'LOCATION',
+  LINE: 'LINE',
+  CHAMPIONS: 'CHAMPIONS'
 } as const
 
 export type TargetType = (typeof TargetType)[keyof typeof TargetType]
@@ -317,7 +320,11 @@ export const SkillEffect = {
   TRUE_DAMAGE: 'TRUE_DAMAGE',
   VISION: 'VISION',
   ZONE_CONTROL: 'ZONE_CONTROL',
-  STASIS: 'STASIS'
+  STASIS: 'STASIS',
+  BUFF: 'BUFF',
+  DAMAGE_REDUCTION: 'DAMAGE_REDUCTION',
+  ARMOR_REDUCTION: 'ARMOR_REDUCTION',
+  REVEAL: 'REVEAL'
 } as const
 
 export type SkillEffect = (typeof SkillEffect)[keyof typeof SkillEffect]
