@@ -2839,7 +2839,7 @@ const championSkillSeeds: ChampionSkillSeed[] = [
       chargeRechargeValues: [27, 22, 17, 12],
     },
     effects: [SkillEffect.ROOT, SkillEffect.VISION],
-    tags: [`TRAP`, `ROOT`, `REVEAL`, `ZONE_CONTROL`, `HEADSHOT_SETUP`],
+    tags: [`TRAP`, `ROOT`, `REVEAL`, `ZONE_CONTROL`],
   },
   // CAITLYN - E
   {
@@ -11212,7 +11212,7 @@ Chỉ áp dụng tối đa 3 Dấu Ấn Sấm Sét lên một mục tiêu.`,
       seeksLivingEnemies: true,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
-    tags: [`DEATH_TRIGGER`, `SHATTER`],
+    tags: [`DEATH_TRIGGER`],
   },
 
   // LISSANDRA - Q
@@ -11547,7 +11547,7 @@ Chỉ áp dụng tối đa 3 Dấu Ấn Sấm Sét lên một mục tiêu.`,
       pixAttachDurationSeconds: 5,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.REVEAL, SkillEffect.BUFF],
-    tags: [`PIX`, `FAERIE_COMPANION`, `ON_HIT_EFFECTS`, `ALLY_BUFF`, `REVEAL`],
+    tags: [`ON_HIT_EFFECTS`, `ALLY_BUFF`, `REVEAL`],
   },
 
   // LULU - Q
@@ -11580,7 +11580,7 @@ Chỉ áp dụng tối đa 3 Dấu Ấn Sấm Sét lên một mục tiêu.`,
       piercingProjectile: true,
     },
     effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
-    tags: [`GLITTERLANCE`, `PIX`, `PIERCING_PROJECTILE`, `DECAYING_SLOW`],
+    tags: [`PIERCING_PROJECTILE`, `DECAYING_SLOW`],
   },
 
   // LULU - W
@@ -11619,8 +11619,6 @@ Chỉ áp dụng tối đa 3 Dấu Ấn Sấm Sét lên một mục tiêu.`,
       SkillEffect.REVEAL,
     ],
     tags: [
-      `WHIMSY`,
-      `PIX`,
       `POLYMORPH`,
       `ALLY_BUFF`,
       `ATTACK_SPEED_STEROID`,
@@ -11658,7 +11656,7 @@ Chỉ áp dụng tối đa 3 Dấu Ấn Sấm Sét lên một mục tiêu.`,
       grantsTrueSight: true,
     },
     effects: [SkillEffect.SHIELD, SkillEffect.DAMAGE, SkillEffect.REVEAL],
-    tags: [`HELP_PIX`, `PIX`, `ALLY_SHIELD`, `TRUE_SIGHT`, `REVEAL`],
+    tags: [`ALLY_SHIELD`, `TRUE_SIGHT`, `REVEAL`],
   },
 
   // LULU - R
@@ -11688,7 +11686,7 @@ Chỉ áp dụng tối đa 3 Dấu Ấn Sấm Sét lên một mục tiêu.`,
       nearbySlowPercent: 30,
     },
     effects: [SkillEffect.BUFF, SkillEffect.KNOCK_UP, SkillEffect.SLOW],
-    tags: [`WILD_GROWTH`, `ENLARGE`, `BONUS_HEALTH`, `ALLY_BUFF`, `PEEL`],
+    tags: [`ENLARGE`, `BONUS_HEALTH`, `ALLY_BUFF`, `PEEL`],
   },
   // === LUX ===
   // LUX - PASSIVE
@@ -14112,6 +14110,1001 @@ Chỉ áp dụng tối đa 3 Dấu Ấn Sấm Sét lên một mục tiêu.`,
       `CRITICAL_SCALING`,
       `TEAMFIGHT`,
     ],
+  },
+  // === NOCTURNE ===
+  // NOCTURNE - PASSIVE
+  {
+    championKey: `nocturne`,
+    slot: SkillSlot.PASSIVE,
+    name: `Umbra Blades`,
+    nameVi: `Lưỡi Dao Bóng Tối`,
+    description: `Every 12 seconds, Nocturne's next attack is empowered to strike the target and nearby enemies, dealing physical damage and restoring Health per enemy hit. Attacks reduce this cooldown, with a larger reduction against champions and monsters.`,
+    descriptionVi: `Mỗi 12 giây, đòn đánh kế tiếp của Nocturne được cường hóa, chém mục tiêu và kẻ địch xung quanh, gây sát thương vật lý và hồi Máu theo mỗi kẻ địch trúng phải. Đòn đánh giảm hồi chiêu nội tại này, giảm nhiều hơn khi đánh tướng và quái.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [12],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: null,
+    scaling: {
+      damage: {
+        base: 70,
+        attackDamageRatio: 1.2,
+      },
+      heal: {
+        base: 16,
+        abilityPowerRatio: 0.3,
+        perEnemyHit: true,
+      },
+      mainTargetCanCrit: true,
+      minionSecondaryDamageRatio: 0.5,
+      minionHealRatio: 0.5,
+      cooldownReductionOnAttackSeconds: 1,
+      cooldownReductionOnChampionOrMonsterAttackSeconds: 3,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.HEAL],
+    tags: [
+      `AOE_DAMAGE`,
+      `SUSTAIN`,
+      `CRITICAL_SCALING`,
+      `COOLDOWN_REDUCTION`,
+      `JUNGLE_CLEAR`,
+    ],
+  },
+
+  // NOCTURNE - Q
+  {
+    championKey: `nocturne`,
+    slot: SkillSlot.Q,
+    name: `Duskbringer`,
+    nameVi: `Hoàng Hôn Buông Xuống`,
+    description: `Throws a shadow claw in a target direction, dealing physical damage and leaving a Dusk Trail for 5 seconds. Enemy champions and large monsters hit also leave a Dusk Trail behind when they move. Nocturne gains Attack Damage and Movement Speed while on Dusk Trails.`,
+    descriptionVi: `Nocturne phóng vuốt bóng tối theo hướng chỉ định, gây sát thương vật lý và để lại Vệt Bóng Tối trong 5 giây. Tướng địch và quái lớn trúng chiêu cũng để lại Vệt Bóng Tối khi di chuyển. Nocturne nhận thêm Sức Mạnh Công Kích và Tốc Độ Di Chuyển khi đứng trên Vệt Bóng Tối.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [7, 7, 7, 7],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [60, 65, 70, 75],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damage: {
+        values: [70, 125, 180, 235],
+        bonusAttackDamageRatio: 0.85,
+      },
+      duskTrailDurationSeconds: 5,
+      bonusAttackDamageOnTrail: [20, 30, 40, 50],
+      bonusMovementSpeedOnTrailPercent: [20, 25, 30, 35],
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SPEED_UP, SkillEffect.BUFF],
+    tags: [
+      `LINE_SKILLSHOT`,
+      `BONUS_ATTACK_DAMAGE`,
+      `MOVEMENT_SPEED`,
+      `JUNGLE_CLEAR`,
+      `CHASE`,
+    ],
+  },
+
+  // NOCTURNE - W
+  {
+    championKey: `nocturne`,
+    slot: SkillSlot.W,
+    name: `Shroud of Darkness`,
+    nameVi: `Bóng Đen Bao Phủ`,
+    description: `Passively gains Attack Speed. Actively creates a shadow barrier for 1.5 seconds that blocks the next enemy ability. If an ability is blocked, the passive Attack Speed bonus is doubled for 5 seconds and nearby enemies are slowed for 2 seconds.`,
+    descriptionVi: `Nội tại: Nocturne nhận thêm Tốc Độ Đánh. Kích hoạt: tạo một lá chắn bóng tối trong 1.5 giây, chặn kỹ năng địch kế tiếp. Nếu chặn được kỹ năng, lượng Tốc Độ Đánh cộng thêm từ nội tại được nhân đôi trong 5 giây và kẻ địch xung quanh bị làm chậm trong 2 giây.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [18, 16, 14, 12],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 50, 50, 50],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      passiveAttackSpeedPercent: [35, 40, 45, 50],
+      barrierDurationSeconds: 1.5,
+      empoweredAttackSpeedPercent: [70, 80, 90, 100],
+      empoweredAttackSpeedDurationSeconds: 5,
+      slowPercent: [20, 25, 30, 35],
+      slowDurationSeconds: 2,
+      blocksNextEnemyAbility: true,
+    },
+    effects: [SkillEffect.BUFF, SkillEffect.SLOW],
+    tags: [
+      `ATTACK_SPEED_STEROID`,
+      `SPELL_SHIELD`,
+      `SELF_BUFF`,
+      `SLOW`,
+      `OUTPLAY_TOOL`,
+    ],
+  },
+
+  // NOCTURNE - E
+  {
+    championKey: `nocturne`,
+    slot: SkillSlot.E,
+    name: `Unspeakable Horror`,
+    nameVi: `Nỗi Kinh Hoàng Tột Độ`,
+    description: `Passively gains Movement Speed toward feared enemies. Actively plants a nightmare into the target's mind, dealing magic damage over 2 seconds. If the target does not leave the tether range by the end of the duration, they are feared and heavily slowed.`,
+    descriptionVi: `Nội tại: Nocturne nhận thêm Tốc Độ Di Chuyển khi lao về phía kẻ địch đang bị hoảng sợ. Kích hoạt: gieo ác mộng vào tâm trí mục tiêu, gây sát thương phép trong 2 giây. Nếu mục tiêu không thoát khỏi tầm liên kết khi hết thời gian, chúng bị hoảng sợ và làm chậm mạnh.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [14, 13, 12, 11],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [60, 65, 70, 75],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      passiveMovementSpeedTowardFearedEnemiesPercent: 90,
+      damage: {
+        values: [80, 140, 200, 260],
+        abilityPowerRatio: 1,
+        durationSeconds: 2,
+      },
+      tetherDurationSeconds: 2,
+      fearDurationSeconds: [1.2, 1.5, 1.8, 2.1],
+      slowPercent: 90,
+      slowDurationSeconds: [1.2, 1.5, 1.8, 2.1],
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
+    tags: [
+      `TETHER`,
+      `FEAR`,
+      `DAMAGE_OVER_TIME`,
+      `SLOW`,
+      `CHASE`,
+      `PICK_POTENTIAL`,
+    ],
+  },
+
+  // NOCTURNE - R
+  {
+    championKey: `nocturne`,
+    slot: SkillSlot.R,
+    name: `Paranoia`,
+    nameVi: `Hoang Tưởng`,
+    description: `Darkens the map, reducing the field of vision of all enemy champions and removing their vision of allies for 6 seconds. Can be recast during the duration to launch at an enemy champion, dealing physical damage. Nocturne is unstoppable while launching.`,
+    descriptionVi: `Nocturne bao phủ bản đồ trong bóng tối, giảm tầm nhìn của toàn bộ tướng địch và khiến chúng mất tầm nhìn đồng minh trong 6 giây. Có thể tái kích hoạt trong thời gian hiệu lực để lao tới một tướng địch, gây sát thương vật lý. Nocturne không thể bị cản khi đang lao tới.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.CHAMPION,
+    cooldown: {
+      values: [110, 90, 70],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      darknessDurationSeconds: 6,
+      damage: {
+        values: [150, 275, 400],
+        bonusAttackDamageRatio: 1.2,
+      },
+      canRecastDuringDarkness: true,
+      unstoppableWhileLaunching: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.DASH, SkillEffect.BUFF],
+    tags: [
+      `GLOBAL_RANGE`,
+      `VISION_DENIAL`,
+      `RECAST`,
+      `UNSTOPPABLE`,
+      `DIVE`,
+      `PICK_POTENTIAL`,
+      `BACKLINE_ACCESS`,
+    ],
+  },
+  // === NORRA ===
+  // NORRA - PASSIVE
+  {
+    championKey: `norra`,
+    slot: SkillSlot.PASSIVE,
+    name: `Beloved Trinkets`,
+    nameVi: `Bảo Vật Thân Thương`,
+    description: `Every 21 seconds, Norra's next ability cast leaves a Trinket on the battlefield for 4 seconds. When touched by an enemy champion, the Trinket activates and fires magical energy at the target, dealing magic damage. Hitting champions with basic abilities reduces this cooldown.`,
+    descriptionVi: `Mỗi 21 giây, kỹ năng kế tiếp của Norra để lại một Bảo Vật trên chiến trường trong 4 giây. Khi tướng địch chạm vào, Bảo Vật kích hoạt và bắn năng lượng phép vào mục tiêu, gây sát thương phép. Đánh trúng tướng bằng kỹ năng cơ bản sẽ giảm hồi chiêu nội tại này.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.CHAMPION,
+    cooldown: {
+      values: [21],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: null,
+    scaling: {
+      trinketDurationSeconds: 4,
+      damage: {
+        base: 20,
+        abilityPowerRatio: 0.2,
+      },
+      cooldownReductionOnBasicAbilityChampionHitRatio: 0.2,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [`DEPLOYABLE`, `MAGIC_DAMAGE`, `ZONE_CONTROL`, `COOLDOWN_REDUCTION`],
+  },
+
+  // NORRA - Q
+  {
+    championKey: `norra`,
+    slot: SkillSlot.Q,
+    name: `Memory Surge`,
+    nameVi: `Dòng Ký Ức`,
+    description: `Passively deals bonus magic damage based on the target's max Health to enemies enlarged by Threads. Hold to charge a magic bolt, slowing Norra while charging. The bolt's range and damage increase with charge duration. At full charge, Norra activates nearby Trinkets to fire at the first champion hit.`,
+    descriptionVi: `Nội tại: gây thêm sát thương phép theo Máu tối đa của mục tiêu lên kẻ địch bị Phóng Đại bởi Chỉ Dẫn. Giữ để tụ lực một tia ma thuật, khiến Norra bị làm chậm khi đang tụ lực. Tầm bay và sát thương tăng theo thời gian tụ lực. Khi tụ đầy, Norra kích hoạt các Bảo Vật gần đó bắn vào tướng đầu tiên trúng chiêu.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [7, 6, 5, 4],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [50, 55, 60, 65],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      passiveMaxHealthDamagePercentByLevel: {
+        min: 1,
+        max: 2.5,
+      },
+      selfSlowWhileChargingPercent: 20,
+      selfSlowAfterFullChargePercent: 30,
+      backwardBlinkAfterOvercharge: true,
+      damage: {
+        values: [55, 110, 165, 220],
+        abilityPowerRatio: 0.6,
+      },
+      maxChargeBonusDamagePercent: 140,
+      maxChargeBonusDamageCap: 84,
+      rangeScalesWithChargeDuration: true,
+      directionCanBeChangedWhileCharging: true,
+      fullChargeActivatesNearbyTrinkets: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.DASH],
+    tags: [
+      `LINE_SKILLSHOT`,
+      `CHARGE`,
+      `MAX_HEALTH_DAMAGE`,
+      `SELF_SLOW`,
+      `SELF_DISPLACEMENT`,
+      `DEPLOYABLE_SYNERGY`,
+    ],
+  },
+
+  // NORRA - W
+  {
+    championKey: `norra`,
+    slot: SkillSlot.W,
+    name: `Journey to Nowhere`,
+    nameVi: `Chuyến Đi Vô Định`,
+    description: `Creates a circular magic portal at a target location, dealing magic damage to enemies within and sending them to another dimension for 2.25 seconds. Enemies in the other dimension cannot attack or use abilities, but can move and are heavily slowed before returning to their original location.`,
+    descriptionVi: `Tạo một cổng ma thuật hình tròn tại vị trí chỉ định, gây sát thương phép lên kẻ địch bên trong và đưa chúng sang chiều không gian khác trong 2.25 giây. Kẻ địch trong chiều không gian đó không thể đánh thường hoặc dùng kỹ năng, nhưng vẫn có thể di chuyển và bị làm chậm mạnh trước khi trở về vị trí ban đầu.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LOCATION,
+    cooldown: {
+      values: [23, 22, 21, 20],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [75, 80, 85, 90],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damage: {
+        values: [65, 105, 145, 185],
+        abilityPowerRatio: 0.4,
+      },
+      banishDurationSeconds: 2.25,
+      slowPercent: 80,
+      cannotAttackOrUseAbilities: true,
+      returnsToOriginalLocation: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
+    tags: [
+      `AREA_DAMAGE`,
+      `AREA_CC`,
+      `PORTAL`,
+      `BANISH`,
+      `LOCKDOWN`,
+      `ZONE_CONTROL`,
+    ],
+  },
+
+  // NORRA - E
+  {
+    championKey: `norra`,
+    slot: SkillSlot.E,
+    name: `Threads of Homecoming`,
+    nameVi: `Sợi Chỉ Hồi Hương`,
+    description: `Passively causes Trinket damage to apply a Thread. Actively conjures portals on each end of a horizontal target area. After a delay, the portals fire interweaving Threads, dealing magic damage and applying Threads to enemies caught between them. Threaded targets have increased hitbox size and are slowed.`,
+    descriptionVi: `Nội tại: khi Bảo Vật gây sát thương lên mục tiêu, nó áp dụng Chỉ Dẫn. Kích hoạt: triệu hồi cổng ở hai đầu một vùng ngang chỉ định. Sau một khoảng trễ, các cổng bắn những sợi Chỉ đan xen, gây sát thương phép và áp dụng Chỉ Dẫn lên kẻ địch ở giữa. Mục tiêu bị đánh dấu Chỉ Dẫn có kích thước va chạm tăng lên và bị làm chậm.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [12, 10, 9, 7],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [65, 65, 65, 65],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damage: {
+        values: [70, 120, 170, 220],
+        abilityPowerRatio: 0.6,
+      },
+      appliesThread: true,
+      hitboxIncreaseDurationSeconds: 4,
+      slowPercent: 20,
+      slowDurationSeconds: 2,
+      monsterAndMinionDamageRatio: 1.15,
+      delayedFire: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
+    tags: [
+      `DELAYED_AREA`,
+      `PORTAL`,
+      `MARK`,
+      `HITBOX_INCREASE`,
+      `SLOW`,
+      `DEPLOYABLE_SYNERGY`,
+    ],
+  },
+
+  // NORRA - R
+  {
+    championKey: `norra`,
+    slot: SkillSlot.R,
+    name: `Portalpalooza!`,
+    nameVi: `Đại Hội Cổng Dịch Chuyển!`,
+    description: `Creates a large teleportation magic circle around units caught within. Norra can swipe from one edge of the circle to another to conjure portals at both ends, firing a magic bolt from end to end up to 4 times. The bolt slows the first enemy champion hit and damages enemies along its path. The fourth bolt deals bonus magic damage.`,
+    descriptionVi: `Tạo một vòng tròn dịch chuyển lớn bao quanh các đơn vị bên trong. Norra có thể vuốt từ cạnh này sang cạnh kia của vòng tròn để triệu hồi cổng ở hai đầu, bắn tia ma thuật từ đầu này sang đầu kia tối đa 4 lần. Tia ma thuật làm chậm tướng địch đầu tiên trúng phải và gây sát thương lên kẻ địch trên đường bay. Tia thứ tư gây thêm sát thương phép.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [105, 95, 95],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      maxBolts: 4,
+      damage: {
+        values: [100, 140, 180],
+        abilityPowerRatio: 0.55,
+      },
+      firstChampionHitSlowPercent: 80,
+      firstChampionHitSlowDurationSeconds: 0.5,
+      fourthBoltBonusMagicDamagePercent: 40,
+      boltPathSelectedBySwipe: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW],
+    tags: [
+      `AREA_DAMAGE`,
+      `PORTAL`,
+      `MULTI_CAST`,
+      `LINE_SKILLSHOT`,
+      `SLOW`,
+      `ZONE_CONTROL`,
+    ],
+  },
+  // === NUNU & WILLUMP ===
+  // NUNU & WILLUMP - PASSIVE
+  {
+    championKey: `nunu-willump`,
+    slot: SkillSlot.PASSIVE,
+    name: `Call of the Freljord`,
+    nameVi: `Tiếng Gọi Freljord`,
+    description: `Upon damaging an enemy champion, large monster, or structure, Nunu and Willump gain Attack Speed and Movement Speed for 4 seconds. A nearby allied champion with the fastest Attack Speed gains half this bonus. Cannot trigger on the same target for 8 seconds.`,
+    descriptionVi: `Khi gây sát thương lên tướng địch, quái lớn hoặc công trình, Nunu và Willump nhận thêm Tốc Độ Đánh và Tốc Độ Di Chuyển trong 4 giây. Một tướng đồng minh gần đó có Tốc Độ Đánh cao nhất nhận một nửa hiệu ứng này. Không thể kích hoạt trên cùng một mục tiêu trong 8 giây.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      attackSpeedPercent: 40,
+      movementSpeedPercent: 15,
+      durationSeconds: 4,
+      allyBonusRatio: 0.5,
+      sameTargetCooldownSeconds: 8,
+      triggersOn: [`CHAMPION`, `LARGE_MONSTER`, `STRUCTURE`],
+    },
+    effects: [SkillEffect.BUFF, SkillEffect.SPEED_UP],
+    tags: [
+      `ATTACK_SPEED_STEROID`,
+      `MOVEMENT_SPEED`,
+      `ALLY_BUFF`,
+      `JUNGLE_CLEAR`,
+      `OBJECTIVE_CONTROL`,
+    ],
+  },
+
+  // NUNU & WILLUMP - Q
+  {
+    championKey: `nunu-willump`,
+    slot: SkillSlot.Q,
+    name: `Consume`,
+    nameVi: `Nuốt Chửng`,
+    description: `Takes a bite out of an enemy, dealing magic damage and healing Nunu and Willump. Healing is increased when below 50% Maximum Health. Against minions and monsters, Consume deals true damage instead.`,
+    descriptionVi: `Cắn một kẻ địch, gây sát thương phép và hồi máu cho Nunu và Willump. Lượng hồi máu tăng khi còn dưới 50% Máu tối đa. Với lính và quái, Nuốt Chửng gây sát thương chuẩn thay thế.`,
+    damageType: DamageType.MIXED,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [10, 9, 8, 7],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [60, 60, 60, 60],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      championDamage: {
+        values: [55, 110, 165, 220],
+        abilityPowerRatio: 0.65,
+        healthRatio: 0.06,
+        damageType: `MAGIC`,
+      },
+      heal: {
+        values: [80, 115, 150, 185],
+        abilityPowerRatio: 0.7,
+        bonusHealthRatio: 0.12,
+      },
+      lowHealthThresholdPercent: 50,
+      lowHealthHealIncreasePercent: 50,
+      minionAndMonsterTrueDamage: [350, 500, 650, 800],
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.HEAL],
+    tags: [
+      `SUSTAIN`,
+      `TRUE_DAMAGE`,
+      `MONSTER_DAMAGE_MODIFIER`,
+      `OBJECTIVE_CONTROL`,
+      `JUNGLE_CLEAR`,
+    ],
+  },
+
+  // NUNU & WILLUMP - W
+  {
+    championKey: `nunu-willump`,
+    slot: SkillSlot.W,
+    name: `Biggest Snowball Ever!`,
+    nameVi: `Cầu Tuyết Vĩ Đại Nhất!`,
+    description: `Willump begins rolling a snowball that increases in size and speed over 12 seconds. The snowball explodes when colliding with enemy champions, large monsters, or terrain, dealing magic damage and knocking enemies airborne based on snowball size. Recast releases the snowball. Removes slows on cast and is immune to slows while rolling.`,
+    descriptionVi: `Willump bắt đầu lăn một quả cầu tuyết tăng kích thước và tốc độ trong 12 giây. Cầu tuyết phát nổ khi va chạm với tướng địch, quái lớn hoặc địa hình, gây sát thương phép và hất tung kẻ địch dựa theo kích thước cầu tuyết. Tái kích hoạt để thả cầu tuyết. Xóa hiệu ứng làm chậm khi dùng và miễn nhiễm làm chậm trong lúc lăn.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [12, 12, 12, 12],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [55, 60, 65, 70],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      rollDurationSeconds: 12,
+      damage: {
+        minValues: [35, 48, 61, 74],
+        maxValues: [175, 240, 305, 370],
+        minAbilityPowerRatio: 0.3,
+        maxAbilityPowerRatio: 1.5,
+      },
+      knockUpDurationSeconds: {
+        min: 0.5,
+        max: 1.25,
+      },
+      sizeAndSpeedIncreaseOverDuration: true,
+      recastReleasesSnowball: true,
+      removesSlowsOnCast: true,
+      slowImmuneWhileRolling: true,
+      minionAndSmallMonsterDamageRatio: 0.3333,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.KNOCK_UP, SkillEffect.BUFF],
+    tags: [
+      `RECAST`,
+      `KNOCK_UP`,
+      `ENGAGE`,
+      `SLOW_IMMUNITY`,
+      `CLEANSE`,
+      `ROAMING`,
+    ],
+  },
+
+  // NUNU & WILLUMP - E
+  {
+    championKey: `nunu-willump`,
+    slot: SkillSlot.E,
+    name: `Snowball Barrage`,
+    nameVi: `Pháo Tuyết`,
+    description: `Channels for up to 2.5 seconds, throwing snowballs that deal magic damage and briefly slow enemies. When the channel ends, Willump deals max-health magic damage and roots enemies, with damage and root duration scaling based on the number of snowball hits on the target. Deals increased damage to monsters.`,
+    descriptionVi: `Vận sức tối đa 2.5 giây, ném các quả cầu tuyết gây sát thương phép và làm chậm kẻ địch trong thời gian ngắn. Khi vận sức kết thúc, Willump gây sát thương phép theo Máu tối đa và trói chân kẻ địch, với sát thương và thời gian trói tăng theo số lần cầu tuyết trúng mục tiêu. Gây thêm sát thương lên quái.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMIES,
+    cooldown: {
+      values: [12, 12, 12, 12],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [55, 60, 65, 70],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      channelDurationSeconds: 2.5,
+      snowballDamage: {
+        values: [10, 14, 18, 22],
+        abilityPowerRatio: 0.05,
+      },
+      snowballSlowPercent: 20,
+      snowballSlowDurationSeconds: 0.5,
+      finalExplosionMaxHealthDamagePercent: {
+        min: 3,
+        max: 15,
+      },
+      finalExplosionAbilityPowerMaxHealthRatioPercent: {
+        min: 0.8,
+        max: 4,
+      },
+      rootDurationSeconds: {
+        min: 0.5,
+        max: 1.5,
+      },
+      finalExplosionMonsterDamageCap: [150, 200, 250, 300],
+      monsterDamageRatio: 1.5,
+      damageAndRootScaleWithSnowballHits: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.ROOT],
+    tags: [
+      `CHANNEL`,
+      `MULTI_HIT`,
+      `SLOW`,
+      `ROOT`,
+      `MAX_HEALTH_DAMAGE`,
+      `MONSTER_DAMAGE_MODIFIER`,
+      `JUNGLE_CLEAR`,
+    ],
+  },
+
+  // NUNU & WILLUMP - R
+  {
+    championKey: `nunu-willump`,
+    slot: SkillSlot.R,
+    name: `Absolute Zero`,
+    nameVi: `Tuyệt Đỉnh Băng Giá`,
+    description: `Nunu and Willump gain a shield and channel for up to 3 seconds. Nearby enemies are slowed, with the slow increasing over the duration. When the channel ends, nearby enemies take magic damage based on channel duration.`,
+    descriptionVi: `Nunu và Willump nhận lá chắn và vận sức tối đa 3 giây. Kẻ địch xung quanh bị làm chậm, với mức làm chậm tăng dần theo thời gian vận sức. Khi vận sức kết thúc, kẻ địch xung quanh chịu sát thương phép dựa trên thời gian vận sức.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [70, 65, 60],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      shield: {
+        values: [65, 75, 85],
+        abilityPowerRatio: 1.8,
+        healthRatioByRank: [0.35, 0.45, 0.55],
+      },
+      channelDurationSeconds: 3,
+      slowPercent: {
+        min: 50,
+        max: 95,
+      },
+      damage: {
+        min: 180,
+        max: 915,
+        minAbilityPowerRatio: 0.5,
+        maxAbilityPowerRatio: 2.75,
+      },
+      damageScalesWithChannelDuration: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SHIELD, SkillEffect.SLOW],
+    tags: [
+      `CHANNEL`,
+      `SELF_SHIELD`,
+      `AREA_DAMAGE`,
+      `AREA_SLOW`,
+      `ZONE_CONTROL`,
+      `TEAMFIGHT`,
+    ],
+  },
+  // === OLAF ===
+  // OLAF - PASSIVE
+  {
+    championKey: `olaf`,
+    slot: SkillSlot.PASSIVE,
+    name: `Berserker Rage`,
+    nameVi: `Điên Cuồng`,
+    description: `Olaf gains Attack Speed and physical vamp based on missing Health, maxing out at 70% missing Health.`,
+    descriptionVi: `Olaf nhận thêm Tốc Độ Đánh và hút máu vật lý dựa trên Máu đã mất, đạt tối đa khi mất 70% Máu.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      attackSpeedPercentByLevel: {
+        min: 70,
+        max: 110,
+      },
+      physicalVampPercentByLevel: {
+        min: 15,
+        max: 30,
+      },
+      maxEffectAtMissingHealthPercent: 70,
+    },
+    effects: [SkillEffect.BUFF, SkillEffect.HEAL],
+    tags: [
+      `ATTACK_SPEED_STEROID`,
+      `PHYSICAL_VAMP`,
+      `MISSING_HEALTH_SCALING`,
+      `SUSTAIN`,
+    ],
+  },
+
+  // OLAF - Q
+  {
+    championKey: `olaf`,
+    slot: SkillSlot.Q,
+    name: `Undertow`,
+    nameVi: `Phóng Rìu`,
+    description: `Throws an axe, dealing physical damage and slowing enemies. Picking up the axe reduces Undertow's cooldown. Enemy champions hit suffer armor reduction. Deals increased damage to monsters.`,
+    descriptionVi: `Olaf phóng rìu, gây sát thương vật lý và làm chậm kẻ địch. Nhặt lại rìu sẽ giảm hồi chiêu Phóng Rìu. Tướng địch trúng chiêu bị giảm Giáp. Gây thêm sát thương lên quái.`,
+    damageType: DamageType.PHYSICAL,
+    targetType: TargetType.LINE,
+    cooldown: {
+      values: [7, 7, 7, 7],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [45, 50, 55, 60],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damage: {
+        values: [50, 115, 180, 245],
+        attackDamageRatio: 1.2,
+      },
+      slowPercent: [20, 27.5, 35, 42.5],
+      slowDurationSeconds: 2,
+      cooldownRefundOnPickupSeconds: 4.5,
+      armorReductionPercent: 20,
+      armorReductionDurationSeconds: 4,
+      monsterDamageRatio: 1.1,
+    },
+    effects: [
+      SkillEffect.DAMAGE,
+      SkillEffect.SLOW,
+      SkillEffect.ARMOR_REDUCTION,
+    ],
+    tags: [
+      `LINE_SKILLSHOT`,
+      `SLOW`,
+      `ARMOR_REDUCTION`,
+      `COOLDOWN_REFUND`,
+      `MONSTER_DAMAGE_MODIFIER`,
+    ],
+  },
+
+  // OLAF - W
+  {
+    championKey: `olaf`,
+    slot: SkillSlot.W,
+    name: `Vicious Strikes`,
+    nameVi: `Rìu Máu`,
+    description: `Olaf gains Attack Speed for 4 seconds and grants himself a shield based on missing Health for 2.5 seconds. The shield amount is capped based on missing Health.`,
+    descriptionVi: `Olaf nhận thêm Tốc Độ Đánh trong 4 giây và tự tạo lá chắn dựa trên Máu đã mất trong 2.5 giây. Lượng lá chắn bị giới hạn theo Máu đã mất.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [15, 14, 13, 12],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [30, 30, 30, 30],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      attackSpeedPercent: [35, 50, 65, 80],
+      attackSpeedDurationSeconds: 4,
+      shield: {
+        values: [35, 70, 105, 140],
+        missingHealthRatio: 0.15,
+        capMissingHealthPercent: 70,
+      },
+      shieldDurationSeconds: 2.5,
+    },
+    effects: [SkillEffect.BUFF, SkillEffect.SHIELD],
+    tags: [
+      `ATTACK_SPEED_STEROID`,
+      `SELF_SHIELD`,
+      `MISSING_HEALTH_SCALING`,
+      `SELF_BUFF`,
+    ],
+  },
+
+  // OLAF - E
+  {
+    championKey: `olaf`,
+    slot: SkillSlot.E,
+    name: `Reckless Swing`,
+    nameVi: `Bổ Củi`,
+    description: `Olaf dashes to an enemy and deals true damage. If the enemy does not die, Olaf takes true damage. Attacks lower Reckless Swing's cooldown. Deals reduced damage to monsters.`,
+    descriptionVi: `Olaf lướt tới một kẻ địch và gây sát thương chuẩn. Nếu mục tiêu không chết, Olaf chịu sát thương chuẩn. Đòn đánh giảm hồi chiêu Bổ Củi. Gây giảm sát thương lên quái.`,
+    damageType: DamageType.TRUE_DAMAGE,
+    targetType: TargetType.ENEMY,
+    cooldown: {
+      values: [10, 9, 8, 7],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: null,
+    scaling: {
+      damage: {
+        values: [45, 95, 145, 195],
+        attackDamageRatio: 0.55,
+        damageType: `TRUE`,
+      },
+      selfDamageIfTargetSurvives: {
+        base: 28,
+        attackDamageRatio: 0.15,
+        damageType: `TRUE`,
+      },
+      cooldownReductionOnAttackSeconds: 1,
+      monsterDamageRatio: 0.95,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.DASH],
+    tags: [
+      `TRUE_DAMAGE`,
+      `DASH`,
+      `COOLDOWN_REDUCTION`,
+      `MONSTER_DAMAGE_MODIFIER`,
+      `DUELING`,
+    ],
+  },
+
+  // OLAF - R
+  {
+    championKey: `olaf`,
+    slot: SkillSlot.R,
+    name: `Ragnarok`,
+    nameVi: `Tận Thế Ragnarok`,
+    description: `Passively grants Armor and Magic Resist. Active: Olaf becomes immune to crowd control and gains Attack Damage for 4 seconds. On cast, he gains Movement Speed when moving toward enemy champions. Ragnarok's duration is extended by basic attacks or Reckless Swing casts against enemy champions, and it can be cast while under crowd control.`,
+    descriptionVi: `Nội tại: Olaf nhận thêm Giáp và Kháng Phép. Kích hoạt: Olaf miễn nhiễm khống chế và nhận thêm Sức Mạnh Công Kích trong 4 giây. Khi kích hoạt, hắn nhận Tốc Độ Di Chuyển khi lao về phía tướng địch. Thời gian Ragnarok được kéo dài khi đánh thường hoặc dùng Bổ Củi lên tướng địch, và có thể dùng khi đang bị khống chế.`,
+    damageType: DamageType.NONE,
+    targetType: TargetType.SELF,
+    cooldown: {
+      values: [60, 55, 50],
+      unit: `seconds`,
+    },
+    cost: null,
+    range: null,
+    scaling: {
+      passiveArmorAndMagicResist: [25, 35, 45],
+      activeDurationSeconds: 4,
+      bonusAttackDamage: {
+        values: [5, 15, 25],
+        attackDamageRatio: 0.2,
+      },
+      movementSpeedTowardEnemyChampionPercent: 20,
+      movementSpeedDurationSeconds: 1,
+      durationExtensionOnChampionHitSeconds: 2.5,
+      extendedBy: [`BASIC_ATTACK`, `RECKLESS_SWING`],
+      crowdControlImmunity: true,
+      canCastWhileCrowdControlled: true,
+    },
+    effects: [SkillEffect.BUFF, SkillEffect.SPEED_UP],
+    tags: [
+      `ANTI_CC`,
+      `CLEANSE`,
+      `BONUS_ATTACK_DAMAGE`,
+      `MOVEMENT_SPEED`,
+      `DIVE`,
+      `EXTENDED_DURATION`,
+    ],
+  },
+  // === ORIANNA ===
+  // ORIANNA - PASSIVE
+  {
+    championKey: `orianna`,
+    slot: SkillSlot.PASSIVE,
+    name: `Clockwork Windup`,
+    nameVi: `Lên Dây Cót`,
+    description: `Orianna's Ball acts as the focal point for her abilities and automatically returns to her if she moves too far away from it. Orianna's attacks deal bonus magic damage, and repeated attacks against the same target within 4 seconds deal additional stacking bonus magic damage.`,
+    descriptionVi: `Quả Cầu của Orianna là tâm điểm cho các kỹ năng của cô và tự động quay về nếu Orianna đi quá xa. Đòn đánh của Orianna gây thêm sát thương phép, và các đòn đánh liên tiếp lên cùng mục tiêu trong vòng 4 giây gây thêm sát thương phép cộng dồn.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ENEMY,
+    cooldown: null,
+    cost: null,
+    range: null,
+    scaling: {
+      ballReturnsWhenTooFar: true,
+      bonusAttackDamage: {
+        base: 10,
+        perLevel: 3,
+        abilityPowerRatio: 0.15,
+        damageType: `MAGIC`,
+      },
+      subsequentAttackBonusDamage: {
+        base: 3,
+        abilityPowerRatio: 0.03,
+        durationSeconds: 4,
+        maxStacks: 2,
+        damageType: `MAGIC`,
+      },
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [`ON_HIT_DAMAGE`, `STACKING_DAMAGE`, `BONUS_MAGIC_DAMAGE`],
+  },
+
+  // ORIANNA - Q
+  {
+    championKey: `orianna`,
+    slot: SkillSlot.Q,
+    name: `Command: Attack`,
+    nameVi: `Lệnh: Tấn Công`,
+    description: `Commands the Ball to fire toward a target location, dealing magic damage to enemies along the way. Damage decreases for each unit hit, down to a minimum value. The Ball remains at the target location afterward.`,
+    descriptionVi: `Ra lệnh cho Quả Cầu bay tới vị trí chỉ định, gây sát thương phép lên kẻ địch trên đường bay. Sát thương giảm với mỗi đơn vị trúng chiêu, xuống tới mức tối thiểu. Quả Cầu ở lại vị trí mục tiêu sau đó.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.LOCATION,
+    cooldown: {
+      values: [7, 6, 4, 3],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [30, 35, 40, 45],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damage: {
+        values: [60, 105, 150, 195],
+        abilityPowerRatio: 0.45,
+      },
+      damageReductionPerUnitHitPercent: 10,
+      minimumDamagePercent: 50,
+      ballRemainsAtTargetLocation: true,
+    },
+    effects: [SkillEffect.DAMAGE],
+    tags: [`POKE`, `AREA_DAMAGE`, `ZONE_CONTROL`],
+  },
+
+  // ORIANNA - W
+  {
+    championKey: `orianna`,
+    slot: SkillSlot.W,
+    name: `Command: Dissonance`,
+    nameVi: `Lệnh: Phát Sóng`,
+    description: `Commands the Ball to release an electric pulse, dealing magic damage to nearby enemies. The pulse leaves behind an energy field for 3 seconds that slows enemies and speeds up allies, with the effect diminishing over time.`,
+    descriptionVi: `Ra lệnh cho Quả Cầu phóng ra xung điện, gây sát thương phép lên kẻ địch xung quanh. Xung điện để lại vùng năng lượng trong 3 giây, làm chậm kẻ địch và tăng tốc đồng minh, với hiệu ứng giảm dần theo thời gian.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [7, 7, 7, 7],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [70, 80, 90, 100],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damage: {
+        values: [60, 100, 140, 180],
+        abilityPowerRatio: 0.7,
+      },
+      fieldDurationSeconds: 3,
+      slowPercent: [20, 25, 30, 35],
+      speedUpPercent: [20, 25, 30, 35],
+      slowAndSpeedDurationSeconds: 2,
+      effectDiminishesOverTime: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SLOW, SkillEffect.SPEED_UP],
+    tags: [
+      `AREA_DAMAGE`,
+      `AREA_SLOW`,
+      `SPEED_UP`,
+      `LINGERING_ZONE`,
+      `ZONE_CONTROL`,
+    ],
+  },
+
+  // ORIANNA - E
+  {
+    championKey: `orianna`,
+    slot: SkillSlot.E,
+    name: `Command: Protect`,
+    nameVi: `Lệnh: Bảo Vệ`,
+    description: `Passively, the Ball grants Armor and Magic Resist to the champion it is attached to. Actively commands the Ball to attach to an allied champion, granting a shield for 4 seconds and dealing magic damage to enemies it passes through.`,
+    descriptionVi: `Nội tại: Quả Cầu tăng Giáp và Kháng Phép cho tướng mà nó đang bám vào. Kích hoạt: ra lệnh cho Quả Cầu bám vào một tướng đồng minh, tạo lá chắn trong 4 giây và gây sát thương phép lên kẻ địch mà nó bay xuyên qua.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.ALLY,
+    cooldown: {
+      values: [9, 9, 9, 9],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [60, 60, 60, 60],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      passiveArmorAndMagicResist: [10, 15, 20, 25],
+      shield: {
+        values: [60, 110, 160, 210],
+        abilityPowerRatio: 0.4,
+      },
+      shieldDurationSeconds: 4,
+      passThroughDamage: {
+        values: [50, 90, 130, 170],
+        abilityPowerRatio: 0.3,
+      },
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.SHIELD, SkillEffect.BUFF],
+    tags: [`ALLY_SHIELD`, `ALLY_BUFF`, `MAGIC_DAMAGE`, `TEAM_SUPPORT`],
+  },
+
+  // ORIANNA - R
+  {
+    championKey: `orianna`,
+    slot: SkillSlot.R,
+    name: `Command: Shockwave`,
+    nameVi: `Lệnh: Sóng Âm`,
+    description: `Commands the Ball to unleash a shockwave after a brief delay, dealing magic damage and launching nearby enemies toward the Ball.`,
+    descriptionVi: `Ra lệnh cho Quả Cầu phóng ra sóng chấn động sau một khoảng trễ ngắn, gây sát thương phép và kéo kẻ địch xung quanh về phía Quả Cầu.`,
+    damageType: DamageType.MAGIC,
+    targetType: TargetType.AREA,
+    cooldown: {
+      values: [75, 65, 55],
+      unit: `seconds`,
+    },
+    cost: {
+      values: [100, 100, 100],
+      resource: `MANA`,
+    },
+    range: null,
+    scaling: {
+      damage: {
+        values: [250, 350, 450],
+        abilityPowerRatio: 0.85,
+      },
+      briefDelay: true,
+      launchesEnemiesTowardBall: true,
+    },
+    effects: [SkillEffect.DAMAGE, SkillEffect.KNOCK_UP],
+    tags: [`AREA_DAMAGE`, `DISPLACEMENT`, `TEAMFIGHT`, `TEAMFIGHT_SETUP`],
   },
 ];
 
