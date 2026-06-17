@@ -636,6 +636,12 @@ const gameTagSeeds: GameTagSeed[] = [
 
   // CHAMPION CLASS TAGS
   createTag(
+    `ARTILLERY_MAGE`,
+    `Artillery mage`,
+    `Pháp sư cấu rỉa tầm xa`,
+    GameTagCategory.CHAMPION,
+  ),
+  createTag(
     `JUGGERNAUT`,
     `Juggernaut`,
     `Đấu sĩ chống chịu kém cơ động`,
@@ -1188,6 +1194,68 @@ const gameTagSeeds: GameTagSeed[] = [
   ),
 
   // SKILL TAGS
+  createTag(`ANTI_DASH`, `Anti dash`, `Khắc chế lướt`, GameTagCategory.SKILL),
+  createTag(
+    `BONUS_HEALTH`,
+    `Bonus health`,
+    `Máu cộng thêm`,
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    `ENERGY_COST`,
+    `Energy cost`,
+    `Tiêu hao nội năng`,
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    `ENGAGE_SETUP`,
+    `Engage setup`,
+    `Thiết lập mở giao tranh`,
+    GameTagCategory.SKILL,
+  ),
+  createTag(`HEAL`, `Heal`, `Hồi máu`, GameTagCategory.SKILL),
+  createTag(
+    `OUTPLAY_TOOL`,
+    `Outplay tool`,
+    `Công cụ outplay`,
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    `RETURNING_PROJECTILE`,
+    `Returning projectile`,
+    `Đạn bay quay về`,
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    `TAKEDOWN_REWARD`,
+    `Takedown reward`,
+    `Thưởng khi tham gia hạ gục`,
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    `EXTENDED_DURATION`,
+    `Extended duration`,
+    `Kéo dài thời gian hiệu lực`,
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    `HITBOX_INCREASE`,
+    `Hitbox increase`,
+    `Tăng kích thước va chạm`,
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    `BANISH`,
+    `Banish`,
+    `Đưa khỏi giao tranh tạm thời`,
+    GameTagCategory.SKILL,
+  ),
+  createTag(
+    `DEPLOYABLE_SYNERGY`,
+    `Deployable synergy`,
+    `Tương tác với vật thể đặt xuống`,
+    GameTagCategory.SKILL,
+  ),
   createTag(
     `OVERHEAL_SHIELD`,
     `Overheal shield`,
