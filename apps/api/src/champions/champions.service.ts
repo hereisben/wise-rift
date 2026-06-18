@@ -24,6 +24,7 @@ export class ChampionsService {
         },
         championSkills: {
           where: {
+            deletedAt: null,
             patch: {
               deletedAt: null,
             },
@@ -62,6 +63,7 @@ export class ChampionsService {
         },
         championSkills: {
           where: {
+            deletedAt: null,
             patch: {
               isActive: true,
               deletedAt: null,
