@@ -1,6 +1,7 @@
 import { PrismaPg } from '@prisma/adapter-pg';
 import env from '../../src/config/env.js';
 import { PrismaClient } from '../../src/generated/prisma/client.js';
+import { seedChampionBuildProfiles } from './champion-build-profile.seed.js';
 import { seedChampionPatchStats } from './champion-patch-stat.seed.js';
 import { seedChampionSkills } from './champion-skill.seed.js';
 import { seedChampions } from './champion.seed.js';
@@ -33,6 +34,7 @@ async function main() {
   await seedSpellsPatchStats(prisma, patch.id);
   await seedRunes(prisma);
   await seedRunesPatchStats(prisma, patch.id);
+  await seedChampionBuildProfiles(prisma, patch.id);
 }
 
 main()
