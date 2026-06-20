@@ -2,8 +2,10 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import env from '../../src/config/env.js';
 import { PrismaClient } from '../../src/generated/prisma/client.js';
 import { seedChampionBuildProfiles } from './champion-build-profile.seed.js';
+import { seedChampionMatchupProfiles } from './champion-matchup-profile.seed.js';
 import { seedChampionPatchStats } from './champion-patch-stat.seed.js';
 import { seedChampionSkills } from './champion-skill.seed.js';
+import { seedChampionSynergyProfiles } from './champion-synergy-profile.seed.js';
 import { seedChampions } from './champion.seed.js';
 import { seedGameTags } from './game-tag.seed.js';
 import { seedItemPatchStats } from './item-patch-stat.seed.js';
@@ -35,6 +37,8 @@ async function main() {
   await seedRunes(prisma);
   await seedRunesPatchStats(prisma, patch.id);
   await seedChampionBuildProfiles(prisma, patch.id);
+  await seedChampionMatchupProfiles(prisma, patch.id);
+  await seedChampionSynergyProfiles(prisma, patch.id);
 }
 
 main()
