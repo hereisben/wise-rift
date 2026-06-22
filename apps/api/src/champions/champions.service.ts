@@ -36,6 +36,48 @@ export class ChampionsService {
             slot: `asc`,
           },
         },
+        championBuildProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
+          },
+        },
+        championMatchupProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
+          },
+        },
+        championSynergyProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
+          },
+        },
       },
       orderBy: {
         name: `asc`,
@@ -76,6 +118,51 @@ export class ChampionsService {
             slot: `asc`,
           },
         },
+        championBuildProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+              isActive: true,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
+          },
+        },
+        championMatchupProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+              isActive: true,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
+          },
+        },
+        championSynergyProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+              isActive: true,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
+          },
+        },
       },
       orderBy: {
         name: `asc`,
@@ -103,6 +190,7 @@ export class ChampionsService {
         },
         championSkills: {
           where: {
+            deletedAt: null,
             patch: {
               deletedAt: null,
             },
@@ -112,6 +200,48 @@ export class ChampionsService {
           },
           orderBy: {
             slot: `asc`,
+          },
+        },
+        championBuildProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
+          },
+        },
+        championMatchupProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
+          },
+        },
+        championSynergyProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
           },
         },
       },
@@ -145,6 +275,7 @@ export class ChampionsService {
         },
         championSkills: {
           where: {
+            deletedAt: null,
             patch: {
               deletedAt: null,
               isActive: true,
@@ -155,6 +286,51 @@ export class ChampionsService {
           },
           orderBy: {
             slot: `asc`,
+          },
+        },
+        championBuildProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+              isActive: true,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
+          },
+        },
+        championMatchupProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+              isActive: true,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
+          },
+        },
+        championSynergyProfiles: {
+          where: {
+            deletedAt: null,
+            patch: {
+              deletedAt: null,
+              isActive: true,
+            },
+          },
+          include: {
+            patch: true,
+          },
+          orderBy: {
+            role: `asc`,
           },
         },
       },

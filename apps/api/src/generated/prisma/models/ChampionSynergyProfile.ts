@@ -324,7 +324,7 @@ export type ChampionSynergyProfileCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  champion: Prisma.ChampionCreateNestedOneWithoutSynergyProfilesInput
+  champion: Prisma.ChampionCreateNestedOneWithoutChampionSynergyProfilesInput
   patch: Prisma.PatchCreateNestedOneWithoutChampionSynergyProfilesInput
 }
 
@@ -356,7 +356,7 @@ export type ChampionSynergyProfileUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  champion?: Prisma.ChampionUpdateOneRequiredWithoutSynergyProfilesNestedInput
+  champion?: Prisma.ChampionUpdateOneRequiredWithoutChampionSynergyProfilesNestedInput
   patch?: Prisma.PatchUpdateOneRequiredWithoutChampionSynergyProfilesNestedInput
 }
 
@@ -610,7 +610,7 @@ export type ChampionSynergyProfileCreateWithoutPatchInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  champion: Prisma.ChampionCreateNestedOneWithoutSynergyProfilesInput
+  champion: Prisma.ChampionCreateNestedOneWithoutChampionSynergyProfilesInput
 }
 
 export type ChampionSynergyProfileUncheckedCreateWithoutPatchInput = {
@@ -756,7 +756,7 @@ export type ChampionSynergyProfileUpdateWithoutPatchInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  champion?: Prisma.ChampionUpdateOneRequiredWithoutSynergyProfilesNestedInput
+  champion?: Prisma.ChampionUpdateOneRequiredWithoutChampionSynergyProfilesNestedInput
 }
 
 export type ChampionSynergyProfileUncheckedUpdateWithoutPatchInput = {

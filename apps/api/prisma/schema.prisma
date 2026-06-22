@@ -84,8 +84,8 @@ model Champion {
   matchOutcomes            MatchOutcome[]
   runeBuildRecommendations RuneBuildRecommendation[]
   championBuildProfiles    ChampionBuildProfile[]
-  matchupProfiles          ChampionMatchupProfile[]
-  synergyProfiles          ChampionSynergyProfile[]
+  championMatchupProfiles  ChampionMatchupProfile[]
+  championSynergyProfiles  ChampionSynergyProfile[]
   createdAt                DateTime                  @default(now())
   updatedAt                DateTime                  @updatedAt
   archivedAt               DateTime?

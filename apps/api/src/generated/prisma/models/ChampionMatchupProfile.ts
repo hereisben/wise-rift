@@ -315,7 +315,7 @@ export type ChampionMatchupProfileCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  champion: Prisma.ChampionCreateNestedOneWithoutMatchupProfilesInput
+  champion: Prisma.ChampionCreateNestedOneWithoutChampionMatchupProfilesInput
   patch: Prisma.PatchCreateNestedOneWithoutChampionMatchupProfilesInput
 }
 
@@ -345,7 +345,7 @@ export type ChampionMatchupProfileUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  champion?: Prisma.ChampionUpdateOneRequiredWithoutMatchupProfilesNestedInput
+  champion?: Prisma.ChampionUpdateOneRequiredWithoutChampionMatchupProfilesNestedInput
   patch?: Prisma.PatchUpdateOneRequiredWithoutChampionMatchupProfilesNestedInput
 }
 
@@ -584,7 +584,7 @@ export type ChampionMatchupProfileCreateWithoutPatchInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
-  champion: Prisma.ChampionCreateNestedOneWithoutMatchupProfilesInput
+  champion: Prisma.ChampionCreateNestedOneWithoutChampionMatchupProfilesInput
 }
 
 export type ChampionMatchupProfileUncheckedCreateWithoutPatchInput = {
@@ -724,7 +724,7 @@ export type ChampionMatchupProfileUpdateWithoutPatchInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  champion?: Prisma.ChampionUpdateOneRequiredWithoutMatchupProfilesNestedInput
+  champion?: Prisma.ChampionUpdateOneRequiredWithoutChampionMatchupProfilesNestedInput
 }
 
 export type ChampionMatchupProfileUncheckedUpdateWithoutPatchInput = {

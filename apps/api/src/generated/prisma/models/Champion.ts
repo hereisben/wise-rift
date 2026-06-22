@@ -286,8 +286,8 @@ export type ChampionWhereInput = {
   matchOutcomes?: Prisma.MatchOutcomeListRelationFilter
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationListRelationFilter
   championBuildProfiles?: Prisma.ChampionBuildProfileListRelationFilter
-  matchupProfiles?: Prisma.ChampionMatchupProfileListRelationFilter
-  synergyProfiles?: Prisma.ChampionSynergyProfileListRelationFilter
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileListRelationFilter
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileListRelationFilter
 }
 
 export type ChampionOrderByWithRelationInput = {
@@ -323,8 +323,8 @@ export type ChampionOrderByWithRelationInput = {
   matchOutcomes?: Prisma.MatchOutcomeOrderByRelationAggregateInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationOrderByRelationAggregateInput
   championBuildProfiles?: Prisma.ChampionBuildProfileOrderByRelationAggregateInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileOrderByRelationAggregateInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileOrderByRelationAggregateInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileOrderByRelationAggregateInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileOrderByRelationAggregateInput
 }
 
 export type ChampionWhereUniqueInput = Prisma.AtLeast<{
@@ -363,8 +363,8 @@ export type ChampionWhereUniqueInput = Prisma.AtLeast<{
   matchOutcomes?: Prisma.MatchOutcomeListRelationFilter
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationListRelationFilter
   championBuildProfiles?: Prisma.ChampionBuildProfileListRelationFilter
-  matchupProfiles?: Prisma.ChampionMatchupProfileListRelationFilter
-  synergyProfiles?: Prisma.ChampionSynergyProfileListRelationFilter
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileListRelationFilter
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileListRelationFilter
 }, "id" | "key">
 
 export type ChampionOrderByWithAggregationInput = {
@@ -452,8 +452,8 @@ export type ChampionCreateInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateInput = {
@@ -489,8 +489,8 @@ export type ChampionUncheckedCreateInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUpdateInput = {
@@ -526,8 +526,8 @@ export type ChampionUpdateInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateInput = {
@@ -563,8 +563,8 @@ export type ChampionUncheckedUpdateInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateManyInput = {
@@ -950,32 +950,32 @@ export type ChampionUpdateOneRequiredWithoutChampionBuildProfilesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ChampionUpdateToOneWithWhereWithoutChampionBuildProfilesInput, Prisma.ChampionUpdateWithoutChampionBuildProfilesInput>, Prisma.ChampionUncheckedUpdateWithoutChampionBuildProfilesInput>
 }
 
-export type ChampionCreateNestedOneWithoutMatchupProfilesInput = {
-  create?: Prisma.XOR<Prisma.ChampionCreateWithoutMatchupProfilesInput, Prisma.ChampionUncheckedCreateWithoutMatchupProfilesInput>
-  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutMatchupProfilesInput
+export type ChampionCreateNestedOneWithoutChampionMatchupProfilesInput = {
+  create?: Prisma.XOR<Prisma.ChampionCreateWithoutChampionMatchupProfilesInput, Prisma.ChampionUncheckedCreateWithoutChampionMatchupProfilesInput>
+  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutChampionMatchupProfilesInput
   connect?: Prisma.ChampionWhereUniqueInput
 }
 
-export type ChampionUpdateOneRequiredWithoutMatchupProfilesNestedInput = {
-  create?: Prisma.XOR<Prisma.ChampionCreateWithoutMatchupProfilesInput, Prisma.ChampionUncheckedCreateWithoutMatchupProfilesInput>
-  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutMatchupProfilesInput
-  upsert?: Prisma.ChampionUpsertWithoutMatchupProfilesInput
+export type ChampionUpdateOneRequiredWithoutChampionMatchupProfilesNestedInput = {
+  create?: Prisma.XOR<Prisma.ChampionCreateWithoutChampionMatchupProfilesInput, Prisma.ChampionUncheckedCreateWithoutChampionMatchupProfilesInput>
+  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutChampionMatchupProfilesInput
+  upsert?: Prisma.ChampionUpsertWithoutChampionMatchupProfilesInput
   connect?: Prisma.ChampionWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChampionUpdateToOneWithWhereWithoutMatchupProfilesInput, Prisma.ChampionUpdateWithoutMatchupProfilesInput>, Prisma.ChampionUncheckedUpdateWithoutMatchupProfilesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChampionUpdateToOneWithWhereWithoutChampionMatchupProfilesInput, Prisma.ChampionUpdateWithoutChampionMatchupProfilesInput>, Prisma.ChampionUncheckedUpdateWithoutChampionMatchupProfilesInput>
 }
 
-export type ChampionCreateNestedOneWithoutSynergyProfilesInput = {
-  create?: Prisma.XOR<Prisma.ChampionCreateWithoutSynergyProfilesInput, Prisma.ChampionUncheckedCreateWithoutSynergyProfilesInput>
-  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutSynergyProfilesInput
+export type ChampionCreateNestedOneWithoutChampionSynergyProfilesInput = {
+  create?: Prisma.XOR<Prisma.ChampionCreateWithoutChampionSynergyProfilesInput, Prisma.ChampionUncheckedCreateWithoutChampionSynergyProfilesInput>
+  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutChampionSynergyProfilesInput
   connect?: Prisma.ChampionWhereUniqueInput
 }
 
-export type ChampionUpdateOneRequiredWithoutSynergyProfilesNestedInput = {
-  create?: Prisma.XOR<Prisma.ChampionCreateWithoutSynergyProfilesInput, Prisma.ChampionUncheckedCreateWithoutSynergyProfilesInput>
-  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutSynergyProfilesInput
-  upsert?: Prisma.ChampionUpsertWithoutSynergyProfilesInput
+export type ChampionUpdateOneRequiredWithoutChampionSynergyProfilesNestedInput = {
+  create?: Prisma.XOR<Prisma.ChampionCreateWithoutChampionSynergyProfilesInput, Prisma.ChampionUncheckedCreateWithoutChampionSynergyProfilesInput>
+  connectOrCreate?: Prisma.ChampionCreateOrConnectWithoutChampionSynergyProfilesInput
+  upsert?: Prisma.ChampionUpsertWithoutChampionSynergyProfilesInput
   connect?: Prisma.ChampionWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChampionUpdateToOneWithWhereWithoutSynergyProfilesInput, Prisma.ChampionUpdateWithoutSynergyProfilesInput>, Prisma.ChampionUncheckedUpdateWithoutSynergyProfilesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChampionUpdateToOneWithWhereWithoutChampionSynergyProfilesInput, Prisma.ChampionUpdateWithoutChampionSynergyProfilesInput>, Prisma.ChampionUncheckedUpdateWithoutChampionSynergyProfilesInput>
 }
 
 export type ChampionCreateWithoutChampionPatchStatsInput = {
@@ -1010,8 +1010,8 @@ export type ChampionCreateWithoutChampionPatchStatsInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutChampionPatchStatsInput = {
@@ -1046,8 +1046,8 @@ export type ChampionUncheckedCreateWithoutChampionPatchStatsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutChampionPatchStatsInput = {
@@ -1098,8 +1098,8 @@ export type ChampionUpdateWithoutChampionPatchStatsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutChampionPatchStatsInput = {
@@ -1134,8 +1134,8 @@ export type ChampionUncheckedUpdateWithoutChampionPatchStatsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateWithoutChampionSkillsInput = {
@@ -1170,8 +1170,8 @@ export type ChampionCreateWithoutChampionSkillsInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutChampionSkillsInput = {
@@ -1206,8 +1206,8 @@ export type ChampionUncheckedCreateWithoutChampionSkillsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutChampionSkillsInput = {
@@ -1258,8 +1258,8 @@ export type ChampionUpdateWithoutChampionSkillsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutChampionSkillsInput = {
@@ -1294,8 +1294,8 @@ export type ChampionUncheckedUpdateWithoutChampionSkillsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateWithoutChampionPoolEntriesInput = {
@@ -1330,8 +1330,8 @@ export type ChampionCreateWithoutChampionPoolEntriesInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutChampionPoolEntriesInput = {
@@ -1366,8 +1366,8 @@ export type ChampionUncheckedCreateWithoutChampionPoolEntriesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutChampionPoolEntriesInput = {
@@ -1418,8 +1418,8 @@ export type ChampionUpdateWithoutChampionPoolEntriesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutChampionPoolEntriesInput = {
@@ -1454,8 +1454,8 @@ export type ChampionUncheckedUpdateWithoutChampionPoolEntriesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateWithoutIntendedDraftSessionsInput = {
@@ -1490,8 +1490,8 @@ export type ChampionCreateWithoutIntendedDraftSessionsInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutIntendedDraftSessionsInput = {
@@ -1526,8 +1526,8 @@ export type ChampionUncheckedCreateWithoutIntendedDraftSessionsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutIntendedDraftSessionsInput = {
@@ -1578,8 +1578,8 @@ export type ChampionUpdateWithoutIntendedDraftSessionsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutIntendedDraftSessionsInput = {
@@ -1614,8 +1614,8 @@ export type ChampionUncheckedUpdateWithoutIntendedDraftSessionsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateWithoutDraftBansInput = {
@@ -1650,8 +1650,8 @@ export type ChampionCreateWithoutDraftBansInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutDraftBansInput = {
@@ -1686,8 +1686,8 @@ export type ChampionUncheckedCreateWithoutDraftBansInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutDraftBansInput = {
@@ -1738,8 +1738,8 @@ export type ChampionUpdateWithoutDraftBansInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutDraftBansInput = {
@@ -1774,8 +1774,8 @@ export type ChampionUncheckedUpdateWithoutDraftBansInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateWithoutDraftPicksInput = {
@@ -1810,8 +1810,8 @@ export type ChampionCreateWithoutDraftPicksInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutDraftPicksInput = {
@@ -1846,8 +1846,8 @@ export type ChampionUncheckedCreateWithoutDraftPicksInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutDraftPicksInput = {
@@ -1898,8 +1898,8 @@ export type ChampionUpdateWithoutDraftPicksInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutDraftPicksInput = {
@@ -1934,8 +1934,8 @@ export type ChampionUncheckedUpdateWithoutDraftPicksInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateWithoutItemBuildRecommendationsInput = {
@@ -1970,8 +1970,8 @@ export type ChampionCreateWithoutItemBuildRecommendationsInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutItemBuildRecommendationsInput = {
@@ -2006,8 +2006,8 @@ export type ChampionUncheckedCreateWithoutItemBuildRecommendationsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutItemBuildRecommendationsInput = {
@@ -2058,8 +2058,8 @@ export type ChampionUpdateWithoutItemBuildRecommendationsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutItemBuildRecommendationsInput = {
@@ -2094,8 +2094,8 @@ export type ChampionUncheckedUpdateWithoutItemBuildRecommendationsInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateWithoutChampionMatchupNotesInput = {
@@ -2130,8 +2130,8 @@ export type ChampionCreateWithoutChampionMatchupNotesInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutChampionMatchupNotesInput = {
@@ -2166,8 +2166,8 @@ export type ChampionUncheckedCreateWithoutChampionMatchupNotesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutChampionMatchupNotesInput = {
@@ -2207,8 +2207,8 @@ export type ChampionCreateWithoutEnemyMatchupNotesInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutEnemyMatchupNotesInput = {
@@ -2243,8 +2243,8 @@ export type ChampionUncheckedCreateWithoutEnemyMatchupNotesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutEnemyMatchupNotesInput = {
@@ -2295,8 +2295,8 @@ export type ChampionUpdateWithoutChampionMatchupNotesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutChampionMatchupNotesInput = {
@@ -2331,8 +2331,8 @@ export type ChampionUncheckedUpdateWithoutChampionMatchupNotesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUpsertWithoutEnemyMatchupNotesInput = {
@@ -2378,8 +2378,8 @@ export type ChampionUpdateWithoutEnemyMatchupNotesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutEnemyMatchupNotesInput = {
@@ -2414,8 +2414,8 @@ export type ChampionUncheckedUpdateWithoutEnemyMatchupNotesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateWithoutMatchOutcomesInput = {
@@ -2450,8 +2450,8 @@ export type ChampionCreateWithoutMatchOutcomesInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteCreateNestedManyWithoutEnemyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutMatchOutcomesInput = {
@@ -2486,8 +2486,8 @@ export type ChampionUncheckedCreateWithoutMatchOutcomesInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteUncheckedCreateNestedManyWithoutEnemyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutMatchOutcomesInput = {
@@ -2538,8 +2538,8 @@ export type ChampionUpdateWithoutMatchOutcomesInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteUpdateManyWithoutEnemyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutMatchOutcomesInput = {
@@ -2574,8 +2574,8 @@ export type ChampionUncheckedUpdateWithoutMatchOutcomesInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteUncheckedUpdateManyWithoutEnemyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateWithoutRuneBuildRecommendationsInput = {
@@ -2610,8 +2610,8 @@ export type ChampionCreateWithoutRuneBuildRecommendationsInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteCreateNestedManyWithoutEnemyChampionInput
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutRuneBuildRecommendationsInput = {
@@ -2646,8 +2646,8 @@ export type ChampionUncheckedCreateWithoutRuneBuildRecommendationsInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteUncheckedCreateNestedManyWithoutEnemyChampionInput
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutRuneBuildRecommendationsInput = {
@@ -2698,8 +2698,8 @@ export type ChampionUpdateWithoutRuneBuildRecommendationsInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteUpdateManyWithoutEnemyChampionNestedInput
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutRuneBuildRecommendationsInput = {
@@ -2734,8 +2734,8 @@ export type ChampionUncheckedUpdateWithoutRuneBuildRecommendationsInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteUncheckedUpdateManyWithoutEnemyChampionNestedInput
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionCreateWithoutChampionBuildProfilesInput = {
@@ -2770,8 +2770,8 @@ export type ChampionCreateWithoutChampionBuildProfilesInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteCreateNestedManyWithoutEnemyChampionInput
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionUncheckedCreateWithoutChampionBuildProfilesInput = {
@@ -2806,8 +2806,8 @@ export type ChampionUncheckedCreateWithoutChampionBuildProfilesInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteUncheckedCreateNestedManyWithoutEnemyChampionInput
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
 export type ChampionCreateOrConnectWithoutChampionBuildProfilesInput = {
@@ -2858,8 +2858,8 @@ export type ChampionUpdateWithoutChampionBuildProfilesInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteUpdateManyWithoutEnemyChampionNestedInput
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
 export type ChampionUncheckedUpdateWithoutChampionBuildProfilesInput = {
@@ -2894,11 +2894,11 @@ export type ChampionUncheckedUpdateWithoutChampionBuildProfilesInput = {
   enemyMatchupNotes?: Prisma.MatchupNoteUncheckedUpdateManyWithoutEnemyChampionNestedInput
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
-export type ChampionCreateWithoutMatchupProfilesInput = {
+export type ChampionCreateWithoutChampionMatchupProfilesInput = {
   id?: string
   key: string
   name: string
@@ -2931,10 +2931,10 @@ export type ChampionCreateWithoutMatchupProfilesInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileCreateNestedManyWithoutChampionInput
 }
 
-export type ChampionUncheckedCreateWithoutMatchupProfilesInput = {
+export type ChampionUncheckedCreateWithoutChampionMatchupProfilesInput = {
   id?: string
   key: string
   name: string
@@ -2967,26 +2967,26 @@ export type ChampionUncheckedCreateWithoutMatchupProfilesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
-export type ChampionCreateOrConnectWithoutMatchupProfilesInput = {
+export type ChampionCreateOrConnectWithoutChampionMatchupProfilesInput = {
   where: Prisma.ChampionWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChampionCreateWithoutMatchupProfilesInput, Prisma.ChampionUncheckedCreateWithoutMatchupProfilesInput>
+  create: Prisma.XOR<Prisma.ChampionCreateWithoutChampionMatchupProfilesInput, Prisma.ChampionUncheckedCreateWithoutChampionMatchupProfilesInput>
 }
 
-export type ChampionUpsertWithoutMatchupProfilesInput = {
-  update: Prisma.XOR<Prisma.ChampionUpdateWithoutMatchupProfilesInput, Prisma.ChampionUncheckedUpdateWithoutMatchupProfilesInput>
-  create: Prisma.XOR<Prisma.ChampionCreateWithoutMatchupProfilesInput, Prisma.ChampionUncheckedCreateWithoutMatchupProfilesInput>
+export type ChampionUpsertWithoutChampionMatchupProfilesInput = {
+  update: Prisma.XOR<Prisma.ChampionUpdateWithoutChampionMatchupProfilesInput, Prisma.ChampionUncheckedUpdateWithoutChampionMatchupProfilesInput>
+  create: Prisma.XOR<Prisma.ChampionCreateWithoutChampionMatchupProfilesInput, Prisma.ChampionUncheckedCreateWithoutChampionMatchupProfilesInput>
   where?: Prisma.ChampionWhereInput
 }
 
-export type ChampionUpdateToOneWithWhereWithoutMatchupProfilesInput = {
+export type ChampionUpdateToOneWithWhereWithoutChampionMatchupProfilesInput = {
   where?: Prisma.ChampionWhereInput
-  data: Prisma.XOR<Prisma.ChampionUpdateWithoutMatchupProfilesInput, Prisma.ChampionUncheckedUpdateWithoutMatchupProfilesInput>
+  data: Prisma.XOR<Prisma.ChampionUpdateWithoutChampionMatchupProfilesInput, Prisma.ChampionUncheckedUpdateWithoutChampionMatchupProfilesInput>
 }
 
-export type ChampionUpdateWithoutMatchupProfilesInput = {
+export type ChampionUpdateWithoutChampionMatchupProfilesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3019,10 +3019,10 @@ export type ChampionUpdateWithoutMatchupProfilesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUpdateManyWithoutChampionNestedInput
 }
 
-export type ChampionUncheckedUpdateWithoutMatchupProfilesInput = {
+export type ChampionUncheckedUpdateWithoutChampionMatchupProfilesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3055,10 +3055,10 @@ export type ChampionUncheckedUpdateWithoutMatchupProfilesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  synergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championSynergyProfiles?: Prisma.ChampionSynergyProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
-export type ChampionCreateWithoutSynergyProfilesInput = {
+export type ChampionCreateWithoutChampionSynergyProfilesInput = {
   id?: string
   key: string
   name: string
@@ -3091,10 +3091,10 @@ export type ChampionCreateWithoutSynergyProfilesInput = {
   matchOutcomes?: Prisma.MatchOutcomeCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileCreateNestedManyWithoutChampionInput
 }
 
-export type ChampionUncheckedCreateWithoutSynergyProfilesInput = {
+export type ChampionUncheckedCreateWithoutChampionSynergyProfilesInput = {
   id?: string
   key: string
   name: string
@@ -3127,26 +3127,26 @@ export type ChampionUncheckedCreateWithoutSynergyProfilesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedCreateNestedManyWithoutMyChampionInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedCreateNestedManyWithoutChampionInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedCreateNestedManyWithoutChampionInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedCreateNestedManyWithoutChampionInput
 }
 
-export type ChampionCreateOrConnectWithoutSynergyProfilesInput = {
+export type ChampionCreateOrConnectWithoutChampionSynergyProfilesInput = {
   where: Prisma.ChampionWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChampionCreateWithoutSynergyProfilesInput, Prisma.ChampionUncheckedCreateWithoutSynergyProfilesInput>
+  create: Prisma.XOR<Prisma.ChampionCreateWithoutChampionSynergyProfilesInput, Prisma.ChampionUncheckedCreateWithoutChampionSynergyProfilesInput>
 }
 
-export type ChampionUpsertWithoutSynergyProfilesInput = {
-  update: Prisma.XOR<Prisma.ChampionUpdateWithoutSynergyProfilesInput, Prisma.ChampionUncheckedUpdateWithoutSynergyProfilesInput>
-  create: Prisma.XOR<Prisma.ChampionCreateWithoutSynergyProfilesInput, Prisma.ChampionUncheckedCreateWithoutSynergyProfilesInput>
+export type ChampionUpsertWithoutChampionSynergyProfilesInput = {
+  update: Prisma.XOR<Prisma.ChampionUpdateWithoutChampionSynergyProfilesInput, Prisma.ChampionUncheckedUpdateWithoutChampionSynergyProfilesInput>
+  create: Prisma.XOR<Prisma.ChampionCreateWithoutChampionSynergyProfilesInput, Prisma.ChampionUncheckedCreateWithoutChampionSynergyProfilesInput>
   where?: Prisma.ChampionWhereInput
 }
 
-export type ChampionUpdateToOneWithWhereWithoutSynergyProfilesInput = {
+export type ChampionUpdateToOneWithWhereWithoutChampionSynergyProfilesInput = {
   where?: Prisma.ChampionWhereInput
-  data: Prisma.XOR<Prisma.ChampionUpdateWithoutSynergyProfilesInput, Prisma.ChampionUncheckedUpdateWithoutSynergyProfilesInput>
+  data: Prisma.XOR<Prisma.ChampionUpdateWithoutChampionSynergyProfilesInput, Prisma.ChampionUncheckedUpdateWithoutChampionSynergyProfilesInput>
 }
 
-export type ChampionUpdateWithoutSynergyProfilesInput = {
+export type ChampionUpdateWithoutChampionSynergyProfilesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3179,10 +3179,10 @@ export type ChampionUpdateWithoutSynergyProfilesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUpdateManyWithoutChampionNestedInput
 }
 
-export type ChampionUncheckedUpdateWithoutSynergyProfilesInput = {
+export type ChampionUncheckedUpdateWithoutChampionSynergyProfilesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   key?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -3215,7 +3215,7 @@ export type ChampionUncheckedUpdateWithoutSynergyProfilesInput = {
   matchOutcomes?: Prisma.MatchOutcomeUncheckedUpdateManyWithoutMyChampionNestedInput
   runeBuildRecommendations?: Prisma.RuneBuildRecommendationUncheckedUpdateManyWithoutChampionNestedInput
   championBuildProfiles?: Prisma.ChampionBuildProfileUncheckedUpdateManyWithoutChampionNestedInput
-  matchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
+  championMatchupProfiles?: Prisma.ChampionMatchupProfileUncheckedUpdateManyWithoutChampionNestedInput
 }
 
 
@@ -3236,8 +3236,8 @@ export type ChampionCountOutputType = {
   matchOutcomes: number
   runeBuildRecommendations: number
   championBuildProfiles: number
-  matchupProfiles: number
-  synergyProfiles: number
+  championMatchupProfiles: number
+  championSynergyProfiles: number
 }
 
 export type ChampionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3253,8 +3253,8 @@ export type ChampionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensio
   matchOutcomes?: boolean | ChampionCountOutputTypeCountMatchOutcomesArgs
   runeBuildRecommendations?: boolean | ChampionCountOutputTypeCountRuneBuildRecommendationsArgs
   championBuildProfiles?: boolean | ChampionCountOutputTypeCountChampionBuildProfilesArgs
-  matchupProfiles?: boolean | ChampionCountOutputTypeCountMatchupProfilesArgs
-  synergyProfiles?: boolean | ChampionCountOutputTypeCountSynergyProfilesArgs
+  championMatchupProfiles?: boolean | ChampionCountOutputTypeCountChampionMatchupProfilesArgs
+  championSynergyProfiles?: boolean | ChampionCountOutputTypeCountChampionSynergyProfilesArgs
 }
 
 /**
@@ -3354,14 +3354,14 @@ export type ChampionCountOutputTypeCountChampionBuildProfilesArgs<ExtArgs extend
 /**
  * ChampionCountOutputType without action
  */
-export type ChampionCountOutputTypeCountMatchupProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ChampionCountOutputTypeCountChampionMatchupProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ChampionMatchupProfileWhereInput
 }
 
 /**
  * ChampionCountOutputType without action
  */
-export type ChampionCountOutputTypeCountSynergyProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ChampionCountOutputTypeCountChampionSynergyProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ChampionSynergyProfileWhereInput
 }
 
@@ -3399,8 +3399,8 @@ export type ChampionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   matchOutcomes?: boolean | Prisma.Champion$matchOutcomesArgs<ExtArgs>
   runeBuildRecommendations?: boolean | Prisma.Champion$runeBuildRecommendationsArgs<ExtArgs>
   championBuildProfiles?: boolean | Prisma.Champion$championBuildProfilesArgs<ExtArgs>
-  matchupProfiles?: boolean | Prisma.Champion$matchupProfilesArgs<ExtArgs>
-  synergyProfiles?: boolean | Prisma.Champion$synergyProfilesArgs<ExtArgs>
+  championMatchupProfiles?: boolean | Prisma.Champion$championMatchupProfilesArgs<ExtArgs>
+  championSynergyProfiles?: boolean | Prisma.Champion$championSynergyProfilesArgs<ExtArgs>
   _count?: boolean | Prisma.ChampionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["champion"]>
 
@@ -3487,8 +3487,8 @@ export type ChampionInclude<ExtArgs extends runtime.Types.Extensions.InternalArg
   matchOutcomes?: boolean | Prisma.Champion$matchOutcomesArgs<ExtArgs>
   runeBuildRecommendations?: boolean | Prisma.Champion$runeBuildRecommendationsArgs<ExtArgs>
   championBuildProfiles?: boolean | Prisma.Champion$championBuildProfilesArgs<ExtArgs>
-  matchupProfiles?: boolean | Prisma.Champion$matchupProfilesArgs<ExtArgs>
-  synergyProfiles?: boolean | Prisma.Champion$synergyProfilesArgs<ExtArgs>
+  championMatchupProfiles?: boolean | Prisma.Champion$championMatchupProfilesArgs<ExtArgs>
+  championSynergyProfiles?: boolean | Prisma.Champion$championSynergyProfilesArgs<ExtArgs>
   _count?: boolean | Prisma.ChampionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ChampionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3509,8 +3509,8 @@ export type $ChampionPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     matchOutcomes: Prisma.$MatchOutcomePayload<ExtArgs>[]
     runeBuildRecommendations: Prisma.$RuneBuildRecommendationPayload<ExtArgs>[]
     championBuildProfiles: Prisma.$ChampionBuildProfilePayload<ExtArgs>[]
-    matchupProfiles: Prisma.$ChampionMatchupProfilePayload<ExtArgs>[]
-    synergyProfiles: Prisma.$ChampionSynergyProfilePayload<ExtArgs>[]
+    championMatchupProfiles: Prisma.$ChampionMatchupProfilePayload<ExtArgs>[]
+    championSynergyProfiles: Prisma.$ChampionSynergyProfilePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3939,8 +3939,8 @@ export interface Prisma__ChampionClient<T, Null = never, ExtArgs extends runtime
   matchOutcomes<T extends Prisma.Champion$matchOutcomesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$matchOutcomesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatchOutcomePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   runeBuildRecommendations<T extends Prisma.Champion$runeBuildRecommendationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$runeBuildRecommendationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RuneBuildRecommendationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   championBuildProfiles<T extends Prisma.Champion$championBuildProfilesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$championBuildProfilesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChampionBuildProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  matchupProfiles<T extends Prisma.Champion$matchupProfilesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$matchupProfilesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChampionMatchupProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  synergyProfiles<T extends Prisma.Champion$synergyProfilesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$synergyProfilesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChampionSynergyProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  championMatchupProfiles<T extends Prisma.Champion$championMatchupProfilesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$championMatchupProfilesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChampionMatchupProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  championSynergyProfiles<T extends Prisma.Champion$championSynergyProfilesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Champion$championSynergyProfilesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChampionSynergyProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4671,9 +4671,9 @@ export type Champion$championBuildProfilesArgs<ExtArgs extends runtime.Types.Ext
 }
 
 /**
- * Champion.matchupProfiles
+ * Champion.championMatchupProfiles
  */
-export type Champion$matchupProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Champion$championMatchupProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the ChampionMatchupProfile
    */
@@ -4695,9 +4695,9 @@ export type Champion$matchupProfilesArgs<ExtArgs extends runtime.Types.Extension
 }
 
 /**
- * Champion.synergyProfiles
+ * Champion.championSynergyProfiles
  */
-export type Champion$synergyProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Champion$championSynergyProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the ChampionSynergyProfile
    */
