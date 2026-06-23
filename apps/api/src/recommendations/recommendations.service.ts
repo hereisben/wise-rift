@@ -1,10 +1,93 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../database/prisma.service.js';
-import { ConfidenceLevel } from '../generated/prisma/enums.js';
-import { CreateDraftRecommendationDto } from './dto/create-draft-recommendation.dto.js';
+import { ConfidenceLevel, GameRole } from '../generated/prisma/enums.js';
+import {
+  CreateDraftRecommendationDto,
+  DraftChampionPickDto,
+} from './dto/create-draft-recommendation.dto.js';
+import {
+  ChampionBuildProfileForDraft,
+  ChampionMatchupProfileForDraft,
+  ChampionSynergyProfileForDraft,
+  ChampionWithActivePatchProfiles,
+  DraftChampionContext,
+  NormalizedDraftChampionPick,
+} from './types/draft-recommendation-champion.type.js';
 
 function isDefined<T>(value: T | null | undefined): value is T {
   return value !== null && value !== undefined;
+}
+
+function normalizeDraftPicks(
+  picks: DraftChampionPickDto[] | undefined,
+): NormalizedDraftChampionPick[] {
+  return (picks ?? [])
+    .filter((pick) => pick.championKey.trim().length > 0)
+    .map((pick) => ({
+      championKey: pick.championKey.trim(),
+      role: pick.role ?? GameRole.UNKNOWN,
+    }));
+}
+
+function findChampionBuildProfileWithRole(
+  champion: ChampionWithActivePatchProfiles,
+  role: GameRole,
+): ChampionBuildProfileForDraft | null {
+  if (role === GameRole.UNKNOWN) {
+    return null;
+  }
+
+  return (
+    champion.championBuildProfiles.find((profile) => profile.role === role) ??
+    null
+  );
+}
+
+function findChampionMatchupProfileWithRole(
+  champion: ChampionWithActivePatchProfiles,
+  role: GameRole,
+): ChampionMatchupProfileForDraft | null {
+  if (role === GameRole.UNKNOWN) {
+    return null;
+  }
+
+  return (
+    champion.championMatchupProfiles.find((profile) => profile.role === role) ??
+    null
+  );
+}
+
+function findChampionSynergyProfileWithRole(
+  champion: ChampionWithActivePatchProfiles,
+  role: GameRole,
+): ChampionSynergyProfileForDraft | null {
+  if (role === GameRole.UNKNOWN) {
+    return null;
+  }
+
+  return (
+    champion.championSynergyProfiles.find((profile) => profile.role === role) ??
+    null
+  );
+}
+
+function buildDraftChampionContext(
+  pick: NormalizedDraftChampionPick,
+  champion: ChampionWithActivePatchProfiles,
+): DraftChampionContext {
+  return {
+    pick,
+    champion,
+    championBuildProfile: findChampionBuildProfileWithRole(champion, pick.role),
+    championMatchupProfile: findChampionMatchupProfileWithRole(
+      champion,
+      pick.role,
+    ),
+    championSynergyProfile: findChampionSynergyProfileWithRole(
+      champion,
+      pick.role,
+    ),
+  };
 }
 
 @Injectable()
@@ -33,23 +116,30 @@ export class RecommendationsService {
     }
 
     const intendedChampionKey =
-      createDraftRecommendationDto.intendedChampionKey ?? null;
+      createDraftRecommendationDto.intendedChampionKey?.trim() || null;
 
-    const allyChampionKeys =
-      createDraftRecommendationDto.allyChampionKeys ?? [];
+    const allyPicks = normalizeDraftPicks(
+      createDraftRecommendationDto.allyPicks,
+    );
 
-    const enemyChampionKeys =
-      createDraftRecommendationDto.enemyChampionKeys ?? [];
+    const enemyPicks = normalizeDraftPicks(
+      createDraftRecommendationDto.enemyPicks,
+    );
 
-    const bannedChampionKeys =
-      createDraftRecommendationDto.bannedChampionKeys ?? [];
+    const bannedChampionKeys = [
+      ...new Set(
+        (createDraftRecommendationDto.bannedChampionKeys ?? [])
+          .map((key) => key.trim())
+          .filter((key) => key.length > 0),
+      ),
+    ];
 
     const role = createDraftRecommendationDto.role;
 
     const championKeys = [
       intendedChampionKey,
-      ...allyChampionKeys,
-      ...enemyChampionKeys,
+      ...allyPicks.map((pick) => pick.championKey),
+      ...enemyPicks.map((pick) => pick.championKey),
       ...bannedChampionKeys,
     ].filter(isDefined);
 
@@ -65,21 +155,18 @@ export class RecommendationsService {
       include: {
         championBuildProfiles: {
           where: {
-            role,
             patchId: activePatch.id,
             deletedAt: null,
           },
         },
         championMatchupProfiles: {
           where: {
-            role,
             patchId: activePatch.id,
             deletedAt: null,
           },
         },
         championSynergyProfiles: {
           where: {
-            role,
             patchId: activePatch.id,
             deletedAt: null,
           },
@@ -95,20 +182,58 @@ export class RecommendationsService {
       ? (championsByKey.get(intendedChampionKey) ?? null)
       : null;
 
-    const allyChampions = allyChampionKeys
-      .map((championKey) => championsByKey.get(championKey))
+    const allyChampions = allyPicks
+      .map((pick) => championsByKey.get(pick.championKey))
       .filter(isDefined);
 
-    const enemyChampions = enemyChampionKeys
-      .map((championKey) => championsByKey.get(championKey))
+    const enemyChampions = enemyPicks
+      .map((pick) => championsByKey.get(pick.championKey))
       .filter(isDefined);
 
     const bannedChampions = bannedChampionKeys
       .map((championKey) => championsByKey.get(championKey))
       .filter(isDefined);
 
+    const intendedChampionContext =
+      intendedChampion && intendedChampionKey
+        ? buildDraftChampionContext(
+            { championKey: intendedChampionKey, role },
+            intendedChampion,
+          )
+        : null;
+
+    const allyChampionContexts = allyPicks
+      .map((pick) => {
+        const champion = championsByKey.get(pick.championKey);
+
+        if (!champion) {
+          return null;
+        }
+
+        return buildDraftChampionContext(pick, champion);
+      })
+      .filter(isDefined);
+
+    const enemyChampionContexts = enemyPicks
+      .map((pick) => {
+        const champion = championsByKey.get(pick.championKey);
+
+        if (!champion) {
+          return null;
+        }
+
+        return buildDraftChampionContext(pick, champion);
+      })
+      .filter(isDefined);
+
     return {
-      inputSnapshot: createDraftRecommendationDto,
+      inputSnapshot: {
+        role,
+        intendedChampionKey,
+        allyPicks,
+        enemyPicks,
+        bannedChampionKeys,
+      },
       draftContext: {
         patch: {
           id: activePatch.id,
@@ -118,8 +243,13 @@ export class RecommendationsService {
         },
         role,
         intendedChampion,
+        intendedChampionContext,
+        allyPicks,
+        allyChampionContexts,
         allyChampions,
         enemyChampions,
+        enemyPicks,
+        enemyChampionContexts,
         bannedChampions,
       },
       resultItems: [],
