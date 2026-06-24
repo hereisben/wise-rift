@@ -1,10 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaService } from '../database/prisma.service.js';
-import { ConfidenceLevel, GameRole } from '../generated/prisma/enums.js';
 import {
-  CreateDraftRecommendationDto,
-  DraftChampionPickDto,
-} from './dto/create-draft-recommendation.dto.js';
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import {
   ChampionBuildProfileForDraft,
   ChampionMatchupProfileForDraft,
@@ -12,11 +10,14 @@ import {
   ChampionWithActivePatchProfiles,
   DraftChampionContext,
   NormalizedDraftChampionPick,
-} from './types/draft-recommendation-champion.type.js';
-
-function isDefined<T>(value: T | null | undefined): value is T {
-  return value !== null && value !== undefined;
-}
+} from '../common/types/draft-recommendation-champion.type.js';
+import { isDefined } from '../common/utils/is-defined.util.js';
+import { PrismaService } from '../database/prisma.service.js';
+import { ConfidenceLevel, GameRole } from '../generated/prisma/enums.js';
+import {
+  CreateDraftRecommendationDto,
+  DraftChampionPickDto,
+} from './dto/create-draft-recommendation.dto.js';
 
 function normalizeDraftPicks(
   picks: DraftChampionPickDto[] | undefined,
@@ -24,7 +25,7 @@ function normalizeDraftPicks(
   return (picks ?? [])
     .filter((pick) => pick.championKey.trim().length > 0)
     .map((pick) => ({
-      championKey: pick.championKey.trim(),
+      championKey: pick.championKey.trim().toLowerCase(),
       role: pick.role ?? GameRole.UNKNOWN,
     }));
 }
@@ -90,6 +91,55 @@ function buildDraftChampionContext(
   };
 }
 
+function findDuplicateValues(values: string[]): string[] {
+  const seenValues = new Set<string>();
+  const duplicateValues = new Set<string>();
+
+  for (const value of values) {
+    if (seenValues.has(value)) {
+      duplicateValues.add(value);
+      continue;
+    }
+
+    seenValues.add(value);
+  }
+
+  return [...duplicateValues];
+}
+
+function validateNoDuplicateValues(values: string[], label: string) {
+  const duplicateValues = findDuplicateValues(values);
+
+  if (duplicateValues.length > 0) {
+    throw new BadRequestException(
+      `${label} contains duplicate champion keys: ${duplicateValues.join(', ')}`,
+    );
+  }
+}
+
+function findOverlappingValues(
+  firstValues: string[],
+  secondValues: string[],
+): string[] {
+  const secondValueSet = new Set(secondValues);
+
+  return firstValues.filter((value) => secondValueSet.has(value));
+}
+
+function validateNoOverlap(
+  firstValues: string[],
+  secondValues: string[],
+  message: string,
+) {
+  const overlappingValues = findOverlappingValues(firstValues, secondValues);
+
+  if (overlappingValues.length > 0) {
+    throw new BadRequestException(
+      `${message}: ${[...new Set(overlappingValues)].join(', ')}`,
+    );
+  }
+}
+
 @Injectable()
 export class RecommendationsService {
   constructor(private readonly prismaService: PrismaService) {}
@@ -116,25 +166,92 @@ export class RecommendationsService {
     }
 
     const intendedChampionKey =
-      createDraftRecommendationDto.intendedChampionKey?.trim() || null;
+      createDraftRecommendationDto.intendedChampionKey?.trim().toLowerCase() ||
+      null;
 
     const allyPicks = normalizeDraftPicks(
       createDraftRecommendationDto.allyPicks,
     );
 
+    const allyChampionKeys = allyPicks.map((pick) => pick.championKey);
+
+    validateNoDuplicateValues(allyChampionKeys, `Ally picks`);
+
     const enemyPicks = normalizeDraftPicks(
       createDraftRecommendationDto.enemyPicks,
     );
 
-    const bannedChampionKeys = [
-      ...new Set(
-        (createDraftRecommendationDto.bannedChampionKeys ?? [])
-          .map((key) => key.trim())
-          .filter((key) => key.length > 0),
-      ),
-    ];
+    const enemyChampionKeys = enemyPicks.map((pick) => pick.championKey);
+
+    validateNoDuplicateValues(enemyChampionKeys, `Enemy picks`);
+
+    const bannedChampionKeys = (
+      createDraftRecommendationDto.bannedChampionKeys ?? []
+    )
+      .map((key) => key.trim().toLowerCase())
+      .filter((key) => key.length > 0);
+
+    validateNoDuplicateValues(bannedChampionKeys, `Banned champions`);
+
+    validateNoOverlap(
+      allyChampionKeys,
+      enemyChampionKeys,
+      `Champion cannot be picked by both teams`,
+    );
+
+    validateNoOverlap(
+      allyChampionKeys,
+      bannedChampionKeys,
+      `Ally champion cannot be banned`,
+    );
+
+    validateNoOverlap(
+      enemyChampionKeys,
+      bannedChampionKeys,
+      `Enemy champion cannot be banned`,
+    );
+
+    const reasonCodes: string[] = [];
+
+    if (
+      intendedChampionKey &&
+      bannedChampionKeys.includes(intendedChampionKey)
+    ) {
+      reasonCodes.push(`INTENDED_CHAMPION_BANNED`);
+    }
+
+    if (
+      intendedChampionKey &&
+      enemyChampionKeys.includes(intendedChampionKey)
+    ) {
+      reasonCodes.push(`INTENDED_CHAMPION_PICKED_BY_ENEMY`);
+    }
 
     const role = createDraftRecommendationDto.role;
+
+    const intendedChampionAllyPick = intendedChampionKey
+      ? (allyPicks.find((pick) => pick.championKey === intendedChampionKey) ??
+        null)
+      : null;
+
+    const isIntendedChampionPickedByDifferentAllyRole =
+      intendedChampionAllyPick !== null &&
+      intendedChampionAllyPick.role !== GameRole.UNKNOWN &&
+      intendedChampionAllyPick.role !== role;
+
+    if (isIntendedChampionPickedByDifferentAllyRole) {
+      reasonCodes.push(`INTENDED_CHAMPION_PICKED_BY_ALLY`);
+    }
+
+    const isIntendedChampionUnavailable =
+      intendedChampionKey !== null &&
+      (bannedChampionKeys.includes(intendedChampionKey) ||
+        enemyChampionKeys.includes(intendedChampionKey) ||
+        isIntendedChampionPickedByDifferentAllyRole);
+
+    const effectiveIntendedChampionKey = isIntendedChampionUnavailable
+      ? null
+      : intendedChampionKey;
 
     const championKeys = [
       intendedChampionKey,
@@ -178,58 +295,71 @@ export class RecommendationsService {
       champions.map((champion) => [champion.key, champion] as const),
     );
 
-    const intendedChampion = intendedChampionKey
-      ? (championsByKey.get(intendedChampionKey) ?? null)
+    if (intendedChampionKey && !championsByKey.has(intendedChampionKey)) {
+      throw new NotFoundException(`Champion not found: ${intendedChampionKey}`);
+    }
+
+    const intendedChampion = effectiveIntendedChampionKey
+      ? (championsByKey.get(effectiveIntendedChampionKey) ?? null)
       : null;
 
-    const allyChampions = allyPicks
-      .map((pick) => championsByKey.get(pick.championKey))
-      .filter(isDefined);
+    const allyChampions = allyPicks.map((pick) => {
+      const champion = championsByKey.get(pick.championKey);
 
-    const enemyChampions = enemyPicks
-      .map((pick) => championsByKey.get(pick.championKey))
-      .filter(isDefined);
+      if (!champion) {
+        throw new NotFoundException(
+          `Ally champion not found: ${pick.championKey}`,
+        );
+      }
 
-    const bannedChampions = bannedChampionKeys
-      .map((championKey) => championsByKey.get(championKey))
-      .filter(isDefined);
+      return champion;
+    });
+
+    const enemyChampions = enemyPicks.map((pick) => {
+      const champion = championsByKey.get(pick.championKey);
+
+      if (!champion) {
+        throw new NotFoundException(
+          `Enemy champion not found: ${pick.championKey}`,
+        );
+      }
+
+      return champion;
+    });
+
+    const bannedChampions = bannedChampionKeys.map((championKey) => {
+      const champion = championsByKey.get(championKey);
+
+      if (!champion) {
+        throw new NotFoundException(
+          `Banned champion not found: ${championKey}`,
+        );
+      }
+
+      return champion;
+    });
 
     const intendedChampionContext =
-      intendedChampion && intendedChampionKey
+      intendedChampion && effectiveIntendedChampionKey
         ? buildDraftChampionContext(
-            { championKey: intendedChampionKey, role },
+            { championKey: effectiveIntendedChampionKey, role },
             intendedChampion,
           )
         : null;
 
-    const allyChampionContexts = allyPicks
-      .map((pick) => {
-        const champion = championsByKey.get(pick.championKey);
+    const allyChampionContexts = allyPicks.map((pick, index) =>
+      buildDraftChampionContext(pick, allyChampions[index]),
+    );
 
-        if (!champion) {
-          return null;
-        }
-
-        return buildDraftChampionContext(pick, champion);
-      })
-      .filter(isDefined);
-
-    const enemyChampionContexts = enemyPicks
-      .map((pick) => {
-        const champion = championsByKey.get(pick.championKey);
-
-        if (!champion) {
-          return null;
-        }
-
-        return buildDraftChampionContext(pick, champion);
-      })
-      .filter(isDefined);
+    const enemyChampionContexts = enemyPicks.map((pick, index) =>
+      buildDraftChampionContext(pick, enemyChampions[index]),
+    );
 
     return {
       inputSnapshot: {
         role,
         intendedChampionKey,
+        effectiveIntendedChampionKey,
         allyPicks,
         enemyPicks,
         bannedChampionKeys,
@@ -254,7 +384,7 @@ export class RecommendationsService {
       },
       resultItems: [],
       scoreBreakdown: null,
-      reasonCodes: [],
+      reasonCodes,
       confidence: ConfidenceLevel.UNKNOWN,
     };
   }

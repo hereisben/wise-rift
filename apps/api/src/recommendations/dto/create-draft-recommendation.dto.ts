@@ -3,6 +3,7 @@ import {
   ArrayUnique,
   IsArray,
   IsEnum,
+  IsNotEmpty,
   IsOptional,
   IsString,
   ValidateNested,
@@ -11,6 +12,7 @@ import { GameRole } from '../../generated/prisma/enums.js';
 
 export class DraftChampionPickDto {
   @IsString()
+  @IsNotEmpty()
   championKey!: string;
 
   @IsOptional()
@@ -24,6 +26,7 @@ export class CreateDraftRecommendationDto {
 
   @IsOptional()
   @IsString()
+  @IsNotEmpty()
   intendedChampionKey?: string;
 
   @IsOptional()
@@ -42,5 +45,6 @@ export class CreateDraftRecommendationDto {
   @IsArray()
   @ArrayUnique()
   @IsString({ each: true })
+  @IsNotEmpty({ each: true })
   bannedChampionKeys?: string[];
 }
