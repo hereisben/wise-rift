@@ -18,6 +18,7 @@ import {
   CreateDraftRecommendationDto,
   DraftChampionPickDto,
 } from './dto/create-draft-recommendation.dto.js';
+import { DraftRecommendationScoringService } from './scoring/draft-recommendation-scoring.service.js';
 
 function normalizeDraftPicks(
   picks: DraftChampionPickDto[] | undefined,
@@ -142,7 +143,10 @@ function validateNoOverlap(
 
 @Injectable()
 export class RecommendationsService {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly draftRecommendationScoringService: DraftRecommendationScoringService,
+  ) {}
 
   getHealthCheck() {
     return {
