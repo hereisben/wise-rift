@@ -13,7 +13,7 @@ import {
 } from '../common/types/draft-recommendation-champion.type.js';
 import { isDefined } from '../common/utils/is-defined.util.js';
 import { PrismaService } from '../database/prisma.service.js';
-import { ConfidenceLevel, GameRole } from '../generated/prisma/enums.js';
+import { GameRole } from '../generated/prisma/enums.js';
 import {
   CreateDraftRecommendationDto,
   DraftChampionPickDto,
@@ -233,6 +233,10 @@ export class RecommendationsService {
 
     const role = createDraftRecommendationDto.role;
 
+    if (role === GameRole.UNKNOWN) {
+      throw new BadRequestException(`Recommendation role cannot be UNKNOWN`);
+    }
+
     const intendedChampionAllyPick = intendedChampionKey
       ? (allyPicks.find((pick) => pick.championKey === intendedChampionKey) ??
         null)
@@ -359,6 +363,52 @@ export class RecommendationsService {
       buildDraftChampionContext(pick, enemyChampions[index]),
     );
 
+    const candidateChampions = await this.prismaService.champion.findMany({
+      where: {
+        deletedAt: null,
+        roles: {
+          has: role,
+        },
+      },
+      include: {
+        championBuildProfiles: {
+          where: {
+            deletedAt: null,
+            patchId: activePatch.id,
+          },
+        },
+        championMatchupProfiles: {
+          where: {
+            deletedAt: null,
+            patchId: activePatch.id,
+          },
+        },
+        championSynergyProfiles: {
+          where: {
+            deletedAt: null,
+            patchId: activePatch.id,
+          },
+        },
+      },
+    });
+
+    const candidateContexts = candidateChampions.map((candidateChampion) =>
+      buildDraftChampionContext(
+        { championKey: candidateChampion.key, role },
+        candidateChampion,
+      ),
+    );
+
+    const scoringResult =
+      this.draftRecommendationScoringService.scoreDraftRecommendations({
+        role,
+        effectiveIntendedChampionKey,
+        allyChampionKeys,
+        enemyChampionKeys,
+        bannedChampionKeys,
+        candidateContexts,
+      });
+
     return {
       inputSnapshot: {
         role,
@@ -386,10 +436,11 @@ export class RecommendationsService {
         enemyChampionContexts,
         bannedChampions,
       },
-      resultItems: [],
-      scoreBreakdown: null,
-      reasonCodes,
-      confidence: ConfidenceLevel.UNKNOWN,
+      resultItems: scoringResult.resultItems,
+      bestItem: scoringResult.bestItem,
+      scoreBreakdown: scoringResult.scoreBreakdown,
+      reasonCodes: [...reasonCodes, ...scoringResult.reasonCodes],
+      confidence: scoringResult.confidence,
     };
   }
 }
