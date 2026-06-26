@@ -45,5 +45,7 @@ export type DraftRecommendationScoringResult = {
 };
 
 export type DraftRecommendationScoringInput = DraftRecommendationContext & {
+  allyChampionContexts: DraftChampionContext[];
+  enemyChampionContexts: DraftChampionContext[];
   candidateContexts: DraftChampionContext[];
 };

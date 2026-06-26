@@ -80,12 +80,12 @@ function buildDraftChampionContext(
   return {
     pick,
     champion,
-    championBuildProfile: findChampionBuildProfileWithRole(champion, pick.role),
-    championMatchupProfile: findChampionMatchupProfileWithRole(
+    selectedBuildProfile: findChampionBuildProfileWithRole(champion, pick.role),
+    selectedMatchupProfile: findChampionMatchupProfileWithRole(
       champion,
       pick.role,
     ),
-    championSynergyProfile: findChampionSynergyProfileWithRole(
+    selectedSynergyProfile: findChampionSynergyProfileWithRole(
       champion,
       pick.role,
     ),
@@ -406,6 +406,8 @@ export class RecommendationsService {
         allyChampionKeys,
         enemyChampionKeys,
         bannedChampionKeys,
+        allyChampionContexts,
+        enemyChampionContexts,
         candidateContexts,
       });
 

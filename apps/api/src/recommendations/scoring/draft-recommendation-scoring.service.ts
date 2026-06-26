@@ -38,9 +38,22 @@ export class DraftRecommendationScoringService {
       bannedChampionKeys: input.bannedChampionKeys,
     };
 
+    const allyTeamTags = this.collectTeamAttributeTags(
+      input.allyChampionContexts,
+    );
+
+    const enemyTeamTags = this.collectTeamAttributeTags(
+      input.enemyChampionContexts,
+    );
+
     const resultItems = availableCandidateContexts
       .map((candidateContext) =>
-        this.scoreCandidate(draftRecommendationContext, candidateContext),
+        this.scoreCandidate(
+          draftRecommendationContext,
+          candidateContext,
+          allyTeamTags,
+          enemyTeamTags,
+        ),
       )
       .sort((a, b) => b.totalScore - a.totalScore)
       .slice(0, DRAFT_RECOMMENDATION_SCORE_LIMITS.DEFAULT_RECOMMENDATION_LIMIT);
@@ -65,6 +78,8 @@ export class DraftRecommendationScoringService {
   private scoreCandidate(
     draftRecommendationContext: DraftRecommendationContext,
     candidateContext: DraftChampionContext,
+    allyTeamTags: Set<string>,
+    enemyTeamTags: Set<string>,
   ): DraftRecommendationResultItem {
     const scoreBreakdown: DraftRecommendationResultItemScoreBreakdown = {
       roleFitScore: DRAFT_RECOMMENDATION_SCORING_WEIGHTS.BASE_ROLE_FIT,
@@ -75,13 +90,63 @@ export class DraftRecommendationScoringService {
           : 0,
       matchupScore: 0,
       synergyScore: 0,
-      buildProfileScore: candidateContext.championBuildProfile
+      buildProfileScore: candidateContext.selectedBuildProfile
         ? DRAFT_RECOMMENDATION_SCORING_WEIGHTS.BUILD_PROFILE_READY
         : 0,
       riskPenalty: 0,
       dataQualityPenalty: 0,
       totalBeforeClamp: 0,
     };
+
+    const matchupProfileTags =
+      this.getChampionMatchupProfileTags(candidateContext);
+
+    const goodMatchupCount = this.countMatchingTags(
+      matchupProfileTags.goodIntoTags,
+      enemyTeamTags,
+    );
+
+    const weakMatchupCount = this.countMatchingTags(
+      matchupProfileTags.weakIntoTags,
+      enemyTeamTags,
+    );
+
+    const banRiskCount = this.countMatchingTags(
+      matchupProfileTags.banRiskTags,
+      enemyTeamTags,
+    );
+
+    scoreBreakdown.matchupScore +=
+      goodMatchupCount * DRAFT_RECOMMENDATION_SCORING_WEIGHTS.GOOD_MATCHUP_TAG +
+      weakMatchupCount * DRAFT_RECOMMENDATION_SCORING_WEIGHTS.WEAK_MATCHUP_TAG;
+
+    scoreBreakdown.riskPenalty +=
+      banRiskCount * DRAFT_RECOMMENDATION_SCORING_WEIGHTS.TEAM_RISK_TAG;
+
+    const synergyProfileTags =
+      this.getChampionSynergyProfileTags(candidateContext);
+
+    const goodSynergyCount = this.countMatchingTags(
+      synergyProfileTags.goodWithTags,
+      allyTeamTags,
+    );
+
+    const neededSynergyCount = this.countMatchingTags(
+      synergyProfileTags.needsTags,
+      allyTeamTags,
+    );
+
+    const teamRiskCount = this.countMatchingTags(
+      synergyProfileTags.teamRiskTags,
+      allyTeamTags,
+    );
+
+    scoreBreakdown.synergyScore +=
+      (goodSynergyCount + neededSynergyCount) *
+      DRAFT_RECOMMENDATION_SCORING_WEIGHTS.GOOD_SYNERGY_TAG;
+
+    scoreBreakdown.riskPenalty +=
+      teamRiskCount * DRAFT_RECOMMENDATION_SCORING_WEIGHTS.TEAM_RISK_TAG;
 
     scoreBreakdown.totalBeforeClamp =
       scoreBreakdown.roleFitScore +
@@ -133,6 +198,22 @@ export class DraftRecommendationScoringService {
       reasonCodes.push(`INTENDED_CHAMPION`);
     }
 
+    if (scoreBreakdown.matchupScore > 0) {
+      reasonCodes.push(`GOOD_MATCHUP`);
+    }
+
+    if (scoreBreakdown.matchupScore < 0) {
+      reasonCodes.push(`WEAK_MATCHUP`);
+    }
+
+    if (scoreBreakdown.synergyScore > 0) {
+      reasonCodes.push(`GOOD_SYNERGY`);
+    }
+
+    if (scoreBreakdown.riskPenalty < 0) {
+      reasonCodes.push(`DRAFT_RISK`);
+    }
+
     if (scoreBreakdown.buildProfileScore > 0) {
       reasonCodes.push(`HAS_BUILD_PROFILE`);
     }
@@ -166,5 +247,69 @@ export class DraftRecommendationScoringService {
     reasonCodes.push(`RECOMMENDATIONS_FOUND`);
 
     return reasonCodes;
+  }
+
+  private collectChampionAttributeTags(
+    championContext: DraftChampionContext,
+  ): Set<string> {
+    return new Set([
+      ...championContext.champion.classTags,
+      ...championContext.champion.playstyleTags,
+      ...championContext.champion.utilityTags,
+      ...championContext.champion.riskTags,
+      ...championContext.champion.strengths,
+      ...championContext.champion.weaknesses,
+
+      ...(championContext.selectedBuildProfile?.buildTags ?? []),
+      ...(championContext.selectedBuildProfile?.playStyleTags ?? []),
+
+      ...(championContext.selectedSynergyProfile?.providesTags ?? []),
+    ]);
+  }
+
+  private collectTeamAttributeTags(
+    championContexts: DraftChampionContext[],
+  ): Set<string> {
+    const teamTags = new Set<string>();
+
+    for (const championContext of championContexts) {
+      for (const tag of this.collectChampionAttributeTags(championContext)) {
+        teamTags.add(tag);
+      }
+    }
+
+    return teamTags;
+  }
+
+  private getChampionMatchupProfileTags(
+    candidateContext: DraftChampionContext,
+  ): {
+    goodIntoTags: string[];
+    weakIntoTags: string[];
+    banRiskTags: string[];
+  } {
+    return {
+      goodIntoTags: candidateContext.selectedMatchupProfile?.goodIntoTags ?? [],
+      weakIntoTags: candidateContext.selectedMatchupProfile?.weakIntoTags ?? [],
+      banRiskTags: candidateContext.selectedMatchupProfile?.banRiskTags ?? [],
+    };
+  }
+
+  private getChampionSynergyProfileTags(
+    candidateContext: DraftChampionContext,
+  ): {
+    goodWithTags: string[];
+    needsTags: string[];
+    teamRiskTags: string[];
+  } {
+    return {
+      goodWithTags: candidateContext.selectedSynergyProfile?.goodWithTags ?? [],
+      needsTags: candidateContext.selectedSynergyProfile?.needsTags ?? [],
+      teamRiskTags: candidateContext.selectedSynergyProfile?.teamRiskTags ?? [],
+    };
+  }
+
+  private countMatchingTags(tags: string[], targetTags: Set<string>): number {
+    return [...new Set(tags)].filter((tag) => targetTags.has(tag)).length;
   }
 }

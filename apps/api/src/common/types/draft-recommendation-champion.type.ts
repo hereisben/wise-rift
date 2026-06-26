@@ -25,7 +25,7 @@ export type ChampionSynergyProfileForDraft =
 export type DraftChampionContext = {
   pick: NormalizedDraftChampionPick;
   champion: ChampionWithActivePatchProfiles;
-  championBuildProfile: ChampionBuildProfileForDraft | null;
-  championMatchupProfile: ChampionMatchupProfileForDraft | null;
-  championSynergyProfile: ChampionSynergyProfileForDraft | null;
+  selectedBuildProfile: ChampionBuildProfileForDraft | null;
+  selectedMatchupProfile: ChampionMatchupProfileForDraft | null;
+  selectedSynergyProfile: ChampionSynergyProfileForDraft | null;
 };
