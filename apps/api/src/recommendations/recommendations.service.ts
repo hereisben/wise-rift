@@ -307,10 +307,6 @@ export class RecommendationsService {
       throw new NotFoundException(`Champion not found: ${intendedChampionKey}`);
     }
 
-    const intendedChampion = effectiveIntendedChampionKey
-      ? (championsByKey.get(effectiveIntendedChampionKey) ?? null)
-      : null;
-
     const allyChampions = allyPicks.map((pick) => {
       const champion = championsByKey.get(pick.championKey);
 
@@ -334,26 +330,6 @@ export class RecommendationsService {
 
       return champion;
     });
-
-    const bannedChampions = bannedChampionKeys.map((championKey) => {
-      const champion = championsByKey.get(championKey);
-
-      if (!champion) {
-        throw new NotFoundException(
-          `Banned champion not found: ${championKey}`,
-        );
-      }
-
-      return champion;
-    });
-
-    const intendedChampionContext =
-      intendedChampion && effectiveIntendedChampionKey
-        ? buildDraftChampionContext(
-            { championKey: effectiveIntendedChampionKey, role },
-            intendedChampion,
-          )
-        : null;
 
     const allyChampionContexts = allyPicks.map((pick, index) =>
       buildDraftChampionContext(pick, allyChampions[index]),
@@ -419,24 +395,6 @@ export class RecommendationsService {
         allyPicks,
         enemyPicks,
         bannedChampionKeys,
-      },
-      draftContext: {
-        patch: {
-          id: activePatch.id,
-          version: activePatch.version,
-          name: activePatch.name,
-          isActive: activePatch.isActive,
-        },
-        role,
-        intendedChampion,
-        intendedChampionContext,
-        allyPicks,
-        allyChampionContexts,
-        allyChampions,
-        enemyChampions,
-        enemyPicks,
-        enemyChampionContexts,
-        bannedChampions,
       },
       resultItems: scoringResult.resultItems,
       bestItem: scoringResult.bestItem,
