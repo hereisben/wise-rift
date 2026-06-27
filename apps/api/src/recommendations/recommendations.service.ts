@@ -331,6 +331,14 @@ export class RecommendationsService {
       return champion;
     });
 
+    for (const bannedChampionKey of bannedChampionKeys) {
+      if (!championsByKey.has(bannedChampionKey)) {
+        throw new NotFoundException(
+          `Banned champion not found: ${bannedChampionKey}`,
+        );
+      }
+    }
+
     const allyChampionContexts = allyPicks.map((pick, index) =>
       buildDraftChampionContext(pick, allyChampions[index]),
     );
