@@ -13,7 +13,13 @@ export type DraftRecommendationResultItemScoreBreakdown = {
   roleFitScore: number;
   intendedChampionBonus: number;
   matchupScore: number;
+  matchedGoodIntoTags: string[];
+  matchedWeakIntoTags: string[];
+  matchedBanRiskTags: string[];
   synergyScore: number;
+  matchedGoodWithTags: string[];
+  matchedNeedsTags: string[];
+  matchedTeamRiskTags: string[];
   buildProfileScore: number;
   riskPenalty: number;
   dataQualityPenalty: number;
@@ -48,4 +54,9 @@ export type DraftRecommendationScoringInput = DraftRecommendationContext & {
   allyChampionContexts: DraftChampionContext[];
   enemyChampionContexts: DraftChampionContext[];
   candidateContexts: DraftChampionContext[];
+};
+
+export type MatchingTagsContext = {
+  matchingTags: string[];
+  matchingTagsCount: number;
 };
