@@ -11,6 +11,7 @@ import {
   DraftChampionContext,
   NormalizedDraftChampionPick,
 } from '../common/types/draft-recommendation-champion.type.js';
+import { DraftRecommendationResponse } from '../common/types/draft-recommendation-response.type.js';
 import { isDefined } from '../common/utils/is-defined.util.js';
 import { PrismaService } from '../database/prisma.service.js';
 import { GameRole } from '../generated/prisma/enums.js';
@@ -157,7 +158,7 @@ export class RecommendationsService {
 
   async createDraftRecommendation(
     createDraftRecommendationDto: CreateDraftRecommendationDto,
-  ) {
+  ): Promise<DraftRecommendationResponse> {
     const activePatch = await this.prismaService.patch.findFirst({
       where: {
         deletedAt: null,
