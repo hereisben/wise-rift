@@ -3,6 +3,7 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { ChampionsModule } from './champions/champions.module.js';
 import { DatabaseModule } from './database/database.module.js';
+import { DraftSessionsModule } from './draft-sessions/draft-sessions.module.js';
 import { GameTagsModule } from './game-tags/game-tags.module.js';
 import { HealthController } from './health/health.controller.js';
 import { ItemsModule } from './items/items.module.js';
@@ -20,6 +21,7 @@ import { SpellsModule } from './spells/spells.module.js';
     GameTagsModule,
     SpellsModule,
     RunesModule,
+    DraftSessionsModule,
     RecommendationsModule,
   ],
   controllers: [AppController, HealthController],
