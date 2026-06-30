@@ -15,6 +15,7 @@ import { seedRunesPatchStats } from './rune-patch-stat.seed.js';
 import { seedRunes } from './rune.seed.js';
 import { seedSpellsPatchStats } from './spell-patch-stat.seed.js';
 import { seedSpells } from './spell.seed.js';
+import { seedUsers } from './user.seed.js';
 
 const adapter = new PrismaPg({
   connectionString: env.DATABASE_URL,
@@ -26,6 +27,8 @@ async function main() {
   console.log(`Start seeding Wise Rift data...`);
 
   const patch = await seedPatch(prisma);
+
+  await seedUsers(prisma);
   await seedGameTags(prisma);
   await seedChampions(prisma);
   await seedChampionPatchStats(prisma, patch.id);
