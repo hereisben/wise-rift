@@ -34,6 +34,7 @@ export type DraftRecommendationResultItem = {
   confidence: ConfidenceLevel;
   scoreBreakdown: DraftRecommendationResultItemScoreBreakdown;
   reasonCodes: string[];
+  explanation: DraftRecommendationResultItemExplanation;
 };
 
 export type DraftRecommendationScoringResultBreakdown = {
@@ -59,4 +60,11 @@ export type DraftRecommendationScoringInput = DraftRecommendationContext & {
 export type MatchingTagsContext = {
   matchingTags: string[];
   matchingTagsCount: number;
+};
+
+export type DraftRecommendationResultItemExplanation = {
+  title: string;
+  summary: string;
+  highlights: string[];
+  warnings: string[];
 };
