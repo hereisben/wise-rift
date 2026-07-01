@@ -1,6 +1,8 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { successResponse } from '../common/types/api-response.helper.js';
 import { DraftSessionsService } from './draft-sessions.service.js';
+import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
+import { AddDraftPickDto } from './dto/add-draft-pick.dto.js';
 import { CreateDraftSessionDto } from './dto/create-draft-session.dto.js';
 
 @Controller(`draft-sessions`)
@@ -12,6 +14,31 @@ export class DraftSessionsController {
     const draftSession =
       await this.draftSessionsService.create(draftSessionInput);
     return successResponse(`Create draft session successfully`, draftSession);
+  }
+
+  @Post(`:id/bans`)
+  async addBan(
+    @Param(`id`) id: string,
+    @Body() addDraftBanDto: AddDraftBanDto,
+  ) {
+    const draftSession = await this.draftSessionsService.addBan(
+      id,
+      addDraftBanDto,
+    );
+    return successResponse(`Add draft ban successfully`, draftSession);
+  }
+
+  @Post(`:id/picks`)
+  async addPick(
+    @Param(`id`) id: string,
+    @Body() addDraftPickDto: AddDraftPickDto,
+  ) {
+    const draftSession = await this.draftSessionsService.addPick(
+      id,
+      addDraftPickDto,
+    );
+
+    return successResponse(`Add draft pick successfully`, draftSession);
   }
 
   @Get()

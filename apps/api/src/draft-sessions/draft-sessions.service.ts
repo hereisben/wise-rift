@@ -5,6 +5,8 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from '../database/prisma.service.js';
 import { DraftStatus, GameRole } from '../generated/prisma/enums.js';
+import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
+import { AddDraftPickDto } from './dto/add-draft-pick.dto.js';
 import { CreateDraftSessionDto } from './dto/create-draft-session.dto.js';
 
 const DEV_USER_EMAIL = `dev@wise-rift.local`;
@@ -101,6 +103,138 @@ export class DraftSessionsService {
     }
 
     return draftSession;
+  }
+
+  async addBan(id: string, addDraftBanDto: AddDraftBanDto) {
+    const devUser = await this.findDevUser();
+
+    const draftSession = await this.prisma.draftSession.findFirst({
+      where: {
+        deletedAt: null,
+        id,
+        userId: devUser.id,
+        status: {
+          not: DraftStatus.DELETED,
+        },
+      },
+    });
+
+    if (!draftSession) {
+      throw new NotFoundException(`Draft session not found`);
+    }
+
+    const championKey = addDraftBanDto.championKey.trim().toLowerCase();
+
+    const champion = await this.prisma.champion.findFirst({
+      where: {
+        deletedAt: null,
+        key: championKey,
+      },
+    });
+
+    if (!champion) {
+      throw new NotFoundException(`Champion not found: ${championKey}`);
+    }
+
+    await this.prisma.draftBan.upsert({
+      where: {
+        draftSessionId_championId: {
+          draftSessionId: id,
+          championId: champion.id,
+        },
+      },
+      update: {
+        teamSide: addDraftBanDto.teamSide,
+        orderIndex: addDraftBanDto.orderIndex ?? null,
+        reason: addDraftBanDto.reason?.trim() || null,
+        deletedAt: null,
+      },
+      create: {
+        draftSessionId: id,
+        userId: devUser.id,
+        championId: champion.id,
+        teamSide: addDraftBanDto.teamSide,
+        orderIndex: addDraftBanDto.orderIndex ?? null,
+        reason: addDraftBanDto.reason?.trim() || null,
+      },
+    });
+
+    return this.findOne(id);
+  }
+
+  async addPick(id: string, addDraftPickDto: AddDraftPickDto) {
+    const devUser = await this.findDevUser();
+
+    const draftSession = await this.prisma.draftSession.findFirst({
+      where: {
+        id,
+        userId: devUser.id,
+        deletedAt: null,
+        status: {
+          not: DraftStatus.DELETED,
+        },
+      },
+    });
+
+    if (!draftSession) {
+      throw new NotFoundException(`Draft session not found`);
+    }
+
+    const championKey = addDraftPickDto.championKey.trim().toLowerCase();
+
+    const champion = await this.prisma.champion.findFirst({
+      where: {
+        deletedAt: null,
+        key: championKey,
+      },
+    });
+
+    if (!champion) {
+      throw new NotFoundException(`Champion not found: ${championKey}`);
+    }
+
+    const existingBan = await this.prisma.draftBan.findFirst({
+      where: {
+        draftSessionId: id,
+        championId: champion.id,
+        deletedAt: null,
+      },
+    });
+
+    if (existingBan) {
+      throw new BadRequestException(
+        `Champion is already banned: ${championKey}`,
+      );
+    }
+
+    await this.prisma.draftPick.upsert({
+      where: {
+        draftSessionId_championId: {
+          draftSessionId: id,
+          championId: champion.id,
+        },
+      },
+      update: {
+        teamSide: addDraftPickDto.teamSide,
+        role: addDraftPickDto.role ?? null,
+        playerSlot: addDraftPickDto.playerSlot ?? null,
+        orderIndex: addDraftPickDto.orderIndex ?? null,
+        isUserPick: addDraftPickDto.isUserPick ?? null,
+        deletedAt: null,
+      },
+      create: {
+        draftSessionId: id,
+        userId: devUser.id,
+        championId: champion.id,
+        teamSide: addDraftPickDto.teamSide,
+        role: addDraftPickDto.role ?? null,
+        playerSlot: addDraftPickDto.playerSlot ?? null,
+        orderIndex: addDraftPickDto.orderIndex ?? null,
+        isUserPick: addDraftPickDto.isUserPick ?? null,
+      },
+    });
+
+    return this.findOne(id);
   }
 
   private async findDevUser() {
