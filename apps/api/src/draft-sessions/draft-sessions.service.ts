@@ -4,7 +4,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { PrismaService } from '../database/prisma.service.js';
-import { DraftStatus, GameRole } from '../generated/prisma/enums.js';
+import { DraftStatus, GameRole, TeamSide } from '../generated/prisma/enums.js';
+import { RecommendationsService } from '../recommendations/recommendations.service.js';
 import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
 import { AddDraftPickDto } from './dto/add-draft-pick.dto.js';
 import { CreateDraftSessionDto } from './dto/create-draft-session.dto.js';
@@ -13,7 +14,10 @@ const DEV_USER_EMAIL = `dev@wise-rift.local`;
 
 @Injectable()
 export class DraftSessionsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly recommendationsService: RecommendationsService,
+  ) {}
 
   async create(createDraftSessionDto: CreateDraftSessionDto) {
     if (createDraftSessionDto.role === GameRole.UNKNOWN) {
@@ -235,6 +239,39 @@ export class DraftSessionsService {
     });
 
     return this.findOne(id);
+  }
+
+  async createDraftSessionRecommendation(id: string) {
+    const draftSession = await this.findOne(id);
+
+    const allyPicks = draftSession.draftPicks
+      .filter((pick) => pick.teamSide === TeamSide.MY_TEAM)
+      .map((pick) => ({
+        championKey: pick.champion.key,
+        role: pick.role ?? GameRole.UNKNOWN,
+      }));
+
+    const enemyPicks = draftSession.draftPicks
+      .filter((pick) => pick.teamSide === TeamSide.ENEMY)
+      .map((pick) => ({
+        championKey: pick.champion.key,
+        role: pick.role ?? GameRole.UNKNOWN,
+      }));
+
+    const bannedChampionKeys = draftSession.draftBans.map(
+      (ban) => ban.champion.key,
+    );
+
+    return this.recommendationsService.createDraftRecommendation(
+      {
+        role: draftSession.role,
+        intendedChampionKey: draftSession.intendedChampion?.key ?? undefined,
+        allyPicks,
+        enemyPicks,
+        bannedChampionKeys,
+      },
+      draftSession.patchId,
+    );
   }
 
   private async findDevUser() {

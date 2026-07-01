@@ -8,5 +8,6 @@ import { DraftRecommendationScoringService } from './scoring/draft-recommendatio
   imports: [PatchesModule],
   controllers: [RecommendationsController],
   providers: [RecommendationsService, DraftRecommendationScoringService],
+  exports: [RecommendationsService],
 })
 export class RecommendationsModule {}

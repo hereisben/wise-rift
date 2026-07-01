@@ -41,6 +41,17 @@ export class DraftSessionsController {
     return successResponse(`Add draft pick successfully`, draftSession);
   }
 
+  @Post(`:id/recommendations`)
+  async createRecommendation(@Param(`id`) id: string) {
+    const recommendation =
+      await this.draftSessionsService.createDraftSessionRecommendation(id);
+
+    return successResponse(
+      `Create draft session recommendation successfully`,
+      recommendation,
+    );
+  }
+
   @Get()
   async findAll() {
     const draftSessions = await this.draftSessionsService.findAll();
