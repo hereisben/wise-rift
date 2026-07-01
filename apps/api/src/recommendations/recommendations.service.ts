@@ -158,16 +158,17 @@ export class RecommendationsService {
 
   async createDraftRecommendation(
     createDraftRecommendationDto: CreateDraftRecommendationDto,
+    patchId: string,
   ): Promise<DraftRecommendationResponse> {
-    const activePatch = await this.prismaService.patch.findFirst({
+    const patch = await this.prismaService.patch.findFirst({
       where: {
         deletedAt: null,
-        isActive: true,
+        id: patchId,
       },
     });
 
-    if (!activePatch) {
-      throw new NotFoundException(`Active patch not found`);
+    if (!patch) {
+      throw new NotFoundException(`Patch not found`);
     }
 
     const intendedChampionKey =
@@ -281,19 +282,19 @@ export class RecommendationsService {
       include: {
         championBuildProfiles: {
           where: {
-            patchId: activePatch.id,
+            patchId: patch.id,
             deletedAt: null,
           },
         },
         championMatchupProfiles: {
           where: {
-            patchId: activePatch.id,
+            patchId: patch.id,
             deletedAt: null,
           },
         },
         championSynergyProfiles: {
           where: {
-            patchId: activePatch.id,
+            patchId: patch.id,
             deletedAt: null,
           },
         },
@@ -359,19 +360,19 @@ export class RecommendationsService {
         championBuildProfiles: {
           where: {
             deletedAt: null,
-            patchId: activePatch.id,
+            patchId: patch.id,
           },
         },
         championMatchupProfiles: {
           where: {
             deletedAt: null,
-            patchId: activePatch.id,
+            patchId: patch.id,
           },
         },
         championSynergyProfiles: {
           where: {
             deletedAt: null,
-            patchId: activePatch.id,
+            patchId: patch.id,
           },
         },
       },

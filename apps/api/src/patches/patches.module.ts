@@ -5,5 +5,6 @@ import { PatchesService } from './patches.service.js';
 @Module({
   providers: [PatchesService],
   controllers: [PatchesController],
+  exports: [PatchesService],
 })
 export class PatchesModule {}

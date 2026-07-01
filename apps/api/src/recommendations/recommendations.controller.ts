@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { PatchesService } from './../patches/patches.service.js';
 import { CreateDraftRecommendationDto } from './dto/create-draft-recommendation.dto.js';
 import { RecommendationsService } from './recommendations.service.js';
 
@@ -6,6 +7,7 @@ import { RecommendationsService } from './recommendations.service.js';
 export class RecommendationsController {
   constructor(
     private readonly recommendationsService: RecommendationsService,
+    private readonly patchesService: PatchesService,
   ) {}
 
   @Get()
@@ -14,11 +16,14 @@ export class RecommendationsController {
   }
 
   @Post(`draft`)
-  createDraftRecommendation(
+  async createDraftRecommendation(
     @Body() createDraftRecommendationDto: CreateDraftRecommendationDto,
   ) {
+    const activePatch = await this.patchesService.findActive();
+
     return this.recommendationsService.createDraftRecommendation(
       createDraftRecommendationDto,
+      activePatch.id,
     );
   }
 }
