@@ -20,7 +20,7 @@ const DEV_USER_EMAIL = `dev@wise-rift.local`;
 @Injectable()
 export class DraftSessionsService {
   constructor(
-    private readonly prisma: PrismaService,
+    private readonly prismaService: PrismaService,
     private readonly recommendationsService: RecommendationsService,
   ) {}
 
@@ -31,7 +31,7 @@ export class DraftSessionsService {
 
     const devUser = await this.findDevUser();
 
-    const activePatch = await this.prisma.patch.findFirst({
+    const activePatch = await this.prismaService.patch.findFirst({
       where: {
         deletedAt: null,
         isActive: true,
@@ -49,7 +49,7 @@ export class DraftSessionsService {
       createDraftSessionDto.intendedChampionKey?.trim().toLowerCase() ?? null;
 
     const intendedChampion = intendedChampionKey
-      ? await this.prisma.champion.findFirst({
+      ? await this.prismaService.champion.findFirst({
           where: {
             deletedAt: null,
             key: intendedChampionKey,
@@ -61,7 +61,7 @@ export class DraftSessionsService {
       throw new NotFoundException(`Champion not found: ${intendedChampionKey}`);
     }
 
-    return this.prisma.draftSession.create({
+    return this.prismaService.draftSession.create({
       data: {
         userId: devUser.id,
         patchId: activePatch.id,
@@ -77,7 +77,7 @@ export class DraftSessionsService {
   async findAll() {
     const devUser = await this.findDevUser();
 
-    return this.prisma.draftSession.findMany({
+    return this.prismaService.draftSession.findMany({
       where: {
         deletedAt: null,
         userId: devUser.id,
@@ -95,7 +95,7 @@ export class DraftSessionsService {
   async findOne(id: string) {
     const devUser = await this.findDevUser();
 
-    const draftSession = await this.prisma.draftSession.findFirst({
+    const draftSession = await this.prismaService.draftSession.findFirst({
       where: {
         id,
         userId: devUser.id,
@@ -117,7 +117,7 @@ export class DraftSessionsService {
   async addBan(id: string, addDraftBanDto: AddDraftBanDto) {
     const devUser = await this.findDevUser();
 
-    const draftSession = await this.prisma.draftSession.findFirst({
+    const draftSession = await this.prismaService.draftSession.findFirst({
       where: {
         deletedAt: null,
         id,
@@ -134,7 +134,7 @@ export class DraftSessionsService {
 
     const championKey = addDraftBanDto.championKey.trim().toLowerCase();
 
-    const champion = await this.prisma.champion.findFirst({
+    const champion = await this.prismaService.champion.findFirst({
       where: {
         deletedAt: null,
         key: championKey,
@@ -145,7 +145,7 @@ export class DraftSessionsService {
       throw new NotFoundException(`Champion not found: ${championKey}`);
     }
 
-    await this.prisma.draftBan.upsert({
+    await this.prismaService.draftBan.upsert({
       where: {
         draftSessionId_championId: {
           draftSessionId: id,
@@ -174,7 +174,7 @@ export class DraftSessionsService {
   async addPick(id: string, addDraftPickDto: AddDraftPickDto) {
     const devUser = await this.findDevUser();
 
-    const draftSession = await this.prisma.draftSession.findFirst({
+    const draftSession = await this.prismaService.draftSession.findFirst({
       where: {
         id,
         userId: devUser.id,
@@ -191,7 +191,7 @@ export class DraftSessionsService {
 
     const championKey = addDraftPickDto.championKey.trim().toLowerCase();
 
-    const champion = await this.prisma.champion.findFirst({
+    const champion = await this.prismaService.champion.findFirst({
       where: {
         deletedAt: null,
         key: championKey,
@@ -202,7 +202,7 @@ export class DraftSessionsService {
       throw new NotFoundException(`Champion not found: ${championKey}`);
     }
 
-    const existingBan = await this.prisma.draftBan.findFirst({
+    const existingBan = await this.prismaService.draftBan.findFirst({
       where: {
         draftSessionId: id,
         championId: champion.id,
@@ -216,7 +216,7 @@ export class DraftSessionsService {
       );
     }
 
-    await this.prisma.draftPick.upsert({
+    await this.prismaService.draftPick.upsert({
       where: {
         draftSessionId_championId: {
           draftSessionId: id,
@@ -279,20 +279,21 @@ export class DraftSessionsService {
         draftSession.patchId,
       );
 
-    const savedRecommendation = await this.prisma.recommendationResult.create({
-      data: {
-        draftSessionId: draftSession.id,
-        userId: draftSession.userId,
-        patchId: draftSession.patchId,
-        type: RecommendationType.PICK,
-        inputSnapshot: recommendation.inputSnapshot,
-        resultItems: recommendation.resultItems,
-        scoreBreakdown: recommendation.scoreBreakdown,
-        reasonCodes: recommendation.reasonCodes,
-        confidence: recommendation.confidence,
-        aiExplanationId: null,
-      },
-    });
+    const savedRecommendation =
+      await this.prismaService.recommendationResult.create({
+        data: {
+          draftSessionId: draftSession.id,
+          userId: draftSession.userId,
+          patchId: draftSession.patchId,
+          type: RecommendationType.PICK,
+          inputSnapshot: recommendation.inputSnapshot,
+          resultItems: recommendation.resultItems,
+          scoreBreakdown: recommendation.scoreBreakdown,
+          reasonCodes: recommendation.reasonCodes,
+          confidence: recommendation.confidence,
+          aiExplanationId: null,
+        },
+      });
 
     return {
       recommendationResult: savedRecommendation,
@@ -300,8 +301,31 @@ export class DraftSessionsService {
     };
   }
 
+  async findDraftRecommendationResults(draftSessionId: string) {
+    const draftSession = await this.prismaService.draftSession.findFirst({
+      where: {
+        deletedAt: null,
+        id: draftSessionId,
+      },
+    });
+
+    if (!draftSession) {
+      throw new NotFoundException(`Draft session not found`);
+    }
+
+    return this.prismaService.recommendationResult.findMany({
+      where: {
+        deletedAt: null,
+        draftSessionId: draftSession.id,
+      },
+      orderBy: {
+        createdAt: `desc`,
+      },
+    });
+  }
+
   private async findDevUser() {
-    const devUser = await this.prisma.user.findFirst({
+    const devUser = await this.prismaService.user.findFirst({
       where: {
         deletedAt: null,
         email: DEV_USER_EMAIL,

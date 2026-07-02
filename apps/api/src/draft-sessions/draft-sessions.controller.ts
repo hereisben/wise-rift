@@ -59,6 +59,16 @@ export class DraftSessionsController {
     return successResponse(`Get draft sessions successfully`, draftSessions);
   }
 
+  @Get(`:id/recommendations`)
+  async findDraftSessionRecommendationResults(@Param(`id`) id: string) {
+    const recommendationResults =
+      await this.draftSessionsService.findDraftRecommendationResults(id);
+    return successResponse(
+      `Get draft session recommendations results successfully`,
+      recommendationResults,
+    );
+  }
+
   @Get(`:id`)
   async findOne(@Param(`id`) id: string) {
     const draftSession = await this.draftSessionsService.findOne(id);
