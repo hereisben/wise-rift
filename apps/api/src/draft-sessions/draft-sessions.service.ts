@@ -4,7 +4,12 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { PrismaService } from '../database/prisma.service.js';
-import { DraftStatus, GameRole, TeamSide } from '../generated/prisma/enums.js';
+import {
+  DraftStatus,
+  GameRole,
+  RecommendationType,
+  TeamSide,
+} from '../generated/prisma/enums.js';
 import { RecommendationsService } from '../recommendations/recommendations.service.js';
 import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
 import { AddDraftPickDto } from './dto/add-draft-pick.dto.js';
@@ -262,16 +267,37 @@ export class DraftSessionsService {
       (ban) => ban.champion.key,
     );
 
-    return this.recommendationsService.createDraftRecommendation(
-      {
-        role: draftSession.role,
-        intendedChampionKey: draftSession.intendedChampion?.key ?? undefined,
-        allyPicks,
-        enemyPicks,
-        bannedChampionKeys,
+    const recommendation =
+      await this.recommendationsService.createDraftRecommendation(
+        {
+          role: draftSession.role,
+          intendedChampionKey: draftSession.intendedChampion?.key ?? undefined,
+          allyPicks,
+          enemyPicks,
+          bannedChampionKeys,
+        },
+        draftSession.patchId,
+      );
+
+    const savedRecommendation = await this.prisma.recommendationResult.create({
+      data: {
+        draftSessionId: draftSession.id,
+        userId: draftSession.userId,
+        patchId: draftSession.patchId,
+        type: RecommendationType.PICK,
+        inputSnapshot: recommendation.inputSnapshot,
+        resultItems: recommendation.resultItems,
+        scoreBreakdown: recommendation.scoreBreakdown,
+        reasonCodes: recommendation.reasonCodes,
+        confidence: recommendation.confidence,
+        aiExplanationId: null,
       },
-      draftSession.patchId,
-    );
+    });
+
+    return {
+      recommendationResult: savedRecommendation,
+      recommendation,
+    };
   }
 
   private async findDevUser() {
@@ -314,6 +340,14 @@ export class DraftSessionsService {
         },
         orderBy: {
           orderIndex: `asc`,
+        },
+      },
+      recommendationResults: {
+        where: {
+          deletedAt: null,
+        },
+        orderBy: {
+          createdAt: `desc`,
         },
       },
     } as const;
