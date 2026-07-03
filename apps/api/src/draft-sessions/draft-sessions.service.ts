@@ -7,6 +7,7 @@ import { PrismaService } from '../database/prisma.service.js';
 import {
   DraftStatus,
   GameRole,
+  MatchResult,
   RecommendationType,
   TeamSide,
 } from '../generated/prisma/enums.js';
@@ -14,6 +15,7 @@ import { RecommendationsService } from '../recommendations/recommendations.servi
 import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
 import { AddDraftPickDto } from './dto/add-draft-pick.dto.js';
 import { CreateDraftSessionDto } from './dto/create-draft-session.dto.js';
+import { SaveMatchOutcomeDto } from './dto/save-match-outcome.dto.js';
 
 const DEV_USER_EMAIL = `dev@wise-rift.local`;
 
@@ -115,22 +117,7 @@ export class DraftSessionsService {
   }
 
   async addBan(id: string, addDraftBanDto: AddDraftBanDto) {
-    const devUser = await this.findDevUser();
-
-    const draftSession = await this.prismaService.draftSession.findFirst({
-      where: {
-        deletedAt: null,
-        id,
-        userId: devUser.id,
-        status: {
-          not: DraftStatus.DELETED,
-        },
-      },
-    });
-
-    if (!draftSession) {
-      throw new NotFoundException(`Draft session not found`);
-    }
+    const draftSession = await this.findOne(id);
 
     const championKey = addDraftBanDto.championKey.trim().toLowerCase();
 
@@ -148,7 +135,7 @@ export class DraftSessionsService {
     await this.prismaService.draftBan.upsert({
       where: {
         draftSessionId_championId: {
-          draftSessionId: id,
+          draftSessionId: draftSession.id,
           championId: champion.id,
         },
       },
@@ -159,8 +146,8 @@ export class DraftSessionsService {
         deletedAt: null,
       },
       create: {
-        draftSessionId: id,
-        userId: devUser.id,
+        draftSessionId: draftSession.id,
+        userId: draftSession.userId,
         championId: champion.id,
         teamSide: addDraftBanDto.teamSide,
         orderIndex: addDraftBanDto.orderIndex ?? null,
@@ -172,22 +159,7 @@ export class DraftSessionsService {
   }
 
   async addPick(id: string, addDraftPickDto: AddDraftPickDto) {
-    const devUser = await this.findDevUser();
-
-    const draftSession = await this.prismaService.draftSession.findFirst({
-      where: {
-        id,
-        userId: devUser.id,
-        deletedAt: null,
-        status: {
-          not: DraftStatus.DELETED,
-        },
-      },
-    });
-
-    if (!draftSession) {
-      throw new NotFoundException(`Draft session not found`);
-    }
+    const draftSession = await this.findOne(id);
 
     const championKey = addDraftPickDto.championKey.trim().toLowerCase();
 
@@ -204,7 +176,7 @@ export class DraftSessionsService {
 
     const existingBan = await this.prismaService.draftBan.findFirst({
       where: {
-        draftSessionId: id,
+        draftSessionId: draftSession.id,
         championId: champion.id,
         deletedAt: null,
       },
@@ -219,7 +191,7 @@ export class DraftSessionsService {
     await this.prismaService.draftPick.upsert({
       where: {
         draftSessionId_championId: {
-          draftSessionId: id,
+          draftSessionId: draftSession.id,
           championId: champion.id,
         },
       },
@@ -232,8 +204,8 @@ export class DraftSessionsService {
         deletedAt: null,
       },
       create: {
-        draftSessionId: id,
-        userId: devUser.id,
+        draftSessionId: draftSession.id,
+        userId: draftSession.userId,
         championId: champion.id,
         teamSide: addDraftPickDto.teamSide,
         role: addDraftPickDto.role ?? null,
@@ -324,6 +296,71 @@ export class DraftSessionsService {
     });
   }
 
+  async saveMatchOutcome(
+    draftSessionId: string,
+    saveMatchOutcomeDto: SaveMatchOutcomeDto,
+  ) {
+    const draftSession = await this.findOne(draftSessionId);
+
+    const myChampionKey = saveMatchOutcomeDto.myChampionKey
+      .trim()
+      .toLowerCase();
+
+    const champion = await this.prismaService.champion.findFirst({
+      where: {
+        deletedAt: null,
+        key: myChampionKey,
+      },
+    });
+
+    if (!champion) {
+      throw new NotFoundException(`Champion not found: ${myChampionKey}`);
+    }
+
+    const matchOutcome = await this.prismaService.matchOutcome.upsert({
+      where: {
+        draftSessionId: draftSession.id,
+      },
+      update: {
+        result: saveMatchOutcomeDto.result ?? MatchResult.UNKNOWN,
+        myChampionId: champion.id,
+        kills: saveMatchOutcomeDto.kills ?? null,
+        deaths: saveMatchOutcomeDto.deaths ?? null,
+        assists: saveMatchOutcomeDto.assists ?? null,
+        notes: saveMatchOutcomeDto.notes?.trim() || null,
+        deletedAt: null,
+      },
+      create: {
+        draftSessionId: draftSession.id,
+        userId: draftSession.userId,
+        result: saveMatchOutcomeDto.result ?? MatchResult.UNKNOWN,
+        myChampionId: champion.id,
+        kills: saveMatchOutcomeDto.kills ?? null,
+        deaths: saveMatchOutcomeDto.deaths ?? null,
+        assists: saveMatchOutcomeDto.assists ?? null,
+        notes: saveMatchOutcomeDto.notes?.trim() || null,
+      },
+    });
+
+    return matchOutcome;
+  }
+
+  async getMatchOutcome(draftSessionId: string) {
+    const draftSession = await this.findOne(draftSessionId);
+
+    const matchOutcome = await this.prismaService.matchOutcome.findFirst({
+      where: {
+        deletedAt: null,
+        draftSessionId: draftSession.id,
+      },
+      include: {
+        myChampion: true,
+      },
+    });
+
+    return matchOutcome;
+  }
+
   private async findDevUser() {
     const devUser = await this.prismaService.user.findFirst({
       where: {
@@ -372,6 +409,11 @@ export class DraftSessionsService {
         },
         orderBy: {
           createdAt: `desc`,
+        },
+      },
+      matchOutcome: {
+        include: {
+          myChampion: true,
         },
       },
     } as const;

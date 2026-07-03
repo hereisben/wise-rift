@@ -4,6 +4,7 @@ import { DraftSessionsService } from './draft-sessions.service.js';
 import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
 import { AddDraftPickDto } from './dto/add-draft-pick.dto.js';
 import { CreateDraftSessionDto } from './dto/create-draft-session.dto.js';
+import { SaveMatchOutcomeDto } from './dto/save-match-outcome.dto.js';
 
 @Controller(`draft-sessions`)
 export class DraftSessionsController {
@@ -52,6 +53,18 @@ export class DraftSessionsController {
     );
   }
 
+  @Post(`:id/match-outcome`)
+  async saveDraftSessionMatchOutcome(
+    @Param(`id`) id: string,
+    @Body() saveMatchOutcomeDto: SaveMatchOutcomeDto,
+  ) {
+    const matchOutcome = await this.draftSessionsService.saveMatchOutcome(
+      id,
+      saveMatchOutcomeDto,
+    );
+    return successResponse(`Save match outcome successfully`, matchOutcome);
+  }
+
   @Get()
   async findAll() {
     const draftSessions = await this.draftSessionsService.findAll();
@@ -66,6 +79,15 @@ export class DraftSessionsController {
     return successResponse(
       `Get draft session recommendations results successfully`,
       recommendationResults,
+    );
+  }
+
+  @Get(`:id/match-outcome`)
+  async getDraftSessionMatchOutcome(@Param(`id`) id: string) {
+    const matchOutcome = await this.draftSessionsService.getMatchOutcome(id);
+    return successResponse(
+      `Get draft session match outcome successfully`,
+      matchOutcome,
     );
   }
 
