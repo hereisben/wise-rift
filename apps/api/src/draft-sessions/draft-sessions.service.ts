@@ -4,6 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { PrismaService } from '../database/prisma.service.js';
+import { Prisma } from '../generated/prisma/client.js';
 import {
   DraftStatus,
   GameRole,
@@ -15,6 +16,7 @@ import { RecommendationsService } from '../recommendations/recommendations.servi
 import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
 import { AddDraftPickDto } from './dto/add-draft-pick.dto.js';
 import { CreateDraftSessionDto } from './dto/create-draft-session.dto.js';
+import { SaveDraftReviewDto } from './dto/save-draft-review.dto.js';
 import { SaveMatchOutcomeDto } from './dto/save-match-outcome.dto.js';
 
 const DEV_USER_EMAIL = `dev@wise-rift.local`;
@@ -361,6 +363,132 @@ export class DraftSessionsService {
     return matchOutcome;
   }
 
+  async saveDraftSessionReview(
+    draftSessionId: string,
+    saveDraftReviewDto: SaveDraftReviewDto,
+  ) {
+    const draftSession = await this.findOne(draftSessionId);
+
+    const summary: Prisma.InputJsonObject = {
+      result: saveDraftReviewDto.summary.result,
+      role: saveDraftReviewDto.summary.role,
+      intendedChampionKey:
+        saveDraftReviewDto.summary.intendedChampionKey || null,
+      playedChampionKey: saveDraftReviewDto.summary.playedChampionKey || null,
+      totalRecommendations: saveDraftReviewDto.summary.totalRecommendations,
+      latestRecommendationId:
+        saveDraftReviewDto.summary.latestRecommendationId || null,
+      draftScore: saveDraftReviewDto.summary.draftScore,
+      outcomeScore: saveDraftReviewDto.summary.outcomeScore,
+      overallScore: saveDraftReviewDto.summary.overallScore,
+      verdict: saveDraftReviewDto.summary.verdict,
+      confidence: saveDraftReviewDto.summary.confidence,
+      reasonCodes: saveDraftReviewDto.summary.reasonCodes,
+    };
+
+    const whatWentWell = saveDraftReviewDto.whatWentWell
+      ? {
+          items: saveDraftReviewDto.whatWentWell.items.map((item) => ({
+            code: item.code,
+            title: item.title,
+            description: item.description,
+            relatedChampionKeys: item.relatedChampionKeys,
+            relatedTagKeys: item.relatedTagKeys,
+            impact: item.impact,
+          })),
+        }
+      : Prisma.DbNull;
+
+    const whatToImprove = saveDraftReviewDto.whatToImprove
+      ? {
+          items: saveDraftReviewDto.whatToImprove.items.map((item) => ({
+            code: item.code,
+            title: item.title,
+            description: item.description,
+            suggestedAction: item.suggestedAction,
+            relatedChampionKeys: item.relatedChampionKeys,
+            relatedTagKeys: item.relatedTagKeys,
+            priority: item.priority,
+          })),
+        }
+      : Prisma.DbNull;
+
+    const recommendationAccuracy = saveDraftReviewDto.recommendationAccuracy
+      ? {
+          latestRecommendationId:
+            saveDraftReviewDto.recommendationAccuracy.latestRecommendationId ||
+            null,
+          recommendedChampionKey:
+            saveDraftReviewDto.recommendationAccuracy.recommendedChampionKey ||
+            null,
+          playedChampionKey:
+            saveDraftReviewDto.recommendationAccuracy.playedChampionKey || null,
+          followedRecommendation:
+            saveDraftReviewDto.recommendationAccuracy.followedRecommendation ??
+            null,
+          recommendedChampionRank:
+            saveDraftReviewDto.recommendationAccuracy.recommendedChampionRank ??
+            null,
+          recommendedChampionScore:
+            saveDraftReviewDto.recommendationAccuracy
+              .recommendedChampionScore ?? null,
+          playedChampionRank:
+            saveDraftReviewDto.recommendationAccuracy.playedChampionRank ??
+            null,
+          playedChampionScore:
+            saveDraftReviewDto.recommendationAccuracy.playedChampionScore ??
+            null,
+          accuracyScore:
+            saveDraftReviewDto.recommendationAccuracy.accuracyScore,
+          confidence: saveDraftReviewDto.recommendationAccuracy.confidence,
+          reasonCodes: saveDraftReviewDto.recommendationAccuracy.reasonCodes,
+          notes: saveDraftReviewDto.recommendationAccuracy.notes || null,
+        }
+      : Prisma.DbNull;
+
+    const draftReview = await this.prismaService.draftReview.upsert({
+      where: {
+        draftSessionId: draftSession.id,
+      },
+      update: {
+        summary,
+        whatWentWell,
+        whatToImprove,
+        recommendationAccuracy,
+        aiSummary: saveDraftReviewDto.aiSummary || null,
+        deletedAt: null,
+      },
+      create: {
+        draftSessionId: draftSession.id,
+        userId: draftSession.userId,
+        summary,
+        whatWentWell,
+        whatToImprove,
+        recommendationAccuracy,
+        aiSummary: saveDraftReviewDto.aiSummary || null,
+      },
+    });
+
+    return draftReview;
+  }
+
+  async getDraftSessionReview(draftSessionId: string) {
+    const draftSession = await this.findOne(draftSessionId);
+
+    const draftReview = await this.prismaService.draftReview.findFirst({
+      where: {
+        deletedAt: null,
+        draftSessionId: draftSession.id,
+      },
+    });
+
+    if (!draftReview) {
+      throw new NotFoundException(`Draft review not found`);
+    }
+
+    return draftReview;
+  }
+
   private async findDevUser() {
     const devUser = await this.prismaService.user.findFirst({
       where: {
@@ -416,6 +544,7 @@ export class DraftSessionsService {
           myChampion: true,
         },
       },
+      draftReview: true,
     } as const;
   }
 }
