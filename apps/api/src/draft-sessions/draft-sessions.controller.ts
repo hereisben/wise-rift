@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { successResponse } from '../common/types/api-response.helper.js';
 import { DraftSessionsService } from './draft-sessions.service.js';
 import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
 import { AddDraftPickDto } from './dto/add-draft-pick.dto.js';
 import { CreateDraftSessionDto } from './dto/create-draft-session.dto.js';
+import { FindDraftSessionsQueryDto } from './dto/find-draft-sessions-query.dto.js';
 import { SaveDraftReviewDto } from './dto/save-draft-review.dto.js';
 import { SaveMatchOutcomeDto } from './dto/save-match-outcome.dto.js';
 
@@ -80,8 +81,8 @@ export class DraftSessionsController {
   }
 
   @Get()
-  async findAll() {
-    const draftSessions = await this.draftSessionsService.findAll();
+  async findAll(@Query() query: FindDraftSessionsQueryDto) {
+    const draftSessions = await this.draftSessionsService.findAll(query);
 
     return successResponse(`Get draft sessions successfully`, draftSessions);
   }

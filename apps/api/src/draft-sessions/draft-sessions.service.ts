@@ -16,6 +16,7 @@ import { RecommendationsService } from '../recommendations/recommendations.servi
 import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
 import { AddDraftPickDto } from './dto/add-draft-pick.dto.js';
 import { CreateDraftSessionDto } from './dto/create-draft-session.dto.js';
+import { FindDraftSessionsQueryDto } from './dto/find-draft-sessions-query.dto.js';
 import { SaveDraftReviewDto } from './dto/save-draft-review.dto.js';
 import { SaveMatchOutcomeDto } from './dto/save-match-outcome.dto.js';
 
@@ -78,17 +79,23 @@ export class DraftSessionsService {
     });
   }
 
-  async findAll() {
+  async findAll(query: FindDraftSessionsQueryDto) {
+    if (query.status === DraftStatus.DELETED) {
+      throw new BadRequestException(`Cannot query deleted draft session`);
+    }
+
     const devUser = await this.findDevUser();
 
     return this.prismaService.draftSession.findMany({
       where: {
         deletedAt: null,
         userId: devUser.id,
-        status: {
+        status: query.status ?? {
           not: DraftStatus.DELETED,
         },
+        role: query.role,
       },
+      take: query.limit ?? 20,
       include: this.getDraftSessionInclude(),
       orderBy: {
         createdAt: `desc`,
