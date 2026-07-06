@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { successResponse } from '../common/types/api-response.helper.js';
 import { DraftSessionsService } from './draft-sessions.service.js';
 import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
@@ -117,5 +125,12 @@ export class DraftSessionsController {
   async findOne(@Param(`id`) id: string) {
     const draftSession = await this.draftSessionsService.findOne(id);
     return successResponse(`Get draft session successfully`, draftSession);
+  }
+
+  @Patch(`:id/complete`)
+  async completeDraftSession(@Param(`id`) id: string) {
+    const draftSession =
+      await this.draftSessionsService.completeDraftSession(id);
+    return successResponse(`Complete draft session successfully`, draftSession);
   }
 }

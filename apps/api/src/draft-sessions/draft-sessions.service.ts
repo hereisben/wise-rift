@@ -6,6 +6,7 @@ import {
 import { PrismaService } from '../database/prisma.service.js';
 import { Prisma } from '../generated/prisma/client.js';
 import {
+  DraftPhase,
   DraftStatus,
   GameRole,
   MatchResult,
@@ -494,6 +495,41 @@ export class DraftSessionsService {
     }
 
     return draftReview;
+  }
+
+  async completeDraftSession(draftSessionId: string) {
+    const draftSession = await this.findOne(draftSessionId);
+
+    if (draftSession.status === DraftStatus.ARCHIVED) {
+      throw new BadRequestException(`Draft session archived`);
+    }
+
+    if (draftSession.status === DraftStatus.COMPLETED) {
+      return draftSession;
+    }
+
+    const matchOutcome = await this.prismaService.matchOutcome.findFirst({
+      where: {
+        draftSessionId: draftSession.id,
+        deletedAt: null,
+      },
+    });
+
+    if (!matchOutcome) {
+      throw new BadRequestException(`Draft session match outcome not found`);
+    }
+
+    return this.prismaService.draftSession.update({
+      where: {
+        id: draftSession.id,
+      },
+      data: {
+        phase: DraftPhase.COMPLETED,
+        status: DraftStatus.COMPLETED,
+        completedAt: new Date(),
+      },
+      include: this.getDraftSessionInclude(),
+    });
   }
 
   private async findDevUser() {
