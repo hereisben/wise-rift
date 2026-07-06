@@ -92,7 +92,7 @@ export class DraftSessionsService {
         deletedAt: null,
         userId: devUser.id,
         status: query.status ?? {
-          not: DraftStatus.DELETED,
+          notIn: [DraftStatus.DELETED, DraftStatus.ARCHIVED],
         },
         role: query.role,
       },
@@ -128,6 +128,8 @@ export class DraftSessionsService {
 
   async addBan(id: string, addDraftBanDto: AddDraftBanDto) {
     const draftSession = await this.findOne(id);
+
+    this.ensureDraftSessionEditable(draftSession);
 
     const championKey = addDraftBanDto.championKey.trim().toLowerCase();
 
@@ -170,6 +172,8 @@ export class DraftSessionsService {
 
   async addPick(id: string, addDraftPickDto: AddDraftPickDto) {
     const draftSession = await this.findOne(id);
+
+    this.ensureDraftSessionEditable(draftSession);
 
     const championKey = addDraftPickDto.championKey.trim().toLowerCase();
 
@@ -231,6 +235,8 @@ export class DraftSessionsService {
   async createDraftSessionRecommendation(id: string) {
     const draftSession = await this.findOne(id);
 
+    this.ensureDraftSessionEditable(draftSession);
+
     const allyPicks = draftSession.draftPicks
       .filter((pick) => pick.teamSide === TeamSide.MY_TEAM)
       .map((pick) => ({
@@ -284,10 +290,19 @@ export class DraftSessionsService {
   }
 
   async findDraftRecommendationResults(draftSessionId: string) {
+    const devUser = await this.findDevUser();
+
     const draftSession = await this.prismaService.draftSession.findFirst({
       where: {
         deletedAt: null,
         id: draftSessionId,
+        userId: devUser.id,
+        status: {
+          not: DraftStatus.DELETED,
+        },
+      },
+      select: {
+        id: true,
       },
     });
 
@@ -311,6 +326,8 @@ export class DraftSessionsService {
     saveMatchOutcomeDto: SaveMatchOutcomeDto,
   ) {
     const draftSession = await this.findOne(draftSessionId);
+
+    this.ensureDraftSessionEditable(draftSession);
 
     const myChampionKey = saveMatchOutcomeDto.myChampionKey
       .trim()
@@ -376,6 +393,8 @@ export class DraftSessionsService {
     saveDraftReviewDto: SaveDraftReviewDto,
   ) {
     const draftSession = await this.findOne(draftSessionId);
+
+    this.ensureDraftSessionEditable(draftSession);
 
     const summary: Prisma.InputJsonObject = {
       result: saveDraftReviewDto.summary.result,
@@ -532,6 +551,26 @@ export class DraftSessionsService {
     });
   }
 
+  async archiveDraftSession(draftSessionId: string) {
+    const draftSession = await this.findOne(draftSessionId);
+
+    if (draftSession.status === DraftStatus.ARCHIVED) {
+      return draftSession;
+    }
+
+    return this.prismaService.draftSession.update({
+      where: {
+        id: draftSession.id,
+      },
+      data: {
+        phase: DraftPhase.ARCHIVED,
+        status: DraftStatus.ARCHIVED,
+        archivedAt: new Date(),
+      },
+      include: this.getDraftSessionInclude(),
+    });
+  }
+
   private async findDevUser() {
     const devUser = await this.prismaService.user.findFirst({
       where: {
@@ -589,5 +628,15 @@ export class DraftSessionsService {
       },
       draftReview: true,
     } as const;
+  }
+
+  private ensureDraftSessionEditable(draftSession: { status: DraftStatus }) {
+    if (draftSession.status === DraftStatus.COMPLETED) {
+      throw new BadRequestException(`Draft session completed`);
+    }
+
+    if (draftSession.status === DraftStatus.ARCHIVED) {
+      throw new BadRequestException(`Draft session archived`);
+    }
   }
 }

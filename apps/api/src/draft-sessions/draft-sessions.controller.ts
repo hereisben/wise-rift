@@ -133,4 +133,11 @@ export class DraftSessionsController {
       await this.draftSessionsService.completeDraftSession(id);
     return successResponse(`Complete draft session successfully`, draftSession);
   }
+
+  @Patch(`:id/archive`)
+  async archiveDraftSession(@Param(`id`) id: string) {
+    const draftSession =
+      await this.draftSessionsService.archiveDraftSession(id);
+    return successResponse(`Archive draft session successfully`, draftSession);
+  }
 }
