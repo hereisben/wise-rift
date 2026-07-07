@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -146,5 +147,16 @@ export class DraftSessionsController {
     const draftSession =
       await this.draftSessionsService.restoreArchivedDraftSession(id);
     return successResponse(`Restore draft session successfully`, draftSession);
+  }
+
+  @Delete(`:id`)
+  async softDeleteDraftSession(@Param(`id`) id: string) {
+    const deletedDraftSession =
+      await this.draftSessionsService.softDeleteDraftSession(id);
+
+    return successResponse(
+      `Soft delete draft session successfully`,
+      deletedDraftSession,
+    );
   }
 }

@@ -599,6 +599,22 @@ export class DraftSessionsService {
     });
   }
 
+  async softDeleteDraftSession(draftSessionId: string) {
+    const draftSession = await this.findOne(draftSessionId);
+
+    return this.prismaService.draftSession.update({
+      where: {
+        id: draftSession.id,
+      },
+      data: {
+        status: DraftStatus.DELETED,
+        deletedAt: new Date(),
+        archivedAt: null,
+      },
+      include: this.getDraftSessionInclude(),
+    });
+  }
+
   private async findDevUser() {
     const devUser = await this.prismaService.user.findFirst({
       where: {
