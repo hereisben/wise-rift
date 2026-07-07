@@ -571,6 +571,34 @@ export class DraftSessionsService {
     });
   }
 
+  async restoreArchivedDraftSession(draftSessionId: string) {
+    const draftSession = await this.findOne(draftSessionId);
+
+    if (draftSession.status !== DraftStatus.ARCHIVED) {
+      return draftSession;
+    }
+
+    const restoredPhase = draftSession.completedAt
+      ? DraftPhase.COMPLETED
+      : DraftPhase.SETUP;
+
+    const restoredStatus = draftSession.completedAt
+      ? DraftStatus.COMPLETED
+      : DraftStatus.ACTIVE;
+
+    return this.prismaService.draftSession.update({
+      where: {
+        id: draftSession.id,
+      },
+      data: {
+        phase: restoredPhase,
+        status: restoredStatus,
+        archivedAt: null,
+      },
+      include: this.getDraftSessionInclude(),
+    });
+  }
+
   private async findDevUser() {
     const devUser = await this.prismaService.user.findFirst({
       where: {

@@ -140,4 +140,11 @@ export class DraftSessionsController {
       await this.draftSessionsService.archiveDraftSession(id);
     return successResponse(`Archive draft session successfully`, draftSession);
   }
+
+  @Patch(`:id/restore`)
+  async restoreArchivedDraftSession(@Param(`id`) id: string) {
+    const draftSession =
+      await this.draftSessionsService.restoreArchivedDraftSession(id);
+    return successResponse(`Restore draft session successfully`, draftSession);
+  }
 }
