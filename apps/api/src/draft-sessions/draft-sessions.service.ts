@@ -87,6 +87,67 @@ export class DraftSessionsService {
 
     const devUser = await this.findDevUser();
 
+    let championId: string | undefined = undefined;
+
+    const championKey = query.myChampionKey?.trim().toLowerCase();
+
+    if (championKey) {
+      const champion = await this.prismaService.champion.findFirst({
+        where: {
+          deletedAt: null,
+          key: championKey,
+        },
+      });
+
+      if (!champion) {
+        throw new NotFoundException(`Champion not found: ${championKey}`);
+      }
+
+      championId = champion.id;
+    }
+
+    const matchOutcomeFilter =
+      query.result || championId
+        ? {
+            is: {
+              result: query.result,
+              myChampionId: championId,
+              deletedAt: null,
+            },
+          }
+        : query.hasOutcome === true
+          ? {
+              is: {
+                deletedAt: null,
+              },
+            }
+          : query.hasOutcome === false
+            ? {
+                is: null,
+              }
+            : undefined;
+
+    const draftReviewFilter =
+      query.hasReview === true
+        ? {
+            is: {
+              deletedAt: null,
+            },
+          }
+        : query.hasReview === false
+          ? {
+              is: null,
+            }
+          : undefined;
+
+    const createdAtFilter =
+      query.fromDate || query.toDate
+        ? {
+            gte: query.fromDate ? new Date(query.fromDate) : undefined,
+            lte: query.toDate ? new Date(query.toDate) : undefined,
+          }
+        : undefined;
+
     return this.prismaService.draftSession.findMany({
       where: {
         deletedAt: null,
@@ -95,6 +156,10 @@ export class DraftSessionsService {
           notIn: [DraftStatus.DELETED, DraftStatus.ARCHIVED],
         },
         role: query.role,
+        queueType: query.queueType,
+        matchOutcome: matchOutcomeFilter,
+        draftReview: draftReviewFilter,
+        createdAt: createdAtFilter,
       },
       take: query.limit ?? 20,
       include: this.getDraftSessionInclude(),
