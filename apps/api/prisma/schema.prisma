@@ -230,6 +230,7 @@ model ChampionPoolEntry {
   notes          String?
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
+  deletedAt      DateTime?
 
   @@unique([championPoolId, championId, preferredRole])
 }

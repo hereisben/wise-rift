@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
+import { ChampionPoolModule } from './champion-pool/champion-pool.module.js';
 import { ChampionsModule } from './champions/champions.module.js';
 import { DatabaseModule } from './database/database.module.js';
 import { DraftSessionsModule } from './draft-sessions/draft-sessions.module.js';
@@ -21,6 +22,7 @@ import { SpellsModule } from './spells/spells.module.js';
     GameTagsModule,
     SpellsModule,
     RunesModule,
+    ChampionPoolModule,
     DraftSessionsModule,
     RecommendationsModule,
   ],

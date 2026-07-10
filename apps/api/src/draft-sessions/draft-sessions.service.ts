@@ -14,6 +14,7 @@ import {
   TeamSide,
 } from '../generated/prisma/enums.js';
 import { RecommendationsService } from '../recommendations/recommendations.service.js';
+import { UsersService } from '../users/users.service.js';
 import { AddDraftBanDto } from './dto/add-draft-ban.dto.js';
 import { AddDraftPickDto } from './dto/add-draft-pick.dto.js';
 import { CreateDraftSessionDto } from './dto/create-draft-session.dto.js';
@@ -21,13 +22,12 @@ import { FindDraftSessionsQueryDto } from './dto/find-draft-sessions-query.dto.j
 import { SaveDraftReviewDto } from './dto/save-draft-review.dto.js';
 import { SaveMatchOutcomeDto } from './dto/save-match-outcome.dto.js';
 
-const DEV_USER_EMAIL = `dev@wise-rift.local`;
-
 @Injectable()
 export class DraftSessionsService {
   constructor(
     private readonly prismaService: PrismaService,
     private readonly recommendationsService: RecommendationsService,
+    private readonly userService: UsersService,
   ) {}
 
   async create(createDraftSessionDto: CreateDraftSessionDto) {
@@ -35,7 +35,7 @@ export class DraftSessionsService {
       throw new BadRequestException(`Draft session role cannot be UNKNOWN`);
     }
 
-    const devUser = await this.findDevUser();
+    const devUser = await this.userService.findDevUser();
 
     const activePatch = await this.prismaService.patch.findFirst({
       where: {
@@ -85,7 +85,7 @@ export class DraftSessionsService {
       throw new BadRequestException(`Cannot query deleted draft session`);
     }
 
-    const devUser = await this.findDevUser();
+    const devUser = await this.userService.findDevUser();
 
     let championId: string | undefined = undefined;
 
@@ -170,7 +170,7 @@ export class DraftSessionsService {
   }
 
   async findOne(id: string) {
-    const devUser = await this.findDevUser();
+    const devUser = await this.userService.findDevUser();
 
     const draftSession = await this.prismaService.draftSession.findFirst({
       where: {
@@ -355,7 +355,7 @@ export class DraftSessionsService {
   }
 
   async findDraftRecommendationResults(draftSessionId: string) {
-    const devUser = await this.findDevUser();
+    const devUser = await this.userService.findDevUser();
 
     const draftSession = await this.prismaService.draftSession.findFirst({
       where: {
@@ -678,21 +678,6 @@ export class DraftSessionsService {
       },
       include: this.getDraftSessionInclude(),
     });
-  }
-
-  private async findDevUser() {
-    const devUser = await this.prismaService.user.findFirst({
-      where: {
-        deletedAt: null,
-        email: DEV_USER_EMAIL,
-      },
-    });
-
-    if (!devUser) {
-      throw new NotFoundException(`Dev user not found`);
-    }
-
-    return devUser;
   }
 
   private getDraftSessionInclude() {
