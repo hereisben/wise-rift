@@ -13,10 +13,10 @@ import {
 } from '../../common/types/draft-recommendation-scoring.types.js';
 import { ConfidenceLevel } from '../../generated/prisma/enums.js';
 import {
-  CHAMPION_POOL_SCORING,
   DRAFT_RECOMMENDATION_SCORE_LIMITS,
   DRAFT_RECOMMENDATION_SCORING_WEIGHTS,
 } from './draft-recommendation-scoring.constants.js';
+import { calculateChampionPoolScore } from './helpers/champion-pool-scoring.helper.js';
 
 @Injectable()
 export class DraftRecommendationScoringService {
@@ -186,54 +186,16 @@ export class DraftRecommendationScoringService {
       matchedTeamRiskTagsContext.matchingTagsCount *
       DRAFT_RECOMMENDATION_SCORING_WEIGHTS.TEAM_RISK_TAG;
 
-    const selectedChampPoolEntry = this.getSelectedChampPoolEntry(
+    const championPoolResult = calculateChampionPoolScore(
       draftRecommendationContext,
       candidateContext,
       championPoolEntries,
     );
 
-    if (selectedChampPoolEntry) {
-      scoreBreakdown.isInChampionPool = true;
-      scoreBreakdown.championPoolComfortLevel =
-        selectedChampPoolEntry.comfortLevel;
-
-      let score = scoreBreakdown.championPoolScore;
-      const maxScore = CHAMPION_POOL_SCORING.MAX_SCORE;
-
-      if (
-        selectedChampPoolEntry.preferredRole === draftRecommendationContext.role
-      ) {
-        const addedSameRoleScore =
-          score + CHAMPION_POOL_SCORING.SAME_ROLE_BASE_BONUS;
-
-        score = Math.min(maxScore, addedSameRoleScore);
-
-        if (scoreBreakdown.championPoolComfortLevel !== null) {
-          const addedSameRoleComfortScore =
-            score +
-            scoreBreakdown.championPoolComfortLevel *
-              CHAMPION_POOL_SCORING.SAME_ROLE_COMFORT_MULTIPLIER;
-
-          score = Math.min(maxScore, addedSameRoleComfortScore);
-        }
-      } else {
-        const addedOffRoleScore =
-          score + CHAMPION_POOL_SCORING.OFF_ROLE_BASE_BONUS;
-
-        score = Math.min(maxScore, addedOffRoleScore);
-
-        if (scoreBreakdown.championPoolComfortLevel !== null) {
-          const addedOffRoleComfortScore =
-            score +
-            scoreBreakdown.championPoolComfortLevel *
-              CHAMPION_POOL_SCORING.OFF_ROLE_COMFORT_MULTIPLIER;
-
-          score = Math.min(maxScore, addedOffRoleComfortScore);
-        }
-      }
-
-      scoreBreakdown.championPoolScore = score;
-    }
+    scoreBreakdown.isInChampionPool = championPoolResult.isInChampionPool;
+    scoreBreakdown.championPoolScore = championPoolResult.championPoolScore;
+    scoreBreakdown.championPoolComfortLevel =
+      championPoolResult.championPoolComfortLevel;
 
     scoreBreakdown.totalBeforeClamp =
       scoreBreakdown.roleFitScore +
@@ -264,38 +226,6 @@ export class DraftRecommendationScoringService {
       reasonCodes,
       explanation,
     };
-  }
-
-  private getSelectedChampPoolEntry(
-    draftRecommendationContext: DraftRecommendationContext,
-    candidateContext: DraftChampionContext,
-    championPoolEntries: DraftRecommendationChampionPoolEntry[],
-  ): DraftRecommendationChampionPoolEntry | null {
-    let selectedChampPool: DraftRecommendationChampionPoolEntry | null = null;
-    for (const championPoolEntry of championPoolEntries) {
-      if (candidateContext.champion.id !== championPoolEntry.championId) {
-        continue;
-      }
-
-      if (championPoolEntry.preferredRole === draftRecommendationContext.role) {
-        return championPoolEntry;
-      }
-
-      if (selectedChampPool === null) {
-        selectedChampPool = championPoolEntry;
-        continue;
-      }
-
-      if (
-        championPoolEntry.comfortLevel !== null &&
-        (selectedChampPool.comfortLevel === null ||
-          championPoolEntry.comfortLevel > selectedChampPool.comfortLevel)
-      ) {
-        selectedChampPool = championPoolEntry;
-      }
-    }
-
-    return selectedChampPool;
   }
 
   private clampScore(score: number): number {
