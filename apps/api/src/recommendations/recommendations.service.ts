@@ -3,6 +3,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { ChampionPoolService } from '../champion-pool/champion-pool.service.js';
 import {
   ChampionBuildProfileForDraft,
   ChampionMatchupProfileForDraft,
@@ -147,6 +148,7 @@ export class RecommendationsService {
   constructor(
     private readonly prismaService: PrismaService,
     private readonly draftRecommendationScoringService: DraftRecommendationScoringService,
+    private readonly championPoolService: ChampionPoolService,
   ) {}
 
   getHealthCheck() {
@@ -385,6 +387,21 @@ export class RecommendationsService {
       ),
     );
 
+    const championPool = await this.championPoolService.getMyChampionPool();
+
+    const championPoolEntries =
+      await this.prismaService.championPoolEntry.findMany({
+        where: {
+          deletedAt: null,
+          championPoolId: championPool.id,
+        },
+        select: {
+          championId: true,
+          preferredRole: true,
+          comfortLevel: true,
+        },
+      });
+
     const scoringResult =
       this.draftRecommendationScoringService.scoreDraftRecommendations({
         role,
@@ -395,6 +412,7 @@ export class RecommendationsService {
         allyChampionContexts,
         enemyChampionContexts,
         candidateContexts,
+        championPoolEntries,
       });
 
     return {

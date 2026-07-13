@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DraftChampionContext } from '../../common/types/draft-recommendation-champion.type.js';
 import {
+  DraftRecommendationChampionPoolEntry,
   DraftRecommendationContext,
   DraftRecommendationResultItem,
   DraftRecommendationResultItemExplanation,
@@ -12,6 +13,7 @@ import {
 } from '../../common/types/draft-recommendation-scoring.types.js';
 import { ConfidenceLevel } from '../../generated/prisma/enums.js';
 import {
+  CHAMPION_POOL_SCORING,
   DRAFT_RECOMMENDATION_SCORE_LIMITS,
   DRAFT_RECOMMENDATION_SCORING_WEIGHTS,
 } from './draft-recommendation-scoring.constants.js';
@@ -48,6 +50,8 @@ export class DraftRecommendationScoringService {
       input.enemyChampionContexts,
     );
 
+    const championPoolEntries = input.championPoolEntries;
+
     const resultItems = availableCandidateContexts
       .map((candidateContext) =>
         this.scoreCandidate(
@@ -55,6 +59,7 @@ export class DraftRecommendationScoringService {
           candidateContext,
           allyTeamTags,
           enemyTeamTags,
+          championPoolEntries,
         ),
       )
       .sort((a, b) => b.totalScore - a.totalScore)
@@ -82,6 +87,7 @@ export class DraftRecommendationScoringService {
     candidateContext: DraftChampionContext,
     allyTeamTags: Set<string>,
     enemyTeamTags: Set<string>,
+    championPoolEntries: DraftRecommendationChampionPoolEntry[],
   ): DraftRecommendationResultItem {
     const scoreBreakdown: DraftRecommendationResultItemScoreBreakdown = {
       roleFitScore: DRAFT_RECOMMENDATION_SCORING_WEIGHTS.BASE_ROLE_FIT,
@@ -103,6 +109,9 @@ export class DraftRecommendationScoringService {
         : 0,
       riskPenalty: 0,
       dataQualityPenalty: 0,
+      isInChampionPool: false,
+      championPoolComfortLevel: null,
+      championPoolScore: 0,
       totalBeforeClamp: 0,
     };
 
@@ -177,6 +186,55 @@ export class DraftRecommendationScoringService {
       matchedTeamRiskTagsContext.matchingTagsCount *
       DRAFT_RECOMMENDATION_SCORING_WEIGHTS.TEAM_RISK_TAG;
 
+    const selectedChampPoolEntry = this.getSelectedChampPoolEntry(
+      draftRecommendationContext,
+      candidateContext,
+      championPoolEntries,
+    );
+
+    if (selectedChampPoolEntry) {
+      scoreBreakdown.isInChampionPool = true;
+      scoreBreakdown.championPoolComfortLevel =
+        selectedChampPoolEntry.comfortLevel;
+
+      let score = scoreBreakdown.championPoolScore;
+      const maxScore = CHAMPION_POOL_SCORING.MAX_SCORE;
+
+      if (
+        selectedChampPoolEntry.preferredRole === draftRecommendationContext.role
+      ) {
+        const addedSameRoleScore =
+          score + CHAMPION_POOL_SCORING.SAME_ROLE_BASE_BONUS;
+
+        score = Math.min(maxScore, addedSameRoleScore);
+
+        if (scoreBreakdown.championPoolComfortLevel !== null) {
+          const addedSameRoleComfortScore =
+            score +
+            scoreBreakdown.championPoolComfortLevel *
+              CHAMPION_POOL_SCORING.SAME_ROLE_COMFORT_MULTIPLIER;
+
+          score = Math.min(maxScore, addedSameRoleComfortScore);
+        }
+      } else {
+        const addedOffRoleScore =
+          score + CHAMPION_POOL_SCORING.OFF_ROLE_BASE_BONUS;
+
+        score = Math.min(maxScore, addedOffRoleScore);
+
+        if (scoreBreakdown.championPoolComfortLevel !== null) {
+          const addedOffRoleComfortScore =
+            score +
+            scoreBreakdown.championPoolComfortLevel *
+              CHAMPION_POOL_SCORING.OFF_ROLE_COMFORT_MULTIPLIER;
+
+          score = Math.min(maxScore, addedOffRoleComfortScore);
+        }
+      }
+
+      scoreBreakdown.championPoolScore = score;
+    }
+
     scoreBreakdown.totalBeforeClamp =
       scoreBreakdown.roleFitScore +
       scoreBreakdown.intendedChampionBonus +
@@ -184,7 +242,8 @@ export class DraftRecommendationScoringService {
       scoreBreakdown.synergyScore +
       scoreBreakdown.buildProfileScore +
       scoreBreakdown.riskPenalty +
-      scoreBreakdown.dataQualityPenalty;
+      scoreBreakdown.dataQualityPenalty +
+      scoreBreakdown.championPoolScore;
 
     const totalScore = this.clampScore(scoreBreakdown.totalBeforeClamp);
 
@@ -205,6 +264,38 @@ export class DraftRecommendationScoringService {
       reasonCodes,
       explanation,
     };
+  }
+
+  private getSelectedChampPoolEntry(
+    draftRecommendationContext: DraftRecommendationContext,
+    candidateContext: DraftChampionContext,
+    championPoolEntries: DraftRecommendationChampionPoolEntry[],
+  ): DraftRecommendationChampionPoolEntry | null {
+    let selectedChampPool: DraftRecommendationChampionPoolEntry | null = null;
+    for (const championPoolEntry of championPoolEntries) {
+      if (candidateContext.champion.id !== championPoolEntry.championId) {
+        continue;
+      }
+
+      if (championPoolEntry.preferredRole === draftRecommendationContext.role) {
+        return championPoolEntry;
+      }
+
+      if (selectedChampPool === null) {
+        selectedChampPool = championPoolEntry;
+        continue;
+      }
+
+      if (
+        championPoolEntry.comfortLevel !== null &&
+        (selectedChampPool.comfortLevel === null ||
+          championPoolEntry.comfortLevel > selectedChampPool.comfortLevel)
+      ) {
+        selectedChampPool = championPoolEntry;
+      }
+    }
+
+    return selectedChampPool;
   }
 
   private clampScore(score: number): number {
@@ -255,6 +346,10 @@ export class DraftRecommendationScoringService {
 
     if (scoreBreakdown.buildProfileScore > 0) {
       reasonCodes.push(`HAS_BUILD_PROFILE`);
+    }
+
+    if (scoreBreakdown.isInChampionPool === true) {
+      reasonCodes.push(`CHAMPION_POOL`);
     }
 
     return reasonCodes;
@@ -474,6 +569,10 @@ export class DraftRecommendationScoringService {
 
     if (reasonCodes.includes(`HAS_BUILD_PROFILE`)) {
       highlights.push(`Has a role-specific build profile`);
+    }
+
+    if (reasonCodes.includes(`CHAMPION_POOL`)) {
+      highlights.push(`Is in champion pool`);
     }
 
     const title =

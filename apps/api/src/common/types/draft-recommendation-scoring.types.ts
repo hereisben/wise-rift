@@ -23,6 +23,9 @@ export type DraftRecommendationResultItemScoreBreakdown = {
   buildProfileScore: number;
   riskPenalty: number;
   dataQualityPenalty: number;
+  isInChampionPool: boolean;
+  championPoolComfortLevel: number | null;
+  championPoolScore: number;
   totalBeforeClamp: number;
 };
 
@@ -51,10 +54,17 @@ export type DraftRecommendationScoringResult = {
   confidence: ConfidenceLevel;
 };
 
+export type DraftRecommendationChampionPoolEntry = {
+  championId: string;
+  preferredRole: GameRole;
+  comfortLevel: number | null;
+};
+
 export type DraftRecommendationScoringInput = DraftRecommendationContext & {
   allyChampionContexts: DraftChampionContext[];
   enemyChampionContexts: DraftChampionContext[];
   candidateContexts: DraftChampionContext[];
+  championPoolEntries: DraftRecommendationChampionPoolEntry[];
 };
 
 export type MatchingTagsContext = {
