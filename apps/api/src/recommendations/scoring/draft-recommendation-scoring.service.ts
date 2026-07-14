@@ -9,7 +9,6 @@ import {
   DraftRecommendationScoringInput,
   DraftRecommendationScoringResult,
   DraftRecommendationScoringResultBreakdown,
-  MatchingTagsContext,
 } from '../../common/types/draft-recommendation-scoring.types.js';
 import { ConfidenceLevel } from '../../generated/prisma/enums.js';
 import {
@@ -18,6 +17,7 @@ import {
 } from './draft-recommendation-scoring.constants.js';
 import { calculateChampionPoolScore } from './helpers/champion-pool-scoring.helper.js';
 import { calculateMatchupScore } from './helpers/matchup-scoring.helper.js';
+import { calculateSynergyScore } from './helpers/synergy-scoring.helper.js';
 
 @Injectable()
 export class DraftRecommendationScoringService {
@@ -136,39 +136,24 @@ export class DraftRecommendationScoringService {
       matchupScoreResult.matchedBanRiskTagsContext.matchingTagsCount *
       DRAFT_RECOMMENDATION_SCORING_WEIGHTS.TEAM_RISK_TAG;
 
-    const synergyProfileTags =
-      this.getChampionSynergyProfileTags(candidateContext);
-
-    const matchedGoodWithTagsContext = this.getMatchingTagsContext(
-      synergyProfileTags.goodWithTags,
+    const synergyScoreResult = calculateSynergyScore(
+      candidateContext,
       allyTeamTags,
     );
 
     scoreBreakdown.matchedGoodWithTags =
-      matchedGoodWithTagsContext.matchingTags;
+      synergyScoreResult.matchedGoodWithTagsContext.matchingTags;
 
-    const matchedNeedsTagsContext = this.getMatchingTagsContext(
-      synergyProfileTags.needsTags,
-      allyTeamTags,
-    );
-
-    scoreBreakdown.matchedNeedsTags = matchedNeedsTagsContext.matchingTags;
-
-    const matchedTeamRiskTagsContext = this.getMatchingTagsContext(
-      synergyProfileTags.teamRiskTags,
-      allyTeamTags,
-    );
+    scoreBreakdown.matchedNeedsTags =
+      synergyScoreResult.matchedNeedsTagsContext.matchingTags;
 
     scoreBreakdown.matchedTeamRiskTags =
-      matchedTeamRiskTagsContext.matchingTags;
+      synergyScoreResult.matchedTeamRiskTagsContext.matchingTags;
 
-    scoreBreakdown.synergyScore +=
-      (matchedGoodWithTagsContext.matchingTagsCount +
-        matchedNeedsTagsContext.matchingTagsCount) *
-      DRAFT_RECOMMENDATION_SCORING_WEIGHTS.GOOD_SYNERGY_TAG;
+    scoreBreakdown.synergyScore = synergyScoreResult.synergyScore;
 
     scoreBreakdown.riskPenalty +=
-      matchedTeamRiskTagsContext.matchingTagsCount *
+      synergyScoreResult.matchedTeamRiskTagsContext.matchingTagsCount *
       DRAFT_RECOMMENDATION_SCORING_WEIGHTS.TEAM_RISK_TAG;
 
     const championPoolResult = calculateChampionPoolScore(
@@ -399,34 +384,6 @@ export class DraftRecommendationScoringService {
     }
 
     return teamTags;
-  }
-
-  private getChampionSynergyProfileTags(
-    candidateContext: DraftChampionContext,
-  ): {
-    goodWithTags: string[];
-    needsTags: string[];
-    teamRiskTags: string[];
-  } {
-    return {
-      goodWithTags: candidateContext.selectedSynergyProfile?.goodWithTags ?? [],
-      needsTags: candidateContext.selectedSynergyProfile?.needsTags ?? [],
-      teamRiskTags: candidateContext.selectedSynergyProfile?.teamRiskTags ?? [],
-    };
-  }
-
-  private getMatchingTagsContext(
-    tags: string[],
-    targetTags: Set<string>,
-  ): MatchingTagsContext {
-    const matchingTags = [...new Set(tags)].filter((tag) =>
-      targetTags.has(tag),
-    );
-
-    return {
-      matchingTags,
-      matchingTagsCount: matchingTags.length,
-    };
   }
 
   private buildExplanation(
