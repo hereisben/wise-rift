@@ -18,6 +18,7 @@ import {
 import { calculateChampionPoolScore } from './helpers/champion-pool-scoring.helper.js';
 import { calculateMatchupScore } from './helpers/matchup-scoring.helper.js';
 import { calculateSynergyScore } from './helpers/synergy-scoring.helper.js';
+import { calculateTotalScore } from './helpers/total-score.helper.js';
 
 @Injectable()
 export class DraftRecommendationScoringService {
@@ -150,7 +151,7 @@ export class DraftRecommendationScoringService {
     scoreBreakdown.matchedTeamRiskTags =
       synergyScoreResult.matchedTeamRiskTagsContext.matchingTags;
 
-    scoreBreakdown.synergyScore = synergyScoreResult.synergyScore;
+    scoreBreakdown.synergyScore += synergyScoreResult.synergyScore;
 
     scoreBreakdown.riskPenalty +=
       synergyScoreResult.matchedTeamRiskTagsContext.matchingTagsCount *
@@ -167,17 +168,11 @@ export class DraftRecommendationScoringService {
     scoreBreakdown.championPoolComfortLevel =
       championPoolResult.championPoolComfortLevel;
 
-    scoreBreakdown.totalBeforeClamp =
-      scoreBreakdown.roleFitScore +
-      scoreBreakdown.intendedChampionBonus +
-      scoreBreakdown.matchupScore +
-      scoreBreakdown.synergyScore +
-      scoreBreakdown.buildProfileScore +
-      scoreBreakdown.riskPenalty +
-      scoreBreakdown.dataQualityPenalty +
-      scoreBreakdown.championPoolScore;
+    const totalScoreResult = calculateTotalScore(scoreBreakdown);
 
-    const totalScore = this.clampScore(scoreBreakdown.totalBeforeClamp);
+    scoreBreakdown.totalBeforeClamp = totalScoreResult.totalBeforeClamp;
+
+    const totalScore = totalScoreResult.totalScore;
 
     const reasonCodes = this.buildCandidateReasonCodes(scoreBreakdown);
 
@@ -196,13 +191,6 @@ export class DraftRecommendationScoringService {
       reasonCodes,
       explanation,
     };
-  }
-
-  private clampScore(score: number): number {
-    return Math.max(
-      DRAFT_RECOMMENDATION_SCORE_LIMITS.MIN_SCORE,
-      Math.min(DRAFT_RECOMMENDATION_SCORE_LIMITS.MAX_SCORE, score),
-    );
   }
 
   private getConfidence(score: number): ConfidenceLevel {
