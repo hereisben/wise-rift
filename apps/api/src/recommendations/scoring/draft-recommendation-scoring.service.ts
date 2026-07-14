@@ -17,6 +17,7 @@ import {
   DRAFT_RECOMMENDATION_SCORING_WEIGHTS,
 } from './draft-recommendation-scoring.constants.js';
 import { calculateChampionPoolScore } from './helpers/champion-pool-scoring.helper.js';
+import { calculateMatchupScore } from './helpers/matchup-scoring.helper.js';
 
 @Injectable()
 export class DraftRecommendationScoringService {
@@ -115,40 +116,24 @@ export class DraftRecommendationScoringService {
       totalBeforeClamp: 0,
     };
 
-    const matchupProfileTags =
-      this.getChampionMatchupProfileTags(candidateContext);
-
-    const matchedGoodIntoTagsContext = this.getMatchingTagsContext(
-      matchupProfileTags.goodIntoTags,
+    const matchupScoreResult = calculateMatchupScore(
+      candidateContext,
       enemyTeamTags,
     );
 
     scoreBreakdown.matchedGoodIntoTags =
-      matchedGoodIntoTagsContext.matchingTags;
-
-    const matchedWeakIntoTagsContext = this.getMatchingTagsContext(
-      matchupProfileTags.weakIntoTags,
-      enemyTeamTags,
-    );
+      matchupScoreResult.matchedGoodIntoTagsContext.matchingTags;
 
     scoreBreakdown.matchedWeakIntoTags =
-      matchedWeakIntoTagsContext.matchingTags;
+      matchupScoreResult.matchedWeakIntoTagsContext.matchingTags;
 
-    const matchedBanRiskTagsContext = this.getMatchingTagsContext(
-      matchupProfileTags.banRiskTags,
-      enemyTeamTags,
-    );
+    scoreBreakdown.matchedBanRiskTags =
+      matchupScoreResult.matchedBanRiskTagsContext.matchingTags;
 
-    scoreBreakdown.matchedBanRiskTags = matchedBanRiskTagsContext.matchingTags;
-
-    scoreBreakdown.matchupScore +=
-      matchedGoodIntoTagsContext.matchingTagsCount *
-        DRAFT_RECOMMENDATION_SCORING_WEIGHTS.GOOD_MATCHUP_TAG +
-      matchedWeakIntoTagsContext.matchingTagsCount *
-        DRAFT_RECOMMENDATION_SCORING_WEIGHTS.WEAK_MATCHUP_TAG;
+    scoreBreakdown.matchupScore += matchupScoreResult.matchupScore;
 
     scoreBreakdown.riskPenalty +=
-      matchedBanRiskTagsContext.matchingTagsCount *
+      matchupScoreResult.matchedBanRiskTagsContext.matchingTagsCount *
       DRAFT_RECOMMENDATION_SCORING_WEIGHTS.TEAM_RISK_TAG;
 
     const synergyProfileTags =
@@ -414,20 +399,6 @@ export class DraftRecommendationScoringService {
     }
 
     return teamTags;
-  }
-
-  private getChampionMatchupProfileTags(
-    candidateContext: DraftChampionContext,
-  ): {
-    goodIntoTags: string[];
-    weakIntoTags: string[];
-    banRiskTags: string[];
-  } {
-    return {
-      goodIntoTags: candidateContext.selectedMatchupProfile?.goodIntoTags ?? [],
-      weakIntoTags: candidateContext.selectedMatchupProfile?.weakIntoTags ?? [],
-      banRiskTags: candidateContext.selectedMatchupProfile?.banRiskTags ?? [],
-    };
   }
 
   private getChampionSynergyProfileTags(
