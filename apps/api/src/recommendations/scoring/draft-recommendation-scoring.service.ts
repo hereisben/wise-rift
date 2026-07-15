@@ -23,6 +23,7 @@ import {
   buildRecommendationReasonCodes,
 } from './helpers/reason-code.helper.js';
 import { calculateSynergyScore } from './helpers/synergy-scoring.helper.js';
+import { collectTeamAttributeTags } from './helpers/team-tags.helper.js';
 import { calculateTotalScore } from './helpers/total-score.helper.js';
 
 @Injectable()
@@ -49,13 +50,9 @@ export class DraftRecommendationScoringService {
       bannedChampionKeys: input.bannedChampionKeys,
     };
 
-    const allyTeamTags = this.collectTeamAttributeTags(
-      input.allyChampionContexts,
-    );
+    const allyTeamTags = collectTeamAttributeTags(input.allyChampionContexts);
 
-    const enemyTeamTags = this.collectTeamAttributeTags(
-      input.enemyChampionContexts,
-    );
+    const enemyTeamTags = collectTeamAttributeTags(input.enemyChampionContexts);
 
     const championPoolEntries = input.championPoolEntries;
 
@@ -196,37 +193,5 @@ export class DraftRecommendationScoringService {
       reasonCodes,
       explanation,
     };
-  }
-
-  private collectChampionAttributeTags(
-    championContext: DraftChampionContext,
-  ): Set<string> {
-    return new Set([
-      ...championContext.champion.classTags,
-      ...championContext.champion.playstyleTags,
-      ...championContext.champion.utilityTags,
-      ...championContext.champion.riskTags,
-      ...championContext.champion.strengths,
-      ...championContext.champion.weaknesses,
-
-      ...(championContext.selectedBuildProfile?.buildTags ?? []),
-      ...(championContext.selectedBuildProfile?.playStyleTags ?? []),
-
-      ...(championContext.selectedSynergyProfile?.providesTags ?? []),
-    ]);
-  }
-
-  private collectTeamAttributeTags(
-    championContexts: DraftChampionContext[],
-  ): Set<string> {
-    const teamTags = new Set<string>();
-
-    for (const championContext of championContexts) {
-      for (const tag of this.collectChampionAttributeTags(championContext)) {
-        teamTags.add(tag);
-      }
-    }
-
-    return teamTags;
   }
 }
