@@ -15,6 +15,7 @@ import {
   DRAFT_RECOMMENDATION_SCORING_WEIGHTS,
 } from './draft-recommendation-scoring.constants.js';
 import { calculateChampionPoolScore } from './helpers/champion-pool-scoring.helper.js';
+import { calculateConfidence } from './helpers/confidence.helper.js';
 import { buildCandidateExplanation } from './helpers/explanation.helper.js';
 import { calculateMatchupScore } from './helpers/matchup-scoring.helper.js';
 import {
@@ -190,23 +191,11 @@ export class DraftRecommendationScoringService {
       championName: candidateContext.champion.name,
       role: draftRecommendationContext.role,
       totalScore,
-      confidence: this.getConfidence(totalScore),
+      confidence: calculateConfidence(totalScore),
       scoreBreakdown,
       reasonCodes,
       explanation,
     };
-  }
-
-  private getConfidence(score: number): ConfidenceLevel {
-    if (score >= 75) {
-      return ConfidenceLevel.HIGH;
-    }
-
-    if (score >= 55) {
-      return ConfidenceLevel.MEDIUM;
-    }
-
-    return ConfidenceLevel.LOW;
   }
 
   private collectChampionAttributeTags(
