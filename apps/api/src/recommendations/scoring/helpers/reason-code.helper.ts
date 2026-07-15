@@ -1,4 +1,7 @@
-import { DraftRecommendationResultItemScoreBreakdown } from '../../../common/types/draft-recommendation-scoring.types.js';
+import type {
+  DraftRecommendationResultItemScoreBreakdown,
+  DraftRecommendationScoringResultBreakdown,
+} from '../../../common/types/draft-recommendation-scoring.types.js';
 
 export function buildCandidateReasonCodes(
   scoreBreakdown: DraftRecommendationResultItemScoreBreakdown,
@@ -34,6 +37,34 @@ export function buildCandidateReasonCodes(
   if (scoreBreakdown.isInChampionPool === true) {
     reasonCodes.push(`CHAMPION_POOL`);
   }
+
+  return reasonCodes;
+}
+
+export function buildRecommendationReasonCodes(
+  scoreBreakdown: DraftRecommendationScoringResultBreakdown,
+): string[] {
+  const reasonCodes: string[] = [];
+
+  if (scoreBreakdown.candidateCount < 1) {
+    reasonCodes.push(`NO_CANDIDATES_FOUND`);
+    return reasonCodes;
+  }
+
+  if (
+    scoreBreakdown.candidateCount > 0 &&
+    scoreBreakdown.availableCandidateCount < 1
+  ) {
+    reasonCodes.push(`NO_AVAILABLE_CANDIDATES`);
+    return reasonCodes;
+  }
+
+  if (scoreBreakdown.recommendedCandidateCount < 1) {
+    reasonCodes.push(`NO_RECOMMENDATIONS_FOUND`);
+    return reasonCodes;
+  }
+
+  reasonCodes.push(`RECOMMENDATIONS_FOUND`);
 
   return reasonCodes;
 }

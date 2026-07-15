@@ -17,7 +17,10 @@ import {
 import { calculateChampionPoolScore } from './helpers/champion-pool-scoring.helper.js';
 import { buildCandidateExplanation } from './helpers/explanation.helper.js';
 import { calculateMatchupScore } from './helpers/matchup-scoring.helper.js';
-import { buildCandidateReasonCodes } from './helpers/reason-code.helper.js';
+import {
+  buildCandidateReasonCodes,
+  buildRecommendationReasonCodes,
+} from './helpers/reason-code.helper.js';
 import { calculateSynergyScore } from './helpers/synergy-scoring.helper.js';
 import { calculateTotalScore } from './helpers/total-score.helper.js';
 
@@ -80,7 +83,7 @@ export class DraftRecommendationScoringService {
       resultItems,
       bestItem,
       scoreBreakdown,
-      reasonCodes: this.buildRecommendationReasonCodes(scoreBreakdown),
+      reasonCodes: buildRecommendationReasonCodes(scoreBreakdown),
       confidence: bestItem?.confidence ?? ConfidenceLevel.UNKNOWN,
     };
   }
@@ -204,34 +207,6 @@ export class DraftRecommendationScoringService {
     }
 
     return ConfidenceLevel.LOW;
-  }
-
-  private buildRecommendationReasonCodes(
-    scoreBreakdown: DraftRecommendationScoringResultBreakdown,
-  ): string[] {
-    const reasonCodes: string[] = [];
-
-    if (scoreBreakdown.candidateCount < 1) {
-      reasonCodes.push(`NO_CANDIDATES_FOUND`);
-      return reasonCodes;
-    }
-
-    if (
-      scoreBreakdown.candidateCount > 0 &&
-      scoreBreakdown.availableCandidateCount < 1
-    ) {
-      reasonCodes.push(`NO_AVAILABLE_CANDIDATES`);
-      return reasonCodes;
-    }
-
-    if (scoreBreakdown.recommendedCandidateCount < 1) {
-      reasonCodes.push(`NO_RECOMMENDATIONS_FOUND`);
-      return reasonCodes;
-    }
-
-    reasonCodes.push(`RECOMMENDATIONS_FOUND`);
-
-    return reasonCodes;
   }
 
   private collectChampionAttributeTags(
