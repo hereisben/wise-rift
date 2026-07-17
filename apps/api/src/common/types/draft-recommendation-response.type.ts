@@ -1,4 +1,5 @@
 import { ConfidenceLevel, GameRole } from '../../generated/prisma/client.js';
+import { ChampionBuildRecommendationResponse } from './champion-build-recommendation-response.type.js';
 import { NormalizedDraftChampionPick } from './draft-recommendation-champion.type.js';
 import {
   DraftRecommendationResultItem,
@@ -18,6 +19,7 @@ export type DraftRecommendationResponse = {
   inputSnapshot: DraftRecommendationInputSnapshot;
   resultItems: DraftRecommendationResultItem[];
   bestItem: DraftRecommendationResultItem | null;
+  championBuildRecommendation: ChampionBuildRecommendationResponse | null;
   scoreBreakdown: DraftRecommendationScoringResultBreakdown;
   reasonCodes: string[];
   confidence: ConfidenceLevel;

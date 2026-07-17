@@ -48,4 +48,19 @@ export class PatchesService {
 
     return patch;
   }
+
+  async findOneById(patchId: string) {
+    const patch = await this.prisma.patch.findFirst({
+      where: {
+        deletedAt: null,
+        id: patchId,
+      },
+    });
+
+    if (!patch) {
+      throw new NotFoundException(`Patch not found`);
+    }
+
+    return patch;
+  }
 }
