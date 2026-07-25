@@ -173,33 +173,52 @@ model Item {
 }
 
 model ItemPatchStat {
-  id                String    @id @default(cuid())
-  itemId            String
-  item              Item      @relation(fields: [itemId], references: [id])
-  patchId           String
-  patch             Patch     @relation(fields: [patchId], references: [id])
-  cost              Int?
-  abilityPower      Float?
-  attackDamage      Float?
-  armor             Float?
-  magicResist       Float?
-  health            Float?
-  mana              Float?
-  abilityHaste      Float?
-  critRate          Float?
-  attackSpeed       Float?
-  armorPenetration  Float?
-  magicPenetration  Float?
-  antiHealValue     Float?
-  shieldPower       Float?
-  movementSpeed     Float?
-  magicVamp         Float?
-  manaRegen         Float?
-  healShieldPower   Float?
+  id      String @id @default(cuid())
+  itemId  String
+  item    Item   @relation(fields: [itemId], references: [id])
+  patchId String
+  patch   Patch  @relation(fields: [patchId], references: [id])
+
+  isAvailable Boolean @default(true)
+
+  cost Int?
+
+  abilityPower Float?
+  attackDamage Float?
+  armor        Float?
+  magicResist  Float?
+  health       Float?
+  mana         Float?
+  abilityHaste Float?
+  critRate     Float?
+  attackSpeed  Float?
+
+  flatArmorPenetration    Float?
+  percentArmorPenetration Float?
+  flatMagicPenetration    Float?
+  percentMagicPenetration Float?
+
+  physicalVamp Float?
+  magicVamp    Float?
+  omniVamp     Float?
+
+  healthRegen     Float?
+  manaRegen       Float?
+  healShieldPower Float?
+  tenacity        Float?
+  slowResistance  Float?
+
+  flatMovementSpeed    Float?
+  percentMovementSpeed Float?
+
+  antiHealValue Float?
+  shieldPower   Float?
+
   effectDescription String?
-  createdAt         DateTime  @default(now())
-  updatedAt         DateTime  @updatedAt
-  deletedAt         DateTime?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
 
   @@unique([patchId, itemId])
   @@index([itemId])
@@ -986,6 +1005,8 @@ enum ItemCategory {
   DEFENSIVE
   BOOTS
   ENCHANT
+  ACTIVE
+  TRANSFORMED
   SUPPORT
   JUNGLE
   UTILITY

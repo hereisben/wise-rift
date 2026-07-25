@@ -2,22 +2,42 @@ import { PrismaClient } from '../../src/generated/prisma/client.js';
 
 type ItemPatchStatSeed = {
   key: string;
+
+  isAvailable?: boolean;
+
   cost?: number | null;
+
   abilityPower?: number | null;
   attackDamage?: number | null;
+  armor?: number | null;
+  magicResist?: number | null;
   health?: number | null;
   mana?: number | null;
   abilityHaste?: number | null;
   critRate?: number | null;
   attackSpeed?: number | null;
-  armorPenetration?: number | null;
-  magicPenetration?: number | null;
-  antiHealValue?: number | null;
-  shieldPower?: number | null;
-  movementSpeed?: number | null;
+
+  flatArmorPenetration?: number | null;
+  percentArmorPenetration?: number | null;
+  flatMagicPenetration?: number | null;
+  percentMagicPenetration?: number | null;
+
+  physicalVamp?: number | null;
   magicVamp?: number | null;
+  omniVamp?: number | null;
+
+  healthRegen?: number | null;
   manaRegen?: number | null;
   healShieldPower?: number | null;
+  tenacity?: number | null;
+  slowResistance?: number | null;
+
+  flatMovementSpeed?: number | null;
+  percentMovementSpeed?: number | null;
+
+  antiHealValue?: number | null;
+  shieldPower?: number | null;
+
   effectDescription?: string | null;
 };
 
@@ -58,8 +78,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     cost: 1800,
     health: 70,
     abilityPower: 25,
-    magicPenetration: 7,
-    movementSpeed: 10,
+    flatMagicPenetration: 7,
     effectDescription:
       'Vinh Quang: Nhận tối đa 30 cộng dồn khi tham gia hạ gục tướng. Hoảng Sợ: Nhận 5 Sức Mạnh Phép Thuật với mỗi cộng dồn. Khi đạt ít nhất 10 cộng dồn, nhận 10% Tốc Độ Di Chuyển.',
   },
@@ -74,7 +93,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
   {
     key: 'aether-wisp',
     cost: 950,
-    movementSpeed: 5,
+    percentMovementSpeed: 5,
     effectDescription: 'Linh Hồn: +5% Tốc Độ Di Chuyển.',
   },
   {
@@ -132,7 +151,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'prophets-pendant',
     cost: 1000,
     abilityPower: 30,
-    magicPenetration: 12,
+    flatMagicPenetration: 12,
     effectDescription: 'Điềm Gở: +12 Xuyên Kháng Phép.',
   },
   {
@@ -188,7 +207,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'rabadons-deathcap',
     cost: 3400,
     abilityPower: 100,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     effectDescription:
       'Quá Đà: Tăng Sức Mạnh Phép Thuật thêm 20-45% tùy theo cấp.',
   },
@@ -198,7 +217,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityPower: 85,
     mana: 300,
     abilityHaste: 20,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     effectDescription:
       'Vọng Âm Bất Hòa: Khi đạt đủ 100 điểm Bất Hòa, kỹ năng gây sát thương tiếp theo hoặc đòn tấn công được cường hóa gây thêm 110 sát thương phép + 10% Sức Mạnh Phép Thuật lên mục tiêu và tối đa 3 kẻ địch xung quanh.',
   },
@@ -208,7 +227,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityPower: 75,
     health: 150,
     abilityHaste: 20,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     antiHealValue: 50,
     effectDescription:
       'Tai Họa: Gây sát thương phép lên tướng địch và tạo hiệu ứng 50% Vết Thương Sâu trong 3 giây.',
@@ -218,7 +237,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     cost: 2700,
     abilityPower: 65,
     health: 300,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     effectDescription:
       'Băng Giá: Kỹ năng kích hoạt gây sát thương và đòn tấn công được cường hóa làm chậm kẻ địch 30% trong 0.75 giây.',
   },
@@ -227,7 +246,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     cost: 3000,
     abilityPower: 75,
     health: 250,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     effectDescription:
       'Thống Khổ: Kỹ năng gây sát thương và đòn đánh được cường hóa gây 0.6%-3% Máu Tối Đa của mục tiêu thành sát thương phép mỗi giây trong 3 giây.',
   },
@@ -237,7 +256,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityPower: 60,
     health: 250,
     mana: 300,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     effectDescription:
       'Vĩnh Hằng: Hồi Năng Lượng từ sát thương nhận vào và hồi Máu từ Năng Lượng sử dụng. Cựu Binh: Mỗi cộng dồn tăng 25 Máu, 10 Năng Lượng và 6 Sức Mạnh Phép Thuật. Tối đa 10 cộng dồn.',
   },
@@ -245,9 +264,9 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'lich-bane',
     cost: 2800,
     abilityPower: 80,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     abilityHaste: 10,
-    movementSpeed: 5,
+    percentMovementSpeed: 5,
     effectDescription:
       'Tai Ương: +5% Tốc Độ Di Chuyển. Kiếm Phép: Sau khi sử dụng kỹ năng, đòn đánh thường kế tiếp gây thêm sát thương phép bằng 75% Sức Mạnh Công Kích cơ bản + 50% Sức Mạnh Phép Thuật.',
   },
@@ -255,7 +274,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'archangels-staff',
     cost: 2950,
     abilityPower: 35,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     mana: 500,
     abilityHaste: 20,
     effectDescription:
@@ -275,8 +294,8 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'infinity-orb',
     cost: 2900,
     abilityPower: 80,
-    magicPenetration: 7,
-    movementSpeed: 5,
+    flatMagicPenetration: 7,
+    percentMovementSpeed: 5,
     effectDescription:
       'Định Mệnh: +5% Tốc Độ Di Chuyển. Cân Bằng: +15 Xuyên Kháng Phép. Tử Thần Cận Kề: Kỹ năng và đòn tấn công được cường hóa gây thêm 20% Chí Mạng lên kẻ địch dưới 35% Máu. Tia Sét Trời Giáng: Khi mục tiêu bị hạ gục trong 3 giây sau khi bị áp dụng hiệu ứng, gây sát thương phép xung quanh.',
   },
@@ -284,7 +303,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'crown-of-the-shattered-queen',
     cost: 3000,
     abilityPower: 60,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     mana: 200,
     abilityHaste: 20,
     effectDescription:
@@ -294,9 +313,9 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'cosmic-drive',
     cost: 3000,
     abilityPower: 75,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     abilityHaste: 30,
-    movementSpeed: 5,
+    percentMovementSpeed: 5,
     effectDescription:
       'Siêu Động Cơ: +5% Tốc Độ Di Chuyển. Pháp Vũ Đồng Hành: Gây sát thương bằng kỹ năng kích hoạt hoặc đòn đánh cường hóa lên tướng địch tăng Tốc Độ Di Chuyển dựa trên Điểm Hồi Kỹ Năng từ trang bị.',
   },
@@ -306,7 +325,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityPower: 80,
     health: 150,
     abilityHaste: 15,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     magicVamp: 11,
     effectDescription:
       'Đồng Hóa: +11% Hút Máu Phép. Tha Hóa Hư Không: Khi giao tranh với tướng địch, nhận cộng dồn tăng sát thương phép. Ở cộng dồn tối đa, sát thương phép tăng thêm trở thành sát thương chuẩn.',
@@ -316,7 +335,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     cost: 2600,
     health: 200,
     abilityPower: 75,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     shieldPower: 60,
     effectDescription:
       'Vũ Khí Chết Chóc: Gây sát thương bằng kỹ năng lên tướng địch làm giảm lượng lá chắn chúng nhận được trong 3 giây. Kỹ năng diện rộng tối đa 45%, kỹ năng đơn mục tiêu tối đa 60%.',
@@ -326,7 +345,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     cost: 2900,
     abilityPower: 80,
     abilityHaste: 20,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     effectDescription:
       'Bộc Phát: Gây sát thương lên tướng địch bằng kỹ năng từ tầm xa 600 đơn vị làm lộ diện chúng trong 8 giây và tăng sát thương gây lên chúng thêm 9%. Tập Trung: Làm lộ diện tướng địch quanh mục tiêu.',
   },
@@ -335,7 +354,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     cost: 3200,
     health: 300,
     abilityPower: 60,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     abilityHaste: 15,
     effectDescription:
       'Chuyển Hóa: Nhận Sức Mạnh Phép Thuật tương đương 3.5% Máu cộng thêm. Ảo Ảnh: Khi có ít nhất 950 Máu cộng thêm, nhận một phần Sức Mạnh Phép Thuật dưới dạng Giáp và Kháng Phép.',
@@ -345,7 +364,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     cost: 3000,
     health: 150,
     abilityPower: 65,
-    magicPenetration: 15,
+    flatMagicPenetration: 15,
     abilityHaste: 20,
     effectDescription:
       'Săn Hồn: +15 Xuyên Kháng Phép. Linh Hồn Lang Thang: Khi tham gia hạ gục tướng địch sau khi gây sát thương, thời gian hồi chiêu được giảm 25%, đánh cắp Tốc Độ Di Chuyển cơ bản và Điểm Hồi Kỹ Năng của chúng cho đến khi chúng hồi sinh.',
@@ -354,7 +373,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'malignance',
     cost: 2900,
     abilityPower: 80,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     mana: 400,
     abilityHaste: 20,
     effectDescription:
@@ -364,7 +383,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'bandle-fantasy',
     cost: 3000,
     abilityPower: 85,
-    magicPenetration: 7,
+    flatMagicPenetration: 7,
     mana: 300,
     abilityHaste: 20,
     effectDescription:
@@ -374,7 +393,7 @@ const itemPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'guinsoos-rageblade',
     cost: 3100,
     attackSpeed: 30,
-    movementSpeed: 5,
+    percentMovementSpeed: 5,
     abilityPower: 50,
     attackDamage: 25,
     effectDescription:
@@ -417,11 +436,11 @@ export async function seedItemPatchStats(
         abilityHaste: patchStatSeed.abilityHaste ?? null,
         critRate: patchStatSeed.critRate ?? null,
         attackSpeed: patchStatSeed.attackSpeed ?? null,
-        armorPenetration: patchStatSeed.armorPenetration ?? null,
-        magicPenetration: patchStatSeed.magicPenetration ?? null,
+        flatArmorPenetration: patchStatSeed.flatArmorPenetration ?? null,
+        flatMagicPenetration: patchStatSeed.flatMagicPenetration ?? null,
         antiHealValue: patchStatSeed.antiHealValue ?? null,
         shieldPower: patchStatSeed.shieldPower ?? null,
-        movementSpeed: patchStatSeed.movementSpeed ?? null,
+        percentMovementSpeed: patchStatSeed.percentMovementSpeed ?? null,
         magicVamp: patchStatSeed.magicVamp ?? null,
         manaRegen: patchStatSeed.manaRegen ?? null,
         healShieldPower: patchStatSeed.healShieldPower ?? null,
@@ -439,11 +458,11 @@ export async function seedItemPatchStats(
         abilityHaste: patchStatSeed.abilityHaste ?? null,
         critRate: patchStatSeed.critRate ?? null,
         attackSpeed: patchStatSeed.attackSpeed ?? null,
-        armorPenetration: patchStatSeed.armorPenetration ?? null,
-        magicPenetration: patchStatSeed.magicPenetration ?? null,
+        flatArmorPenetration: patchStatSeed.flatArmorPenetration ?? null,
+        flatMagicPenetration: patchStatSeed.flatMagicPenetration ?? null,
         antiHealValue: patchStatSeed.antiHealValue ?? null,
         shieldPower: patchStatSeed.shieldPower ?? null,
-        movementSpeed: patchStatSeed.movementSpeed ?? null,
+        percentMovementSpeed: patchStatSeed.percentMovementSpeed ?? null,
         magicVamp: patchStatSeed.magicVamp ?? null,
         manaRegen: patchStatSeed.manaRegen ?? null,
         healShieldPower: patchStatSeed.healShieldPower ?? null,

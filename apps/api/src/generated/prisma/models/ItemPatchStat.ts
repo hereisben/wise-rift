@@ -37,14 +37,22 @@ export type ItemPatchStatAvgAggregateOutputType = {
   abilityHaste: number | null
   critRate: number | null
   attackSpeed: number | null
-  armorPenetration: number | null
-  magicPenetration: number | null
-  antiHealValue: number | null
-  shieldPower: number | null
-  movementSpeed: number | null
+  flatArmorPenetration: number | null
+  percentArmorPenetration: number | null
+  flatMagicPenetration: number | null
+  percentMagicPenetration: number | null
+  physicalVamp: number | null
   magicVamp: number | null
+  omniVamp: number | null
+  healthRegen: number | null
   manaRegen: number | null
   healShieldPower: number | null
+  tenacity: number | null
+  slowResistance: number | null
+  flatMovementSpeed: number | null
+  percentMovementSpeed: number | null
+  antiHealValue: number | null
+  shieldPower: number | null
 }
 
 export type ItemPatchStatSumAggregateOutputType = {
@@ -58,20 +66,29 @@ export type ItemPatchStatSumAggregateOutputType = {
   abilityHaste: number | null
   critRate: number | null
   attackSpeed: number | null
-  armorPenetration: number | null
-  magicPenetration: number | null
-  antiHealValue: number | null
-  shieldPower: number | null
-  movementSpeed: number | null
+  flatArmorPenetration: number | null
+  percentArmorPenetration: number | null
+  flatMagicPenetration: number | null
+  percentMagicPenetration: number | null
+  physicalVamp: number | null
   magicVamp: number | null
+  omniVamp: number | null
+  healthRegen: number | null
   manaRegen: number | null
   healShieldPower: number | null
+  tenacity: number | null
+  slowResistance: number | null
+  flatMovementSpeed: number | null
+  percentMovementSpeed: number | null
+  antiHealValue: number | null
+  shieldPower: number | null
 }
 
 export type ItemPatchStatMinAggregateOutputType = {
   id: string | null
   itemId: string | null
   patchId: string | null
+  isAvailable: boolean | null
   cost: number | null
   abilityPower: number | null
   attackDamage: number | null
@@ -82,14 +99,22 @@ export type ItemPatchStatMinAggregateOutputType = {
   abilityHaste: number | null
   critRate: number | null
   attackSpeed: number | null
-  armorPenetration: number | null
-  magicPenetration: number | null
-  antiHealValue: number | null
-  shieldPower: number | null
-  movementSpeed: number | null
+  flatArmorPenetration: number | null
+  percentArmorPenetration: number | null
+  flatMagicPenetration: number | null
+  percentMagicPenetration: number | null
+  physicalVamp: number | null
   magicVamp: number | null
+  omniVamp: number | null
+  healthRegen: number | null
   manaRegen: number | null
   healShieldPower: number | null
+  tenacity: number | null
+  slowResistance: number | null
+  flatMovementSpeed: number | null
+  percentMovementSpeed: number | null
+  antiHealValue: number | null
+  shieldPower: number | null
   effectDescription: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -100,6 +125,7 @@ export type ItemPatchStatMaxAggregateOutputType = {
   id: string | null
   itemId: string | null
   patchId: string | null
+  isAvailable: boolean | null
   cost: number | null
   abilityPower: number | null
   attackDamage: number | null
@@ -110,14 +136,22 @@ export type ItemPatchStatMaxAggregateOutputType = {
   abilityHaste: number | null
   critRate: number | null
   attackSpeed: number | null
-  armorPenetration: number | null
-  magicPenetration: number | null
-  antiHealValue: number | null
-  shieldPower: number | null
-  movementSpeed: number | null
+  flatArmorPenetration: number | null
+  percentArmorPenetration: number | null
+  flatMagicPenetration: number | null
+  percentMagicPenetration: number | null
+  physicalVamp: number | null
   magicVamp: number | null
+  omniVamp: number | null
+  healthRegen: number | null
   manaRegen: number | null
   healShieldPower: number | null
+  tenacity: number | null
+  slowResistance: number | null
+  flatMovementSpeed: number | null
+  percentMovementSpeed: number | null
+  antiHealValue: number | null
+  shieldPower: number | null
   effectDescription: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -128,6 +162,7 @@ export type ItemPatchStatCountAggregateOutputType = {
   id: number
   itemId: number
   patchId: number
+  isAvailable: number
   cost: number
   abilityPower: number
   attackDamage: number
@@ -138,14 +173,22 @@ export type ItemPatchStatCountAggregateOutputType = {
   abilityHaste: number
   critRate: number
   attackSpeed: number
-  armorPenetration: number
-  magicPenetration: number
-  antiHealValue: number
-  shieldPower: number
-  movementSpeed: number
+  flatArmorPenetration: number
+  percentArmorPenetration: number
+  flatMagicPenetration: number
+  percentMagicPenetration: number
+  physicalVamp: number
   magicVamp: number
+  omniVamp: number
+  healthRegen: number
   manaRegen: number
   healShieldPower: number
+  tenacity: number
+  slowResistance: number
+  flatMovementSpeed: number
+  percentMovementSpeed: number
+  antiHealValue: number
+  shieldPower: number
   effectDescription: number
   createdAt: number
   updatedAt: number
@@ -165,14 +208,22 @@ export type ItemPatchStatAvgAggregateInputType = {
   abilityHaste?: true
   critRate?: true
   attackSpeed?: true
-  armorPenetration?: true
-  magicPenetration?: true
-  antiHealValue?: true
-  shieldPower?: true
-  movementSpeed?: true
+  flatArmorPenetration?: true
+  percentArmorPenetration?: true
+  flatMagicPenetration?: true
+  percentMagicPenetration?: true
+  physicalVamp?: true
   magicVamp?: true
+  omniVamp?: true
+  healthRegen?: true
   manaRegen?: true
   healShieldPower?: true
+  tenacity?: true
+  slowResistance?: true
+  flatMovementSpeed?: true
+  percentMovementSpeed?: true
+  antiHealValue?: true
+  shieldPower?: true
 }
 
 export type ItemPatchStatSumAggregateInputType = {
@@ -186,20 +237,29 @@ export type ItemPatchStatSumAggregateInputType = {
   abilityHaste?: true
   critRate?: true
   attackSpeed?: true
-  armorPenetration?: true
-  magicPenetration?: true
-  antiHealValue?: true
-  shieldPower?: true
-  movementSpeed?: true
+  flatArmorPenetration?: true
+  percentArmorPenetration?: true
+  flatMagicPenetration?: true
+  percentMagicPenetration?: true
+  physicalVamp?: true
   magicVamp?: true
+  omniVamp?: true
+  healthRegen?: true
   manaRegen?: true
   healShieldPower?: true
+  tenacity?: true
+  slowResistance?: true
+  flatMovementSpeed?: true
+  percentMovementSpeed?: true
+  antiHealValue?: true
+  shieldPower?: true
 }
 
 export type ItemPatchStatMinAggregateInputType = {
   id?: true
   itemId?: true
   patchId?: true
+  isAvailable?: true
   cost?: true
   abilityPower?: true
   attackDamage?: true
@@ -210,14 +270,22 @@ export type ItemPatchStatMinAggregateInputType = {
   abilityHaste?: true
   critRate?: true
   attackSpeed?: true
-  armorPenetration?: true
-  magicPenetration?: true
-  antiHealValue?: true
-  shieldPower?: true
-  movementSpeed?: true
+  flatArmorPenetration?: true
+  percentArmorPenetration?: true
+  flatMagicPenetration?: true
+  percentMagicPenetration?: true
+  physicalVamp?: true
   magicVamp?: true
+  omniVamp?: true
+  healthRegen?: true
   manaRegen?: true
   healShieldPower?: true
+  tenacity?: true
+  slowResistance?: true
+  flatMovementSpeed?: true
+  percentMovementSpeed?: true
+  antiHealValue?: true
+  shieldPower?: true
   effectDescription?: true
   createdAt?: true
   updatedAt?: true
@@ -228,6 +296,7 @@ export type ItemPatchStatMaxAggregateInputType = {
   id?: true
   itemId?: true
   patchId?: true
+  isAvailable?: true
   cost?: true
   abilityPower?: true
   attackDamage?: true
@@ -238,14 +307,22 @@ export type ItemPatchStatMaxAggregateInputType = {
   abilityHaste?: true
   critRate?: true
   attackSpeed?: true
-  armorPenetration?: true
-  magicPenetration?: true
-  antiHealValue?: true
-  shieldPower?: true
-  movementSpeed?: true
+  flatArmorPenetration?: true
+  percentArmorPenetration?: true
+  flatMagicPenetration?: true
+  percentMagicPenetration?: true
+  physicalVamp?: true
   magicVamp?: true
+  omniVamp?: true
+  healthRegen?: true
   manaRegen?: true
   healShieldPower?: true
+  tenacity?: true
+  slowResistance?: true
+  flatMovementSpeed?: true
+  percentMovementSpeed?: true
+  antiHealValue?: true
+  shieldPower?: true
   effectDescription?: true
   createdAt?: true
   updatedAt?: true
@@ -256,6 +333,7 @@ export type ItemPatchStatCountAggregateInputType = {
   id?: true
   itemId?: true
   patchId?: true
+  isAvailable?: true
   cost?: true
   abilityPower?: true
   attackDamage?: true
@@ -266,14 +344,22 @@ export type ItemPatchStatCountAggregateInputType = {
   abilityHaste?: true
   critRate?: true
   attackSpeed?: true
-  armorPenetration?: true
-  magicPenetration?: true
-  antiHealValue?: true
-  shieldPower?: true
-  movementSpeed?: true
+  flatArmorPenetration?: true
+  percentArmorPenetration?: true
+  flatMagicPenetration?: true
+  percentMagicPenetration?: true
+  physicalVamp?: true
   magicVamp?: true
+  omniVamp?: true
+  healthRegen?: true
   manaRegen?: true
   healShieldPower?: true
+  tenacity?: true
+  slowResistance?: true
+  flatMovementSpeed?: true
+  percentMovementSpeed?: true
+  antiHealValue?: true
+  shieldPower?: true
   effectDescription?: true
   createdAt?: true
   updatedAt?: true
@@ -371,6 +457,7 @@ export type ItemPatchStatGroupByOutputType = {
   id: string
   itemId: string
   patchId: string
+  isAvailable: boolean
   cost: number | null
   abilityPower: number | null
   attackDamage: number | null
@@ -381,14 +468,22 @@ export type ItemPatchStatGroupByOutputType = {
   abilityHaste: number | null
   critRate: number | null
   attackSpeed: number | null
-  armorPenetration: number | null
-  magicPenetration: number | null
-  antiHealValue: number | null
-  shieldPower: number | null
-  movementSpeed: number | null
+  flatArmorPenetration: number | null
+  percentArmorPenetration: number | null
+  flatMagicPenetration: number | null
+  percentMagicPenetration: number | null
+  physicalVamp: number | null
   magicVamp: number | null
+  omniVamp: number | null
+  healthRegen: number | null
   manaRegen: number | null
   healShieldPower: number | null
+  tenacity: number | null
+  slowResistance: number | null
+  flatMovementSpeed: number | null
+  percentMovementSpeed: number | null
+  antiHealValue: number | null
+  shieldPower: number | null
   effectDescription: string | null
   createdAt: Date
   updatedAt: Date
@@ -422,6 +517,7 @@ export type ItemPatchStatWhereInput = {
   id?: Prisma.StringFilter<"ItemPatchStat"> | string
   itemId?: Prisma.StringFilter<"ItemPatchStat"> | string
   patchId?: Prisma.StringFilter<"ItemPatchStat"> | string
+  isAvailable?: Prisma.BoolFilter<"ItemPatchStat"> | boolean
   cost?: Prisma.IntNullableFilter<"ItemPatchStat"> | number | null
   abilityPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   attackDamage?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
@@ -432,14 +528,22 @@ export type ItemPatchStatWhereInput = {
   abilityHaste?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   critRate?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   attackSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  armorPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  magicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  antiHealValue?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  shieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  movementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  flatArmorPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  percentArmorPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  flatMagicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  percentMagicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  physicalVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   magicVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  omniVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  healthRegen?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   manaRegen?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   healShieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  tenacity?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  slowResistance?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  flatMovementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  percentMovementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  antiHealValue?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  shieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   effectDescription?: Prisma.StringNullableFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
@@ -452,6 +556,7 @@ export type ItemPatchStatOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   itemId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   cost?: Prisma.SortOrderInput | Prisma.SortOrder
   abilityPower?: Prisma.SortOrderInput | Prisma.SortOrder
   attackDamage?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -462,14 +567,22 @@ export type ItemPatchStatOrderByWithRelationInput = {
   abilityHaste?: Prisma.SortOrderInput | Prisma.SortOrder
   critRate?: Prisma.SortOrderInput | Prisma.SortOrder
   attackSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
-  armorPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
-  magicPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
-  antiHealValue?: Prisma.SortOrderInput | Prisma.SortOrder
-  shieldPower?: Prisma.SortOrderInput | Prisma.SortOrder
-  movementSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
+  flatArmorPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
+  percentArmorPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
+  flatMagicPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
+  percentMagicPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
+  physicalVamp?: Prisma.SortOrderInput | Prisma.SortOrder
   magicVamp?: Prisma.SortOrderInput | Prisma.SortOrder
+  omniVamp?: Prisma.SortOrderInput | Prisma.SortOrder
+  healthRegen?: Prisma.SortOrderInput | Prisma.SortOrder
   manaRegen?: Prisma.SortOrderInput | Prisma.SortOrder
   healShieldPower?: Prisma.SortOrderInput | Prisma.SortOrder
+  tenacity?: Prisma.SortOrderInput | Prisma.SortOrder
+  slowResistance?: Prisma.SortOrderInput | Prisma.SortOrder
+  flatMovementSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
+  percentMovementSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
+  antiHealValue?: Prisma.SortOrderInput | Prisma.SortOrder
+  shieldPower?: Prisma.SortOrderInput | Prisma.SortOrder
   effectDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -486,6 +599,7 @@ export type ItemPatchStatWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ItemPatchStatWhereInput | Prisma.ItemPatchStatWhereInput[]
   itemId?: Prisma.StringFilter<"ItemPatchStat"> | string
   patchId?: Prisma.StringFilter<"ItemPatchStat"> | string
+  isAvailable?: Prisma.BoolFilter<"ItemPatchStat"> | boolean
   cost?: Prisma.IntNullableFilter<"ItemPatchStat"> | number | null
   abilityPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   attackDamage?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
@@ -496,14 +610,22 @@ export type ItemPatchStatWhereUniqueInput = Prisma.AtLeast<{
   abilityHaste?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   critRate?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   attackSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  armorPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  magicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  antiHealValue?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  shieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  movementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  flatArmorPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  percentArmorPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  flatMagicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  percentMagicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  physicalVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   magicVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  omniVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  healthRegen?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   manaRegen?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   healShieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  tenacity?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  slowResistance?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  flatMovementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  percentMovementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  antiHealValue?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  shieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   effectDescription?: Prisma.StringNullableFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
@@ -516,6 +638,7 @@ export type ItemPatchStatOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   itemId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   cost?: Prisma.SortOrderInput | Prisma.SortOrder
   abilityPower?: Prisma.SortOrderInput | Prisma.SortOrder
   attackDamage?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -526,14 +649,22 @@ export type ItemPatchStatOrderByWithAggregationInput = {
   abilityHaste?: Prisma.SortOrderInput | Prisma.SortOrder
   critRate?: Prisma.SortOrderInput | Prisma.SortOrder
   attackSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
-  armorPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
-  magicPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
-  antiHealValue?: Prisma.SortOrderInput | Prisma.SortOrder
-  shieldPower?: Prisma.SortOrderInput | Prisma.SortOrder
-  movementSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
+  flatArmorPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
+  percentArmorPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
+  flatMagicPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
+  percentMagicPenetration?: Prisma.SortOrderInput | Prisma.SortOrder
+  physicalVamp?: Prisma.SortOrderInput | Prisma.SortOrder
   magicVamp?: Prisma.SortOrderInput | Prisma.SortOrder
+  omniVamp?: Prisma.SortOrderInput | Prisma.SortOrder
+  healthRegen?: Prisma.SortOrderInput | Prisma.SortOrder
   manaRegen?: Prisma.SortOrderInput | Prisma.SortOrder
   healShieldPower?: Prisma.SortOrderInput | Prisma.SortOrder
+  tenacity?: Prisma.SortOrderInput | Prisma.SortOrder
+  slowResistance?: Prisma.SortOrderInput | Prisma.SortOrder
+  flatMovementSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
+  percentMovementSpeed?: Prisma.SortOrderInput | Prisma.SortOrder
+  antiHealValue?: Prisma.SortOrderInput | Prisma.SortOrder
+  shieldPower?: Prisma.SortOrderInput | Prisma.SortOrder
   effectDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -552,6 +683,7 @@ export type ItemPatchStatScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"ItemPatchStat"> | string
   itemId?: Prisma.StringWithAggregatesFilter<"ItemPatchStat"> | string
   patchId?: Prisma.StringWithAggregatesFilter<"ItemPatchStat"> | string
+  isAvailable?: Prisma.BoolWithAggregatesFilter<"ItemPatchStat"> | boolean
   cost?: Prisma.IntNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   abilityPower?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   attackDamage?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
@@ -562,14 +694,22 @@ export type ItemPatchStatScalarWhereWithAggregatesInput = {
   abilityHaste?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   critRate?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   attackSpeed?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
-  armorPenetration?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
-  magicPenetration?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
-  antiHealValue?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
-  shieldPower?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
-  movementSpeed?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  flatArmorPenetration?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  percentArmorPenetration?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  flatMagicPenetration?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  percentMagicPenetration?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  physicalVamp?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   magicVamp?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  omniVamp?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  healthRegen?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   manaRegen?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   healShieldPower?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  tenacity?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  slowResistance?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  flatMovementSpeed?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  percentMovementSpeed?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  antiHealValue?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
+  shieldPower?: Prisma.FloatNullableWithAggregatesFilter<"ItemPatchStat"> | number | null
   effectDescription?: Prisma.StringNullableWithAggregatesFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ItemPatchStat"> | Date | string
@@ -578,6 +718,7 @@ export type ItemPatchStatScalarWhereWithAggregatesInput = {
 
 export type ItemPatchStatCreateInput = {
   id?: string
+  isAvailable?: boolean
   cost?: number | null
   abilityPower?: number | null
   attackDamage?: number | null
@@ -588,14 +729,22 @@ export type ItemPatchStatCreateInput = {
   abilityHaste?: number | null
   critRate?: number | null
   attackSpeed?: number | null
-  armorPenetration?: number | null
-  magicPenetration?: number | null
-  antiHealValue?: number | null
-  shieldPower?: number | null
-  movementSpeed?: number | null
+  flatArmorPenetration?: number | null
+  percentArmorPenetration?: number | null
+  flatMagicPenetration?: number | null
+  percentMagicPenetration?: number | null
+  physicalVamp?: number | null
   magicVamp?: number | null
+  omniVamp?: number | null
+  healthRegen?: number | null
   manaRegen?: number | null
   healShieldPower?: number | null
+  tenacity?: number | null
+  slowResistance?: number | null
+  flatMovementSpeed?: number | null
+  percentMovementSpeed?: number | null
+  antiHealValue?: number | null
+  shieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -608,6 +757,7 @@ export type ItemPatchStatUncheckedCreateInput = {
   id?: string
   itemId: string
   patchId: string
+  isAvailable?: boolean
   cost?: number | null
   abilityPower?: number | null
   attackDamage?: number | null
@@ -618,14 +768,22 @@ export type ItemPatchStatUncheckedCreateInput = {
   abilityHaste?: number | null
   critRate?: number | null
   attackSpeed?: number | null
-  armorPenetration?: number | null
-  magicPenetration?: number | null
-  antiHealValue?: number | null
-  shieldPower?: number | null
-  movementSpeed?: number | null
+  flatArmorPenetration?: number | null
+  percentArmorPenetration?: number | null
+  flatMagicPenetration?: number | null
+  percentMagicPenetration?: number | null
+  physicalVamp?: number | null
   magicVamp?: number | null
+  omniVamp?: number | null
+  healthRegen?: number | null
   manaRegen?: number | null
   healShieldPower?: number | null
+  tenacity?: number | null
+  slowResistance?: number | null
+  flatMovementSpeed?: number | null
+  percentMovementSpeed?: number | null
+  antiHealValue?: number | null
+  shieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -634,6 +792,7 @@ export type ItemPatchStatUncheckedCreateInput = {
 
 export type ItemPatchStatUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cost?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   abilityPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -644,14 +803,22 @@ export type ItemPatchStatUpdateInput = {
   abilityHaste?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   critRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  armorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  physicalVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  omniVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healthRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tenacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slowResistance?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -664,6 +831,7 @@ export type ItemPatchStatUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   itemId?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cost?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   abilityPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -674,14 +842,22 @@ export type ItemPatchStatUncheckedUpdateInput = {
   abilityHaste?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   critRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  armorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  physicalVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  omniVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healthRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tenacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slowResistance?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -692,6 +868,7 @@ export type ItemPatchStatCreateManyInput = {
   id?: string
   itemId: string
   patchId: string
+  isAvailable?: boolean
   cost?: number | null
   abilityPower?: number | null
   attackDamage?: number | null
@@ -702,14 +879,22 @@ export type ItemPatchStatCreateManyInput = {
   abilityHaste?: number | null
   critRate?: number | null
   attackSpeed?: number | null
-  armorPenetration?: number | null
-  magicPenetration?: number | null
-  antiHealValue?: number | null
-  shieldPower?: number | null
-  movementSpeed?: number | null
+  flatArmorPenetration?: number | null
+  percentArmorPenetration?: number | null
+  flatMagicPenetration?: number | null
+  percentMagicPenetration?: number | null
+  physicalVamp?: number | null
   magicVamp?: number | null
+  omniVamp?: number | null
+  healthRegen?: number | null
   manaRegen?: number | null
   healShieldPower?: number | null
+  tenacity?: number | null
+  slowResistance?: number | null
+  flatMovementSpeed?: number | null
+  percentMovementSpeed?: number | null
+  antiHealValue?: number | null
+  shieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -718,6 +903,7 @@ export type ItemPatchStatCreateManyInput = {
 
 export type ItemPatchStatUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cost?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   abilityPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -728,14 +914,22 @@ export type ItemPatchStatUpdateManyMutationInput = {
   abilityHaste?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   critRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  armorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  physicalVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  omniVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healthRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tenacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slowResistance?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -746,6 +940,7 @@ export type ItemPatchStatUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   itemId?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cost?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   abilityPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -756,14 +951,22 @@ export type ItemPatchStatUncheckedUpdateManyInput = {
   abilityHaste?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   critRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  armorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  physicalVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  omniVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healthRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tenacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slowResistance?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -789,6 +992,7 @@ export type ItemPatchStatCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   itemId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   cost?: Prisma.SortOrder
   abilityPower?: Prisma.SortOrder
   attackDamage?: Prisma.SortOrder
@@ -799,14 +1003,22 @@ export type ItemPatchStatCountOrderByAggregateInput = {
   abilityHaste?: Prisma.SortOrder
   critRate?: Prisma.SortOrder
   attackSpeed?: Prisma.SortOrder
-  armorPenetration?: Prisma.SortOrder
-  magicPenetration?: Prisma.SortOrder
-  antiHealValue?: Prisma.SortOrder
-  shieldPower?: Prisma.SortOrder
-  movementSpeed?: Prisma.SortOrder
+  flatArmorPenetration?: Prisma.SortOrder
+  percentArmorPenetration?: Prisma.SortOrder
+  flatMagicPenetration?: Prisma.SortOrder
+  percentMagicPenetration?: Prisma.SortOrder
+  physicalVamp?: Prisma.SortOrder
   magicVamp?: Prisma.SortOrder
+  omniVamp?: Prisma.SortOrder
+  healthRegen?: Prisma.SortOrder
   manaRegen?: Prisma.SortOrder
   healShieldPower?: Prisma.SortOrder
+  tenacity?: Prisma.SortOrder
+  slowResistance?: Prisma.SortOrder
+  flatMovementSpeed?: Prisma.SortOrder
+  percentMovementSpeed?: Prisma.SortOrder
+  antiHealValue?: Prisma.SortOrder
+  shieldPower?: Prisma.SortOrder
   effectDescription?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -824,20 +1036,29 @@ export type ItemPatchStatAvgOrderByAggregateInput = {
   abilityHaste?: Prisma.SortOrder
   critRate?: Prisma.SortOrder
   attackSpeed?: Prisma.SortOrder
-  armorPenetration?: Prisma.SortOrder
-  magicPenetration?: Prisma.SortOrder
-  antiHealValue?: Prisma.SortOrder
-  shieldPower?: Prisma.SortOrder
-  movementSpeed?: Prisma.SortOrder
+  flatArmorPenetration?: Prisma.SortOrder
+  percentArmorPenetration?: Prisma.SortOrder
+  flatMagicPenetration?: Prisma.SortOrder
+  percentMagicPenetration?: Prisma.SortOrder
+  physicalVamp?: Prisma.SortOrder
   magicVamp?: Prisma.SortOrder
+  omniVamp?: Prisma.SortOrder
+  healthRegen?: Prisma.SortOrder
   manaRegen?: Prisma.SortOrder
   healShieldPower?: Prisma.SortOrder
+  tenacity?: Prisma.SortOrder
+  slowResistance?: Prisma.SortOrder
+  flatMovementSpeed?: Prisma.SortOrder
+  percentMovementSpeed?: Prisma.SortOrder
+  antiHealValue?: Prisma.SortOrder
+  shieldPower?: Prisma.SortOrder
 }
 
 export type ItemPatchStatMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   itemId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   cost?: Prisma.SortOrder
   abilityPower?: Prisma.SortOrder
   attackDamage?: Prisma.SortOrder
@@ -848,14 +1069,22 @@ export type ItemPatchStatMaxOrderByAggregateInput = {
   abilityHaste?: Prisma.SortOrder
   critRate?: Prisma.SortOrder
   attackSpeed?: Prisma.SortOrder
-  armorPenetration?: Prisma.SortOrder
-  magicPenetration?: Prisma.SortOrder
-  antiHealValue?: Prisma.SortOrder
-  shieldPower?: Prisma.SortOrder
-  movementSpeed?: Prisma.SortOrder
+  flatArmorPenetration?: Prisma.SortOrder
+  percentArmorPenetration?: Prisma.SortOrder
+  flatMagicPenetration?: Prisma.SortOrder
+  percentMagicPenetration?: Prisma.SortOrder
+  physicalVamp?: Prisma.SortOrder
   magicVamp?: Prisma.SortOrder
+  omniVamp?: Prisma.SortOrder
+  healthRegen?: Prisma.SortOrder
   manaRegen?: Prisma.SortOrder
   healShieldPower?: Prisma.SortOrder
+  tenacity?: Prisma.SortOrder
+  slowResistance?: Prisma.SortOrder
+  flatMovementSpeed?: Prisma.SortOrder
+  percentMovementSpeed?: Prisma.SortOrder
+  antiHealValue?: Prisma.SortOrder
+  shieldPower?: Prisma.SortOrder
   effectDescription?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -866,6 +1095,7 @@ export type ItemPatchStatMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   itemId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   cost?: Prisma.SortOrder
   abilityPower?: Prisma.SortOrder
   attackDamage?: Prisma.SortOrder
@@ -876,14 +1106,22 @@ export type ItemPatchStatMinOrderByAggregateInput = {
   abilityHaste?: Prisma.SortOrder
   critRate?: Prisma.SortOrder
   attackSpeed?: Prisma.SortOrder
-  armorPenetration?: Prisma.SortOrder
-  magicPenetration?: Prisma.SortOrder
-  antiHealValue?: Prisma.SortOrder
-  shieldPower?: Prisma.SortOrder
-  movementSpeed?: Prisma.SortOrder
+  flatArmorPenetration?: Prisma.SortOrder
+  percentArmorPenetration?: Prisma.SortOrder
+  flatMagicPenetration?: Prisma.SortOrder
+  percentMagicPenetration?: Prisma.SortOrder
+  physicalVamp?: Prisma.SortOrder
   magicVamp?: Prisma.SortOrder
+  omniVamp?: Prisma.SortOrder
+  healthRegen?: Prisma.SortOrder
   manaRegen?: Prisma.SortOrder
   healShieldPower?: Prisma.SortOrder
+  tenacity?: Prisma.SortOrder
+  slowResistance?: Prisma.SortOrder
+  flatMovementSpeed?: Prisma.SortOrder
+  percentMovementSpeed?: Prisma.SortOrder
+  antiHealValue?: Prisma.SortOrder
+  shieldPower?: Prisma.SortOrder
   effectDescription?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -901,14 +1139,22 @@ export type ItemPatchStatSumOrderByAggregateInput = {
   abilityHaste?: Prisma.SortOrder
   critRate?: Prisma.SortOrder
   attackSpeed?: Prisma.SortOrder
-  armorPenetration?: Prisma.SortOrder
-  magicPenetration?: Prisma.SortOrder
-  antiHealValue?: Prisma.SortOrder
-  shieldPower?: Prisma.SortOrder
-  movementSpeed?: Prisma.SortOrder
+  flatArmorPenetration?: Prisma.SortOrder
+  percentArmorPenetration?: Prisma.SortOrder
+  flatMagicPenetration?: Prisma.SortOrder
+  percentMagicPenetration?: Prisma.SortOrder
+  physicalVamp?: Prisma.SortOrder
   magicVamp?: Prisma.SortOrder
+  omniVamp?: Prisma.SortOrder
+  healthRegen?: Prisma.SortOrder
   manaRegen?: Prisma.SortOrder
   healShieldPower?: Prisma.SortOrder
+  tenacity?: Prisma.SortOrder
+  slowResistance?: Prisma.SortOrder
+  flatMovementSpeed?: Prisma.SortOrder
+  percentMovementSpeed?: Prisma.SortOrder
+  antiHealValue?: Prisma.SortOrder
+  shieldPower?: Prisma.SortOrder
 }
 
 export type ItemPatchStatCreateNestedManyWithoutPatchInput = {
@@ -997,6 +1243,7 @@ export type ItemPatchStatUncheckedUpdateManyWithoutItemNestedInput = {
 
 export type ItemPatchStatCreateWithoutPatchInput = {
   id?: string
+  isAvailable?: boolean
   cost?: number | null
   abilityPower?: number | null
   attackDamage?: number | null
@@ -1007,14 +1254,22 @@ export type ItemPatchStatCreateWithoutPatchInput = {
   abilityHaste?: number | null
   critRate?: number | null
   attackSpeed?: number | null
-  armorPenetration?: number | null
-  magicPenetration?: number | null
-  antiHealValue?: number | null
-  shieldPower?: number | null
-  movementSpeed?: number | null
+  flatArmorPenetration?: number | null
+  percentArmorPenetration?: number | null
+  flatMagicPenetration?: number | null
+  percentMagicPenetration?: number | null
+  physicalVamp?: number | null
   magicVamp?: number | null
+  omniVamp?: number | null
+  healthRegen?: number | null
   manaRegen?: number | null
   healShieldPower?: number | null
+  tenacity?: number | null
+  slowResistance?: number | null
+  flatMovementSpeed?: number | null
+  percentMovementSpeed?: number | null
+  antiHealValue?: number | null
+  shieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1025,6 +1280,7 @@ export type ItemPatchStatCreateWithoutPatchInput = {
 export type ItemPatchStatUncheckedCreateWithoutPatchInput = {
   id?: string
   itemId: string
+  isAvailable?: boolean
   cost?: number | null
   abilityPower?: number | null
   attackDamage?: number | null
@@ -1035,14 +1291,22 @@ export type ItemPatchStatUncheckedCreateWithoutPatchInput = {
   abilityHaste?: number | null
   critRate?: number | null
   attackSpeed?: number | null
-  armorPenetration?: number | null
-  magicPenetration?: number | null
-  antiHealValue?: number | null
-  shieldPower?: number | null
-  movementSpeed?: number | null
+  flatArmorPenetration?: number | null
+  percentArmorPenetration?: number | null
+  flatMagicPenetration?: number | null
+  percentMagicPenetration?: number | null
+  physicalVamp?: number | null
   magicVamp?: number | null
+  omniVamp?: number | null
+  healthRegen?: number | null
   manaRegen?: number | null
   healShieldPower?: number | null
+  tenacity?: number | null
+  slowResistance?: number | null
+  flatMovementSpeed?: number | null
+  percentMovementSpeed?: number | null
+  antiHealValue?: number | null
+  shieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1082,6 +1346,7 @@ export type ItemPatchStatScalarWhereInput = {
   id?: Prisma.StringFilter<"ItemPatchStat"> | string
   itemId?: Prisma.StringFilter<"ItemPatchStat"> | string
   patchId?: Prisma.StringFilter<"ItemPatchStat"> | string
+  isAvailable?: Prisma.BoolFilter<"ItemPatchStat"> | boolean
   cost?: Prisma.IntNullableFilter<"ItemPatchStat"> | number | null
   abilityPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   attackDamage?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
@@ -1092,14 +1357,22 @@ export type ItemPatchStatScalarWhereInput = {
   abilityHaste?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   critRate?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   attackSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  armorPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  magicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  antiHealValue?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  shieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
-  movementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  flatArmorPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  percentArmorPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  flatMagicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  percentMagicPenetration?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  physicalVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   magicVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  omniVamp?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  healthRegen?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   manaRegen?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   healShieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  tenacity?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  slowResistance?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  flatMovementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  percentMovementSpeed?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  antiHealValue?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
+  shieldPower?: Prisma.FloatNullableFilter<"ItemPatchStat"> | number | null
   effectDescription?: Prisma.StringNullableFilter<"ItemPatchStat"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ItemPatchStat"> | Date | string
@@ -1108,6 +1381,7 @@ export type ItemPatchStatScalarWhereInput = {
 
 export type ItemPatchStatCreateWithoutItemInput = {
   id?: string
+  isAvailable?: boolean
   cost?: number | null
   abilityPower?: number | null
   attackDamage?: number | null
@@ -1118,14 +1392,22 @@ export type ItemPatchStatCreateWithoutItemInput = {
   abilityHaste?: number | null
   critRate?: number | null
   attackSpeed?: number | null
-  armorPenetration?: number | null
-  magicPenetration?: number | null
-  antiHealValue?: number | null
-  shieldPower?: number | null
-  movementSpeed?: number | null
+  flatArmorPenetration?: number | null
+  percentArmorPenetration?: number | null
+  flatMagicPenetration?: number | null
+  percentMagicPenetration?: number | null
+  physicalVamp?: number | null
   magicVamp?: number | null
+  omniVamp?: number | null
+  healthRegen?: number | null
   manaRegen?: number | null
   healShieldPower?: number | null
+  tenacity?: number | null
+  slowResistance?: number | null
+  flatMovementSpeed?: number | null
+  percentMovementSpeed?: number | null
+  antiHealValue?: number | null
+  shieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1136,6 +1418,7 @@ export type ItemPatchStatCreateWithoutItemInput = {
 export type ItemPatchStatUncheckedCreateWithoutItemInput = {
   id?: string
   patchId: string
+  isAvailable?: boolean
   cost?: number | null
   abilityPower?: number | null
   attackDamage?: number | null
@@ -1146,14 +1429,22 @@ export type ItemPatchStatUncheckedCreateWithoutItemInput = {
   abilityHaste?: number | null
   critRate?: number | null
   attackSpeed?: number | null
-  armorPenetration?: number | null
-  magicPenetration?: number | null
-  antiHealValue?: number | null
-  shieldPower?: number | null
-  movementSpeed?: number | null
+  flatArmorPenetration?: number | null
+  percentArmorPenetration?: number | null
+  flatMagicPenetration?: number | null
+  percentMagicPenetration?: number | null
+  physicalVamp?: number | null
   magicVamp?: number | null
+  omniVamp?: number | null
+  healthRegen?: number | null
   manaRegen?: number | null
   healShieldPower?: number | null
+  tenacity?: number | null
+  slowResistance?: number | null
+  flatMovementSpeed?: number | null
+  percentMovementSpeed?: number | null
+  antiHealValue?: number | null
+  shieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1189,6 +1480,7 @@ export type ItemPatchStatUpdateManyWithWhereWithoutItemInput = {
 export type ItemPatchStatCreateManyPatchInput = {
   id?: string
   itemId: string
+  isAvailable?: boolean
   cost?: number | null
   abilityPower?: number | null
   attackDamage?: number | null
@@ -1199,14 +1491,22 @@ export type ItemPatchStatCreateManyPatchInput = {
   abilityHaste?: number | null
   critRate?: number | null
   attackSpeed?: number | null
-  armorPenetration?: number | null
-  magicPenetration?: number | null
-  antiHealValue?: number | null
-  shieldPower?: number | null
-  movementSpeed?: number | null
+  flatArmorPenetration?: number | null
+  percentArmorPenetration?: number | null
+  flatMagicPenetration?: number | null
+  percentMagicPenetration?: number | null
+  physicalVamp?: number | null
   magicVamp?: number | null
+  omniVamp?: number | null
+  healthRegen?: number | null
   manaRegen?: number | null
   healShieldPower?: number | null
+  tenacity?: number | null
+  slowResistance?: number | null
+  flatMovementSpeed?: number | null
+  percentMovementSpeed?: number | null
+  antiHealValue?: number | null
+  shieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1215,6 +1515,7 @@ export type ItemPatchStatCreateManyPatchInput = {
 
 export type ItemPatchStatUpdateWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cost?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   abilityPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1225,14 +1526,22 @@ export type ItemPatchStatUpdateWithoutPatchInput = {
   abilityHaste?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   critRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  armorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  physicalVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  omniVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healthRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tenacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slowResistance?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1243,6 +1552,7 @@ export type ItemPatchStatUpdateWithoutPatchInput = {
 export type ItemPatchStatUncheckedUpdateWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   itemId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cost?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   abilityPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1253,14 +1563,22 @@ export type ItemPatchStatUncheckedUpdateWithoutPatchInput = {
   abilityHaste?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   critRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  armorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  physicalVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  omniVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healthRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tenacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slowResistance?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1270,6 +1588,7 @@ export type ItemPatchStatUncheckedUpdateWithoutPatchInput = {
 export type ItemPatchStatUncheckedUpdateManyWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   itemId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cost?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   abilityPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1280,14 +1599,22 @@ export type ItemPatchStatUncheckedUpdateManyWithoutPatchInput = {
   abilityHaste?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   critRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  armorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  physicalVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  omniVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healthRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tenacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slowResistance?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1297,6 +1624,7 @@ export type ItemPatchStatUncheckedUpdateManyWithoutPatchInput = {
 export type ItemPatchStatCreateManyItemInput = {
   id?: string
   patchId: string
+  isAvailable?: boolean
   cost?: number | null
   abilityPower?: number | null
   attackDamage?: number | null
@@ -1307,14 +1635,22 @@ export type ItemPatchStatCreateManyItemInput = {
   abilityHaste?: number | null
   critRate?: number | null
   attackSpeed?: number | null
-  armorPenetration?: number | null
-  magicPenetration?: number | null
-  antiHealValue?: number | null
-  shieldPower?: number | null
-  movementSpeed?: number | null
+  flatArmorPenetration?: number | null
+  percentArmorPenetration?: number | null
+  flatMagicPenetration?: number | null
+  percentMagicPenetration?: number | null
+  physicalVamp?: number | null
   magicVamp?: number | null
+  omniVamp?: number | null
+  healthRegen?: number | null
   manaRegen?: number | null
   healShieldPower?: number | null
+  tenacity?: number | null
+  slowResistance?: number | null
+  flatMovementSpeed?: number | null
+  percentMovementSpeed?: number | null
+  antiHealValue?: number | null
+  shieldPower?: number | null
   effectDescription?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1323,6 +1659,7 @@ export type ItemPatchStatCreateManyItemInput = {
 
 export type ItemPatchStatUpdateWithoutItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cost?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   abilityPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1333,14 +1670,22 @@ export type ItemPatchStatUpdateWithoutItemInput = {
   abilityHaste?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   critRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  armorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  physicalVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  omniVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healthRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tenacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slowResistance?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1351,6 +1696,7 @@ export type ItemPatchStatUpdateWithoutItemInput = {
 export type ItemPatchStatUncheckedUpdateWithoutItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cost?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   abilityPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1361,14 +1707,22 @@ export type ItemPatchStatUncheckedUpdateWithoutItemInput = {
   abilityHaste?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   critRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  armorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  physicalVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  omniVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healthRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tenacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slowResistance?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1378,6 +1732,7 @@ export type ItemPatchStatUncheckedUpdateWithoutItemInput = {
 export type ItemPatchStatUncheckedUpdateManyWithoutItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cost?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   abilityPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackDamage?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1388,14 +1743,22 @@ export type ItemPatchStatUncheckedUpdateManyWithoutItemInput = {
   abilityHaste?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   critRate?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   attackSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  armorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  magicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  movementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentArmorPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMagicPenetration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  physicalVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   magicVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  omniVamp?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  healthRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   manaRegen?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   healShieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tenacity?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slowResistance?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  flatMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  percentMovementSpeed?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  antiHealValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  shieldPower?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   effectDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1408,6 +1771,7 @@ export type ItemPatchStatSelect<ExtArgs extends runtime.Types.Extensions.Interna
   id?: boolean
   itemId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   cost?: boolean
   abilityPower?: boolean
   attackDamage?: boolean
@@ -1418,14 +1782,22 @@ export type ItemPatchStatSelect<ExtArgs extends runtime.Types.Extensions.Interna
   abilityHaste?: boolean
   critRate?: boolean
   attackSpeed?: boolean
-  armorPenetration?: boolean
-  magicPenetration?: boolean
-  antiHealValue?: boolean
-  shieldPower?: boolean
-  movementSpeed?: boolean
+  flatArmorPenetration?: boolean
+  percentArmorPenetration?: boolean
+  flatMagicPenetration?: boolean
+  percentMagicPenetration?: boolean
+  physicalVamp?: boolean
   magicVamp?: boolean
+  omniVamp?: boolean
+  healthRegen?: boolean
   manaRegen?: boolean
   healShieldPower?: boolean
+  tenacity?: boolean
+  slowResistance?: boolean
+  flatMovementSpeed?: boolean
+  percentMovementSpeed?: boolean
+  antiHealValue?: boolean
+  shieldPower?: boolean
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1438,6 +1810,7 @@ export type ItemPatchStatSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   id?: boolean
   itemId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   cost?: boolean
   abilityPower?: boolean
   attackDamage?: boolean
@@ -1448,14 +1821,22 @@ export type ItemPatchStatSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   abilityHaste?: boolean
   critRate?: boolean
   attackSpeed?: boolean
-  armorPenetration?: boolean
-  magicPenetration?: boolean
-  antiHealValue?: boolean
-  shieldPower?: boolean
-  movementSpeed?: boolean
+  flatArmorPenetration?: boolean
+  percentArmorPenetration?: boolean
+  flatMagicPenetration?: boolean
+  percentMagicPenetration?: boolean
+  physicalVamp?: boolean
   magicVamp?: boolean
+  omniVamp?: boolean
+  healthRegen?: boolean
   manaRegen?: boolean
   healShieldPower?: boolean
+  tenacity?: boolean
+  slowResistance?: boolean
+  flatMovementSpeed?: boolean
+  percentMovementSpeed?: boolean
+  antiHealValue?: boolean
+  shieldPower?: boolean
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1468,6 +1849,7 @@ export type ItemPatchStatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   id?: boolean
   itemId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   cost?: boolean
   abilityPower?: boolean
   attackDamage?: boolean
@@ -1478,14 +1860,22 @@ export type ItemPatchStatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   abilityHaste?: boolean
   critRate?: boolean
   attackSpeed?: boolean
-  armorPenetration?: boolean
-  magicPenetration?: boolean
-  antiHealValue?: boolean
-  shieldPower?: boolean
-  movementSpeed?: boolean
+  flatArmorPenetration?: boolean
+  percentArmorPenetration?: boolean
+  flatMagicPenetration?: boolean
+  percentMagicPenetration?: boolean
+  physicalVamp?: boolean
   magicVamp?: boolean
+  omniVamp?: boolean
+  healthRegen?: boolean
   manaRegen?: boolean
   healShieldPower?: boolean
+  tenacity?: boolean
+  slowResistance?: boolean
+  flatMovementSpeed?: boolean
+  percentMovementSpeed?: boolean
+  antiHealValue?: boolean
+  shieldPower?: boolean
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1498,6 +1888,7 @@ export type ItemPatchStatSelectScalar = {
   id?: boolean
   itemId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   cost?: boolean
   abilityPower?: boolean
   attackDamage?: boolean
@@ -1508,21 +1899,29 @@ export type ItemPatchStatSelectScalar = {
   abilityHaste?: boolean
   critRate?: boolean
   attackSpeed?: boolean
-  armorPenetration?: boolean
-  magicPenetration?: boolean
-  antiHealValue?: boolean
-  shieldPower?: boolean
-  movementSpeed?: boolean
+  flatArmorPenetration?: boolean
+  percentArmorPenetration?: boolean
+  flatMagicPenetration?: boolean
+  percentMagicPenetration?: boolean
+  physicalVamp?: boolean
   magicVamp?: boolean
+  omniVamp?: boolean
+  healthRegen?: boolean
   manaRegen?: boolean
   healShieldPower?: boolean
+  tenacity?: boolean
+  slowResistance?: boolean
+  flatMovementSpeed?: boolean
+  percentMovementSpeed?: boolean
+  antiHealValue?: boolean
+  shieldPower?: boolean
   effectDescription?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type ItemPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "itemId" | "patchId" | "cost" | "abilityPower" | "attackDamage" | "armor" | "magicResist" | "health" | "mana" | "abilityHaste" | "critRate" | "attackSpeed" | "armorPenetration" | "magicPenetration" | "antiHealValue" | "shieldPower" | "movementSpeed" | "magicVamp" | "manaRegen" | "healShieldPower" | "effectDescription" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["itemPatchStat"]>
+export type ItemPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "itemId" | "patchId" | "isAvailable" | "cost" | "abilityPower" | "attackDamage" | "armor" | "magicResist" | "health" | "mana" | "abilityHaste" | "critRate" | "attackSpeed" | "flatArmorPenetration" | "percentArmorPenetration" | "flatMagicPenetration" | "percentMagicPenetration" | "physicalVamp" | "magicVamp" | "omniVamp" | "healthRegen" | "manaRegen" | "healShieldPower" | "tenacity" | "slowResistance" | "flatMovementSpeed" | "percentMovementSpeed" | "antiHealValue" | "shieldPower" | "effectDescription" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["itemPatchStat"]>
 export type ItemPatchStatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   item?: boolean | Prisma.ItemDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -1546,6 +1945,7 @@ export type $ItemPatchStatPayload<ExtArgs extends runtime.Types.Extensions.Inter
     id: string
     itemId: string
     patchId: string
+    isAvailable: boolean
     cost: number | null
     abilityPower: number | null
     attackDamage: number | null
@@ -1556,14 +1956,22 @@ export type $ItemPatchStatPayload<ExtArgs extends runtime.Types.Extensions.Inter
     abilityHaste: number | null
     critRate: number | null
     attackSpeed: number | null
-    armorPenetration: number | null
-    magicPenetration: number | null
-    antiHealValue: number | null
-    shieldPower: number | null
-    movementSpeed: number | null
+    flatArmorPenetration: number | null
+    percentArmorPenetration: number | null
+    flatMagicPenetration: number | null
+    percentMagicPenetration: number | null
+    physicalVamp: number | null
     magicVamp: number | null
+    omniVamp: number | null
+    healthRegen: number | null
     manaRegen: number | null
     healShieldPower: number | null
+    tenacity: number | null
+    slowResistance: number | null
+    flatMovementSpeed: number | null
+    percentMovementSpeed: number | null
+    antiHealValue: number | null
+    shieldPower: number | null
     effectDescription: string | null
     createdAt: Date
     updatedAt: Date
@@ -1996,6 +2404,7 @@ export interface ItemPatchStatFieldRefs {
   readonly id: Prisma.FieldRef<"ItemPatchStat", 'String'>
   readonly itemId: Prisma.FieldRef<"ItemPatchStat", 'String'>
   readonly patchId: Prisma.FieldRef<"ItemPatchStat", 'String'>
+  readonly isAvailable: Prisma.FieldRef<"ItemPatchStat", 'Boolean'>
   readonly cost: Prisma.FieldRef<"ItemPatchStat", 'Int'>
   readonly abilityPower: Prisma.FieldRef<"ItemPatchStat", 'Float'>
   readonly attackDamage: Prisma.FieldRef<"ItemPatchStat", 'Float'>
@@ -2006,14 +2415,22 @@ export interface ItemPatchStatFieldRefs {
   readonly abilityHaste: Prisma.FieldRef<"ItemPatchStat", 'Float'>
   readonly critRate: Prisma.FieldRef<"ItemPatchStat", 'Float'>
   readonly attackSpeed: Prisma.FieldRef<"ItemPatchStat", 'Float'>
-  readonly armorPenetration: Prisma.FieldRef<"ItemPatchStat", 'Float'>
-  readonly magicPenetration: Prisma.FieldRef<"ItemPatchStat", 'Float'>
-  readonly antiHealValue: Prisma.FieldRef<"ItemPatchStat", 'Float'>
-  readonly shieldPower: Prisma.FieldRef<"ItemPatchStat", 'Float'>
-  readonly movementSpeed: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly flatArmorPenetration: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly percentArmorPenetration: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly flatMagicPenetration: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly percentMagicPenetration: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly physicalVamp: Prisma.FieldRef<"ItemPatchStat", 'Float'>
   readonly magicVamp: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly omniVamp: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly healthRegen: Prisma.FieldRef<"ItemPatchStat", 'Float'>
   readonly manaRegen: Prisma.FieldRef<"ItemPatchStat", 'Float'>
   readonly healShieldPower: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly tenacity: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly slowResistance: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly flatMovementSpeed: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly percentMovementSpeed: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly antiHealValue: Prisma.FieldRef<"ItemPatchStat", 'Float'>
+  readonly shieldPower: Prisma.FieldRef<"ItemPatchStat", 'Float'>
   readonly effectDescription: Prisma.FieldRef<"ItemPatchStat", 'String'>
   readonly createdAt: Prisma.FieldRef<"ItemPatchStat", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ItemPatchStat", 'DateTime'>
