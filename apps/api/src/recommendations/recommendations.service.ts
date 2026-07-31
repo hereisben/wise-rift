@@ -607,7 +607,6 @@ export class RecommendationsService {
       coreItems,
       situationalItems,
       boots: [],
-      enchant: null,
       recommendedRunes,
       recommendedSpells,
       reasonCodes: [],

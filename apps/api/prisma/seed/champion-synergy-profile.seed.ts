@@ -6344,6 +6344,42 @@ const championSynergyProfileSeeds: ChampionSynergyProfileSeed[] = [
     synergyNotes: `Solo Yone gives the team a side-lane skirmisher that can still become a strong teamfight diver when allies provide setup. Vi and Amumu-style engage helps lock targets down, while Evelynn-style pick pressure helps create isolated targets that Yone can finish with Soul Unbound. This profile provides side-lane pressure, mixed damage, true damage detonation, mobility, and cleanup, but the team still needs frontline and objective control from other roles.`,
     dataQuality: DataQualityLevel.PARTIAL,
   },
+  // YUNARA
+  {
+    championKey: `yunara`,
+    role: GameRole.ADC,
+    goodWithTags: [
+      `ENCHANTER`,
+      `ALLY_SHIELD`,
+      `ALLY_HEAL`,
+      `PEEL`,
+      `ATTACK_SPEED_STEROID`,
+      `CROWD_CONTROL_SETUP`,
+    ],
+    providesTags: [
+      `HYBRID_DAMAGE`,
+      `DPS`,
+      `ON_HIT`,
+      `CRITICAL_STRIKE`,
+      `AREA_DAMAGE`,
+      `SCALING_DAMAGE`,
+    ],
+    needsTags: [
+      `PEEL`,
+      `FRONTLINE`,
+      `LANE_SURVIVAL`,
+      `CROWD_CONTROL_SETUP`,
+      `SAFE_POSITIONING`,
+    ],
+    teamRiskTags: [
+      `WEAK_EARLY_GAME`,
+      `LOW_DURABILITY_TEAM`,
+      `POSITIONING_RELIANT`,
+      `CC_VULNERABLE`,
+    ],
+    synergyNotes: `Yunara pairs best with enchanters and peel supports that help her survive lane, maintain attack uptime, and safely build Unleash before activating Cultivation of Spirit. Lulu, Milio, and Nami are strong examples because they provide shielding, healing, attack-speed or range support, movement utility, and crowd control setup for her empowered attacks. Yunara provides sustained hybrid damage, on-hit pressure, critical strike scaling, spreading area damage, and strong late-game carry potential, but she needs frontline and protection because she is vulnerable to burst and crowd control before or during her main damage windows.`,
+    dataQuality: DataQualityLevel.PARTIAL,
+  },
   // YUUMI
   {
     championKey: `yuumi`,

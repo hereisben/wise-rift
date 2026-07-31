@@ -23,7 +23,6 @@ export type ChampionBuildRecommendationResponse = {
   coreItems: BuildRecommendationEntry[];
   situationalItems: BuildRecommendationEntry[];
   boots: BuildRecommendationEntry[];
-  enchant: BuildRecommendationEntry | null;
   recommendedRunes: BuildRecommendationEntry[];
   recommendedSpells: BuildRecommendationEntry[];
   reasonCodes: string[];

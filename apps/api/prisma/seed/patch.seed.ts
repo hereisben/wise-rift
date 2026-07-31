@@ -1,9 +1,9 @@
 import { PrismaClient } from '../../src/generated/prisma/client.js';
 
-const ACTIVE_PATCH_VERSION = `7.2a`;
-const ACTIVE_PATCH_NAME = `Patch 7.2a`;
-const ACTIVE_PATCH_RELEASED_AT = new Date();
-const ACTIVE_PATCH_NOTES = `Manual Wise Rift data snapshot for Wild Rift patch 7.2a.`;
+const ACTIVE_PATCH_VERSION = `7.2b`;
+const ACTIVE_PATCH_NAME = `Patch 7.2b`;
+const ACTIVE_PATCH_RELEASED_AT = new Date(`2026-07-31T00:00:00.000Z`);
+const ACTIVE_PATCH_NOTES = `Manual Wise Rift data snapshot for Wild Rift patch 7.2b.`;
 
 export async function seedPatch(prisma: PrismaClient) {
   const patch = await prisma.patch.upsert({

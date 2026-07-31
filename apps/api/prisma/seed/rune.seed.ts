@@ -123,8 +123,8 @@ const runeSeeds: RuneSeed[] = [
     slot: RuneSlot.KEYSTONE,
   },
   {
-    key: `glacial-augment`,
-    name: `Glacial Augment`,
+    key: `ice-overlord`,
+    name: `Ice Overlord`,
     nameVi: `Bá Chủ Vùng Băng`,
     description: `Immobilizing an enemy champion creates slowing zones and grants defensive power. After a short delay, ice explodes around you and deals magic damage.`,
     descriptionVi: `Vô hiệu hóa một tướng địch sẽ tạo vùng băng làm chậm, tăng chống chịu cho bản thân và gây sát thương phép xung quanh sau một khoảng trễ ngắn.`,
@@ -163,8 +163,8 @@ const runeSeeds: RuneSeed[] = [
 
   // DOMINATION SLOT 2
   {
-    key: `mark-of-the-weak`,
-    name: `Mark of the Weak`,
+    key: `chain-assault`,
+    name: `Chain Assault`,
     nameVi: `Liên Kích`,
     description: `Damaging an enemy champion with an active ability marks them, causing your next attacks or abilities against them to deal bonus adaptive damage.`,
     descriptionVi: `Gây sát thương lên tướng địch bằng kỹ năng kích hoạt sẽ đặt dấu ấn lên chúng, khiến 2 đòn đánh hoặc kỹ năng kích hoạt kế tiếp gây thêm sát thương thích ứng.`,
@@ -172,8 +172,8 @@ const runeSeeds: RuneSeed[] = [
     slot: RuneSlot.SLOT_2,
   },
   {
-    key: `giant-slayer-domination`,
-    name: `Giant Slayer`,
+    key: `tyrant`,
+    name: `Tyrant`,
     nameVi: `Bạo Chúa`,
     description: `Damaging an enemy champion below 50% health deals bonus adaptive damage.`,
     descriptionVi: `Khi gây sát thương lên một tướng dưới 50% Máu, gây thêm sát thương thích ứng.`,
@@ -248,8 +248,8 @@ const runeSeeds: RuneSeed[] = [
     slot: RuneSlot.SLOT_1,
   },
   {
-    key: `courage`,
-    name: `Courage`,
+    key: `battle-zeal`,
+    name: `Battle Zeal`,
     nameVi: `Sĩ Khí`,
     description: `Gain stacking basic ability damage amplification while in combat with champions.`,
     descriptionVi: `Nhận khuếch đại sát thương kỹ năng cơ bản, cộng dồn khi đang giao tranh với tướng.`,
@@ -268,8 +268,8 @@ const runeSeeds: RuneSeed[] = [
     slot: RuneSlot.SLOT_2,
   },
   {
-    key: `giant-slayer`,
-    name: `Giant Slayer`,
+    key: `cut-down`,
+    name: `Cut Down`,
     nameVi: `Đốn Hạ`,
     description: `Attacks and abilities deal bonus adaptive damage to enemy champions above 60% health.`,
     descriptionVi: `Các đòn đánh và kỹ năng gây thêm sát thương thích ứng lên tướng địch có trên 60% Máu.`,
@@ -344,8 +344,8 @@ const runeSeeds: RuneSeed[] = [
     slot: RuneSlot.SLOT_1,
   },
   {
-    key: `perseverance`,
-    name: `Perseverance`,
+    key: `unshakeable`,
+    name: `Unshakeable`,
     nameVi: `Vững Vàng`,
     description: `Gain armor and magic resist. Gain more resistances for each nearby enemy champion, and slow resist when surrounded.`,
     descriptionVi: `Nhận Giáp và Kháng Phép. Với mỗi tướng địch ở gần, nhận thêm Giáp và Kháng Phép. Khi có tối đa tướng địch ở gần, nhận thêm Kháng Làm Chậm.`,
@@ -402,10 +402,10 @@ const runeSeeds: RuneSeed[] = [
     slot: RuneSlot.SLOT_3,
   },
   {
-    key: `tenacity`,
-    name: `Tenacity`,
+    key: `perseverance`,
+    name: `Perseverance`,
     nameVi: `Bền Bỉ`,
-    description: `Gain tenacity. When immobilized, gain armor and magic resist briefly.`,
+    description: `Gain perseverance. When immobilized, gain armor and magic resist briefly.`,
     descriptionVi: `Nhận Kháng Hiệu Ứng. Khi bị bất động, nhận Giáp và Kháng Phép trong thời gian ngắn.`,
     path: RunePath.RESOLVE,
     slot: RuneSlot.SLOT_3,
@@ -431,8 +431,8 @@ const runeSeeds: RuneSeed[] = [
     slot: RuneSlot.SLOT_1,
   },
   {
-    key: `sweet-tooth`,
-    name: `Sweet Tooth`,
+    key: `botanist`,
+    name: `Botanist`,
     nameVi: `Nhà Thực Vật Học`,
     description: `Destroying plants grants gold and empowered plant effects.`,
     descriptionVi: `Khi phá hủy một cây, nhận vàng và hiệu ứng cây cường hóa. Một số cây gần trụ cho hiệu ứng bổ sung.`,

@@ -5188,6 +5188,36 @@ const championMatchupProfileSeeds: ChampionMatchupProfileSeed[] = [
     laneNotes: `Solo Yone is a high-execution side-lane duelist that wants controlled early farming and safe Soul Unbound trades until his item spikes. He can threaten all-ins once Mortal Steel knock-up and Fate Sealed are available, but he struggles into durable lane bullies, anti-dash tools, and champions that punish melee trading before he scales. WildRiftFire lists Renekton, Malphite, and Teemo as difficult solo lane matchups for this profile.`,
     dataQuality: DataQualityLevel.PARTIAL,
   },
+  // YUNARA
+  {
+    championKey: `yunara`,
+    role: GameRole.ADC,
+    goodIntoTags: [
+      `LOW_RANGE_CHAMPION`,
+      `LOW_MOBILITY`,
+      `FRONTLINE`,
+      `TANK`,
+      `GROUPED_ENEMIES`,
+      `SCALING_GAME`,
+    ],
+    weakIntoTags: [
+      `LONG_RANGE_CHAMPION`,
+      `LANE_KILL_PRESSURE`,
+      `EARLY_GAME_PRESSURE`,
+      `BURST_DAMAGE`,
+      `DIVE`,
+      `POINT_AND_CLICK_CC`,
+    ],
+    banRiskTags: [
+      `LONG_RANGE_CHAMPION`,
+      `LANE_KILL_PRESSURE`,
+      `EARLY_GAME_PRESSURE`,
+      `DIVE`,
+      `POINT_AND_CLICK_CC`,
+    ],
+    laneNotes: `Yunara is strongest when she can survive lane, build Unleash stacks, and scale into extended fights where Cultivation of Spirit provides sustained mixed damage and spreading critical attacks. She performs well into slower frontlines and grouped enemies because empowered attacks can spread through nearby targets, while Transcendent State improves her mobility and access to area magic damage. She struggles against long-range lane bullies, early kill pressure, burst, dive, and reliable crowd control that can punish her before she activates Spirit Unbound or reaches her scaling item spikes.`,
+    dataQuality: DataQualityLevel.PARTIAL,
+  },
   // YUUMI
   {
     championKey: `yuumi`,

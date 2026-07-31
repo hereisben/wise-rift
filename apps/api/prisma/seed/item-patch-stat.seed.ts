@@ -122,15 +122,15 @@ const middleTierItemPatchStatSeeds: ItemPatchStatSeed[] = [
     cost: 1100,
     magicResist: 30,
     effectDescription:
-      'Quicksilver removes all current crowd control effects and grants crowd control immunity for 0.25 seconds. Perseverance grants 30% Tenacity and 30% Slow Resistance for 1.5 seconds after Quicksilver ends. Cannot be used during knock up or knock back effects.',
+      'Quicksilver removes all current crowd control effects and grants crowd control immunity for 0.25 seconds. Afterwards, Perseverance grants 30% Tenacity and 30% Slow Resistance for 1.5 seconds. Cannot be used during knock up or knock back effects. 60-second cooldown.',
   },
   {
     key: 'seekers-armguard',
-    cost: 1200,
+    cost: 1400,
     abilityPower: 35,
     armor: 20,
     effectDescription:
-      'Stasis makes the user invulnerable and untargetable for 2.5 seconds, but prevents moving, attacking, casting abilities, or using items. 120-second cooldown.',
+      'Stasis makes the user immune to damage and untargetable for 2.5 seconds, but prevents moving, attacking, casting abilities, or using items. 120-second cooldown.',
   },
   {
     key: 'vampiric-scepter',
@@ -393,7 +393,7 @@ const middleTierItemPatchStatSeeds: ItemPatchStatSeed[] = [
     cost: 900,
     abilityPower: 40,
     effectDescription:
-      'Kindle causes damaging abilities to deal 5 bonus magic damage over 3 seconds and an additional 15 magic damage to monsters.',
+      'Inflame causes damaging abilities to deal an additional 15 magic damage over 3 seconds and an additional 45 magic damage to monsters.',
   },
   {
     key: 'void-amethyst',
@@ -407,7 +407,7 @@ const middleTierItemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityPower: 40,
     magicResist: 25,
     effectDescription:
-      'Annul grants a spell shield that blocks the next enemy ability. 50-second cooldown.',
+      'Annul grants a spell shield that blocks the next enemy ability. 30-second cooldown.',
   },
 ];
 
@@ -433,6 +433,7 @@ const physicalItemPatchStatSeeds: ItemPatchStatSeed[] = [
   {
     key: 'magnetic-blaster',
     cost: 3000,
+    attackDamage: 30,
     critRate: 25,
     attackSpeed: 35,
     percentMovementSpeed: 5,
@@ -446,7 +447,7 @@ const physicalItemPatchStatSeeds: ItemPatchStatSeed[] = [
     attackSpeed: 35,
     omniVamp: 10,
     effectDescription:
-      "Ruined Strikes causes attacks to deal bonus physical damage equal to 7% of the target's current Health, increased to 10% for melee attacks. Drain triggers after hitting a champion with 3 attacks or abilities, dealing 30-100 bonus magic damage and stealing 25% Movement Speed for 2 seconds. 60-second cooldown.",
+      "Ruined Strikes causes attacks to deal bonus physical damage equal to 7% of the target's current Health, increased to 8.5% for melee attacks. Drain triggers after hitting a champion with 3 attacks or abilities, dealing 30-100 bonus magic damage and stealing 25% Movement Speed for 2 seconds. 60-second cooldown.",
   },
   {
     key: 'runaans-hurricane',
@@ -509,7 +510,7 @@ const physicalItemPatchStatSeeds: ItemPatchStatSeed[] = [
     mana: 300,
     abilityHaste: 20,
     effectDescription:
-      'Awe grants Attack Damage equal to 1.5% of maximum Mana and refunds 15% of Mana spent. Mana Charge grants 18 maximum Mana when attacking or spending Mana, up to 700 bonus Mana, then transforms Manamune into Muramana. Triggers up to 3 times every 10 seconds.',
+      'Awe grants Attack Damage equal to 1.5% of maximum Mana and refunds 15% of Mana spent. Mana Charge grants 14 maximum Mana when attacking or spending Mana, up to 700 bonus Mana, then transforms Manamune into Muramana. Triggers up to 3 times every 10 seconds.',
   },
   {
     key: 'muramana',
@@ -518,7 +519,7 @@ const physicalItemPatchStatSeeds: ItemPatchStatSeed[] = [
     mana: 1000,
     abilityHaste: 20,
     effectDescription:
-      'Awe grants Attack Damage equal to 2% of maximum Mana and refunds 15% of Mana spent. Shock consumes current Mana to deal bonus physical damage with attacks and damaging abilities. Shock only triggers while remaining Mana is above 20%.',
+      'Awe grants Attack Damage equal to 2% of maximum Mana and refunds 15% of Mana spent. Shock consumes current Mana to deal bonus physical damage with attacks and damaging abilities. Ability damage gains bonus physical damage equal to 4.5% bonus Attack Damage. Shock only triggers while remaining Mana is above 20%.',
   },
   {
     key: 'trinity-force',
@@ -538,7 +539,7 @@ const physicalItemPatchStatSeeds: ItemPatchStatSeed[] = [
     magicResist: 45,
     abilityHaste: 10,
     effectDescription:
-      'Lifeline triggers when magic damage would reduce Health below 35%, granting 10% Omni Vamp until leaving combat and a magic shield that absorbs 220-530 magic damage for 3 seconds. 70-second cooldown.',
+      'Lifeline triggers when magic damage would reduce Health below 35%, granting 10% Omni Vamp until leaving combat and a magic shield that absorbs 220-530 magic damage for 3 seconds. 75-second cooldown.',
   },
   {
     key: 'deaths-dance',
@@ -592,11 +593,11 @@ const physicalItemPatchStatSeeds: ItemPatchStatSeed[] = [
     percentArmorPenetration: 33,
     antiHealValue: 50,
     effectDescription:
-      'Icy causes damaging active abilities and empowered attacks to slow enemies by 30% for 1 second. Repeated Icy applications add Frostbite stacks. At 3 stacks, Frostbite deals physical damage over 2 seconds and applies 50% Grievous Wounds for 3 seconds.',
+      'Icy causes damaging active abilities and empowered attacks to slow enemies by 30% for 1 second. Repeated Icy applications add Frostbite stacks. At 3 stacks, Frostbite deals 5 plus 1-15 based on level plus 15% bonus Attack Damage physical damage over 2 seconds and applies 50% Grievous Wounds for 3 seconds.',
   },
   {
     key: 'navori-quickblades',
-    cost: 2800,
+    cost: 2700,
     critRate: 25,
     attackSpeed: 45,
     percentMovementSpeed: 5,
@@ -753,7 +754,7 @@ const physicalItemPatchStatSeeds: ItemPatchStatSeed[] = [
   {
     key: 'lord-dominiks-regards',
     cost: 3300,
-    attackDamage: 25,
+    attackDamage: 30,
     percentArmorPenetration: 36,
     critRate: 25,
     effectDescription:
@@ -776,7 +777,7 @@ const physicalItemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityHaste: 15,
     omniVamp: 8,
     effectDescription:
-      'Thirsting Slash deals physical damage equal to 175% base Attack Damage to nearby enemies and restores Health equal to 20% plus 10% missing Health for each enemy champion hit. 12-second cooldown.',
+      'Thirsting Slash deals physical damage equal to 175% Attack Damage to nearby enemies and restores Health equal to 20% Attack Damage plus 10% missing Health for each enemy hit. 12-second cooldown.',
   },
   {
     key: 'galeforce',
@@ -786,7 +787,7 @@ const physicalItemPatchStatSeeds: ItemPatchStatSeed[] = [
     attackSpeed: 15,
     percentMovementSpeed: 5,
     effectDescription:
-      'Cloudburst dashes in a target direction and fires 3 missiles at the lowest-Health enemy near the destination, prioritizing champions. The missiles deal physical damage equal to 40-125 plus 35% bonus Attack Damage. 60-second cooldown.',
+      'Cloudburst dashes in the target direction and fires 3 projectiles at the lowest-Health enemy near the destination, dealing a total of 40-125 physical damage based on level plus 35% bonus Attack Damage. 60-second cooldown.',
   },
   {
     key: 'mercurial-scimitar',
@@ -795,7 +796,7 @@ const physicalItemPatchStatSeeds: ItemPatchStatSeed[] = [
     physicalVamp: 10,
     magicResist: 40,
     effectDescription:
-      'Quicksilver removes all crowd control debuffs and grants crowd control immunity for 0.25 seconds. Perseverance grants 30% Tenacity and 30% Slow Resistance for 1.5 seconds after Quicksilver ends. Cannot be used during knock up or knock back effects. 60-second cooldown.',
+      'Quicksilver removes all current crowd control effects and grants crowd control immunity for 0.25 seconds. Afterwards, Perseverance grants 30% Tenacity and 30% Slow Resistance for 1.5 seconds. Cannot be used during knock up or knock back effects. 60-second cooldown.',
   },
 ];
 
@@ -807,7 +808,7 @@ const magicItemPatchStatSeeds: ItemPatchStatSeed[] = [
     mana: 500,
     abilityHaste: 10,
     effectDescription:
-      'Echo causes the next damaging ability or empowered attack to deal 110 plus 10% Ability Power bonus magic damage to the target and up to 3 nearby enemies. 10-second cooldown.',
+      'Echo causes the next damaging ability or empowered attack to deal 140 plus 15% Ability Power bonus magic damage to the target and up to 3 nearby enemies. 9-second cooldown.',
   },
   {
     key: 'morellonomicon',
@@ -870,12 +871,12 @@ const magicItemPatchStatSeeds: ItemPatchStatSeed[] = [
   },
   {
     key: 'seraphs-embrace',
-    cost: 2950,
+    cost: 3000,
     abilityPower: 60,
     mana: 1200,
     abilityHaste: 25,
     effectDescription:
-      'Awe grants Ability Power equal to 2% of maximum Mana and refunds 25% of Mana spent. Lifeline triggers when damage reduces Health below 35%, consuming 20% of current Mana to grant a shield equal to the Mana consumed plus 100 for 2 seconds. 70-second cooldown.',
+      'Awe grants Ability Power equal to 2% of maximum Mana and refunds 25% of Mana spent. Lifeline triggers when damage reduces Health below 35%, granting a shield equal to 100 plus 16% maximum Mana for 2 seconds. 70-second cooldown.',
   },
   {
     key: 'infinity-orb',
@@ -937,7 +938,7 @@ const magicItemPatchStatSeeds: ItemPatchStatSeed[] = [
     mana: 500,
     abilityHaste: 20,
     effectDescription:
-      'Baleful Blaze causes ability damage to burn enemies for 20 plus 2% Ability Power magic damage each second for 3 seconds. Against monsters, it deals 40 plus 2% Ability Power magic damage each second. Blackfire increases Ability Power by 4% for each enemy champion or monster currently affected by Baleful Blaze.',
+      'Baleful Blaze causes damaging abilities to deal an additional 20 plus 2% Ability Power magic damage per second for 3 seconds. Against monsters, it deals 40 plus 2% Ability Power magic damage per second. Blackfire grants 4% Ability Power for each enemy champion, epic monster, or large monster currently affected by Baleful Blaze.',
   },
   {
     key: 'dusk-and-dawn',
@@ -947,7 +948,7 @@ const magicItemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityHaste: 20,
     attackSpeed: 25,
     effectDescription:
-      'Spellblade causes the next attack after using an ability to deal bonus magic damage equal to 75% base Attack Damage plus 10% Ability Power. After a brief delay, the attack applies on-hit effects one additional time. 1.5-second cooldown. Damage is reduced against structures.',
+      'Spellblade causes the next attack after casting an ability to deal bonus magic damage equal to 75% base Attack Damage plus 10% Ability Power and apply one additional on-hit effect to the target. 1.5-second cooldown.',
   },
   {
     key: 'stormsurge',
@@ -971,7 +972,7 @@ const magicItemPatchStatSeeds: ItemPatchStatSeed[] = [
     percentMagicPenetration: 30,
     abilityHaste: 20,
     effectDescription:
-      'Life from Death creates a healing nova when an enemy champion damaged within the previous 3 seconds dies. The nova restores 100 plus 20% scaling Health to nearby allies. 60-second cooldown.',
+      'Life from Death creates a healing nova when an enemy champion damaged within the previous 3 seconds dies. The nova restores 100 plus 20% Ability Power Health to nearby allies. 60-second cooldown.',
   },
   {
     key: 'bloodletters-curse',
@@ -997,7 +998,7 @@ const magicItemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityPower: 70,
     abilityHaste: 20,
     effectDescription:
-      'Protobelt dashes forward and fires a cone of missiles that deal 100 plus 10% Ability Power magic damage. Missiles after the first deal only 10% damage when multiple missiles hit the same champion or monster. 30-second cooldown.',
+      'Protobelt dashes in the target direction and unleashes 7 magic bolts, dealing 100 plus 10% Ability Power magic damage to enemies hit. If a champion or monster is hit by more than one bolt, each additional bolt deals only 10% damage. 30-second cooldown.',
   },
   {
     key: 'zhonyas-hourglass',
@@ -1005,7 +1006,7 @@ const magicItemPatchStatSeeds: ItemPatchStatSeed[] = [
     armor: 40,
     abilityPower: 110,
     effectDescription:
-      'Stasis makes the user invulnerable and untargetable for 2.5 seconds, but prevents movement, attacks, ability casts, and item use. 90-second cooldown.',
+      'Stasis makes the user immune to damage and untargetable for 2.5 seconds, but prevents movement, attacks, ability casts, and item use. 120-second cooldown.',
   },
 ];
 
@@ -1034,7 +1035,7 @@ const defensiveItemPatchStatSeeds: ItemPatchStatSeed[] = [
     armor: 75,
     antiHealValue: 50,
     effectDescription:
-      'Thorns causes incoming attacks to deal 20 plus scaling from bonus Armor and bonus Health magic damage back to the attacker. Entwine applies 50% Grievous Wounds to enemy champions for 3 seconds when they attack the user or receive damage from the user.',
+      'Thorns causes incoming attacks to deal 20 plus scaling from bonus Armor plus 1% bonus Health magic damage back to the attacker. Entwine applies 50% Grievous Wounds to enemy champions for 3 seconds when they attack the user or receive damage from the user.',
   },
   {
     key: 'warmogs-armor',
@@ -1047,8 +1048,8 @@ const defensiveItemPatchStatSeeds: ItemPatchStatSeed[] = [
   },
   {
     key: 'iceborn-gauntlet',
-    cost: 3100,
-    health: 250,
+    cost: 3000,
+    health: 300,
     armor: 50,
     mana: 250,
     abilityHaste: 30,
@@ -1134,7 +1135,7 @@ const defensiveItemPatchStatSeeds: ItemPatchStatSeed[] = [
     armor: 40,
     magicResist: 40,
     effectDescription:
-      'Lifeline triggers when damage reduces Health below 35%, granting temporary maximum Health equal to 180 plus 45% bonus Health, 50% Slow Resistance, and 30 flat Movement Speed for 3 seconds. 70-second cooldown.',
+      'Lifeline triggers when damage reduces Health below 35%, granting temporary maximum Health equal to 180 plus 45% bonus Health, 50% Slow Resistance, and 30 flat Movement Speed for 3 seconds. 75-second cooldown.',
   },
   {
     key: 'searing-crown',
@@ -1224,7 +1225,7 @@ const defensiveItemPatchStatSeeds: ItemPatchStatSeed[] = [
     magicResist: 45,
     abilityHaste: 10,
     effectDescription:
-      'Stoneplate grants a decaying shield equal to 100 plus 90% bonus Health and increases the user’s size for 2.5 seconds. 60-second cooldown.',
+      'Stoneplate grants a shield equal to 100 plus 90% bonus Health that rapidly decays over 2.5 seconds and temporarily increases the user’s size. 60-second cooldown.',
   },
 ];
 
@@ -1254,7 +1255,7 @@ const supportItemPatchStatSeeds: ItemPatchStatSeed[] = [
     healShieldPower: 5,
     percentMovementSpeed: 5,
     effectDescription:
-      'Censer causes healing or shielding another allied champion to grant them 15-34% Attack Speed and make their attacks deal 16-22 bonus magic damage for 6 seconds. The bonus damage can critically strike.',
+      'Censer causes healing or shielding another allied champion, including healing them at full Health, to grant them 15-34% Attack Speed and make their attacks deal 16-22 bonus magic damage for 6 seconds. The bonus damage can critically strike.',
   },
   {
     key: 'harmonic-echo',
@@ -1277,7 +1278,7 @@ const supportItemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityHaste: 15,
     healShieldPower: 5,
     effectDescription:
-      'Rapids causes healing or shielding an allied champion to grant the user 15 Ability Haste and 30-50 Ability Power based on the target’s level for 6 seconds.',
+      'Rapids causes healing or shielding an allied champion, including healing them at full Health, to grant the user 15 Ability Haste and 30-50 Ability Power based on the target’s level for 6 seconds.',
   },
   {
     key: 'imperial-mandate',
@@ -1297,7 +1298,7 @@ const supportItemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityHaste: 15,
     healShieldPower: 5,
     effectDescription:
-      'Intervention targets a large area. After 2.5 seconds, it restores 150-350 Health based on each ally’s level to allied units and deals true damage equal to 10% of maximum Health to enemy champions. It can be cast while dead. 60-second cooldown.',
+      'Salvation targets a large area. After 2.5 seconds, it restores 150-350 Health based on each ally champion’s level and deals true damage equal to 10% of maximum Health to enemy champions. It can be activated while dead. 60-second cooldown.',
   },
   {
     key: 'mikaels-blessing',
@@ -1307,7 +1308,7 @@ const supportItemPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityHaste: 15,
     healShieldPower: 6,
     effectDescription:
-      'Purify removes all crowd control debuffs except knock-ups and suppression from an allied champion, grants 0.2 seconds of crowd-control immunity, and restores 150-250 Health. 90-second cooldown.',
+      'Cleanse removes all crowd control effects from the target allied champion and makes them immune to all crowd control except suppression and airborne effects for 0.2 seconds. It also restores 150-250 Health. 90-second cooldown.',
   },
   {
     key: 'locket-of-the-iron-solari',
@@ -1322,7 +1323,7 @@ const supportItemPatchStatSeeds: ItemPatchStatSeed[] = [
   {
     key: 'shurelyas-battlesong',
     cost: 2600,
-    abilityPower: 55,
+    abilityPower: 35,
     manaRegen: 50,
     abilityHaste: 20,
     percentMovementSpeed: 5,
@@ -1338,7 +1339,7 @@ const tierTwoBootPatchStatSeeds: ItemPatchStatSeed[] = [
     omniVamp: 5,
     flatMovementSpeed: 45,
     effectDescription:
-      'Balance of Power grants either 12 Attack Damage or 20 Ability Power adaptively. Conversion grants 5% Omni Vamp. Champion takedowns permanently grant an additional 0.5% Omni Vamp, up to 5% additional Omni Vamp.',
+      'Balance of Power adaptively grants either 12 Attack Damage or 20 Ability Power. Conversion grants 5% Omni Vamp, and each champion takedown participation grants an additional 0.5% Omni Vamp, up to 5% additional Omni Vamp and a maximum of 10% Omni Vamp.',
   },
   {
     key: 'berserkers-greaves',
@@ -1360,9 +1361,10 @@ const tierTwoBootPatchStatSeeds: ItemPatchStatSeed[] = [
     key: 'plated-steelcaps',
     cost: 1200,
     health: 150,
-    armor: 20,
+    armor: 25,
     flatMovementSpeed: 45,
-    effectDescription: 'Reduces damage received from champion attacks.',
+    effectDescription:
+      'Block reduces damage taken from champion basic attacks by 6%.',
   },
   {
     key: 'ionian-boots-of-lucidity',
@@ -1398,7 +1400,7 @@ const tierThreeBootPatchStatSeeds: ItemPatchStatSeed[] = [
     omniVamp: 5,
     flatMovementSpeed: 45,
     effectDescription:
-      'Balance of Power grants either 12 Attack Damage or 20 Ability Power adaptively. Conversion grants 5% Omni Vamp. Champion takedowns permanently grant an additional 0.5% Omni Vamp, up to 5% additional Omni Vamp. Now and Forever increases damage dealt by 5% while above 50% Health and increases healing and shielding received by 12% while below 50% Health.',
+      'Balance of Power adaptively grants either 12 Attack Damage or 20 Ability Power. Conversion grants 5% Omni Vamp, and each champion takedown participation grants an additional 0.5% Omni Vamp, up to 5% additional Omni Vamp and a maximum of 10% Omni Vamp. Now and Forever causes the user to deal 50% bonus damage while above 50% Health and grants 12% increased healing and shielding while below 50% Health.',
   },
   {
     key: 'gunmetal-greaves',
@@ -1407,7 +1409,7 @@ const tierThreeBootPatchStatSeeds: ItemPatchStatSeed[] = [
     physicalVamp: 5,
     flatMovementSpeed: 45,
     effectDescription:
-      'Noxian Gait causes attacks against enemy champions to grant decaying Movement Speed for 2 seconds: 15% for melee champions or 12% for ranged champions. Blessed Blade causes attacks to restore 12 Health on hit.',
+      'Blessed Blade causes attacks to restore 12 Health on hit. Noxian Gait causes basic attacks against enemy champions to grant 15% Movement Speed for melee champions or 10% Movement Speed for ranged champions for 2 seconds.',
   },
   {
     key: 'chainlaced-crushers',
@@ -1417,7 +1419,7 @@ const tierThreeBootPatchStatSeeds: ItemPatchStatSeed[] = [
     tenacity: 30,
     flatMovementSpeed: 45,
     effectDescription:
-      'Noxian Persistence grants a magic shield after taking magic damage from an enemy champion. The shield absorbs 10-120 plus 5% maximum Health magic damage for 5 seconds. 12-second cooldown.',
+      'Noxian Persistence grants a magic shield equal to 20-140 based on level plus 5% maximum Health after taking magic damage from an enemy champion. 12-second cooldown.',
   },
   {
     key: 'armored-advance',
@@ -1426,7 +1428,7 @@ const tierThreeBootPatchStatSeeds: ItemPatchStatSeed[] = [
     armor: 35,
     flatMovementSpeed: 45,
     effectDescription:
-      'Block reduces damage received from champion attacks by 10%. Noxian Endurance grants a physical shield after taking physical damage from an enemy champion. The shield absorbs 10-140 plus 8% maximum Health physical damage. 12-second cooldown.',
+      'Block reduces damage taken from champion basic attacks by 10%. Noxian Endurance grants a physical shield equal to 20-140 based on level plus 5% maximum Health after taking physical damage from an enemy champion. 12-second cooldown.',
   },
   {
     key: 'crimson-lucidity',
@@ -1435,7 +1437,7 @@ const tierThreeBootPatchStatSeeds: ItemPatchStatSeed[] = [
     abilityHaste: 25,
     flatMovementSpeed: 45,
     effectDescription:
-      'Summoned reduces Summoner Spell cooldowns by 20%. Noxian Haste grants Movement Speed for 4 seconds after healing or shielding an allied champion, casting an ability, or damaging an enemy with an ability: 10% for melee champions or 8% for ranged champions. Each ability can trigger this effect once every 4 seconds.',
+      'Summoned grants 20% Summoner Spell Haste. Noxian Haste grants 10% Movement Speed for melee champions or 8% Movement Speed for ranged champions for 4 seconds after damaging an enemy champion with an ability, healing or shielding an allied champion, or casting a Summoner Spell. The same ability can trigger this effect only once every 4 seconds.',
   },
   {
     key: 'spellslingers-shoes',
@@ -1446,13 +1448,13 @@ const tierThreeBootPatchStatSeeds: ItemPatchStatSeed[] = [
     manaRegen: 100,
     flatMovementSpeed: 45,
     effectDescription:
-      'Equilibrium causes champions without Mana to gain 50% base Health Regeneration. Big Bully causes attacks and active abilities to deal 22 bonus true damage to minions.',
+      'Equilibrium causes champions without Mana to gain 50% bonus Health Regeneration. Big Bully causes attacks and active abilities to deal 22 bonus true damage to minions.',
   },
   {
     key: 'armorcrusher-boots',
     cost: 2200,
-    attackDamage: 25,
-    flatArmorPenetration: 12,
+    attackDamage: 20,
+    flatArmorPenetration: 10,
     percentArmorPenetration: 6,
     flatMovementSpeed: 45,
     effectDescription:

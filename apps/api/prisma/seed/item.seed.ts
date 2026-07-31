@@ -246,7 +246,7 @@ const middleTierItemSeeds: ItemSeed[] = [
     tags: ['ABILITY_POWER', 'ARMOR', 'STASIS', 'ANTI_BURST'],
     goodAgainst: ['ASSASSIN', 'BURST_DAMAGE'],
     weakAgainst: ['DAMAGE_OVER_TIME'],
-    componentItemKeys: ['amplifying-tome', 'cloth-armor'],
+    componentItemKeys: ['blasting-wand', 'cloth-armor'],
   },
   {
     key: 'vampiric-scepter',
@@ -2529,7 +2529,6 @@ const highTierItemSeeds: ItemSeed[] = [
       'MOVEMENT_SPEED',
       'BURST_DAMAGE',
       'DELAYED_DAMAGE',
-      'EXECUTE',
       'BONUS_GOLD',
       'SNOWBALL',
     ],
@@ -2694,9 +2693,9 @@ const highTierItemSeeds: ItemSeed[] = [
     name: 'Redemption',
     nameVi: 'Dây Chuyền Chuộc Tội',
     description:
-      'Active support item that heals allies in a large area and damages enemy champions after a delay.',
+      'Active support item that heals allied champions in a large area and deals true damage to enemy champions after a delay.',
     descriptionVi:
-      'Trang bị hỗ trợ kích hoạt hồi Máu cho đồng minh trong vùng rộng và gây sát thương lên tướng địch sau một khoảng trễ.',
+      'Trang bị hỗ trợ kích hoạt hồi Máu cho tướng đồng minh trong một khu vực rộng và gây sát thương chuẩn lên tướng địch sau một khoảng trễ.',
     category: [
       ItemCategory.HIGH_TIER,
       ItemCategory.MAGIC,
@@ -3300,7 +3299,7 @@ const highTierItemSeeds: ItemSeed[] = [
   {
     key: 'gargoyle-stoneplate',
     name: 'Gargoyle Stoneplate',
-    nameVi: 'Thạch Giáp Gargoyle',
+    nameVi: 'Thú Tượng Thạch Giáp',
     description:
       'Active tank item that grants a large shield scaling with bonus health and temporarily increases the wearer’s size.',
     descriptionVi:
@@ -3509,9 +3508,9 @@ const highTierItemSeeds: ItemSeed[] = [
     name: "Mikael's Blessing",
     nameVi: 'Phước Lành Mikael',
     description:
-      'Active support item that removes most crowd control effects from an ally, heals them, and briefly grants crowd-control immunity.',
+      'Active support item that removes most crowd control effects from an allied champion, heals them, and briefly grants crowd-control immunity.',
     descriptionVi:
-      'Trang bị hỗ trợ kích hoạt loại bỏ phần lớn hiệu ứng khống chế khỏi đồng minh, hồi Máu và tạm thời cho họ miễn nhiễm khống chế.',
+      'Trang bị hỗ trợ kích hoạt loại bỏ phần lớn hiệu ứng khống chế khỏi một tướng đồng minh, hồi Máu và tạm thời cho họ miễn nhiễm khống chế.',
     category: [
       ItemCategory.HIGH_TIER,
       ItemCategory.SUPPORT,
@@ -3569,7 +3568,7 @@ const highTierItemSeeds: ItemSeed[] = [
     description:
       'Active support item that grants a burst of movement speed to nearby allied champions.',
     descriptionVi:
-      'Trang bị hỗ trợ kích hoạt cung cấp một lượng lớn Tốc Độ Di Chuyển cho các đồng minh gần đó.',
+      'Trang bị hỗ trợ kích hoạt cung cấp một lượng lớn Tốc Độ Di Chuyển cho các tướng đồng minh gần đó.',
     category: [
       ItemCategory.HIGH_TIER,
       ItemCategory.MAGIC,
@@ -3597,9 +3596,9 @@ const highTierItemSeeds: ItemSeed[] = [
     name: 'Gluttonous Greaves',
     nameVi: 'Giày Phàm Ăn',
     description:
-      'Adaptive boots that grant movement speed, offensive power, and omnivamp that increases through champion takedowns.',
+      'Adaptive boots that grant movement speed, offensive power, and omnivamp that increases through champion takedown participation.',
     descriptionVi:
-      'Giày thích ứng cung cấp Tốc Độ Di Chuyển, sức mạnh tấn công và Hút Máu Toàn Phần tăng thêm qua các điểm hạ gục tướng.',
+      'Giày thích ứng cung cấp Tốc Độ Di Chuyển, sức mạnh tấn công và Hút Máu Toàn Phần tăng thêm khi tham gia hạ gục tướng.',
     category: [ItemCategory.HIGH_TIER, ItemCategory.BOOTS],
     tags: [
       'MOVEMENT_SPEED',
@@ -3609,7 +3608,7 @@ const highTierItemSeeds: ItemSeed[] = [
       'SUSTAIN',
       'EXTENDED_FIGHT',
     ],
-    goodAgainst: ['EXTENDED_FIGHT', 'POKE', 'LOW_KILL_PRESSURE'],
+    goodAgainst: ['EXTENDED_FIGHT', 'POKE'],
     weakAgainst: ['ANTI_HEAL', 'BURST_DAMAGE'],
     componentItemKeys: ['boots-of-speed'],
   },
@@ -3666,9 +3665,9 @@ const highTierItemSeeds: ItemSeed[] = [
     name: 'Plated Steelcaps',
     nameVi: 'Giày Thép Gai',
     description:
-      'Defensive boots that grant health and armor while reducing damage from champion attacks.',
+      'Defensive boots that grant health and armor while reducing damage from champion basic attacks.',
     descriptionVi:
-      'Giày phòng thủ cung cấp Máu, Giáp và giảm sát thương nhận từ đòn đánh của tướng.',
+      'Giày phòng thủ cung cấp Máu, Giáp và giảm sát thương nhận từ đòn đánh thường của tướng.',
     category: [
       ItemCategory.HIGH_TIER,
       ItemCategory.BOOTS,
@@ -3759,9 +3758,9 @@ const highTierItemSeeds: ItemSeed[] = [
     name: 'Immortal Treads',
     nameVi: 'Giày Bất Tử',
     description:
-      'Adaptive combat boots that increase damage while healthy and improve healing and shielding while below half health.',
+      'Adaptive combat boots that greatly increase damage while above half health and improve healing and shielding while below half health.',
     descriptionVi:
-      'Giày chiến đấu thích ứng giúp tăng sát thương khi còn nhiều Máu và tăng hiệu quả hồi Máu cùng lá chắn khi dưới nửa Máu.',
+      'Giày chiến đấu thích ứng giúp tăng mạnh sát thương khi trên nửa Máu và tăng hiệu quả hồi Máu cùng lá chắn khi dưới nửa Máu.',
     category: [ItemCategory.HIGH_TIER, ItemCategory.BOOTS, ItemCategory.HYBRID],
     tags: [
       'MOVEMENT_SPEED',
@@ -3813,7 +3812,7 @@ const highTierItemSeeds: ItemSeed[] = [
     name: 'Chainlaced Crushers',
     nameVi: 'Giày Xích Ma Pháp',
     description:
-      'Anti-magic boots that grant high tenacity and a magic shield after taking magic damage from a champion.',
+      'Anti-magic boots that grant high tenacity and a magic shield after taking magic damage from an enemy champion.',
     descriptionVi:
       'Giày chống phép cung cấp lượng lớn Kháng Hiệu Ứng và tạo lá chắn phép sau khi chịu sát thương phép từ tướng địch.',
     category: [
@@ -3839,9 +3838,9 @@ const highTierItemSeeds: ItemSeed[] = [
     name: 'Armored Advance',
     nameVi: 'Bước Tiến Bọc Thép',
     description:
-      'Anti-physical boots that reduce champion attack damage and grant a physical shield after taking physical damage.',
+      'Anti-physical boots that reduce damage from champion basic attacks and grant a physical shield after taking physical damage.',
     descriptionVi:
-      'Giày chống vật lý giảm sát thương từ đòn đánh của tướng và tạo lá chắn vật lý sau khi chịu sát thương vật lý.',
+      'Giày chống vật lý giảm sát thương từ đòn đánh thường của tướng và tạo lá chắn vật lý sau khi chịu sát thương vật lý.',
     category: [
       ItemCategory.HIGH_TIER,
       ItemCategory.BOOTS,
@@ -3865,9 +3864,9 @@ const highTierItemSeeds: ItemSeed[] = [
     name: 'Crimson Lucidity',
     nameVi: 'Khai Sáng Đỏ Thẫm',
     description:
-      'Ability-focused boots that greatly reduce cooldowns and grant movement speed after casting abilities, damaging enemies, or supporting allies.',
+      'Ability-focused boots that grant high ability haste and movement speed after damaging enemy champions with abilities, supporting allied champions, or casting Summoner Spells.',
     descriptionVi:
-      'Giày thiên về kỹ năng giúp giảm mạnh thời gian hồi chiêu và tăng Tốc Độ Di Chuyển sau khi dùng kỹ năng, gây sát thương hoặc hỗ trợ đồng minh.',
+      'Giày thiên về kỹ năng cung cấp nhiều Điểm Hồi Kỹ Năng và tăng Tốc Độ Di Chuyển sau khi gây sát thương lên tướng địch bằng kỹ năng, hỗ trợ tướng đồng minh hoặc sử dụng Phép Bổ Trợ.',
     category: [
       ItemCategory.HIGH_TIER,
       ItemCategory.BOOTS,
@@ -3905,7 +3904,7 @@ const highTierItemSeeds: ItemSeed[] = [
       'LANE_PRESSURE',
       'BURST_DAMAGE',
     ],
-    goodAgainst: ['LOW_MAGIC_RESIST', 'HIGH_MAGIC_RESIST', 'MINION_WAVE'],
+    goodAgainst: ['HIGH_MAGIC_RESIST', 'MINION_WAVE', 'SQUISHY_CHAMPION'],
     weakAgainst: ['BURST_DAMAGE', 'MAGIC_DAMAGE_REDUCTION'],
     componentItemKeys: ['boots-of-mana'],
   },

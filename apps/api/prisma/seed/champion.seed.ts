@@ -3183,6 +3183,41 @@ const championSeeds: ChampionSeed[] = [
     ],
     weaknesses: [`POINT_AND_CLICK_CC`, `ANTI_DASH`, `LOCKDOWN`, `BURST_DAMAGE`],
   },
+  // YUNARA
+  {
+    key: `yunara`,
+    name: `Yunara`,
+    title: `The Unbroken Faith`,
+    titleVi: `Tín Niệm Bất Diệt`,
+    roles: [GameRole.ADC],
+    damageType: `MIXED`,
+    rangeType: `RANGED`,
+    difficulty: `MEDIUM`,
+    resourceType: `MANA`,
+    classTags: [`MARKSMAN`],
+    playstyleTags: [
+      `DPS`,
+      `SCALING`,
+      `AUTO_ATTACK_CHAMPION`,
+      `ON_HIT_CHAMPION`,
+      `CRITICAL_SCALING`,
+    ],
+    utilityTags: [`SLOW`, `DASH`, `SPEED_UP`, `ATTACK_SPEED_STEROID`],
+    riskTags: [
+      `SQUISHY`,
+      `POSITIONING_RELIANT`,
+      `TRANSFORMATION_RELIANT`,
+      `CC_VULNERABLE`,
+    ],
+    strengths: [
+      `MIXED_DAMAGE`,
+      `SUSTAIN_DAMAGE`,
+      `SCALING_DAMAGE`,
+      `TEAMFIGHT`,
+      `KITE`,
+    ],
+    weaknesses: [`DIVE`, `ASSASSIN`, `POINT_AND_CLICK_CC`, `BURST_DAMAGE`],
+  },
   // YUUMI
   {
     key: `yuumi`,
