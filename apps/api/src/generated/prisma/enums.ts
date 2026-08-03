@@ -188,6 +188,7 @@ export type MatchResult = (typeof MatchResult)[keyof typeof MatchResult]
 export const GamePlan = {
   STANDARD: 'STANDARD',
   BURST: 'BURST',
+  POKE: 'POKE',
   SAFE: 'SAFE',
   ANTI_TANK: 'ANTI_TANK',
   ANTI_HEAL: 'ANTI_HEAL',

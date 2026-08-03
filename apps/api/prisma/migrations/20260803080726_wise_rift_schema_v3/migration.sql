@@ -38,7 +38,7 @@ CREATE TYPE "ExplanationStyle" AS ENUM ('SHORT', 'DETAILED', 'COACHING', 'BEGINN
 CREATE TYPE "MatchResult" AS ENUM ('WIN', 'LOSS', 'UNKNOWN');
 
 -- CreateEnum
-CREATE TYPE "GamePlan" AS ENUM ('STANDARD', 'BURST', 'SAFE', 'ANTI_TANK', 'ANTI_HEAL', 'ANTI_SHIELD', 'SURVIVE_DIVE', 'SCALING', 'UNKNOWN');
+CREATE TYPE "GamePlan" AS ENUM ('STANDARD', 'BURST', 'POKE', 'SAFE', 'ANTI_TANK', 'ANTI_HEAL', 'ANTI_SHIELD', 'SURVIVE_DIVE', 'SCALING', 'UNKNOWN');
 
 -- CreateEnum
 CREATE TYPE "RecommendationType" AS ENUM ('BAN', 'PICK', 'TEAM_COMPOSITION');
@@ -569,6 +569,7 @@ CREATE TABLE "ChampionBuildProfile" (
     "role" "GameRole" NOT NULL,
     "gamePlan" "GamePlan"[] DEFAULT ARRAY['STANDARD']::"GamePlan"[],
     "coreItemKeys" TEXT[],
+    "bootItemKeys" TEXT[] DEFAULT ARRAY[]::TEXT[],
     "situationalItemKeys" TEXT[],
     "recommendedRuneKeys" TEXT[],
     "recommendedSpellKeys" TEXT[],

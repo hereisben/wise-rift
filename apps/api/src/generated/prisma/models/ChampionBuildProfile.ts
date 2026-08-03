@@ -58,6 +58,7 @@ export type ChampionBuildProfileCountAggregateOutputType = {
   role: number
   gamePlan: number
   coreItemKeys: number
+  bootItemKeys: number
   situationalItemKeys: number
   recommendedRuneKeys: number
   recommendedSpellKeys: number
@@ -106,6 +107,7 @@ export type ChampionBuildProfileCountAggregateInputType = {
   role?: true
   gamePlan?: true
   coreItemKeys?: true
+  bootItemKeys?: true
   situationalItemKeys?: true
   recommendedRuneKeys?: true
   recommendedSpellKeys?: true
@@ -199,6 +201,7 @@ export type ChampionBuildProfileGroupByOutputType = {
   role: $Enums.GameRole
   gamePlan: $Enums.GamePlan[]
   coreItemKeys: string[]
+  bootItemKeys: string[]
   situationalItemKeys: string[]
   recommendedRuneKeys: string[]
   recommendedSpellKeys: string[]
@@ -240,6 +243,7 @@ export type ChampionBuildProfileWhereInput = {
   role?: Prisma.EnumGameRoleFilter<"ChampionBuildProfile"> | $Enums.GameRole
   gamePlan?: Prisma.EnumGamePlanNullableListFilter<"ChampionBuildProfile">
   coreItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
+  bootItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   situationalItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedRuneKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedSpellKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
@@ -262,6 +266,7 @@ export type ChampionBuildProfileOrderByWithRelationInput = {
   role?: Prisma.SortOrder
   gamePlan?: Prisma.SortOrder
   coreItemKeys?: Prisma.SortOrder
+  bootItemKeys?: Prisma.SortOrder
   situationalItemKeys?: Prisma.SortOrder
   recommendedRuneKeys?: Prisma.SortOrder
   recommendedSpellKeys?: Prisma.SortOrder
@@ -288,6 +293,7 @@ export type ChampionBuildProfileWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.EnumGameRoleFilter<"ChampionBuildProfile"> | $Enums.GameRole
   gamePlan?: Prisma.EnumGamePlanNullableListFilter<"ChampionBuildProfile">
   coreItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
+  bootItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   situationalItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedRuneKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedSpellKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
@@ -310,6 +316,7 @@ export type ChampionBuildProfileOrderByWithAggregationInput = {
   role?: Prisma.SortOrder
   gamePlan?: Prisma.SortOrder
   coreItemKeys?: Prisma.SortOrder
+  bootItemKeys?: Prisma.SortOrder
   situationalItemKeys?: Prisma.SortOrder
   recommendedRuneKeys?: Prisma.SortOrder
   recommendedSpellKeys?: Prisma.SortOrder
@@ -336,6 +343,7 @@ export type ChampionBuildProfileScalarWhereWithAggregatesInput = {
   role?: Prisma.EnumGameRoleWithAggregatesFilter<"ChampionBuildProfile"> | $Enums.GameRole
   gamePlan?: Prisma.EnumGamePlanNullableListFilter<"ChampionBuildProfile">
   coreItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
+  bootItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   situationalItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedRuneKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedSpellKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
@@ -354,6 +362,7 @@ export type ChampionBuildProfileCreateInput = {
   role: $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileCreategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileCreatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
@@ -376,6 +385,7 @@ export type ChampionBuildProfileUncheckedCreateInput = {
   role: $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileCreategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileCreatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
@@ -394,6 +404,7 @@ export type ChampionBuildProfileUpdateInput = {
   role?: Prisma.EnumGameRoleFieldUpdateOperationsInput | $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileUpdategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileUpdatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
@@ -416,6 +427,7 @@ export type ChampionBuildProfileUncheckedUpdateInput = {
   role?: Prisma.EnumGameRoleFieldUpdateOperationsInput | $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileUpdategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileUpdatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
@@ -436,6 +448,7 @@ export type ChampionBuildProfileCreateManyInput = {
   role: $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileCreategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileCreatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
@@ -454,6 +467,7 @@ export type ChampionBuildProfileUpdateManyMutationInput = {
   role?: Prisma.EnumGameRoleFieldUpdateOperationsInput | $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileUpdategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileUpdatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
@@ -474,6 +488,7 @@ export type ChampionBuildProfileUncheckedUpdateManyInput = {
   role?: Prisma.EnumGameRoleFieldUpdateOperationsInput | $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileUpdategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileUpdatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
@@ -511,6 +526,7 @@ export type ChampionBuildProfileCountOrderByAggregateInput = {
   role?: Prisma.SortOrder
   gamePlan?: Prisma.SortOrder
   coreItemKeys?: Prisma.SortOrder
+  bootItemKeys?: Prisma.SortOrder
   situationalItemKeys?: Prisma.SortOrder
   recommendedRuneKeys?: Prisma.SortOrder
   recommendedSpellKeys?: Prisma.SortOrder
@@ -641,6 +657,10 @@ export type ChampionBuildProfileCreatecoreItemKeysInput = {
   set: string[]
 }
 
+export type ChampionBuildProfileCreatebootItemKeysInput = {
+  set: string[]
+}
+
 export type ChampionBuildProfileCreatesituationalItemKeysInput = {
   set: string[]
 }
@@ -667,6 +687,11 @@ export type ChampionBuildProfileUpdategamePlanInput = {
 }
 
 export type ChampionBuildProfileUpdatecoreItemKeysInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type ChampionBuildProfileUpdatebootItemKeysInput = {
   set?: string[]
   push?: string | string[]
 }
@@ -702,6 +727,7 @@ export type ChampionBuildProfileCreateWithoutPatchInput = {
   role: $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileCreategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileCreatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
@@ -722,6 +748,7 @@ export type ChampionBuildProfileUncheckedCreateWithoutPatchInput = {
   role: $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileCreategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileCreatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
@@ -771,6 +798,7 @@ export type ChampionBuildProfileScalarWhereInput = {
   role?: Prisma.EnumGameRoleFilter<"ChampionBuildProfile"> | $Enums.GameRole
   gamePlan?: Prisma.EnumGamePlanNullableListFilter<"ChampionBuildProfile">
   coreItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
+  bootItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   situationalItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedRuneKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedSpellKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
@@ -789,6 +817,7 @@ export type ChampionBuildProfileCreateWithoutChampionInput = {
   role: $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileCreategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileCreatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
@@ -809,6 +838,7 @@ export type ChampionBuildProfileUncheckedCreateWithoutChampionInput = {
   role: $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileCreategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileCreatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
@@ -854,6 +884,7 @@ export type ChampionBuildProfileCreateManyPatchInput = {
   role: $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileCreategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileCreatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
@@ -872,6 +903,7 @@ export type ChampionBuildProfileUpdateWithoutPatchInput = {
   role?: Prisma.EnumGameRoleFieldUpdateOperationsInput | $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileUpdategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileUpdatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
@@ -892,6 +924,7 @@ export type ChampionBuildProfileUncheckedUpdateWithoutPatchInput = {
   role?: Prisma.EnumGameRoleFieldUpdateOperationsInput | $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileUpdategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileUpdatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
@@ -911,6 +944,7 @@ export type ChampionBuildProfileUncheckedUpdateManyWithoutPatchInput = {
   role?: Prisma.EnumGameRoleFieldUpdateOperationsInput | $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileUpdategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileUpdatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
@@ -930,6 +964,7 @@ export type ChampionBuildProfileCreateManyChampionInput = {
   role: $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileCreategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileCreatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
@@ -948,6 +983,7 @@ export type ChampionBuildProfileUpdateWithoutChampionInput = {
   role?: Prisma.EnumGameRoleFieldUpdateOperationsInput | $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileUpdategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileUpdatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
@@ -968,6 +1004,7 @@ export type ChampionBuildProfileUncheckedUpdateWithoutChampionInput = {
   role?: Prisma.EnumGameRoleFieldUpdateOperationsInput | $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileUpdategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileUpdatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
@@ -987,6 +1024,7 @@ export type ChampionBuildProfileUncheckedUpdateManyWithoutChampionInput = {
   role?: Prisma.EnumGameRoleFieldUpdateOperationsInput | $Enums.GameRole
   gamePlan?: Prisma.ChampionBuildProfileUpdategamePlanInput | $Enums.GamePlan[]
   coreItemKeys?: Prisma.ChampionBuildProfileUpdatecoreItemKeysInput | string[]
+  bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
@@ -1009,6 +1047,7 @@ export type ChampionBuildProfileSelect<ExtArgs extends runtime.Types.Extensions.
   role?: boolean
   gamePlan?: boolean
   coreItemKeys?: boolean
+  bootItemKeys?: boolean
   situationalItemKeys?: boolean
   recommendedRuneKeys?: boolean
   recommendedSpellKeys?: boolean
@@ -1031,6 +1070,7 @@ export type ChampionBuildProfileSelectCreateManyAndReturn<ExtArgs extends runtim
   role?: boolean
   gamePlan?: boolean
   coreItemKeys?: boolean
+  bootItemKeys?: boolean
   situationalItemKeys?: boolean
   recommendedRuneKeys?: boolean
   recommendedSpellKeys?: boolean
@@ -1053,6 +1093,7 @@ export type ChampionBuildProfileSelectUpdateManyAndReturn<ExtArgs extends runtim
   role?: boolean
   gamePlan?: boolean
   coreItemKeys?: boolean
+  bootItemKeys?: boolean
   situationalItemKeys?: boolean
   recommendedRuneKeys?: boolean
   recommendedSpellKeys?: boolean
@@ -1075,6 +1116,7 @@ export type ChampionBuildProfileSelectScalar = {
   role?: boolean
   gamePlan?: boolean
   coreItemKeys?: boolean
+  bootItemKeys?: boolean
   situationalItemKeys?: boolean
   recommendedRuneKeys?: boolean
   recommendedSpellKeys?: boolean
@@ -1087,7 +1129,7 @@ export type ChampionBuildProfileSelectScalar = {
   deletedAt?: boolean
 }
 
-export type ChampionBuildProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileKey" | "championId" | "patchId" | "role" | "gamePlan" | "coreItemKeys" | "situationalItemKeys" | "recommendedRuneKeys" | "recommendedSpellKeys" | "playStyleTags" | "buildTags" | "notes" | "dataQuality" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["championBuildProfile"]>
+export type ChampionBuildProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileKey" | "championId" | "patchId" | "role" | "gamePlan" | "coreItemKeys" | "bootItemKeys" | "situationalItemKeys" | "recommendedRuneKeys" | "recommendedSpellKeys" | "playStyleTags" | "buildTags" | "notes" | "dataQuality" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["championBuildProfile"]>
 export type ChampionBuildProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -1115,6 +1157,7 @@ export type $ChampionBuildProfilePayload<ExtArgs extends runtime.Types.Extension
     role: $Enums.GameRole
     gamePlan: $Enums.GamePlan[]
     coreItemKeys: string[]
+    bootItemKeys: string[]
     situationalItemKeys: string[]
     recommendedRuneKeys: string[]
     recommendedSpellKeys: string[]
@@ -1557,6 +1600,7 @@ export interface ChampionBuildProfileFieldRefs {
   readonly role: Prisma.FieldRef<"ChampionBuildProfile", 'GameRole'>
   readonly gamePlan: Prisma.FieldRef<"ChampionBuildProfile", 'GamePlan[]'>
   readonly coreItemKeys: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>
+  readonly bootItemKeys: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>
   readonly situationalItemKeys: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>
   readonly recommendedRuneKeys: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>
   readonly recommendedSpellKeys: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>

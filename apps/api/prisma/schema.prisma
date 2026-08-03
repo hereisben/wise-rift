@@ -644,6 +644,7 @@ model ChampionBuildProfile {
   role                 GameRole
   gamePlan             GamePlan[]       @default([STANDARD])
   coreItemKeys         String[]
+  bootItemKeys         String[]         @default([])
   situationalItemKeys  String[]
   recommendedRuneKeys  String[]
   recommendedSpellKeys String[]
@@ -867,6 +868,7 @@ enum MatchResult {
 enum GamePlan {
   STANDARD
   BURST
+  POKE
   SAFE
   ANTI_TANK
   ANTI_HEAL

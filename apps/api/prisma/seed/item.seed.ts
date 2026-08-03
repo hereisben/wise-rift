@@ -2431,7 +2431,7 @@ const highTierItemSeeds: ItemSeed[] = [
   {
     key: 'malignance',
     name: 'Malignance',
-    nameVi: 'Ác Ý',
+    nameVi: 'Hỏa Khuẩn',
     description:
       'Ultimate-focused magic item that reduces ultimate cooldown and creates a damaging zone that lowers enemy magic resistance.',
     descriptionVi:

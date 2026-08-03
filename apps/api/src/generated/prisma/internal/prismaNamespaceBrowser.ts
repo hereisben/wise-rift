@@ -586,6 +586,7 @@ export const ChampionBuildProfileScalarFieldEnum = {
   role: 'role',
   gamePlan: 'gamePlan',
   coreItemKeys: 'coreItemKeys',
+  bootItemKeys: 'bootItemKeys',
   situationalItemKeys: 'situationalItemKeys',
   recommendedRuneKeys: 'recommendedRuneKeys',
   recommendedSpellKeys: 'recommendedSpellKeys',
