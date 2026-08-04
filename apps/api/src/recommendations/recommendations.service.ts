@@ -8,6 +8,7 @@ import {
   BuildRecommendationEntry,
   ChampionBuildRecommendationInput,
   ChampionBuildRecommendationResponse,
+  ItemBuildRecommendationEntry,
 } from '../common/types/champion-build-recommendation-response.type.js';
 import {
   ChampionBuildProfileForDraft,
@@ -491,6 +492,7 @@ export class RecommendationsService {
     const itemKeys = [
       ...new Set([
         ...selectedBuildProfile.coreItemKeys,
+        ...selectedBuildProfile.bootItemKeys,
         ...selectedBuildProfile.situationalItemKeys,
       ]),
     ];
@@ -498,46 +500,98 @@ export class RecommendationsService {
     const items = await this.prismaService.item.findMany({
       where: {
         deletedAt: null,
+        archivedAt: null,
         key: {
           in: itemKeys,
+        },
+      },
+      include: {
+        itemPatchStats: {
+          where: {
+            deletedAt: null,
+            patchId,
+            isAvailable: true,
+          },
         },
       },
     });
 
     const itemsByKey = new Map(items.map((item) => [item.key, item] as const));
 
-    const coreItems = selectedBuildProfile.coreItemKeys.map((coreItemKey) => {
-      const item = itemsByKey.get(coreItemKey);
+    const buildItemEntry = (
+      itemKey: string,
+      reasonCode: string,
+    ): ItemBuildRecommendationEntry => {
+      const item = itemsByKey.get(itemKey);
 
       if (!item) {
-        throw new NotFoundException(`Item not found: ${coreItemKey}`);
+        throw new NotFoundException(`Item not found: ${itemKey}`);
+      }
+
+      const itemPatchStat = item.itemPatchStats[0];
+
+      if (!itemPatchStat) {
+        throw new NotFoundException(
+          `Available item patch stat not found: ${itemKey}`,
+        );
       }
 
       return {
         key: item.key,
         name: item.name,
         nameVi: item.nameVi,
-        reasonCodes: [`CORE_ITEM`],
+        reasonCodes: [reasonCode],
+        description: item.description,
+        descriptionVi: item.descriptionVi,
+        category: item.category,
+        cost: itemPatchStat.cost,
+        stats: {
+          abilityPower: itemPatchStat.abilityPower,
+          attackDamage: itemPatchStat.attackDamage,
+          armor: itemPatchStat.armor,
+          magicResist: itemPatchStat.magicResist,
+          health: itemPatchStat.health,
+          mana: itemPatchStat.mana,
+          abilityHaste: itemPatchStat.abilityHaste,
+          critRate: itemPatchStat.critRate,
+          attackSpeed: itemPatchStat.attackSpeed,
+
+          flatArmorPenetration: itemPatchStat.flatArmorPenetration,
+          percentArmorPenetration: itemPatchStat.percentArmorPenetration,
+          flatMagicPenetration: itemPatchStat.flatMagicPenetration,
+          percentMagicPenetration: itemPatchStat.percentMagicPenetration,
+
+          physicalVamp: itemPatchStat.physicalVamp,
+          magicVamp: itemPatchStat.magicVamp,
+          omniVamp: itemPatchStat.omniVamp,
+
+          healthRegen: itemPatchStat.healthRegen,
+          manaRegen: itemPatchStat.manaRegen,
+          healShieldPower: itemPatchStat.healShieldPower,
+          tenacity: itemPatchStat.tenacity,
+          slowResistance: itemPatchStat.slowResistance,
+
+          flatMovementSpeed: itemPatchStat.flatMovementSpeed,
+          percentMovementSpeed: itemPatchStat.percentMovementSpeed,
+
+          antiHealValue: itemPatchStat.antiHealValue,
+          shieldPower: itemPatchStat.shieldPower,
+        },
+        effectDescription: itemPatchStat.effectDescription,
       };
-    });
+    };
+
+    const coreItems = selectedBuildProfile.coreItemKeys.map((coreItemKey) =>
+      buildItemEntry(coreItemKey, `CORE_ITEM`),
+    );
+
+    const bootItems = selectedBuildProfile.bootItemKeys.map((bootItemKey) =>
+      buildItemEntry(bootItemKey, `BOOT_ITEM`),
+    );
 
     const situationalItems = selectedBuildProfile.situationalItemKeys.map(
-      (situationalItemKey) => {
-        const situationalItem = itemsByKey.get(situationalItemKey);
-
-        if (!situationalItem) {
-          throw new NotFoundException(
-            `Situational item not found: ${situationalItemKey}`,
-          );
-        }
-
-        return {
-          key: situationalItem.key,
-          name: situationalItem.name,
-          nameVi: situationalItem.nameVi,
-          reasonCodes: [`SITUATIONAL_ITEM`],
-        };
-      },
+      (situationalItemKey) =>
+        buildItemEntry(situationalItemKey, `SITUATIONAL_ITEM`),
     );
 
     const runes = await this.prismaService.rune.findMany({
@@ -605,8 +659,8 @@ export class RecommendationsService {
       role: selectedBuildProfile.role,
       gamePlan: selectedBuildProfile.gamePlan,
       coreItems,
+      bootItems,
       situationalItems,
-      boots: [],
       recommendedRunes,
       recommendedSpells,
       reasonCodes: [],

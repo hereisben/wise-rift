@@ -7,5 +7,6 @@ import { ChampionPoolService } from './champion-pool.service.js';
   imports: [UsersModule],
   providers: [ChampionPoolService],
   controllers: [ChampionPoolController],
+  exports: [ChampionPoolService],
 })
 export class ChampionPoolModule {}

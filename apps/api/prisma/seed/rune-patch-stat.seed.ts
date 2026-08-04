@@ -598,7 +598,7 @@ const runePatchStatSeeds: RunePatchStatSeed[] = [
     statTypes: [RuneStatType.ARMOR, RuneStatType.MAGIC_RESIST],
   },
   {
-    key: `elemental-master`,
+    key: `axiom-arcanist`,
     shortDescription: `Increase ultimate damage, healing, and shielding. Takedowns reduce ultimate cooldown.`,
     fullDescription: `Chiêu cuối được tăng 10% sát thương, giá trị hồi máu và tạo lá chắn. Sát thương diện rộng chỉ tăng thêm 5%. Tham gia hạ gục tướng địch giảm 7% thời gian hồi chiêu còn lại cho chiêu cuối.`,
     effectTypes: [

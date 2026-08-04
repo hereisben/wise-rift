@@ -384,8 +384,7 @@ model ItemBuildRecommendation {
   gamePlan         GamePlan[]   @default([STANDARD])
   coreItems        Json
   situationalItems Json?
-  boots            Json?
-  enchant          Json?
+  bootItems        Json?
   warning          Json?
   scoreBreakdown   Json?
   reasonCodes      Json?

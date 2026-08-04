@@ -413,7 +413,7 @@ const runeSeeds: RuneSeed[] = [
 
   // SORCERY SLOT 1
   {
-    key: `elemental-master`,
+    key: `axiom-arcanist`,
     name: `Elemental Master`,
     nameVi: `Bậc Thầy Nguyên Tố`,
     description: `Increase ultimate damage, healing, and shielding. Champion takedowns reduce remaining ultimate cooldown.`,
