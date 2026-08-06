@@ -3008,11 +3008,16 @@ export const SpellPatchStatScalarFieldEnum = {
   id: 'id',
   spellId: 'spellId',
   patchId: 'patchId',
+  isAvailable: 'isAvailable',
   cooldownSeconds: 'cooldownSeconds',
-  duration: 'duration',
-  damageValue: 'damageValue',
-  shieldValue: 'shieldValue',
-  healValue: 'healValue',
+  chargeRechargeSeconds: 'chargeRechargeSeconds',
+  maxCharges: 'maxCharges',
+  effectTypes: 'effectTypes',
+  targetTypes: 'targetTypes',
+  castData: 'castData',
+  passiveData: 'passiveData',
+  upgradeData: 'upgradeData',
+  notes: 'notes',
   dataQuality: 'dataQuality',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -3563,6 +3568,20 @@ export type EnumRunePageSlotTypeFieldRefInput<$PrismaModel> = FieldRefInputType<
  * Reference to a field of type 'RunePageSlotType[]'
  */
 export type ListEnumRunePageSlotTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RunePageSlotType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SpellEffectType[]'
+ */
+export type ListEnumSpellEffectTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SpellEffectType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SpellEffectType'
+ */
+export type EnumSpellEffectTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SpellEffectType'>
     
 
 

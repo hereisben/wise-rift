@@ -613,20 +613,31 @@ model Spell {
 }
 
 model SpellPatchStat {
-  id              String           @id @default(cuid())
-  spellId         String
-  spell           Spell            @relation(fields: [spellId], references: [id])
-  patchId         String
-  patch           Patch            @relation(fields: [patchId], references: [id])
-  cooldownSeconds Int?
-  duration        Float?
-  damageValue     Float?
-  shieldValue     Float?
-  healValue       Float?
-  dataQuality     DataQualityLevel @default(MINIMAL)
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  deletedAt       DateTime?
+  id      String @id @default(cuid())
+  spellId String
+  spell   Spell  @relation(fields: [spellId], references: [id])
+  patchId String
+  patch   Patch  @relation(fields: [patchId], references: [id])
+
+  isAvailable Boolean @default(true)
+
+  cooldownSeconds       Int?
+  chargeRechargeSeconds Float?
+  maxCharges            Int?
+
+  effectTypes SpellEffectType[]
+  targetTypes TargetType[]
+
+  castData    Json?
+  passiveData Json?
+  upgradeData Json?
+
+  notes       String?
+  dataQuality DataQualityLevel @default(MINIMAL)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
 
   @@unique([spellId, patchId])
   @@index([spellId])
@@ -892,6 +903,41 @@ enum RuneStatType {
 
   MOVEMENT_SPEED
   GOLD
+}
+
+enum SpellEffectType {
+  DAMAGE
+  TRUE_DAMAGE
+
+  HEAL
+  SHIELD
+
+  MOVEMENT_SPEED
+  MOVEMENT_SPEED_STEAL
+  SLOW
+
+  DAMAGE_REDUCTION
+
+  CLEANSE
+  CROWD_CONTROL_IMMUNITY
+
+  ANTI_HEAL
+  TELEPORT
+
+  DURATION_EXTENSION
+  EFFECT_REFRESH
+
+  GOLD_MODIFIER
+  EXPERIENCE_MODIFIER
+
+  MONSTER_DAMAGE_AMPLIFICATION
+  HEALTH_REGENERATION
+  MANA_REGENERATION
+
+  CHARGE_SYSTEM
+  UPGRADE
+
+  UTILITY
 }
 
 enum DataQualityLevel {

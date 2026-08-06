@@ -28,29 +28,25 @@ export type AggregateSpellPatchStat = {
 
 export type SpellPatchStatAvgAggregateOutputType = {
   cooldownSeconds: number | null
-  duration: number | null
-  damageValue: number | null
-  shieldValue: number | null
-  healValue: number | null
+  chargeRechargeSeconds: number | null
+  maxCharges: number | null
 }
 
 export type SpellPatchStatSumAggregateOutputType = {
   cooldownSeconds: number | null
-  duration: number | null
-  damageValue: number | null
-  shieldValue: number | null
-  healValue: number | null
+  chargeRechargeSeconds: number | null
+  maxCharges: number | null
 }
 
 export type SpellPatchStatMinAggregateOutputType = {
   id: string | null
   spellId: string | null
   patchId: string | null
+  isAvailable: boolean | null
   cooldownSeconds: number | null
-  duration: number | null
-  damageValue: number | null
-  shieldValue: number | null
-  healValue: number | null
+  chargeRechargeSeconds: number | null
+  maxCharges: number | null
+  notes: string | null
   dataQuality: $Enums.DataQualityLevel | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -61,11 +57,11 @@ export type SpellPatchStatMaxAggregateOutputType = {
   id: string | null
   spellId: string | null
   patchId: string | null
+  isAvailable: boolean | null
   cooldownSeconds: number | null
-  duration: number | null
-  damageValue: number | null
-  shieldValue: number | null
-  healValue: number | null
+  chargeRechargeSeconds: number | null
+  maxCharges: number | null
+  notes: string | null
   dataQuality: $Enums.DataQualityLevel | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -76,11 +72,16 @@ export type SpellPatchStatCountAggregateOutputType = {
   id: number
   spellId: number
   patchId: number
+  isAvailable: number
   cooldownSeconds: number
-  duration: number
-  damageValue: number
-  shieldValue: number
-  healValue: number
+  chargeRechargeSeconds: number
+  maxCharges: number
+  effectTypes: number
+  targetTypes: number
+  castData: number
+  passiveData: number
+  upgradeData: number
+  notes: number
   dataQuality: number
   createdAt: number
   updatedAt: number
@@ -91,29 +92,25 @@ export type SpellPatchStatCountAggregateOutputType = {
 
 export type SpellPatchStatAvgAggregateInputType = {
   cooldownSeconds?: true
-  duration?: true
-  damageValue?: true
-  shieldValue?: true
-  healValue?: true
+  chargeRechargeSeconds?: true
+  maxCharges?: true
 }
 
 export type SpellPatchStatSumAggregateInputType = {
   cooldownSeconds?: true
-  duration?: true
-  damageValue?: true
-  shieldValue?: true
-  healValue?: true
+  chargeRechargeSeconds?: true
+  maxCharges?: true
 }
 
 export type SpellPatchStatMinAggregateInputType = {
   id?: true
   spellId?: true
   patchId?: true
+  isAvailable?: true
   cooldownSeconds?: true
-  duration?: true
-  damageValue?: true
-  shieldValue?: true
-  healValue?: true
+  chargeRechargeSeconds?: true
+  maxCharges?: true
+  notes?: true
   dataQuality?: true
   createdAt?: true
   updatedAt?: true
@@ -124,11 +121,11 @@ export type SpellPatchStatMaxAggregateInputType = {
   id?: true
   spellId?: true
   patchId?: true
+  isAvailable?: true
   cooldownSeconds?: true
-  duration?: true
-  damageValue?: true
-  shieldValue?: true
-  healValue?: true
+  chargeRechargeSeconds?: true
+  maxCharges?: true
+  notes?: true
   dataQuality?: true
   createdAt?: true
   updatedAt?: true
@@ -139,11 +136,16 @@ export type SpellPatchStatCountAggregateInputType = {
   id?: true
   spellId?: true
   patchId?: true
+  isAvailable?: true
   cooldownSeconds?: true
-  duration?: true
-  damageValue?: true
-  shieldValue?: true
-  healValue?: true
+  chargeRechargeSeconds?: true
+  maxCharges?: true
+  effectTypes?: true
+  targetTypes?: true
+  castData?: true
+  passiveData?: true
+  upgradeData?: true
+  notes?: true
   dataQuality?: true
   createdAt?: true
   updatedAt?: true
@@ -241,11 +243,16 @@ export type SpellPatchStatGroupByOutputType = {
   id: string
   spellId: string
   patchId: string
+  isAvailable: boolean
   cooldownSeconds: number | null
-  duration: number | null
-  damageValue: number | null
-  shieldValue: number | null
-  healValue: number | null
+  chargeRechargeSeconds: number | null
+  maxCharges: number | null
+  effectTypes: $Enums.SpellEffectType[]
+  targetTypes: $Enums.TargetType[]
+  castData: runtime.JsonValue | null
+  passiveData: runtime.JsonValue | null
+  upgradeData: runtime.JsonValue | null
+  notes: string | null
   dataQuality: $Enums.DataQualityLevel
   createdAt: Date
   updatedAt: Date
@@ -279,11 +286,16 @@ export type SpellPatchStatWhereInput = {
   id?: Prisma.StringFilter<"SpellPatchStat"> | string
   spellId?: Prisma.StringFilter<"SpellPatchStat"> | string
   patchId?: Prisma.StringFilter<"SpellPatchStat"> | string
+  isAvailable?: Prisma.BoolFilter<"SpellPatchStat"> | boolean
   cooldownSeconds?: Prisma.IntNullableFilter<"SpellPatchStat"> | number | null
-  duration?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
-  damageValue?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
-  shieldValue?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
-  healValue?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
+  chargeRechargeSeconds?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
+  maxCharges?: Prisma.IntNullableFilter<"SpellPatchStat"> | number | null
+  effectTypes?: Prisma.EnumSpellEffectTypeNullableListFilter<"SpellPatchStat">
+  targetTypes?: Prisma.EnumTargetTypeNullableListFilter<"SpellPatchStat">
+  castData?: Prisma.JsonNullableFilter<"SpellPatchStat">
+  passiveData?: Prisma.JsonNullableFilter<"SpellPatchStat">
+  upgradeData?: Prisma.JsonNullableFilter<"SpellPatchStat">
+  notes?: Prisma.StringNullableFilter<"SpellPatchStat"> | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFilter<"SpellPatchStat"> | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFilter<"SpellPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SpellPatchStat"> | Date | string
@@ -296,11 +308,16 @@ export type SpellPatchStatOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   spellId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   cooldownSeconds?: Prisma.SortOrderInput | Prisma.SortOrder
-  duration?: Prisma.SortOrderInput | Prisma.SortOrder
-  damageValue?: Prisma.SortOrderInput | Prisma.SortOrder
-  shieldValue?: Prisma.SortOrderInput | Prisma.SortOrder
-  healValue?: Prisma.SortOrderInput | Prisma.SortOrder
+  chargeRechargeSeconds?: Prisma.SortOrderInput | Prisma.SortOrder
+  maxCharges?: Prisma.SortOrderInput | Prisma.SortOrder
+  effectTypes?: Prisma.SortOrder
+  targetTypes?: Prisma.SortOrder
+  castData?: Prisma.SortOrderInput | Prisma.SortOrder
+  passiveData?: Prisma.SortOrderInput | Prisma.SortOrder
+  upgradeData?: Prisma.SortOrderInput | Prisma.SortOrder
+  notes?: Prisma.SortOrderInput | Prisma.SortOrder
   dataQuality?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -317,11 +334,16 @@ export type SpellPatchStatWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.SpellPatchStatWhereInput | Prisma.SpellPatchStatWhereInput[]
   spellId?: Prisma.StringFilter<"SpellPatchStat"> | string
   patchId?: Prisma.StringFilter<"SpellPatchStat"> | string
+  isAvailable?: Prisma.BoolFilter<"SpellPatchStat"> | boolean
   cooldownSeconds?: Prisma.IntNullableFilter<"SpellPatchStat"> | number | null
-  duration?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
-  damageValue?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
-  shieldValue?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
-  healValue?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
+  chargeRechargeSeconds?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
+  maxCharges?: Prisma.IntNullableFilter<"SpellPatchStat"> | number | null
+  effectTypes?: Prisma.EnumSpellEffectTypeNullableListFilter<"SpellPatchStat">
+  targetTypes?: Prisma.EnumTargetTypeNullableListFilter<"SpellPatchStat">
+  castData?: Prisma.JsonNullableFilter<"SpellPatchStat">
+  passiveData?: Prisma.JsonNullableFilter<"SpellPatchStat">
+  upgradeData?: Prisma.JsonNullableFilter<"SpellPatchStat">
+  notes?: Prisma.StringNullableFilter<"SpellPatchStat"> | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFilter<"SpellPatchStat"> | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFilter<"SpellPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SpellPatchStat"> | Date | string
@@ -334,11 +356,16 @@ export type SpellPatchStatOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   spellId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   cooldownSeconds?: Prisma.SortOrderInput | Prisma.SortOrder
-  duration?: Prisma.SortOrderInput | Prisma.SortOrder
-  damageValue?: Prisma.SortOrderInput | Prisma.SortOrder
-  shieldValue?: Prisma.SortOrderInput | Prisma.SortOrder
-  healValue?: Prisma.SortOrderInput | Prisma.SortOrder
+  chargeRechargeSeconds?: Prisma.SortOrderInput | Prisma.SortOrder
+  maxCharges?: Prisma.SortOrderInput | Prisma.SortOrder
+  effectTypes?: Prisma.SortOrder
+  targetTypes?: Prisma.SortOrder
+  castData?: Prisma.SortOrderInput | Prisma.SortOrder
+  passiveData?: Prisma.SortOrderInput | Prisma.SortOrder
+  upgradeData?: Prisma.SortOrderInput | Prisma.SortOrder
+  notes?: Prisma.SortOrderInput | Prisma.SortOrder
   dataQuality?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -357,11 +384,16 @@ export type SpellPatchStatScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"SpellPatchStat"> | string
   spellId?: Prisma.StringWithAggregatesFilter<"SpellPatchStat"> | string
   patchId?: Prisma.StringWithAggregatesFilter<"SpellPatchStat"> | string
+  isAvailable?: Prisma.BoolWithAggregatesFilter<"SpellPatchStat"> | boolean
   cooldownSeconds?: Prisma.IntNullableWithAggregatesFilter<"SpellPatchStat"> | number | null
-  duration?: Prisma.FloatNullableWithAggregatesFilter<"SpellPatchStat"> | number | null
-  damageValue?: Prisma.FloatNullableWithAggregatesFilter<"SpellPatchStat"> | number | null
-  shieldValue?: Prisma.FloatNullableWithAggregatesFilter<"SpellPatchStat"> | number | null
-  healValue?: Prisma.FloatNullableWithAggregatesFilter<"SpellPatchStat"> | number | null
+  chargeRechargeSeconds?: Prisma.FloatNullableWithAggregatesFilter<"SpellPatchStat"> | number | null
+  maxCharges?: Prisma.IntNullableWithAggregatesFilter<"SpellPatchStat"> | number | null
+  effectTypes?: Prisma.EnumSpellEffectTypeNullableListFilter<"SpellPatchStat">
+  targetTypes?: Prisma.EnumTargetTypeNullableListFilter<"SpellPatchStat">
+  castData?: Prisma.JsonNullableWithAggregatesFilter<"SpellPatchStat">
+  passiveData?: Prisma.JsonNullableWithAggregatesFilter<"SpellPatchStat">
+  upgradeData?: Prisma.JsonNullableWithAggregatesFilter<"SpellPatchStat">
+  notes?: Prisma.StringNullableWithAggregatesFilter<"SpellPatchStat"> | string | null
   dataQuality?: Prisma.EnumDataQualityLevelWithAggregatesFilter<"SpellPatchStat"> | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SpellPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"SpellPatchStat"> | Date | string
@@ -370,11 +402,16 @@ export type SpellPatchStatScalarWhereWithAggregatesInput = {
 
 export type SpellPatchStatCreateInput = {
   id?: string
+  isAvailable?: boolean
   cooldownSeconds?: number | null
-  duration?: number | null
-  damageValue?: number | null
-  shieldValue?: number | null
-  healValue?: number | null
+  chargeRechargeSeconds?: number | null
+  maxCharges?: number | null
+  effectTypes?: Prisma.SpellPatchStatCreateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatCreatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   dataQuality?: $Enums.DataQualityLevel
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -387,11 +424,16 @@ export type SpellPatchStatUncheckedCreateInput = {
   id?: string
   spellId: string
   patchId: string
+  isAvailable?: boolean
   cooldownSeconds?: number | null
-  duration?: number | null
-  damageValue?: number | null
-  shieldValue?: number | null
-  healValue?: number | null
+  chargeRechargeSeconds?: number | null
+  maxCharges?: number | null
+  effectTypes?: Prisma.SpellPatchStatCreateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatCreatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   dataQuality?: $Enums.DataQualityLevel
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -400,11 +442,16 @@ export type SpellPatchStatUncheckedCreateInput = {
 
 export type SpellPatchStatUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cooldownSeconds?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  damageValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  healValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  chargeRechargeSeconds?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxCharges?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  effectTypes?: Prisma.SpellPatchStatUpdateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatUpdatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFieldUpdateOperationsInput | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -417,11 +464,16 @@ export type SpellPatchStatUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   spellId?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cooldownSeconds?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  damageValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  healValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  chargeRechargeSeconds?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxCharges?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  effectTypes?: Prisma.SpellPatchStatUpdateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatUpdatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFieldUpdateOperationsInput | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -432,11 +484,16 @@ export type SpellPatchStatCreateManyInput = {
   id?: string
   spellId: string
   patchId: string
+  isAvailable?: boolean
   cooldownSeconds?: number | null
-  duration?: number | null
-  damageValue?: number | null
-  shieldValue?: number | null
-  healValue?: number | null
+  chargeRechargeSeconds?: number | null
+  maxCharges?: number | null
+  effectTypes?: Prisma.SpellPatchStatCreateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatCreatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   dataQuality?: $Enums.DataQualityLevel
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -445,11 +502,16 @@ export type SpellPatchStatCreateManyInput = {
 
 export type SpellPatchStatUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cooldownSeconds?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  damageValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  healValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  chargeRechargeSeconds?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxCharges?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  effectTypes?: Prisma.SpellPatchStatUpdateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatUpdatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFieldUpdateOperationsInput | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -460,11 +522,16 @@ export type SpellPatchStatUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   spellId?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cooldownSeconds?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  damageValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  healValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  chargeRechargeSeconds?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxCharges?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  effectTypes?: Prisma.SpellPatchStatUpdateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatUpdatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFieldUpdateOperationsInput | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -481,6 +548,14 @@ export type SpellPatchStatOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type EnumSpellEffectTypeNullableListFilter<$PrismaModel = never> = {
+  equals?: $Enums.SpellEffectType[] | Prisma.ListEnumSpellEffectTypeFieldRefInput<$PrismaModel> | null
+  has?: $Enums.SpellEffectType | Prisma.EnumSpellEffectTypeFieldRefInput<$PrismaModel> | null
+  hasEvery?: $Enums.SpellEffectType[] | Prisma.ListEnumSpellEffectTypeFieldRefInput<$PrismaModel>
+  hasSome?: $Enums.SpellEffectType[] | Prisma.ListEnumSpellEffectTypeFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
 export type SpellPatchStatSpellIdPatchIdCompoundUniqueInput = {
   spellId: string
   patchId: string
@@ -490,11 +565,16 @@ export type SpellPatchStatCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   spellId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   cooldownSeconds?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
-  damageValue?: Prisma.SortOrder
-  shieldValue?: Prisma.SortOrder
-  healValue?: Prisma.SortOrder
+  chargeRechargeSeconds?: Prisma.SortOrder
+  maxCharges?: Prisma.SortOrder
+  effectTypes?: Prisma.SortOrder
+  targetTypes?: Prisma.SortOrder
+  castData?: Prisma.SortOrder
+  passiveData?: Prisma.SortOrder
+  upgradeData?: Prisma.SortOrder
+  notes?: Prisma.SortOrder
   dataQuality?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -503,21 +583,19 @@ export type SpellPatchStatCountOrderByAggregateInput = {
 
 export type SpellPatchStatAvgOrderByAggregateInput = {
   cooldownSeconds?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
-  damageValue?: Prisma.SortOrder
-  shieldValue?: Prisma.SortOrder
-  healValue?: Prisma.SortOrder
+  chargeRechargeSeconds?: Prisma.SortOrder
+  maxCharges?: Prisma.SortOrder
 }
 
 export type SpellPatchStatMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   spellId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   cooldownSeconds?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
-  damageValue?: Prisma.SortOrder
-  shieldValue?: Prisma.SortOrder
-  healValue?: Prisma.SortOrder
+  chargeRechargeSeconds?: Prisma.SortOrder
+  maxCharges?: Prisma.SortOrder
+  notes?: Prisma.SortOrder
   dataQuality?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -528,11 +606,11 @@ export type SpellPatchStatMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   spellId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   cooldownSeconds?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
-  damageValue?: Prisma.SortOrder
-  shieldValue?: Prisma.SortOrder
-  healValue?: Prisma.SortOrder
+  chargeRechargeSeconds?: Prisma.SortOrder
+  maxCharges?: Prisma.SortOrder
+  notes?: Prisma.SortOrder
   dataQuality?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -541,10 +619,8 @@ export type SpellPatchStatMinOrderByAggregateInput = {
 
 export type SpellPatchStatSumOrderByAggregateInput = {
   cooldownSeconds?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
-  damageValue?: Prisma.SortOrder
-  shieldValue?: Prisma.SortOrder
-  healValue?: Prisma.SortOrder
+  chargeRechargeSeconds?: Prisma.SortOrder
+  maxCharges?: Prisma.SortOrder
 }
 
 export type SpellPatchStatCreateNestedManyWithoutPatchInput = {
@@ -631,13 +707,36 @@ export type SpellPatchStatUncheckedUpdateManyWithoutSpellNestedInput = {
   deleteMany?: Prisma.SpellPatchStatScalarWhereInput | Prisma.SpellPatchStatScalarWhereInput[]
 }
 
+export type SpellPatchStatCreateeffectTypesInput = {
+  set: $Enums.SpellEffectType[]
+}
+
+export type SpellPatchStatCreatetargetTypesInput = {
+  set: $Enums.TargetType[]
+}
+
+export type SpellPatchStatUpdateeffectTypesInput = {
+  set?: $Enums.SpellEffectType[]
+  push?: $Enums.SpellEffectType | $Enums.SpellEffectType[]
+}
+
+export type SpellPatchStatUpdatetargetTypesInput = {
+  set?: $Enums.TargetType[]
+  push?: $Enums.TargetType | $Enums.TargetType[]
+}
+
 export type SpellPatchStatCreateWithoutPatchInput = {
   id?: string
+  isAvailable?: boolean
   cooldownSeconds?: number | null
-  duration?: number | null
-  damageValue?: number | null
-  shieldValue?: number | null
-  healValue?: number | null
+  chargeRechargeSeconds?: number | null
+  maxCharges?: number | null
+  effectTypes?: Prisma.SpellPatchStatCreateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatCreatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   dataQuality?: $Enums.DataQualityLevel
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -648,11 +747,16 @@ export type SpellPatchStatCreateWithoutPatchInput = {
 export type SpellPatchStatUncheckedCreateWithoutPatchInput = {
   id?: string
   spellId: string
+  isAvailable?: boolean
   cooldownSeconds?: number | null
-  duration?: number | null
-  damageValue?: number | null
-  shieldValue?: number | null
-  healValue?: number | null
+  chargeRechargeSeconds?: number | null
+  maxCharges?: number | null
+  effectTypes?: Prisma.SpellPatchStatCreateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatCreatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   dataQuality?: $Enums.DataQualityLevel
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -692,11 +796,16 @@ export type SpellPatchStatScalarWhereInput = {
   id?: Prisma.StringFilter<"SpellPatchStat"> | string
   spellId?: Prisma.StringFilter<"SpellPatchStat"> | string
   patchId?: Prisma.StringFilter<"SpellPatchStat"> | string
+  isAvailable?: Prisma.BoolFilter<"SpellPatchStat"> | boolean
   cooldownSeconds?: Prisma.IntNullableFilter<"SpellPatchStat"> | number | null
-  duration?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
-  damageValue?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
-  shieldValue?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
-  healValue?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
+  chargeRechargeSeconds?: Prisma.FloatNullableFilter<"SpellPatchStat"> | number | null
+  maxCharges?: Prisma.IntNullableFilter<"SpellPatchStat"> | number | null
+  effectTypes?: Prisma.EnumSpellEffectTypeNullableListFilter<"SpellPatchStat">
+  targetTypes?: Prisma.EnumTargetTypeNullableListFilter<"SpellPatchStat">
+  castData?: Prisma.JsonNullableFilter<"SpellPatchStat">
+  passiveData?: Prisma.JsonNullableFilter<"SpellPatchStat">
+  upgradeData?: Prisma.JsonNullableFilter<"SpellPatchStat">
+  notes?: Prisma.StringNullableFilter<"SpellPatchStat"> | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFilter<"SpellPatchStat"> | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFilter<"SpellPatchStat"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SpellPatchStat"> | Date | string
@@ -705,11 +814,16 @@ export type SpellPatchStatScalarWhereInput = {
 
 export type SpellPatchStatCreateWithoutSpellInput = {
   id?: string
+  isAvailable?: boolean
   cooldownSeconds?: number | null
-  duration?: number | null
-  damageValue?: number | null
-  shieldValue?: number | null
-  healValue?: number | null
+  chargeRechargeSeconds?: number | null
+  maxCharges?: number | null
+  effectTypes?: Prisma.SpellPatchStatCreateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatCreatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   dataQuality?: $Enums.DataQualityLevel
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -720,11 +834,16 @@ export type SpellPatchStatCreateWithoutSpellInput = {
 export type SpellPatchStatUncheckedCreateWithoutSpellInput = {
   id?: string
   patchId: string
+  isAvailable?: boolean
   cooldownSeconds?: number | null
-  duration?: number | null
-  damageValue?: number | null
-  shieldValue?: number | null
-  healValue?: number | null
+  chargeRechargeSeconds?: number | null
+  maxCharges?: number | null
+  effectTypes?: Prisma.SpellPatchStatCreateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatCreatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   dataQuality?: $Enums.DataQualityLevel
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -760,11 +879,16 @@ export type SpellPatchStatUpdateManyWithWhereWithoutSpellInput = {
 export type SpellPatchStatCreateManyPatchInput = {
   id?: string
   spellId: string
+  isAvailable?: boolean
   cooldownSeconds?: number | null
-  duration?: number | null
-  damageValue?: number | null
-  shieldValue?: number | null
-  healValue?: number | null
+  chargeRechargeSeconds?: number | null
+  maxCharges?: number | null
+  effectTypes?: Prisma.SpellPatchStatCreateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatCreatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   dataQuality?: $Enums.DataQualityLevel
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -773,11 +897,16 @@ export type SpellPatchStatCreateManyPatchInput = {
 
 export type SpellPatchStatUpdateWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cooldownSeconds?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  damageValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  healValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  chargeRechargeSeconds?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxCharges?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  effectTypes?: Prisma.SpellPatchStatUpdateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatUpdatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFieldUpdateOperationsInput | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -788,11 +917,16 @@ export type SpellPatchStatUpdateWithoutPatchInput = {
 export type SpellPatchStatUncheckedUpdateWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   spellId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cooldownSeconds?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  damageValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  healValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  chargeRechargeSeconds?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxCharges?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  effectTypes?: Prisma.SpellPatchStatUpdateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatUpdatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFieldUpdateOperationsInput | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -802,11 +936,16 @@ export type SpellPatchStatUncheckedUpdateWithoutPatchInput = {
 export type SpellPatchStatUncheckedUpdateManyWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   spellId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cooldownSeconds?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  damageValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  healValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  chargeRechargeSeconds?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxCharges?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  effectTypes?: Prisma.SpellPatchStatUpdateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatUpdatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFieldUpdateOperationsInput | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -816,11 +955,16 @@ export type SpellPatchStatUncheckedUpdateManyWithoutPatchInput = {
 export type SpellPatchStatCreateManySpellInput = {
   id?: string
   patchId: string
+  isAvailable?: boolean
   cooldownSeconds?: number | null
-  duration?: number | null
-  damageValue?: number | null
-  shieldValue?: number | null
-  healValue?: number | null
+  chargeRechargeSeconds?: number | null
+  maxCharges?: number | null
+  effectTypes?: Prisma.SpellPatchStatCreateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatCreatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: string | null
   dataQuality?: $Enums.DataQualityLevel
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -829,11 +973,16 @@ export type SpellPatchStatCreateManySpellInput = {
 
 export type SpellPatchStatUpdateWithoutSpellInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cooldownSeconds?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  damageValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  healValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  chargeRechargeSeconds?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxCharges?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  effectTypes?: Prisma.SpellPatchStatUpdateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatUpdatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFieldUpdateOperationsInput | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -844,11 +993,16 @@ export type SpellPatchStatUpdateWithoutSpellInput = {
 export type SpellPatchStatUncheckedUpdateWithoutSpellInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cooldownSeconds?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  damageValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  healValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  chargeRechargeSeconds?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxCharges?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  effectTypes?: Prisma.SpellPatchStatUpdateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatUpdatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFieldUpdateOperationsInput | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -858,11 +1012,16 @@ export type SpellPatchStatUncheckedUpdateWithoutSpellInput = {
 export type SpellPatchStatUncheckedUpdateManyWithoutSpellInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   cooldownSeconds?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  duration?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  damageValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  shieldValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  healValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  chargeRechargeSeconds?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  maxCharges?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  effectTypes?: Prisma.SpellPatchStatUpdateeffectTypesInput | $Enums.SpellEffectType[]
+  targetTypes?: Prisma.SpellPatchStatUpdatetargetTypesInput | $Enums.TargetType[]
+  castData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  passiveData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  upgradeData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataQuality?: Prisma.EnumDataQualityLevelFieldUpdateOperationsInput | $Enums.DataQualityLevel
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -875,11 +1034,16 @@ export type SpellPatchStatSelect<ExtArgs extends runtime.Types.Extensions.Intern
   id?: boolean
   spellId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   cooldownSeconds?: boolean
-  duration?: boolean
-  damageValue?: boolean
-  shieldValue?: boolean
-  healValue?: boolean
+  chargeRechargeSeconds?: boolean
+  maxCharges?: boolean
+  effectTypes?: boolean
+  targetTypes?: boolean
+  castData?: boolean
+  passiveData?: boolean
+  upgradeData?: boolean
+  notes?: boolean
   dataQuality?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -892,11 +1056,16 @@ export type SpellPatchStatSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   id?: boolean
   spellId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   cooldownSeconds?: boolean
-  duration?: boolean
-  damageValue?: boolean
-  shieldValue?: boolean
-  healValue?: boolean
+  chargeRechargeSeconds?: boolean
+  maxCharges?: boolean
+  effectTypes?: boolean
+  targetTypes?: boolean
+  castData?: boolean
+  passiveData?: boolean
+  upgradeData?: boolean
+  notes?: boolean
   dataQuality?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -909,11 +1078,16 @@ export type SpellPatchStatSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   id?: boolean
   spellId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   cooldownSeconds?: boolean
-  duration?: boolean
-  damageValue?: boolean
-  shieldValue?: boolean
-  healValue?: boolean
+  chargeRechargeSeconds?: boolean
+  maxCharges?: boolean
+  effectTypes?: boolean
+  targetTypes?: boolean
+  castData?: boolean
+  passiveData?: boolean
+  upgradeData?: boolean
+  notes?: boolean
   dataQuality?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -926,18 +1100,23 @@ export type SpellPatchStatSelectScalar = {
   id?: boolean
   spellId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   cooldownSeconds?: boolean
-  duration?: boolean
-  damageValue?: boolean
-  shieldValue?: boolean
-  healValue?: boolean
+  chargeRechargeSeconds?: boolean
+  maxCharges?: boolean
+  effectTypes?: boolean
+  targetTypes?: boolean
+  castData?: boolean
+  passiveData?: boolean
+  upgradeData?: boolean
+  notes?: boolean
   dataQuality?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type SpellPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "spellId" | "patchId" | "cooldownSeconds" | "duration" | "damageValue" | "shieldValue" | "healValue" | "dataQuality" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["spellPatchStat"]>
+export type SpellPatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "spellId" | "patchId" | "isAvailable" | "cooldownSeconds" | "chargeRechargeSeconds" | "maxCharges" | "effectTypes" | "targetTypes" | "castData" | "passiveData" | "upgradeData" | "notes" | "dataQuality" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["spellPatchStat"]>
 export type SpellPatchStatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   spell?: boolean | Prisma.SpellDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -961,11 +1140,16 @@ export type $SpellPatchStatPayload<ExtArgs extends runtime.Types.Extensions.Inte
     id: string
     spellId: string
     patchId: string
+    isAvailable: boolean
     cooldownSeconds: number | null
-    duration: number | null
-    damageValue: number | null
-    shieldValue: number | null
-    healValue: number | null
+    chargeRechargeSeconds: number | null
+    maxCharges: number | null
+    effectTypes: $Enums.SpellEffectType[]
+    targetTypes: $Enums.TargetType[]
+    castData: runtime.JsonValue | null
+    passiveData: runtime.JsonValue | null
+    upgradeData: runtime.JsonValue | null
+    notes: string | null
     dataQuality: $Enums.DataQualityLevel
     createdAt: Date
     updatedAt: Date
@@ -1398,11 +1582,16 @@ export interface SpellPatchStatFieldRefs {
   readonly id: Prisma.FieldRef<"SpellPatchStat", 'String'>
   readonly spellId: Prisma.FieldRef<"SpellPatchStat", 'String'>
   readonly patchId: Prisma.FieldRef<"SpellPatchStat", 'String'>
+  readonly isAvailable: Prisma.FieldRef<"SpellPatchStat", 'Boolean'>
   readonly cooldownSeconds: Prisma.FieldRef<"SpellPatchStat", 'Int'>
-  readonly duration: Prisma.FieldRef<"SpellPatchStat", 'Float'>
-  readonly damageValue: Prisma.FieldRef<"SpellPatchStat", 'Float'>
-  readonly shieldValue: Prisma.FieldRef<"SpellPatchStat", 'Float'>
-  readonly healValue: Prisma.FieldRef<"SpellPatchStat", 'Float'>
+  readonly chargeRechargeSeconds: Prisma.FieldRef<"SpellPatchStat", 'Float'>
+  readonly maxCharges: Prisma.FieldRef<"SpellPatchStat", 'Int'>
+  readonly effectTypes: Prisma.FieldRef<"SpellPatchStat", 'SpellEffectType[]'>
+  readonly targetTypes: Prisma.FieldRef<"SpellPatchStat", 'TargetType[]'>
+  readonly castData: Prisma.FieldRef<"SpellPatchStat", 'Json'>
+  readonly passiveData: Prisma.FieldRef<"SpellPatchStat", 'Json'>
+  readonly upgradeData: Prisma.FieldRef<"SpellPatchStat", 'Json'>
+  readonly notes: Prisma.FieldRef<"SpellPatchStat", 'String'>
   readonly dataQuality: Prisma.FieldRef<"SpellPatchStat", 'DataQualityLevel'>
   readonly createdAt: Prisma.FieldRef<"SpellPatchStat", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"SpellPatchStat", 'DateTime'>
