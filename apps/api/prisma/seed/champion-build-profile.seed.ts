@@ -326,7 +326,7 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `courage-of-the-colossus`,
       `second-wind`,
       `perseverance`,
-      `hextech-flashtraption`,
+      `hexflash`,
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -524,7 +524,7 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
     ],
     recommendedRuneKeys: [
       `electrocute`,
-      `hextech-flashtraption`,
+      `hexflash`,
       `absolute-focus`,
       `nimbus-cloak`,
       `bone-plating`,
@@ -784,7 +784,7 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `courage-of-the-colossus`,
       `second-wind`,
       `perseverance`,
-      `hextech-flashtraption`,
+      `hexflash`,
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -4799,7 +4799,7 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `courage-of-the-colossus`,
       `second-wind`,
       `perseverance`,
-      `hextech-flashtraption`,
+      `hexflash`,
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -5618,7 +5618,7 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `courage-of-the-colossus`,
       `second-wind`,
       `perseverance`,
-      `hextech-flashtraption`,
+      `hexflash`,
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -7285,7 +7285,7 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `courage-of-the-colossus`,
       `bone-plating`,
       `perseverance`,
-      `hextech-flashtraption`,
+      `hexflash`,
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [`TANK`, `SUPPORT`, `ENGAGE`, `PEEL`, `PICK`, `FRONTLINE`],
