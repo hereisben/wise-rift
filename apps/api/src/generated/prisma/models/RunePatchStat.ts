@@ -46,6 +46,7 @@ export type RunePatchStatMinAggregateOutputType = {
   id: string | null
   runeId: string | null
   patchId: string | null
+  isAvailable: boolean | null
   shortDescription: string | null
   fullDescription: string | null
   baseValue: number | null
@@ -64,6 +65,7 @@ export type RunePatchStatMaxAggregateOutputType = {
   id: string | null
   runeId: string | null
   patchId: string | null
+  isAvailable: boolean | null
   shortDescription: string | null
   fullDescription: string | null
   baseValue: number | null
@@ -82,6 +84,7 @@ export type RunePatchStatCountAggregateOutputType = {
   id: number
   runeId: number
   patchId: number
+  isAvailable: number
   shortDescription: number
   fullDescription: number
   effectTypes: number
@@ -123,6 +126,7 @@ export type RunePatchStatMinAggregateInputType = {
   id?: true
   runeId?: true
   patchId?: true
+  isAvailable?: true
   shortDescription?: true
   fullDescription?: true
   baseValue?: true
@@ -141,6 +145,7 @@ export type RunePatchStatMaxAggregateInputType = {
   id?: true
   runeId?: true
   patchId?: true
+  isAvailable?: true
   shortDescription?: true
   fullDescription?: true
   baseValue?: true
@@ -159,6 +164,7 @@ export type RunePatchStatCountAggregateInputType = {
   id?: true
   runeId?: true
   patchId?: true
+  isAvailable?: true
   shortDescription?: true
   fullDescription?: true
   effectTypes?: true
@@ -269,6 +275,7 @@ export type RunePatchStatGroupByOutputType = {
   id: string
   runeId: string
   patchId: string
+  isAvailable: boolean
   shortDescription: string | null
   fullDescription: string | null
   effectTypes: $Enums.RuneEffectType[]
@@ -315,6 +322,7 @@ export type RunePatchStatWhereInput = {
   id?: Prisma.StringFilter<"RunePatchStat"> | string
   runeId?: Prisma.StringFilter<"RunePatchStat"> | string
   patchId?: Prisma.StringFilter<"RunePatchStat"> | string
+  isAvailable?: Prisma.BoolFilter<"RunePatchStat"> | boolean
   shortDescription?: Prisma.StringNullableFilter<"RunePatchStat"> | string | null
   fullDescription?: Prisma.StringNullableFilter<"RunePatchStat"> | string | null
   effectTypes?: Prisma.EnumRuneEffectTypeNullableListFilter<"RunePatchStat">
@@ -340,6 +348,7 @@ export type RunePatchStatOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   runeId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   fullDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   effectTypes?: Prisma.SortOrder
@@ -369,6 +378,7 @@ export type RunePatchStatWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.RunePatchStatWhereInput | Prisma.RunePatchStatWhereInput[]
   runeId?: Prisma.StringFilter<"RunePatchStat"> | string
   patchId?: Prisma.StringFilter<"RunePatchStat"> | string
+  isAvailable?: Prisma.BoolFilter<"RunePatchStat"> | boolean
   shortDescription?: Prisma.StringNullableFilter<"RunePatchStat"> | string | null
   fullDescription?: Prisma.StringNullableFilter<"RunePatchStat"> | string | null
   effectTypes?: Prisma.EnumRuneEffectTypeNullableListFilter<"RunePatchStat">
@@ -394,6 +404,7 @@ export type RunePatchStatOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   runeId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   fullDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   effectTypes?: Prisma.SortOrder
@@ -425,6 +436,7 @@ export type RunePatchStatScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"RunePatchStat"> | string
   runeId?: Prisma.StringWithAggregatesFilter<"RunePatchStat"> | string
   patchId?: Prisma.StringWithAggregatesFilter<"RunePatchStat"> | string
+  isAvailable?: Prisma.BoolWithAggregatesFilter<"RunePatchStat"> | boolean
   shortDescription?: Prisma.StringNullableWithAggregatesFilter<"RunePatchStat"> | string | null
   fullDescription?: Prisma.StringNullableWithAggregatesFilter<"RunePatchStat"> | string | null
   effectTypes?: Prisma.EnumRuneEffectTypeNullableListFilter<"RunePatchStat">
@@ -446,6 +458,7 @@ export type RunePatchStatScalarWhereWithAggregatesInput = {
 
 export type RunePatchStatCreateInput = {
   id?: string
+  isAvailable?: boolean
   shortDescription?: string | null
   fullDescription?: string | null
   effectTypes?: Prisma.RunePatchStatCreateeffectTypesInput | $Enums.RuneEffectType[]
@@ -471,6 +484,7 @@ export type RunePatchStatUncheckedCreateInput = {
   id?: string
   runeId: string
   patchId: string
+  isAvailable?: boolean
   shortDescription?: string | null
   fullDescription?: string | null
   effectTypes?: Prisma.RunePatchStatCreateeffectTypesInput | $Enums.RuneEffectType[]
@@ -492,6 +506,7 @@ export type RunePatchStatUncheckedCreateInput = {
 
 export type RunePatchStatUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   effectTypes?: Prisma.RunePatchStatUpdateeffectTypesInput | $Enums.RuneEffectType[]
@@ -517,6 +532,7 @@ export type RunePatchStatUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   runeId?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   effectTypes?: Prisma.RunePatchStatUpdateeffectTypesInput | $Enums.RuneEffectType[]
@@ -540,6 +556,7 @@ export type RunePatchStatCreateManyInput = {
   id?: string
   runeId: string
   patchId: string
+  isAvailable?: boolean
   shortDescription?: string | null
   fullDescription?: string | null
   effectTypes?: Prisma.RunePatchStatCreateeffectTypesInput | $Enums.RuneEffectType[]
@@ -561,6 +578,7 @@ export type RunePatchStatCreateManyInput = {
 
 export type RunePatchStatUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   effectTypes?: Prisma.RunePatchStatUpdateeffectTypesInput | $Enums.RuneEffectType[]
@@ -584,6 +602,7 @@ export type RunePatchStatUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   runeId?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   effectTypes?: Prisma.RunePatchStatUpdateeffectTypesInput | $Enums.RuneEffectType[]
@@ -654,6 +673,7 @@ export type RunePatchStatCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   runeId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
   fullDescription?: Prisma.SortOrder
   effectTypes?: Prisma.SortOrder
@@ -685,6 +705,7 @@ export type RunePatchStatMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   runeId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
   fullDescription?: Prisma.SortOrder
   baseValue?: Prisma.SortOrder
@@ -703,6 +724,7 @@ export type RunePatchStatMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   runeId?: Prisma.SortOrder
   patchId?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
   shortDescription?: Prisma.SortOrder
   fullDescription?: Prisma.SortOrder
   baseValue?: Prisma.SortOrder
@@ -851,6 +873,7 @@ export type EnumDataQualityLevelFieldUpdateOperationsInput = {
 
 export type RunePatchStatCreateWithoutPatchInput = {
   id?: string
+  isAvailable?: boolean
   shortDescription?: string | null
   fullDescription?: string | null
   effectTypes?: Prisma.RunePatchStatCreateeffectTypesInput | $Enums.RuneEffectType[]
@@ -874,6 +897,7 @@ export type RunePatchStatCreateWithoutPatchInput = {
 export type RunePatchStatUncheckedCreateWithoutPatchInput = {
   id?: string
   runeId: string
+  isAvailable?: boolean
   shortDescription?: string | null
   fullDescription?: string | null
   effectTypes?: Prisma.RunePatchStatCreateeffectTypesInput | $Enums.RuneEffectType[]
@@ -926,6 +950,7 @@ export type RunePatchStatScalarWhereInput = {
   id?: Prisma.StringFilter<"RunePatchStat"> | string
   runeId?: Prisma.StringFilter<"RunePatchStat"> | string
   patchId?: Prisma.StringFilter<"RunePatchStat"> | string
+  isAvailable?: Prisma.BoolFilter<"RunePatchStat"> | boolean
   shortDescription?: Prisma.StringNullableFilter<"RunePatchStat"> | string | null
   fullDescription?: Prisma.StringNullableFilter<"RunePatchStat"> | string | null
   effectTypes?: Prisma.EnumRuneEffectTypeNullableListFilter<"RunePatchStat">
@@ -947,6 +972,7 @@ export type RunePatchStatScalarWhereInput = {
 
 export type RunePatchStatCreateWithoutRuneInput = {
   id?: string
+  isAvailable?: boolean
   shortDescription?: string | null
   fullDescription?: string | null
   effectTypes?: Prisma.RunePatchStatCreateeffectTypesInput | $Enums.RuneEffectType[]
@@ -970,6 +996,7 @@ export type RunePatchStatCreateWithoutRuneInput = {
 export type RunePatchStatUncheckedCreateWithoutRuneInput = {
   id?: string
   patchId: string
+  isAvailable?: boolean
   shortDescription?: string | null
   fullDescription?: string | null
   effectTypes?: Prisma.RunePatchStatCreateeffectTypesInput | $Enums.RuneEffectType[]
@@ -1018,6 +1045,7 @@ export type RunePatchStatUpdateManyWithWhereWithoutRuneInput = {
 export type RunePatchStatCreateManyPatchInput = {
   id?: string
   runeId: string
+  isAvailable?: boolean
   shortDescription?: string | null
   fullDescription?: string | null
   effectTypes?: Prisma.RunePatchStatCreateeffectTypesInput | $Enums.RuneEffectType[]
@@ -1039,6 +1067,7 @@ export type RunePatchStatCreateManyPatchInput = {
 
 export type RunePatchStatUpdateWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   effectTypes?: Prisma.RunePatchStatUpdateeffectTypesInput | $Enums.RuneEffectType[]
@@ -1062,6 +1091,7 @@ export type RunePatchStatUpdateWithoutPatchInput = {
 export type RunePatchStatUncheckedUpdateWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   runeId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   effectTypes?: Prisma.RunePatchStatUpdateeffectTypesInput | $Enums.RuneEffectType[]
@@ -1084,6 +1114,7 @@ export type RunePatchStatUncheckedUpdateWithoutPatchInput = {
 export type RunePatchStatUncheckedUpdateManyWithoutPatchInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   runeId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   effectTypes?: Prisma.RunePatchStatUpdateeffectTypesInput | $Enums.RuneEffectType[]
@@ -1106,6 +1137,7 @@ export type RunePatchStatUncheckedUpdateManyWithoutPatchInput = {
 export type RunePatchStatCreateManyRuneInput = {
   id?: string
   patchId: string
+  isAvailable?: boolean
   shortDescription?: string | null
   fullDescription?: string | null
   effectTypes?: Prisma.RunePatchStatCreateeffectTypesInput | $Enums.RuneEffectType[]
@@ -1127,6 +1159,7 @@ export type RunePatchStatCreateManyRuneInput = {
 
 export type RunePatchStatUpdateWithoutRuneInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   effectTypes?: Prisma.RunePatchStatUpdateeffectTypesInput | $Enums.RuneEffectType[]
@@ -1150,6 +1183,7 @@ export type RunePatchStatUpdateWithoutRuneInput = {
 export type RunePatchStatUncheckedUpdateWithoutRuneInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   effectTypes?: Prisma.RunePatchStatUpdateeffectTypesInput | $Enums.RuneEffectType[]
@@ -1172,6 +1206,7 @@ export type RunePatchStatUncheckedUpdateWithoutRuneInput = {
 export type RunePatchStatUncheckedUpdateManyWithoutRuneInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   patchId?: Prisma.StringFieldUpdateOperationsInput | string
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   shortDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fullDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   effectTypes?: Prisma.RunePatchStatUpdateeffectTypesInput | $Enums.RuneEffectType[]
@@ -1197,6 +1232,7 @@ export type RunePatchStatSelect<ExtArgs extends runtime.Types.Extensions.Interna
   id?: boolean
   runeId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   shortDescription?: boolean
   fullDescription?: boolean
   effectTypes?: boolean
@@ -1222,6 +1258,7 @@ export type RunePatchStatSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   id?: boolean
   runeId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   shortDescription?: boolean
   fullDescription?: boolean
   effectTypes?: boolean
@@ -1247,6 +1284,7 @@ export type RunePatchStatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   id?: boolean
   runeId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   shortDescription?: boolean
   fullDescription?: boolean
   effectTypes?: boolean
@@ -1272,6 +1310,7 @@ export type RunePatchStatSelectScalar = {
   id?: boolean
   runeId?: boolean
   patchId?: boolean
+  isAvailable?: boolean
   shortDescription?: boolean
   fullDescription?: boolean
   effectTypes?: boolean
@@ -1291,7 +1330,7 @@ export type RunePatchStatSelectScalar = {
   deletedAt?: boolean
 }
 
-export type RunePatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "runeId" | "patchId" | "shortDescription" | "fullDescription" | "effectTypes" | "triggerTypes" | "targetTypes" | "baseValue" | "scalingValue" | "cooldown" | "duration" | "maxStacks" | "statTypes" | "statBonuses" | "notes" | "dataQuality" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["runePatchStat"]>
+export type RunePatchStatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "runeId" | "patchId" | "isAvailable" | "shortDescription" | "fullDescription" | "effectTypes" | "triggerTypes" | "targetTypes" | "baseValue" | "scalingValue" | "cooldown" | "duration" | "maxStacks" | "statTypes" | "statBonuses" | "notes" | "dataQuality" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["runePatchStat"]>
 export type RunePatchStatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   rune?: boolean | Prisma.RuneDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -1315,6 +1354,7 @@ export type $RunePatchStatPayload<ExtArgs extends runtime.Types.Extensions.Inter
     id: string
     runeId: string
     patchId: string
+    isAvailable: boolean
     shortDescription: string | null
     fullDescription: string | null
     effectTypes: $Enums.RuneEffectType[]
@@ -1760,6 +1800,7 @@ export interface RunePatchStatFieldRefs {
   readonly id: Prisma.FieldRef<"RunePatchStat", 'String'>
   readonly runeId: Prisma.FieldRef<"RunePatchStat", 'String'>
   readonly patchId: Prisma.FieldRef<"RunePatchStat", 'String'>
+  readonly isAvailable: Prisma.FieldRef<"RunePatchStat", 'Boolean'>
   readonly shortDescription: Prisma.FieldRef<"RunePatchStat", 'String'>
   readonly fullDescription: Prisma.FieldRef<"RunePatchStat", 'String'>
   readonly effectTypes: Prisma.FieldRef<"RunePatchStat", 'RuneEffectType[]'>

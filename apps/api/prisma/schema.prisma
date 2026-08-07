@@ -511,11 +511,14 @@ model Rune {
 }
 
 model RunePatchStat {
-  id               String            @id @default(cuid())
-  runeId           String
-  rune             Rune              @relation(fields: [runeId], references: [id])
-  patchId          String
-  patch            Patch             @relation(fields: [patchId], references: [id])
+  id      String @id @default(cuid())
+  runeId  String
+  rune    Rune   @relation(fields: [runeId], references: [id])
+  patchId String
+  patch   Patch  @relation(fields: [patchId], references: [id])
+
+  isAvailable Boolean @default(true)
+
   shortDescription String?
   fullDescription  String?
   effectTypes      RuneEffectType[]

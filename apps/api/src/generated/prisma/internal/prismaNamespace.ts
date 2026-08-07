@@ -2932,6 +2932,7 @@ export const RunePatchStatScalarFieldEnum = {
   id: 'id',
   runeId: 'runeId',
   patchId: 'patchId',
+  isAvailable: 'isAvailable',
   shortDescription: 'shortDescription',
   fullDescription: 'fullDescription',
   effectTypes: 'effectTypes',

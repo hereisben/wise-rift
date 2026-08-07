@@ -473,6 +473,7 @@ CREATE TABLE "RunePatchStat" (
     "id" TEXT NOT NULL,
     "runeId" TEXT NOT NULL,
     "patchId" TEXT NOT NULL,
+    "isAvailable" BOOLEAN NOT NULL DEFAULT true,
     "shortDescription" TEXT,
     "fullDescription" TEXT,
     "effectTypes" "RuneEffectType"[],

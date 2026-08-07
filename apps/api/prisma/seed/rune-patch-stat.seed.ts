@@ -8,6 +8,7 @@ import {
 
 type RunePatchStatSeed = {
   key: string;
+  isAvailable?: boolean;
   shortDescription?: string | null;
   fullDescription?: string | null;
   effectTypes: RuneEffectType[];
@@ -1560,6 +1561,7 @@ export async function seedRunesPatchStats(
         },
       },
       update: {
+        isAvailable: runePatchStatSeed.isAvailable ?? true,
         shortDescription: runePatchStatSeed.shortDescription ?? null,
         fullDescription: runePatchStatSeed.fullDescription ?? null,
         effectTypes: runePatchStatSeed.effectTypes,
@@ -1578,6 +1580,7 @@ export async function seedRunesPatchStats(
       create: {
         patchId,
         runeId: rune.id,
+        isAvailable: runePatchStatSeed.isAvailable ?? true,
         shortDescription: runePatchStatSeed.shortDescription ?? null,
         fullDescription: runePatchStatSeed.fullDescription ?? null,
         effectTypes: runePatchStatSeed.effectTypes,

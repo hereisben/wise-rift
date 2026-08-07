@@ -5,10 +5,11 @@ import {
 } from '@nestjs/common';
 import { ChampionPoolService } from '../champion-pool/champion-pool.service.js';
 import {
-  BuildRecommendationEntry,
   ChampionBuildRecommendationInput,
   ChampionBuildRecommendationResponse,
   ItemBuildRecommendationEntry,
+  RuneBuildRecommendationEntry,
+  SpellBuildRecommendationEntry,
 } from '../common/types/champion-build-recommendation-response.type.js';
 import {
   ChampionBuildProfileForDraft,
@@ -601,11 +602,20 @@ export class RecommendationsService {
           in: selectedBuildProfile.recommendedRuneKeys,
         },
       },
+      include: {
+        runePatchStats: {
+          where: {
+            deletedAt: null,
+            patchId,
+            isAvailable: true,
+          },
+        },
+      },
     });
 
     const runesByKey = new Map(runes.map((rune) => [rune.key, rune] as const));
 
-    const recommendedRunes: BuildRecommendationEntry[] =
+    const recommendedRunes: RuneBuildRecommendationEntry[] =
       selectedBuildProfile.recommendedRuneKeys.map((recommendedRuneKey) => {
         const recommendedRune = runesByKey.get(recommendedRuneKey);
 
@@ -615,11 +625,35 @@ export class RecommendationsService {
           );
         }
 
+        const runePatchStat = recommendedRune.runePatchStats[0];
+
+        if (!runePatchStat) {
+          throw new NotFoundException(
+            `Available rune patch stat not found: ${recommendedRuneKey}`,
+          );
+        }
+
         return {
           key: recommendedRune.key,
           name: recommendedRune.name,
           nameVi: recommendedRune.nameVi,
+          description: recommendedRune.description,
+          descriptionVi: recommendedRune.descriptionVi,
           reasonCodes: [`RECOMMENDED_RUNE`],
+          path: recommendedRune.path,
+          slot: recommendedRune.slot,
+          stats: {
+            effectTypes: runePatchStat.effectTypes,
+            triggerTypes: runePatchStat.triggerTypes,
+            targetTypes: runePatchStat.targetTypes,
+            baseValue: runePatchStat.baseValue,
+            scalingValue: runePatchStat.scalingValue,
+            cooldown: runePatchStat.cooldown,
+            duration: runePatchStat.duration,
+            maxStacks: runePatchStat.maxStacks,
+            statTypes: runePatchStat.statTypes,
+            statBonuses: runePatchStat.statBonuses,
+          },
         };
       });
 
@@ -630,13 +664,22 @@ export class RecommendationsService {
           in: selectedBuildProfile.recommendedSpellKeys,
         },
       },
+      include: {
+        spellPatchStats: {
+          where: {
+            deletedAt: null,
+            patchId,
+            isAvailable: true,
+          },
+        },
+      },
     });
 
     const spellsByKey = new Map(
       spells.map((spell) => [spell.key, spell] as const),
     );
 
-    const recommendedSpells: BuildRecommendationEntry[] =
+    const recommendedSpells: SpellBuildRecommendationEntry[] =
       selectedBuildProfile.recommendedSpellKeys.map((recommendedSpellKey) => {
         const recommendedSpell = spellsByKey.get(recommendedSpellKey);
 
@@ -646,11 +689,31 @@ export class RecommendationsService {
           );
         }
 
+        const spellPatchStat = recommendedSpell.spellPatchStats[0];
+
+        if (!spellPatchStat) {
+          throw new NotFoundException(
+            `Available spell patch stat not found: ${recommendedSpellKey}`,
+          );
+        }
+
         return {
           key: recommendedSpell.key,
           name: recommendedSpell.name,
           nameVi: recommendedSpell.nameVi,
+          description: recommendedSpell.description,
+          descriptionVi: recommendedSpell.descriptionVi,
           reasonCodes: [`RECOMMENDED_SPELL`],
+          effectTypes: spellPatchStat.effectTypes,
+          targetTypes: spellPatchStat.targetTypes,
+          stats: {
+            cooldownSeconds: spellPatchStat.cooldownSeconds,
+            chargeRechargeSeconds: spellPatchStat.chargeRechargeSeconds,
+            maxCharges: spellPatchStat.maxCharges,
+            castData: spellPatchStat.castData,
+            passiveData: spellPatchStat.passiveData,
+            upgradeData: spellPatchStat.upgradeData,
+          },
         };
       });
 

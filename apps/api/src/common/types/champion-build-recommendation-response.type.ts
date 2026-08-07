@@ -1,7 +1,15 @@
+import type { Prisma } from '../../generated/prisma/client.js';
 import {
   GamePlan,
   GameRole,
   ItemCategory,
+  RuneEffectType,
+  RunePath,
+  RuneSlot,
+  RuneStatType,
+  RuneTriggerType,
+  SpellEffectType,
+  TargetType,
 } from '../../generated/prisma/enums.js';
 import { NormalizedDraftChampionPick } from './draft-recommendation-champion.type.js';
 
@@ -50,16 +58,50 @@ export type BuildRecommendationEntry = {
   key: string;
   name: string;
   nameVi: string;
+  description: string;
+  descriptionVi: string;
   reasonCodes: string[];
 };
 
 export type ItemBuildRecommendationEntry = BuildRecommendationEntry & {
-  description: string;
-  descriptionVi: string;
   category: ItemCategory[];
   cost: number | null;
   stats: ItemBuildRecommendationStats;
   effectDescription: string | null;
+};
+
+export type SpellBuildRecommendationStats = {
+  cooldownSeconds: number | null;
+  chargeRechargeSeconds: number | null;
+  maxCharges: number | null;
+  castData: Prisma.JsonValue | null;
+  passiveData: Prisma.JsonValue | null;
+  upgradeData: Prisma.JsonValue | null;
+};
+
+export type SpellBuildRecommendationEntry = BuildRecommendationEntry & {
+  effectTypes: SpellEffectType[];
+  targetTypes: TargetType[];
+  stats: SpellBuildRecommendationStats;
+};
+
+export type RuneBuildRecommendationStats = {
+  effectTypes: RuneEffectType[];
+  triggerTypes: RuneTriggerType[];
+  targetTypes: TargetType[];
+  baseValue: number | null;
+  scalingValue: number | null;
+  cooldown: number | null;
+  duration: number | null;
+  maxStacks: number | null;
+  statTypes: RuneStatType[];
+  statBonuses: Prisma.JsonValue | null;
+};
+
+export type RuneBuildRecommendationEntry = BuildRecommendationEntry & {
+  path: RunePath;
+  slot: RuneSlot;
+  stats: RuneBuildRecommendationStats;
 };
 
 export type ChampionBuildRecommendationResponse = {
@@ -69,7 +111,7 @@ export type ChampionBuildRecommendationResponse = {
   coreItems: ItemBuildRecommendationEntry[];
   bootItems: ItemBuildRecommendationEntry[];
   situationalItems: ItemBuildRecommendationEntry[];
-  recommendedRunes: BuildRecommendationEntry[];
-  recommendedSpells: BuildRecommendationEntry[];
+  recommendedRunes: RuneBuildRecommendationEntry[];
+  recommendedSpells: SpellBuildRecommendationEntry[];
   reasonCodes: string[];
 };
