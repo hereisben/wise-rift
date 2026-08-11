@@ -29,6 +29,14 @@ import {
   DraftChampionPickDto,
 } from './dto/create-draft-recommendation.dto.js';
 import { DraftRecommendationScoringService } from './scoring/draft-recommendation-scoring.service.js';
+import {
+  collectEnemyThreatSignals,
+  rankSituationalItems,
+  scoreSituationalItems,
+  SituationalItemCandidate,
+  SituationalItemScoringResult,
+  ThreatSignalSummary,
+} from './scoring/helpers/situational-item-scoring.helper.js';
 
 function normalizeDraftPicks(
   picks: DraftChampionPickDto[] | undefined,
@@ -420,8 +428,8 @@ export class RecommendationsService {
           championKey: scoringResult.bestItem.championKey,
           role,
           recommendedGamePlan: GamePlan.STANDARD,
-          allyPicks,
-          enemyPicks,
+          allyChampionContexts,
+          enemyChampionContexts,
         })
       : null;
 
@@ -590,10 +598,53 @@ export class RecommendationsService {
       buildItemEntry(bootItemKey, `BOOT_ITEM`),
     );
 
-    const situationalItems = selectedBuildProfile.situationalItemKeys.map(
-      (situationalItemKey) =>
-        buildItemEntry(situationalItemKey, `SITUATIONAL_ITEM`),
-    );
+    let situationalItems: ItemBuildRecommendationEntry[] = [];
+
+    if (input.enemyChampionContexts) {
+      const enemyThreatSignalsSummary: ThreatSignalSummary[] =
+        collectEnemyThreatSignals(input.enemyChampionContexts);
+
+      const situationalItemCandidates: SituationalItemCandidate[] = [];
+
+      for (const situationalItemKey of selectedBuildProfile.situationalItemKeys) {
+        const item = itemsByKey.get(situationalItemKey);
+        if (!item) {
+          throw new NotFoundException(
+            `Situational item not found: ${situationalItemKey}`,
+          );
+        }
+
+        const patchStat = item.itemPatchStats[0];
+        if (!patchStat) {
+          throw new NotFoundException(
+            `Patch stat for situational item not available: ${situationalItemKey}`,
+          );
+        }
+
+        situationalItemCandidates.push({
+          item,
+          patchStat,
+        });
+      }
+
+      const situationalItemScoringResults: SituationalItemScoringResult[] =
+        scoreSituationalItems(
+          situationalItemCandidates,
+          enemyThreatSignalsSummary,
+        );
+
+      const maxSituationalItemCount =
+        5 - selectedBuildProfile.coreItemKeys.length;
+
+      const rankedSituationalItemScoringResults = rankSituationalItems(
+        situationalItemScoringResults,
+        maxSituationalItemCount,
+      );
+
+      situationalItems = rankedSituationalItemScoringResults.map((result) =>
+        buildItemEntry(result.itemKey, `SITUATIONAL_ITEM`),
+      );
+    }
 
     const runes = await this.prismaService.rune.findMany({
       where: {

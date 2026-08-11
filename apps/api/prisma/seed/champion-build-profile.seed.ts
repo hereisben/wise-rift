@@ -1895,7 +1895,13 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `plated-steelcaps`,
       `armored-advance`,
     ],
-    situationalItemKeys: [`hextech-rocketbelt`, `bloodletters-curse`],
+    situationalItemKeys: [
+      `hextech-rocketbelt`,
+      `bloodletters-curse`,
+      `force-of-nature`,
+      `amaranths-twinguard`,
+      `randuins-omen`,
+    ],
     recommendedRuneKeys: [
       `ice-overlord`,
       `courage-of-the-colossus`,
@@ -3588,7 +3594,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `runaans-hurricane`,
     ],
     bootItemKeys: [`berserkers-greaves`, `gunmetal-greaves`],
-    situationalItemKeys: [`blade-of-the-ruined-king`, `terminus`],
+    situationalItemKeys: [
+      `blade-of-the-ruined-king`,
+      `terminus`,
+      `guardian-angel`,
+      `mercurial-scimitar`,
+    ],
     recommendedRuneKeys: [
       `lethal-tempo`,
       `brutal`,
@@ -3838,6 +3849,7 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `void-staff`,
       `oceanids-trident`,
       `banshees-veil`,
+      `zhonyas-hourglass`,
     ],
     recommendedRuneKeys: [
       `electrocute`,
@@ -5668,7 +5680,7 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `mercurys-treads`,
       `chainlaced-crushers`,
     ],
-    situationalItemKeys: [`trinity-force`, `guardian-angel`],
+    situationalItemKeys: [`trinity-force`, `guardian-angel`, `serpents-fang`],
     recommendedRuneKeys: [
       `conqueror`,
       `demolish`,
@@ -6242,7 +6254,13 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `mercurys-treads`,
       `chainlaced-crushers`,
     ],
-    situationalItemKeys: [`black-cleaver`, `spear-of-shojin`],
+    situationalItemKeys: [
+      `black-cleaver`,
+      `spear-of-shojin`,
+      `deaths-dance`,
+      `steraks-gage`,
+      `guardian-angel`,
+    ],
     recommendedRuneKeys: [
       `conqueror`,
       `demolish`,
@@ -6412,6 +6430,7 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `amaranths-twinguard`,
       `oceanids-trident`,
       `banshees-veil`,
+      `morellonomicon`,
     ],
     recommendedRuneKeys: [
       `phase-rush`,
@@ -9083,7 +9102,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `mortal-reminder`,
     ],
     bootItemKeys: [`berserkers-greaves`, `gunmetal-greaves`],
-    situationalItemKeys: [`infinity-edge`, `runaans-hurricane`],
+    situationalItemKeys: [
+      `infinity-edge`,
+      `runaans-hurricane`,
+      `guardian-angel`,
+      `mercurial-scimitar`,
+    ],
     recommendedRuneKeys: [
       `lethal-tempo`,
       `brutal`,

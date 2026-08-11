@@ -11,14 +11,14 @@ import {
   SpellEffectType,
   TargetType,
 } from '../../generated/prisma/enums.js';
-import { NormalizedDraftChampionPick } from './draft-recommendation-champion.type.js';
+import { DraftChampionContext } from './draft-recommendation-champion.type.js';
 
 export type ChampionBuildRecommendationInput = {
   championKey: string;
   role: GameRole;
   recommendedGamePlan: GamePlan;
-  allyPicks?: NormalizedDraftChampionPick[];
-  enemyPicks?: NormalizedDraftChampionPick[];
+  allyChampionContexts?: DraftChampionContext[];
+  enemyChampionContexts?: DraftChampionContext[];
 };
 
 export type ItemBuildRecommendationStats = {
