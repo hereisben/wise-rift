@@ -1,20 +1,6 @@
 import { DraftChampionContext } from '../../../common/types/draft-recommendation-champion.type.js';
+import { ThreatSignal } from '../../../common/types/situational-item-recommendation.type.js';
 import { Item, ItemPatchStat } from '../../../generated/prisma/client.js';
-
-type ThreatSignal =
-  | 'HEALING'
-  | 'SHIELDING'
-  | 'TANK'
-  | 'PHYSICAL_DAMAGE'
-  | 'MAGIC_DAMAGE'
-  | 'TRUE_DAMAGE'
-  | 'ARMOR_PENETRATION'
-  | 'AUTO_ATTACK'
-  | 'ATTACK_SPEED'
-  | 'CRITICAL_STRIKE'
-  | 'BURST'
-  | 'DIVE'
-  | 'CROWD_CONTROL';
 
 export type ThreatSignalSummary = {
   signal: ThreatSignal;

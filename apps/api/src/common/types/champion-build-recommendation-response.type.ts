@@ -12,6 +12,7 @@ import {
   TargetType,
 } from '../../generated/prisma/enums.js';
 import { DraftChampionContext } from './draft-recommendation-champion.type.js';
+import { ThreatSignal } from './situational-item-recommendation.type.js';
 
 export type ChampionBuildRecommendationInput = {
   championKey: string;
@@ -70,6 +71,16 @@ export type ItemBuildRecommendationEntry = BuildRecommendationEntry & {
   effectDescription: string | null;
 };
 
+export type SituationalItemRecommendationReason = {
+  matchedThreatSignals: ThreatSignal[];
+  goodAgainstChampionKeys: string[];
+};
+
+export type SituationalItemBuildRecommendationEntry =
+  ItemBuildRecommendationEntry & {
+    recommendationReason: SituationalItemRecommendationReason;
+  };
+
 export type SpellBuildRecommendationStats = {
   cooldownSeconds: number | null;
   chargeRechargeSeconds: number | null;
@@ -110,7 +121,7 @@ export type ChampionBuildRecommendationResponse = {
   gamePlan: GamePlan[];
   coreItems: ItemBuildRecommendationEntry[];
   bootItems: ItemBuildRecommendationEntry[];
-  situationalItems: ItemBuildRecommendationEntry[];
+  situationalItems: SituationalItemBuildRecommendationEntry[];
   recommendedRunes: RuneBuildRecommendationEntry[];
   recommendedSpells: SpellBuildRecommendationEntry[];
   reasonCodes: string[];

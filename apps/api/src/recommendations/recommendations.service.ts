@@ -9,6 +9,7 @@ import {
   ChampionBuildRecommendationResponse,
   ItemBuildRecommendationEntry,
   RuneBuildRecommendationEntry,
+  SituationalItemBuildRecommendationEntry,
   SpellBuildRecommendationEntry,
 } from '../common/types/champion-build-recommendation-response.type.js';
 import {
@@ -529,7 +530,7 @@ export class RecommendationsService {
 
     const buildItemEntry = (
       itemKey: string,
-      reasonCode: string,
+      reasonCodes: string[],
     ): ItemBuildRecommendationEntry => {
       const item = itemsByKey.get(itemKey);
 
@@ -549,7 +550,7 @@ export class RecommendationsService {
         key: item.key,
         name: item.name,
         nameVi: item.nameVi,
-        reasonCodes: [reasonCode],
+        reasonCodes: [...reasonCodes],
         description: item.description,
         descriptionVi: item.descriptionVi,
         category: item.category,
@@ -591,14 +592,14 @@ export class RecommendationsService {
     };
 
     const coreItems = selectedBuildProfile.coreItemKeys.map((coreItemKey) =>
-      buildItemEntry(coreItemKey, `CORE_ITEM`),
+      buildItemEntry(coreItemKey, [`CORE_ITEM`]),
     );
 
     const bootItems = selectedBuildProfile.bootItemKeys.map((bootItemKey) =>
-      buildItemEntry(bootItemKey, `BOOT_ITEM`),
+      buildItemEntry(bootItemKey, [`BOOT_ITEM`]),
     );
 
-    let situationalItems: ItemBuildRecommendationEntry[] = [];
+    let situationalItems: SituationalItemBuildRecommendationEntry[] = [];
 
     if (input.enemyChampionContexts) {
       const enemyThreatSignalsSummary: ThreatSignalSummary[] =
@@ -641,9 +642,18 @@ export class RecommendationsService {
         maxSituationalItemCount,
       );
 
-      situationalItems = rankedSituationalItemScoringResults.map((result) =>
-        buildItemEntry(result.itemKey, `SITUATIONAL_ITEM`),
-      );
+      situationalItems = rankedSituationalItemScoringResults.map((result) => ({
+        ...buildItemEntry(result.itemKey, [
+          `SITUATIONAL_ITEM`,
+          ...result.matchedThreatSignals.map(
+            (threatSignal) => `COUNTERS_${threatSignal}`,
+          ),
+        ]),
+        recommendationReason: {
+          matchedThreatSignals: result.matchedThreatSignals,
+          goodAgainstChampionKeys: result.goodAgainstChampionKeys,
+        },
+      }));
     }
 
     const runes = await this.prismaService.rune.findMany({

@@ -1,0 +1,14 @@
+export type ThreatSignal =
+  | 'HEALING'
+  | 'SHIELDING'
+  | 'TANK'
+  | 'PHYSICAL_DAMAGE'
+  | 'MAGIC_DAMAGE'
+  | 'TRUE_DAMAGE'
+  | 'ARMOR_PENETRATION'
+  | 'AUTO_ATTACK'
+  | 'ATTACK_SPEED'
+  | 'CRITICAL_STRIKE'
+  | 'BURST'
+  | 'DIVE'
+  | 'CROWD_CONTROL';
