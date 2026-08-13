@@ -36,8 +36,8 @@ import {
   scoreSituationalItems,
   SituationalItemCandidate,
   SituationalItemScoringResult,
-  ThreatSignalSummary,
 } from './scoring/helpers/situational-item-scoring.helper.js';
+import { ThreatSignalSummary } from '../common/types/situational-item-recommendation.type.js';
 
 function normalizeDraftPicks(
   picks: DraftChampionPickDto[] | undefined,

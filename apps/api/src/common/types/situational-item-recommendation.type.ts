@@ -12,3 +12,9 @@ export type ThreatSignal =
   | 'BURST'
   | 'DIVE'
   | 'CROWD_CONTROL';
+
+export type ThreatSignalSummary = {
+  signal: ThreatSignal;
+  count: number;
+  sourceChampionKeys: string[];
+};

@@ -1,12 +1,9 @@
 import { DraftChampionContext } from '../../../common/types/draft-recommendation-champion.type.js';
-import { ThreatSignal } from '../../../common/types/situational-item-recommendation.type.js';
+import {
+  ThreatSignal,
+  ThreatSignalSummary,
+} from '../../../common/types/situational-item-recommendation.type.js';
 import { Item, ItemPatchStat } from '../../../generated/prisma/client.js';
-
-export type ThreatSignalSummary = {
-  signal: ThreatSignal;
-  count: number;
-  sourceChampionKeys: string[];
-};
 
 export type SituationalItemCandidate = {
   item: Item;
