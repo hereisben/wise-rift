@@ -3039,6 +3039,7 @@ export const ChampionBuildProfileScalarFieldEnum = {
   bootItemKeys: 'bootItemKeys',
   situationalItemKeys: 'situationalItemKeys',
   recommendedRuneKeys: 'recommendedRuneKeys',
+  runeReplacementOptions: 'runeReplacementOptions',
   recommendedSpellKeys: 'recommendedSpellKeys',
   playStyleTags: 'playStyleTags',
   buildTags: 'buildTags',

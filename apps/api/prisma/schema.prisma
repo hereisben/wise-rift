@@ -648,26 +648,27 @@ model SpellPatchStat {
 }
 
 model ChampionBuildProfile {
-  id                   String           @id @default(cuid())
-  profileKey           String
-  championId           String
-  champion             Champion         @relation(fields: [championId], references: [id])
-  patchId              String
-  patch                Patch            @relation(fields: [patchId], references: [id])
-  role                 GameRole
-  gamePlan             GamePlan[]       @default([STANDARD])
-  coreItemKeys         String[]
-  bootItemKeys         String[]         @default([])
-  situationalItemKeys  String[]
-  recommendedRuneKeys  String[]
-  recommendedSpellKeys String[]
-  playStyleTags        String[]
-  buildTags            String[]
-  notes                String?
-  dataQuality          DataQualityLevel @default(MINIMAL)
-  createdAt            DateTime         @default(now())
-  updatedAt            DateTime         @updatedAt
-  deletedAt            DateTime?
+  id                     String           @id @default(cuid())
+  profileKey             String
+  championId             String
+  champion               Champion         @relation(fields: [championId], references: [id])
+  patchId                String
+  patch                  Patch            @relation(fields: [patchId], references: [id])
+  role                   GameRole
+  gamePlan               GamePlan[]       @default([STANDARD])
+  coreItemKeys           String[]
+  bootItemKeys           String[]         @default([])
+  situationalItemKeys    String[]
+  recommendedRuneKeys    String[]
+  runeReplacementOptions Json?
+  recommendedSpellKeys   String[]
+  playStyleTags          String[]
+  buildTags              String[]
+  notes                  String?
+  dataQuality            DataQualityLevel @default(MINIMAL)
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+  deletedAt              DateTime?
 
   @@unique([championId, patchId, role, profileKey])
   @@index([role])

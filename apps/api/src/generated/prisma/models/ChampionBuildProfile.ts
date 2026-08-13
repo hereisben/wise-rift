@@ -61,6 +61,7 @@ export type ChampionBuildProfileCountAggregateOutputType = {
   bootItemKeys: number
   situationalItemKeys: number
   recommendedRuneKeys: number
+  runeReplacementOptions: number
   recommendedSpellKeys: number
   playStyleTags: number
   buildTags: number
@@ -110,6 +111,7 @@ export type ChampionBuildProfileCountAggregateInputType = {
   bootItemKeys?: true
   situationalItemKeys?: true
   recommendedRuneKeys?: true
+  runeReplacementOptions?: true
   recommendedSpellKeys?: true
   playStyleTags?: true
   buildTags?: true
@@ -204,6 +206,7 @@ export type ChampionBuildProfileGroupByOutputType = {
   bootItemKeys: string[]
   situationalItemKeys: string[]
   recommendedRuneKeys: string[]
+  runeReplacementOptions: runtime.JsonValue | null
   recommendedSpellKeys: string[]
   playStyleTags: string[]
   buildTags: string[]
@@ -246,6 +249,7 @@ export type ChampionBuildProfileWhereInput = {
   bootItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   situationalItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedRuneKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
+  runeReplacementOptions?: Prisma.JsonNullableFilter<"ChampionBuildProfile">
   recommendedSpellKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   playStyleTags?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   buildTags?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
@@ -269,6 +273,7 @@ export type ChampionBuildProfileOrderByWithRelationInput = {
   bootItemKeys?: Prisma.SortOrder
   situationalItemKeys?: Prisma.SortOrder
   recommendedRuneKeys?: Prisma.SortOrder
+  runeReplacementOptions?: Prisma.SortOrderInput | Prisma.SortOrder
   recommendedSpellKeys?: Prisma.SortOrder
   playStyleTags?: Prisma.SortOrder
   buildTags?: Prisma.SortOrder
@@ -296,6 +301,7 @@ export type ChampionBuildProfileWhereUniqueInput = Prisma.AtLeast<{
   bootItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   situationalItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedRuneKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
+  runeReplacementOptions?: Prisma.JsonNullableFilter<"ChampionBuildProfile">
   recommendedSpellKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   playStyleTags?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   buildTags?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
@@ -319,6 +325,7 @@ export type ChampionBuildProfileOrderByWithAggregationInput = {
   bootItemKeys?: Prisma.SortOrder
   situationalItemKeys?: Prisma.SortOrder
   recommendedRuneKeys?: Prisma.SortOrder
+  runeReplacementOptions?: Prisma.SortOrderInput | Prisma.SortOrder
   recommendedSpellKeys?: Prisma.SortOrder
   playStyleTags?: Prisma.SortOrder
   buildTags?: Prisma.SortOrder
@@ -346,6 +353,7 @@ export type ChampionBuildProfileScalarWhereWithAggregatesInput = {
   bootItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   situationalItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedRuneKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
+  runeReplacementOptions?: Prisma.JsonNullableWithAggregatesFilter<"ChampionBuildProfile">
   recommendedSpellKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   playStyleTags?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   buildTags?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
@@ -365,6 +373,7 @@ export type ChampionBuildProfileCreateInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileCreateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileCreatebuildTagsInput | string[]
@@ -388,6 +397,7 @@ export type ChampionBuildProfileUncheckedCreateInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileCreateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileCreatebuildTagsInput | string[]
@@ -407,6 +417,7 @@ export type ChampionBuildProfileUpdateInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileUpdateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileUpdatebuildTagsInput | string[]
@@ -430,6 +441,7 @@ export type ChampionBuildProfileUncheckedUpdateInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileUpdateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileUpdatebuildTagsInput | string[]
@@ -451,6 +463,7 @@ export type ChampionBuildProfileCreateManyInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileCreateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileCreatebuildTagsInput | string[]
@@ -470,6 +483,7 @@ export type ChampionBuildProfileUpdateManyMutationInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileUpdateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileUpdatebuildTagsInput | string[]
@@ -491,6 +505,7 @@ export type ChampionBuildProfileUncheckedUpdateManyInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileUpdateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileUpdatebuildTagsInput | string[]
@@ -529,6 +544,7 @@ export type ChampionBuildProfileCountOrderByAggregateInput = {
   bootItemKeys?: Prisma.SortOrder
   situationalItemKeys?: Prisma.SortOrder
   recommendedRuneKeys?: Prisma.SortOrder
+  runeReplacementOptions?: Prisma.SortOrder
   recommendedSpellKeys?: Prisma.SortOrder
   playStyleTags?: Prisma.SortOrder
   buildTags?: Prisma.SortOrder
@@ -730,6 +746,7 @@ export type ChampionBuildProfileCreateWithoutPatchInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileCreateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileCreatebuildTagsInput | string[]
@@ -751,6 +768,7 @@ export type ChampionBuildProfileUncheckedCreateWithoutPatchInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileCreateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileCreatebuildTagsInput | string[]
@@ -801,6 +819,7 @@ export type ChampionBuildProfileScalarWhereInput = {
   bootItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   situationalItemKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   recommendedRuneKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
+  runeReplacementOptions?: Prisma.JsonNullableFilter<"ChampionBuildProfile">
   recommendedSpellKeys?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   playStyleTags?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
   buildTags?: Prisma.StringNullableListFilter<"ChampionBuildProfile">
@@ -820,6 +839,7 @@ export type ChampionBuildProfileCreateWithoutChampionInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileCreateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileCreatebuildTagsInput | string[]
@@ -841,6 +861,7 @@ export type ChampionBuildProfileUncheckedCreateWithoutChampionInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileCreateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileCreatebuildTagsInput | string[]
@@ -887,6 +908,7 @@ export type ChampionBuildProfileCreateManyPatchInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileCreateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileCreatebuildTagsInput | string[]
@@ -906,6 +928,7 @@ export type ChampionBuildProfileUpdateWithoutPatchInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileUpdateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileUpdatebuildTagsInput | string[]
@@ -927,6 +950,7 @@ export type ChampionBuildProfileUncheckedUpdateWithoutPatchInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileUpdateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileUpdatebuildTagsInput | string[]
@@ -947,6 +971,7 @@ export type ChampionBuildProfileUncheckedUpdateManyWithoutPatchInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileUpdateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileUpdatebuildTagsInput | string[]
@@ -967,6 +992,7 @@ export type ChampionBuildProfileCreateManyChampionInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileCreatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileCreatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileCreaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileCreaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileCreateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileCreatebuildTagsInput | string[]
@@ -986,6 +1012,7 @@ export type ChampionBuildProfileUpdateWithoutChampionInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileUpdateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileUpdatebuildTagsInput | string[]
@@ -1007,6 +1034,7 @@ export type ChampionBuildProfileUncheckedUpdateWithoutChampionInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileUpdateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileUpdatebuildTagsInput | string[]
@@ -1027,6 +1055,7 @@ export type ChampionBuildProfileUncheckedUpdateManyWithoutChampionInput = {
   bootItemKeys?: Prisma.ChampionBuildProfileUpdatebootItemKeysInput | string[]
   situationalItemKeys?: Prisma.ChampionBuildProfileUpdatesituationalItemKeysInput | string[]
   recommendedRuneKeys?: Prisma.ChampionBuildProfileUpdaterecommendedRuneKeysInput | string[]
+  runeReplacementOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   recommendedSpellKeys?: Prisma.ChampionBuildProfileUpdaterecommendedSpellKeysInput | string[]
   playStyleTags?: Prisma.ChampionBuildProfileUpdateplayStyleTagsInput | string[]
   buildTags?: Prisma.ChampionBuildProfileUpdatebuildTagsInput | string[]
@@ -1050,6 +1079,7 @@ export type ChampionBuildProfileSelect<ExtArgs extends runtime.Types.Extensions.
   bootItemKeys?: boolean
   situationalItemKeys?: boolean
   recommendedRuneKeys?: boolean
+  runeReplacementOptions?: boolean
   recommendedSpellKeys?: boolean
   playStyleTags?: boolean
   buildTags?: boolean
@@ -1073,6 +1103,7 @@ export type ChampionBuildProfileSelectCreateManyAndReturn<ExtArgs extends runtim
   bootItemKeys?: boolean
   situationalItemKeys?: boolean
   recommendedRuneKeys?: boolean
+  runeReplacementOptions?: boolean
   recommendedSpellKeys?: boolean
   playStyleTags?: boolean
   buildTags?: boolean
@@ -1096,6 +1127,7 @@ export type ChampionBuildProfileSelectUpdateManyAndReturn<ExtArgs extends runtim
   bootItemKeys?: boolean
   situationalItemKeys?: boolean
   recommendedRuneKeys?: boolean
+  runeReplacementOptions?: boolean
   recommendedSpellKeys?: boolean
   playStyleTags?: boolean
   buildTags?: boolean
@@ -1119,6 +1151,7 @@ export type ChampionBuildProfileSelectScalar = {
   bootItemKeys?: boolean
   situationalItemKeys?: boolean
   recommendedRuneKeys?: boolean
+  runeReplacementOptions?: boolean
   recommendedSpellKeys?: boolean
   playStyleTags?: boolean
   buildTags?: boolean
@@ -1129,7 +1162,7 @@ export type ChampionBuildProfileSelectScalar = {
   deletedAt?: boolean
 }
 
-export type ChampionBuildProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileKey" | "championId" | "patchId" | "role" | "gamePlan" | "coreItemKeys" | "bootItemKeys" | "situationalItemKeys" | "recommendedRuneKeys" | "recommendedSpellKeys" | "playStyleTags" | "buildTags" | "notes" | "dataQuality" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["championBuildProfile"]>
+export type ChampionBuildProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileKey" | "championId" | "patchId" | "role" | "gamePlan" | "coreItemKeys" | "bootItemKeys" | "situationalItemKeys" | "recommendedRuneKeys" | "runeReplacementOptions" | "recommendedSpellKeys" | "playStyleTags" | "buildTags" | "notes" | "dataQuality" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["championBuildProfile"]>
 export type ChampionBuildProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   champion?: boolean | Prisma.ChampionDefaultArgs<ExtArgs>
   patch?: boolean | Prisma.PatchDefaultArgs<ExtArgs>
@@ -1160,6 +1193,7 @@ export type $ChampionBuildProfilePayload<ExtArgs extends runtime.Types.Extension
     bootItemKeys: string[]
     situationalItemKeys: string[]
     recommendedRuneKeys: string[]
+    runeReplacementOptions: runtime.JsonValue | null
     recommendedSpellKeys: string[]
     playStyleTags: string[]
     buildTags: string[]
@@ -1603,6 +1637,7 @@ export interface ChampionBuildProfileFieldRefs {
   readonly bootItemKeys: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>
   readonly situationalItemKeys: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>
   readonly recommendedRuneKeys: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>
+  readonly runeReplacementOptions: Prisma.FieldRef<"ChampionBuildProfile", 'Json'>
   readonly recommendedSpellKeys: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>
   readonly playStyleTags: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>
   readonly buildTags: Prisma.FieldRef<"ChampionBuildProfile", 'String[]'>

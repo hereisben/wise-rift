@@ -198,7 +198,7 @@ const runeSeeds: RuneSeed[] = [
     description: `Champion and epic monster takedowns permanently grant stacking Attack Damage or Ability Power.`,
     descriptionVi: `Tham gia hạ tướng địch và quái khủng sẽ tăng vĩnh viễn Sức Mạnh Công Kích hoặc Sức Mạnh Phép Thuật theo cộng dồn.`,
     path: RunePath.DOMINATION,
-    slot: RuneSlot.SLOT_2,
+    slot: RuneSlot.SLOT_3,
   },
   {
     key: `ingenious-hunter`,
@@ -225,7 +225,7 @@ const runeSeeds: RuneSeed[] = [
     description: `Enemy ward takedowns and assists spawn a Zombie Ward and permanently grant stacking Attack Damage or Ability Power.`,
     descriptionVi: `Hạ hoặc hỗ trợ hạ mắt địch sẽ tạo một Mắt Thây Ma và tăng vĩnh viễn Sức Mạnh Công Kích hoặc Sức Mạnh Phép Thuật theo cộng dồn.`,
     path: RunePath.DOMINATION,
-    slot: RuneSlot.SLOT_2,
+    slot: RuneSlot.SLOT_3,
   },
 
   // PRECISION SLOT 1
@@ -294,7 +294,7 @@ const runeSeeds: RuneSeed[] = [
     description: `Participating in takedowns of monsters, enemy champions, and minions permanently grants stacking Attack Speed.`,
     descriptionVi: `Tham gia hạ quái, tướng địch và lính sẽ tăng vĩnh viễn Tốc Độ Đánh theo cộng dồn.`,
     path: RunePath.PRECISION,
-    slot: RuneSlot.SLOT_1,
+    slot: RuneSlot.SLOT_3,
   },
   {
     key: `legend-tenacity`,
@@ -312,7 +312,7 @@ const runeSeeds: RuneSeed[] = [
     description: `Gain Omnivamp and permanently increase it by participating in takedowns of monsters, enemy champions, and minions.`,
     descriptionVi: `Nhận Hút Máu Toàn Phần và tăng vĩnh viễn chỉ số này khi tham gia hạ quái, tướng địch và lính.`,
     path: RunePath.PRECISION,
-    slot: RuneSlot.SLOT_1,
+    slot: RuneSlot.SLOT_3,
   },
 
   // RESOLVE SLOT 1
@@ -350,7 +350,7 @@ const runeSeeds: RuneSeed[] = [
     description: `Gain increased Armor and Magic Resistance, with additional defenses for each nearby enemy champion. At maximum nearby enemies, also gain Slow Resistance.`,
     descriptionVi: `Nhận thêm Giáp và Kháng Phép, đồng thời tăng thêm chống chịu với mỗi tướng địch ở gần. Khi đạt số lượng kẻ địch tối đa, nhận thêm Kháng Làm Chậm.`,
     path: RunePath.RESOLVE,
-    slot: RuneSlot.SLOT_3,
+    slot: RuneSlot.SLOT_1,
   },
 
   // RESOLVE SLOT 2
@@ -475,7 +475,7 @@ const runeSeeds: RuneSeed[] = [
     description: `While above 65% Health, gain bonus Attack Damage or Ability Power based on level.`,
     descriptionVi: `Khi còn trên 65% Máu, nhận thêm Sức Mạnh Công Kích hoặc Sức Mạnh Phép Thuật theo cấp độ.`,
     path: RunePath.SORCERY,
-    slot: RuneSlot.SLOT_1,
+    slot: RuneSlot.SLOT_2,
   },
 
   // SORCERY SLOT 3

@@ -580,6 +580,7 @@ CREATE TABLE "ChampionBuildProfile" (
     "bootItemKeys" TEXT[] DEFAULT ARRAY[]::TEXT[],
     "situationalItemKeys" TEXT[],
     "recommendedRuneKeys" TEXT[],
+    "runeReplacementOptions" JSONB,
     "recommendedSpellKeys" TEXT[],
     "playStyleTags" TEXT[],
     "buildTags" TEXT[],

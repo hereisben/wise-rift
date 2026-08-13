@@ -5,6 +5,11 @@ import {
   GameRole,
 } from '../../src/generated/prisma/enums.js';
 
+type RuneReplacementOption = {
+  baselineRuneKey: string;
+  alternativeRuneKeys: string[];
+};
+
 type ChampionBuildProfileSeed = {
   profileKey: string;
   championKey: string;
@@ -14,6 +19,7 @@ type ChampionBuildProfileSeed = {
   bootItemKeys: string[];
   situationalItemKeys: string[];
   recommendedRuneKeys: string[];
+  runeReplacementOptions?: RuneReplacementOption[];
   recommendedSpellKeys: string[];
   playStyleTags: string[];
   buildTags: string[];
@@ -54,7 +60,14 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `sudden-impact`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
+
     playStyleTags: [
       `DRAIN_TANK`,
       `EXTENDED_FIGHT_CHAMPION`,
@@ -97,6 +110,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `absolute-focus`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -145,6 +168,13 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
+
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [`BURST`, `PICK`, `MOBILITY`, `POKE`, `ROAMING`],
     buildTags: [
@@ -185,6 +215,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `second-wind`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [`BURST`, `MOBILITY`, `PICK`, `SKIRMISH`, `DIVE`, `ROAMING`],
     buildTags: [
@@ -224,6 +260,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `chain-assault`,
       `eyeball-collector`,
       `second-wind`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -273,6 +315,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -328,6 +384,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `hexflash`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `VANGUARD`,
@@ -382,6 +444,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `sudden-impact`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `MOBILITY`,
@@ -426,6 +494,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -479,6 +557,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `legend-bloodline`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
       `VANGUARD`,
@@ -529,6 +617,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `nimbus-cloak`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `BURST`,
@@ -575,6 +669,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -631,6 +739,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `absolute-focus`,
       `gathering-storm`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `exhaust`],
     playStyleTags: [
@@ -732,6 +846,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `zombie-ward`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `zombie-ward`,
+        alternativeRuneKeys: [`relentless-hunter`, `ingenious-hunter`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `TEAM_SUPPORT`,
@@ -786,6 +910,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `hexflash`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `VANGUARD`,
@@ -836,6 +966,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `transcendence`,
       `scorch`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -892,6 +1028,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `tyrant`,
       `zombie-ward`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `zombie-ward`,
+        alternativeRuneKeys: [`relentless-hunter`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -950,6 +1096,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
       `WARDEN`,
@@ -1000,6 +1152,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -1055,6 +1221,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `scorch`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `DUELING`,
@@ -1103,6 +1275,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -1157,6 +1343,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `nimbus-cloak`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -1213,6 +1405,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-alacrity`,
       `nimbus-cloak`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
       `JUGGERNAUT`,
@@ -1263,6 +1465,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `chain-assault`,
       `eyeball-collector`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -1366,6 +1574,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `overgrowth`,
       `last-stand`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `teleport`],
     playStyleTags: [
       `JUGGERNAUT`,
@@ -1418,6 +1636,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `overgrowth`,
       `last-stand`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
       `JUGGERNAUT`,
@@ -1465,6 +1693,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -1514,6 +1756,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `hubris`,
       `eyeball-collector`,
       `legend-bloodline`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -1665,6 +1913,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-bloodline`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `SPELLCASTING_MARKSMAN`,
@@ -1757,6 +2019,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `sudden-impact`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -1909,6 +2177,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `sudden-impact`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `TANK_MAGE`,
@@ -1962,6 +2236,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `sudden-impact`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `TANK_SUPPORT`,
@@ -2014,6 +2294,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `nimbus-cloak`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -2069,6 +2355,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `brutal`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -2171,6 +2463,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-alacrity`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
       `MARKSMAN`,
@@ -2222,6 +2528,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-alacrity`,
       `second-wind`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `AP_FIGHTER`,
@@ -2265,6 +2585,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `nimbus-cloak`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`ghost`, `smite`],
     playStyleTags: [
@@ -2315,6 +2645,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `transcendence`,
       `nimbus-cloak`,
       `legend-bloodline`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`ghost`, `smite`],
     playStyleTags: [
@@ -2414,6 +2750,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `last-stand`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`, `coup-de-grace`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `FIGHTER`,
@@ -2463,6 +2809,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-bloodline`,
       `second-wind`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `FIGHTER`,
@@ -2507,6 +2867,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `bone-plating`,
       `revitalize`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [`ENCHANTER`, `PEEL`, `DISENGAGE`, `ROAM`, `HEAL`, `SHIELD`],
@@ -2553,6 +2919,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `bone-plating`,
       `perseverance`,
       `triumph`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -2604,6 +2976,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `overgrowth`,
       `last-stand`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`, `coup-de-grace`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `DUELIST`,
@@ -2652,6 +3034,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `last-stand`,
       `legend-alacrity`,
       `hubris`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -2705,6 +3097,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `POKE`,
@@ -2754,6 +3152,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `POKE`,
@@ -2798,6 +3202,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `celerity`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -2849,6 +3259,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -2905,6 +3329,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `last-stand`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `teleport`],
     playStyleTags: [
       `TANK`,
@@ -2949,6 +3383,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -3005,6 +3453,21 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-alacrity`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
+
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `MARKSMAN`,
@@ -3055,6 +3518,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `transcendence`,
       `scorch`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -3155,6 +3624,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `ASSASSIN`,
@@ -3205,6 +3680,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `absolute-focus`,
       `gathering-storm`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -3257,6 +3738,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -3356,6 +3851,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-bloodline`,
       `hubris`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
       `FIGHTER`,
@@ -3408,6 +3913,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-bloodline`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `MAGE`,
@@ -3458,6 +3977,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `MAGE`,
@@ -3500,6 +4025,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -3551,6 +4086,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `sudden-impact`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -3607,6 +4152,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-bloodline`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `MARKSMAN`,
@@ -3662,6 +4221,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `gathering-storm`,
       `cut-down`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [`MAGE`, `SCALING`, `POKE`, `ARTILLERY`, `BACKLINE`, `KITE`],
     buildTags: [
@@ -3701,6 +4266,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `sudden-impact`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -3754,6 +4329,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `overgrowth`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `TANK`,
@@ -3804,6 +4385,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -3908,6 +4499,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-bloodline`,
       `sudden-impact`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `MARKSMAN`,
@@ -3958,6 +4559,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `revitalize`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
       `ENCHANTER`,
@@ -4007,6 +4614,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `transcendence`,
       `scorch`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -4112,6 +4725,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `overgrowth`,
       `empowered-attack`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `TANK`,
@@ -4164,6 +4783,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `overgrowth`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -4220,6 +4845,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `TANK`,
@@ -4273,6 +4904,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `nimbus-cloak`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -4329,6 +4970,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `nimbus-cloak`,
       `cut-down`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `MAGE`,
@@ -4377,6 +5024,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `bone-plating`,
       `revitalize`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -4435,6 +5088,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-bloodline`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `MARKSMAN`,
@@ -4486,6 +5153,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `last-stand`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`, `coup-de-grace`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -4546,6 +5223,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `scorch`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
       `MAGE`,
@@ -4605,6 +5288,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `scorch`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `MAGE`,
@@ -4654,6 +5343,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `chain-assault`,
       `zombie-ward`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `zombie-ward`,
+        alternativeRuneKeys: [`relentless-hunter`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -4706,6 +5405,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -4761,6 +5466,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
       `FIGHTER`,
@@ -4812,6 +5523,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `hexflash`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -4916,6 +5633,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-alacrity`,
       `sudden-impact`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
       `MARKSMAN`,
@@ -5018,6 +5745,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `MAGE`,
@@ -5067,6 +5800,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `overgrowth`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
       `TANK`,
@@ -5113,6 +5852,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-alacrity`,
       `nimbus-cloak`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`],
+      },
+    ],
     recommendedSpellKeys: [`ghost`, `smite`],
     playStyleTags: [
       `FIGHTER`,
@@ -5157,6 +5906,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `last-stand`,
       `legend-alacrity`,
       `second-wind`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`],
+      },
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -5211,6 +5974,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `transcendence`,
       `nimbus-cloak`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -5270,6 +6039,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `overgrowth`,
       `scorch`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `TANK`,
@@ -5325,6 +6100,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `sudden-impact`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -5435,6 +6216,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `scorch`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `TANK`,
@@ -5481,6 +6268,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [`ASSASSIN`, `SUPPORT`, `ROAM`, `PICK`, `BURST`, `EXECUTE`],
     buildTags: [
@@ -5523,6 +6316,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `bone-plating`,
       `perseverance`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -5574,6 +6373,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `bone-plating`,
       `overgrowth`,
       `celerity`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -5632,6 +6437,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `hexflash`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `TANK`,
@@ -5687,6 +6498,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `sudden-impact`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -5796,6 +6613,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `sudden-impact`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `FIGHTER`,
@@ -5847,6 +6670,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -5901,6 +6734,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `nimbus-cloak`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -5958,6 +6797,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `nimbus-cloak`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
       `MAGE`,
@@ -6013,6 +6858,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `nimbus-cloak`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
       `MAGE`,
@@ -6067,6 +6918,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-bloodline`,
       `sudden-impact`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [`MARKSMAN`, `BURST`, `COMBO`, `DIVER`, `RESET`, `EXECUTE`],
     buildTags: [
@@ -6107,6 +6968,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `chain-assault`,
       `zombie-ward`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `zombie-ward`,
+        alternativeRuneKeys: [`relentless-hunter`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -6163,6 +7034,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `revitalize`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
       `ENCHANTER`,
@@ -6214,6 +7091,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `transcendence`,
       `gathering-storm`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -6267,6 +7150,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `overgrowth`,
       `battle-zeal`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -6326,6 +7215,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `overgrowth`,
       `sudden-impact`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `teleport`],
     playStyleTags: [
       `TANK`,
@@ -6378,6 +7273,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `bone-plating`,
       `perseverance`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -6438,6 +7339,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `celerity`,
       `nimbus-cloak`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -6500,6 +7407,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `overgrowth`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `teleport`],
     playStyleTags: [
       `TANK`,
@@ -6553,6 +7466,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -6611,6 +7538,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `overgrowth`,
       `legend-alacrity`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
       `TANK`,
@@ -6660,6 +7597,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -6714,6 +7661,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `revitalize`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
       `ENCHANTER`,
@@ -6762,6 +7715,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `bone-plating`,
       `revitalize`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -6815,6 +7774,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `transcendence`,
       `nimbus-cloak`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -6877,6 +7842,13 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `nimbus-cloak`,
     ],
+
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
       `MAGE`,
@@ -6931,6 +7903,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `absolute-focus`,
       `nimbus-cloak`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -6990,6 +7968,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `transcendence`,
       `nimbus-cloak`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [`MAGE`, `BURST`, `SCALING`, `POKE`, `PICK`, `BACKLINE`],
@@ -7193,6 +8177,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `MAGE`,
@@ -7306,6 +8296,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `hexflash`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [`TANK`, `SUPPORT`, `ENGAGE`, `PEEL`, `PICK`, `FRONTLINE`],
     buildTags: [
@@ -7357,6 +8353,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [`MARKSMAN`, `ADC`, `SCALING`, `BURST`, `BACKLINE`, `RESET`],
@@ -7411,6 +8421,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `last-stand`,
       `legend-alacrity`,
       `nimbus-cloak`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `nimbus-cloak`,
+        alternativeRuneKeys: [`transcendence`],
+      },
     ],
     recommendedSpellKeys: [`ghost`, `smite`],
     playStyleTags: [
@@ -7472,6 +8492,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-alacrity`,
       `nimbus-cloak`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `nimbus-cloak`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`ghost`, `ignite`],
     playStyleTags: [
       `FIGHTER`,
@@ -7529,6 +8559,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `nimbus-cloak`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [`MAGE`, `MID`, `BURST`, `ROAM`, `PICK`, `GLOBAL_PRESSURE`],
     buildTags: [
@@ -7580,6 +8616,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -7643,6 +8693,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `brutal`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `FIGHTER`,
@@ -7703,6 +8759,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -7765,6 +8835,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-bloodline`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
       `MARKSMAN`,
@@ -7824,6 +8908,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -7886,6 +8984,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `gathering-storm`,
       `cut-down`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `MAGE`,
@@ -7941,6 +9045,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -7998,6 +9116,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `transcendence`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `transcendence`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [`MAGE`, `MID`, `ARTILLERY`, `POKE`, `BURST`, `BACKLINE`],
     buildTags: [
@@ -8047,6 +9171,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `tyrant`,
       `zombie-ward`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `zombie-ward`,
+        alternativeRuneKeys: [`relentless-hunter`],
+      },
+      {
+        baselineRuneKey: `transcendence`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -8105,6 +9239,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [`MAGE`, `MID`, `BURST`, `ROAM`, `PICK`, `BACKLINE_DIVE`],
     buildTags: [
@@ -8156,6 +9296,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `sudden-impact`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -8215,6 +9365,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `hubris`,
       `eyeball-collector`,
       `legend-alacrity`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -8279,6 +9435,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `gathering-storm`,
       `cut-down`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `MAGE`,
@@ -8332,6 +9494,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `last-stand`,
       `legend-bloodline`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ghost`],
     playStyleTags: [
@@ -8388,6 +9560,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `last-stand`,
       `legend-bloodline`,
       `nimbus-cloak`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `last-stand`,
+        alternativeRuneKeys: [`cut-down`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -8450,6 +9632,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `overgrowth`,
       `last-stand`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `overgrowth`,
+        alternativeRuneKeys: [`perseverance`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -8554,6 +9746,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `mercurys-treads`,
       `chainlaced-crushers`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     situationalItemKeys: [`sundered-sky`, `amaranths-twinguard`, `thornmail`],
     recommendedRuneKeys: [
       `conqueror`,
@@ -8623,6 +9821,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `sudden-impact`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `FIGHTER`,
@@ -8681,6 +9885,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-alacrity`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `MARKSMAN`,
@@ -8735,6 +9953,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `sudden-impact`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`, `last-stand`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -8800,6 +10028,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `perseverance`,
       `legend-alacrity`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `FIGHTER`,
@@ -8859,6 +10097,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `legend-alacrity`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -8921,6 +10169,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `legend-alacrity`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -8986,6 +10244,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-alacrity`,
       `absolute-focus`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`last-stand`, `coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
       `FIGHTER`,
@@ -9048,6 +10316,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `second-wind`,
       `perseverance`,
       `legend-alacrity`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -9114,6 +10392,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-alacrity`,
+        alternativeRuneKeys: [`legend-bloodline`, `legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -9222,6 +10514,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-alacrity`,
       `second-wind`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `second-wind`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
       `ASSASSIN`,
@@ -9271,6 +10573,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-alacrity`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `smite`],
     playStyleTags: [
@@ -9328,6 +10636,16 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `cut-down`,
       `legend-bloodline`,
       `axiom-arcanist`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-alacrity`, `legend-tenacity`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
@@ -9392,6 +10710,20 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `legend-bloodline`,
       `bone-plating`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `cut-down`,
+        alternativeRuneKeys: [`coup-de-grace`],
+      },
+      {
+        baselineRuneKey: `legend-bloodline`,
+        alternativeRuneKeys: [`legend-tenacity`],
+      },
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `barrier`],
     playStyleTags: [
       `MAGE`,
@@ -9447,6 +10779,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `bone-plating`,
       `revitalize`,
       `transcendence`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -9509,6 +10847,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `eyeball-collector`,
       `nimbus-cloak`,
     ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `nimbus-cloak`,
+        alternativeRuneKeys: [`bone-plating`],
+      },
+    ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [`MAGE`, `MID`, `BURST`, `PICK`, `ARTILLERY`, `ROAM`],
     buildTags: [
@@ -9561,6 +10905,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `transcendence`,
       `scorch`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `heal`],
     playStyleTags: [
@@ -9626,6 +10976,12 @@ const championBuildProfileSeeds: ChampionBuildProfileSeed[] = [
       `transcendence`,
       `scorch`,
       `bone-plating`,
+    ],
+    runeReplacementOptions: [
+      {
+        baselineRuneKey: `bone-plating`,
+        alternativeRuneKeys: [`second-wind`],
+      },
     ],
     recommendedSpellKeys: [`flash`, `ignite`],
     playStyleTags: [
@@ -9696,6 +11052,8 @@ export async function seedChampionBuildProfiles(
         bootItemKeys: championBuildProfileSeed.bootItemKeys,
         situationalItemKeys: championBuildProfileSeed.situationalItemKeys,
         recommendedRuneKeys: championBuildProfileSeed.recommendedRuneKeys,
+        runeReplacementOptions:
+          championBuildProfileSeed.runeReplacementOptions ?? [],
         recommendedSpellKeys: championBuildProfileSeed.recommendedSpellKeys,
         playStyleTags: championBuildProfileSeed.playStyleTags,
         buildTags: championBuildProfileSeed.buildTags,
@@ -9714,6 +11072,8 @@ export async function seedChampionBuildProfiles(
         bootItemKeys: championBuildProfileSeed.bootItemKeys,
         situationalItemKeys: championBuildProfileSeed.situationalItemKeys,
         recommendedRuneKeys: championBuildProfileSeed.recommendedRuneKeys,
+        runeReplacementOptions:
+          championBuildProfileSeed.runeReplacementOptions ?? [],
         recommendedSpellKeys: championBuildProfileSeed.recommendedSpellKeys,
         playStyleTags: championBuildProfileSeed.playStyleTags,
         buildTags: championBuildProfileSeed.buildTags,
